@@ -7,12 +7,18 @@ from .protocol import CorpusPaper, Paper
 import random
 from datetime import datetime
 from .reranker import get_reranker_cls
+import re
+from collections import Counter
 from .construct_email import render_email
 from .openreview_state import OpenReviewState, persist_enabled, project_root
-from .publish import publish_results
+from .publish import PageRecord, publish_results, render_site_page
 from .utils import send_email
 from openai import OpenAI
 from tqdm import tqdm
+
+
+def _normalized_title(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", (title or "").lower())
 
 
 def normalize_path_patterns(patterns: list[str] | ListConfig | None, config_key: str) -> list[str] | None:
@@ -135,7 +141,15 @@ class Executor:
                 daily.extend(venue_papers)
         return daily, digests
 
-    def _deliver(self, papers: list[Paper], corpus: list[CorpusPaper], limit: int, subject: str | None = None, intro: str | None = None):
+    def _deliver(
+        self,
+        papers: list[Paper],
+        corpus: list[CorpusPaper],
+        limit: int,
+        subject: str | None = None,
+        intro: str | None = None,
+        with_ratings: bool = False,
+    ) -> tuple[str, list[Paper]]:
         ranked: list[Paper] = []
         if papers:
             logger.info(f"Reranking {len(papers)} papers for {subject or 'the daily email'}...")
@@ -144,10 +158,25 @@ class Executor:
             for paper in tqdm(ranked):
                 paper.generate_tldr(self.openai_client, self.config.llm)
                 paper.generate_affiliations(self.openai_client, self.config.llm)
+            if with_ratings:
+                self._attach_openreview_ratings(ranked)
         email_content = render_email(ranked, intro=intro)
         send_email(self.config, email_content, subject=subject)
         logger.info(f"Email sent successfully: {subject or 'daily'}")
-        return email_content
+        return email_content, ranked
+
+    def _attach_openreview_ratings(self, papers: list[Paper]) -> None:
+        retriever = self.retrievers.get("openreview")
+        attach = getattr(retriever, "attach_ratings", None)
+        if attach is not None:
+            attach(papers)
+
+    @staticmethod
+    def _conference_year(papers: list[Paper]) -> str | None:
+        years = [paper.conference_year for paper in papers if paper.conference_year]
+        if not years:
+            return None
+        return Counter(years).most_common(1)[0][0]
 
     def run(self):
         corpus = self.fetch_zotero_corpus()
@@ -165,41 +194,105 @@ class Executor:
             logger.info(f"Retrieved {len(papers)} {source} papers")
             all_papers.extend(papers)
         logger.info(f"Total {len(all_papers)} papers retrieved from all sources")
-        digest_min_papers, digest_paper_num = self._openreview_digest_settings()
-        daily_papers, digests = self.partition_openreview_digests(all_papers, digest_min_papers)
-        for venue, venue_papers in digests:
-            logger.info(
-                f"{venue} released {len(venue_papers)} papers; sending a separate digest of {digest_paper_num}"
-            )
-
-        published: list[tuple[str, str]] = []
+        daily_papers, accepted, reviewing = self._split_by_status(all_papers)
+        published: list[PageRecord] = []
         day = datetime.now().strftime("%Y-%m-%d")
+        today = datetime.now().strftime("%Y/%m/%d")
+        limit = int(self.config.executor.max_paper_num)
         if daily_papers:
-            html = self._deliver(daily_papers, corpus, self.config.executor.max_paper_num)
-            published.append((f"{day}-daily.html", html))
-        elif not digests and self.config.executor.send_empty:
-            html = self._deliver([], corpus, self.config.executor.max_paper_num)
-            published.append((f"{day}-daily.html", html))
-        elif not digests:
+            ranked = self._rank(daily_papers, corpus)[:limit]
+            self._write_email(ranked, subject=None, intro=None, with_ratings=False)
+            published.append(PageRecord(
+                filename=f"{day}-daily.html",
+                html=render_site_page(f"Daily {day}", ranked),
+                kind="daily",
+                run_date=day,
+            ))
+        elif not accepted and not reviewing and self.config.executor.send_empty:
+            self._write_email([], subject=None, intro=None, with_ratings=False)
+            published.append(PageRecord(
+                filename=f"{day}-daily.html",
+                html=render_site_page(f"Daily {day}", []),
+                kind="daily",
+                run_date=day,
+            ))
+        elif not accepted and not reviewing:
             logger.info("No new papers found. No email will be sent.")
             self._save_openreview_progress(all_papers, published)
             return
-
-        today = datetime.now().strftime("%Y/%m/%d")
-        for venue, venue_papers in digests:
-            selected = min(digest_paper_num, len(venue_papers))
-            intro = f"{venue} 今日公开 {len(venue_papers)} 篇，按文献库相关度选出 {selected} 篇。"
-            html = self._deliver(
-                venue_papers,
-                corpus,
-                digest_paper_num,
-                subject=f"{venue} 精选 {today}",
-                intro=intro,
-            )
-            published.append((f"{day}-{venue}.html", html))
+        for (venue, year), papers in accepted.items():
+            self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "digest", "精选", limit)
+        for (venue, year), papers in reviewing.items():
+            self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "under_review", "Under Review", limit)
         self._save_openreview_progress(all_papers, published)
 
-    def _save_openreview_progress(self, papers: list[Paper], published: list[tuple[str, str]]) -> None:
+    def _split_by_status(self, papers: list[Paper]):
+        accepted: dict[tuple[str, str], list[Paper]] = {}
+        reviewing: dict[tuple[str, str], list[Paper]] = {}
+        conference_keys = set()
+        conference_titles = set()
+        for paper in papers:
+            if paper.venue and paper.status in {"accepted", "under_review"}:
+                if paper.arxiv_url:
+                    conference_keys.add(paper.arxiv_url)
+                if "arxiv.org/abs/" in (paper.url or ""):
+                    conference_keys.add(paper.url)
+                conference_titles.add(_normalized_title(paper.title))
+        daily = []
+        for paper in papers:
+            if paper.venue and paper.status == "accepted":
+                accepted.setdefault((paper.venue, paper.conference_year or ""), []).append(paper)
+            elif paper.venue and paper.status == "under_review":
+                reviewing.setdefault((paper.venue, paper.conference_year or ""), []).append(paper)
+            elif paper.arxiv_url in conference_keys or paper.url in conference_keys or _normalized_title(paper.title) in conference_titles:
+                continue
+            else:
+                daily.append(paper)
+        return daily, accepted, reviewing
+
+    def _rank(self, papers: list[Paper], corpus: list[CorpusPaper]) -> list[Paper]:
+        if not papers:
+            return []
+        logger.info(f"Reranking {len(papers)} papers...")
+        return self.reranker.rerank(papers, corpus)
+
+    def _write_email(self, papers: list[Paper], subject: str | None, intro: str | None, with_ratings: bool) -> None:
+        for paper in papers:
+            paper.generate_tldr(self.openai_client, self.config.llm)
+            paper.generate_affiliations(self.openai_client, self.config.llm)
+        if with_ratings:
+            self._attach_openreview_ratings(papers)
+        send_email(self.config, render_email(papers, intro=intro), subject=subject)
+
+    def _publish_group(self, published, ranked, venue, year, day, today, kind, label, email_limit) -> None:
+        filename = f"{venue}-{year}-{kind}.html"
+        title = f"{venue} {year} {label}".strip()
+        published.append(PageRecord(
+            filename=filename,
+            html=render_site_page(title, ranked, intro=f"{len(ranked)} papers, ranked by relevance to the Zotero library."),
+            kind=kind,
+            run_date=day,
+            venue=venue,
+            conference_year=year or None,
+        ))
+        top = ranked[:email_limit]
+        mailed_key = f"{venue}-{year}-{kind}"
+        top_ids = [paper.external_id or paper.title for paper in top]
+        state = OpenReviewState.load(project_root()) if self._persist_openreview_state() else OpenReviewState()
+        if state.mailed.get(mailed_key) == top_ids:
+            logger.info(f"Skipping {title} email because the mailed set is unchanged.")
+            return
+        self._write_email(
+            top,
+            subject=f"{title} {today}",
+            intro=f"{len(ranked)} papers ranked by relevance. This email includes the first {len(top)}.",
+            with_ratings=True,
+        )
+        if self._persist_openreview_state():
+            state.mailed[mailed_key] = top_ids
+            state.save(project_root())
+
+    def _save_openreview_progress(self, papers: list[Paper], published: list[PageRecord]) -> None:
         if not self._persist_openreview_state():
             return
         root = project_root()

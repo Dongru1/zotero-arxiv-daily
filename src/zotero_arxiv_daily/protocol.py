@@ -50,6 +50,10 @@ class Paper:
     score: Optional[float] = None
     venue: Optional[str] = None
     external_id: Optional[str] = None
+    conference_year: Optional[str] = None
+    rating_summary: Optional[str] = None
+    status: Optional[str] = None
+    arxiv_url: Optional[str] = None
 
     def _generate_tldr_with_llm(self, openai_client:OpenAI,llm_params:dict) -> str:
         lang = llm_params.get('language', 'English')

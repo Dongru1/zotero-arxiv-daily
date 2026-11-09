@@ -70,6 +70,18 @@ def fixed_now(monkeypatch):
     )
 
 
+@pytest.fixture(autouse=True)
+def no_live_program_lists(monkeypatch):
+    monkeypatch.setattr(
+        "zotero_arxiv_daily.retriever.openreview_retriever.load_conference_programs",
+        lambda year: [],
+    )
+    monkeypatch.setattr(
+        "zotero_arxiv_daily.retriever.openreview_retriever.datetime",
+        _FixedDatetime,
+    )
+
+
 def _configure(config, venues=("iclr",), lookback_hours=48):
     with open_dict(config.source):
         config.source.openreview = {
@@ -159,7 +171,8 @@ def test_openreview_keeps_recent_public_notes(config, monkeypatch, fixed_now):
     retriever = _configure(config)
     papers = retriever.retrieve_papers()
 
-    assert [paper.title for paper in papers] == ["A recent paper"]
+    assert [paper.title for paper in papers] == ["A recent paper", "Old paper"]
+    assert {paper.status for paper in papers} == {"under_review"}
     paper = papers[0]
     assert paper.source == "openreview"
     assert paper.authors == ["Ann Author"]
@@ -169,6 +182,7 @@ def test_openreview_keeps_recent_public_notes(config, monkeypatch, fixed_now):
     assert paper.full_text is None
     assert paper.venue == "ICLR"
     assert paper.external_id == "recent"
+    assert paper.conference_year == "2026"
     note_calls = [params for method, url, params, _ in calls if url.endswith("/notes")]
     assert len(note_calls) == 1
     assert note_calls[0]["invitation"] == "ICLR.cc/2026/Conference/-/Submission"
@@ -192,7 +206,7 @@ def test_openreview_paginates_until_cutoff(config, monkeypatch, fixed_now):
     retriever = _configure(config)
     retriever.page_size = 2
     papers = retriever.retrieve_papers()
-    assert [paper.title for paper in papers] == ["Page zero", "Page one"]
+    assert [paper.title for paper in papers] == ["Page zero", "Page one", "Old paper"]
     offsets = [params["offset"] for _, url, params, _ in calls if url.endswith("/notes")]
     assert offsets == [0, 2]
 
@@ -320,16 +334,53 @@ def test_openreview_bootstraps_only_the_latest_public_day(config, monkeypatch, f
     ])
     retriever = _configure(config)
     papers = retriever.retrieve_papers()
-    assert [paper.title for paper in papers] == ["Last public paper", "Another last public paper"]
-    assert retriever.newly_bootstrapped == {"ICLR"}
-    note_calls = [params for _, url, params, _ in calls if url.endswith("/notes")]
-    assert len(note_calls) == 2
-    assert [params["offset"] for params in note_calls] == [0, 0]
+    assert [paper.title for paper in papers] == [
+        "Last public paper",
+        "Another last public paper",
+        "Ancient paper",
+    ]
+    assert {paper.status for paper in papers} == {"under_review"}
 
-    retriever.state.bootstrapped.add("ICLR")
-    retriever.newly_bootstrapped.clear()
-    before = len(calls)
-    assert retriever.retrieve_papers() == []
-    assert retriever.newly_bootstrapped == set()
-    later_calls = [params for _, url, params, _ in calls[before:] if url.endswith("/notes")]
-    assert len(later_calls) == 1
+
+def test_attach_ratings_averages_public_reviews(config):
+    from zotero_arxiv_daily.protocol import Paper
+
+    retriever = _configure(config)
+    retriever._token = "token"
+
+    def fake_request(method, path, **kwargs):
+        assert kwargs["params"]["forum"] == "note1"
+        return {"notes": [
+            {"id": "note1", "content": {"title": {"value": "Paper"}}},
+            {"id": "r1", "content": {"rating": {"value": "8: Accept"}}},
+            {"id": "r2", "content": {"overall_recommendation": {"value": "6: Weak Accept"}}},
+            {"id": "c1", "content": {"comment": {"value": "nice"}}},
+        ]}
+
+    retriever._request = fake_request
+    paper = Paper(
+        source="openreview",
+        title="Rated paper",
+        authors=["Ann"],
+        abstract="abs",
+        url="https://openreview.net/forum?id=note1",
+        external_id="note1",
+    )
+    hidden = Paper(
+        source="openreview",
+        title="Hidden",
+        authors=["Ann"],
+        abstract="abs",
+        url="https://openreview.net/forum?id=note2",
+        external_id="note2",
+    )
+
+    def flaky_request(method, path, **kwargs):
+        if kwargs["params"]["forum"] == "note2":
+            raise RuntimeError("reviews are private")
+        return fake_request(method, path, **kwargs)
+
+    retriever._request = flaky_request
+    retriever.attach_ratings([paper, hidden])
+    assert paper.rating_summary == "7.0 / 2 reviews"
+    assert hidden.rating_summary is None

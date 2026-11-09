@@ -54,8 +54,11 @@ jobs:
           if [ -f data/openreview_state.json ]; then
             git add data/openreview_state.json
           fi
-          if [ -d data/pages ]; then
-            git add data/pages
+          if [ -d data/embeddings ]; then
+            git add data/embeddings
+          fi
+          if [ -f data/paper_cache.json ]; then
+            git add data/paper_cache.json
           fi
           if git diff --staged --quiet; then
             echo "No OpenReview state changes"

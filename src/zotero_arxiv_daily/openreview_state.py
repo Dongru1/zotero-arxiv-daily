@@ -21,6 +21,7 @@ def project_root() -> Path:
 class OpenReviewState:
     seen_ids: set[str] = field(default_factory=set)
     bootstrapped: set[str] = field(default_factory=set)
+    mailed: dict[str, list[str]] = field(default_factory=dict)
 
     @classmethod
     def load(cls, root: Path | None = None) -> "OpenReviewState":
@@ -37,6 +38,7 @@ class OpenReviewState:
         return cls(
             seen_ids={str(note_id) for note_id in payload.get("seen_ids") or []},
             bootstrapped=bootstrapped,
+            mailed={str(key): list(value) for key, value in (payload.get("mailed") or {}).items()},
         )
 
     def save(self, root: Path | None = None) -> Path:
@@ -48,6 +50,7 @@ class OpenReviewState:
                 for name in sorted(self.bootstrapped)
             },
             "seen_ids": sorted(self.seen_ids),
+            "mailed": {key: value for key, value in sorted(self.mailed.items())},
         }
         path.write_text(json.dumps(payload, indent=2) + "\n")
         return path

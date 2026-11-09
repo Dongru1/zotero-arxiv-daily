@@ -334,11 +334,16 @@ def test_run_sends_conference_digest_separately(config, monkeypatch):
     from zotero_arxiv_daily.retriever.base import registered_retrievers
 
     monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
-    monkeypatch.setattr(
-        registered_retrievers["openreview"],
-        "retrieve_papers",
-        lambda self: [_paper(f"ICLR {i}", source="openreview", venue="ICLR") for i in range(4)],
-    )
+    conference = []
+    for i in range(4):
+        paper = _paper(f"ICLR {i}", source="openreview", venue="ICLR")
+        paper.status = "accepted"
+        paper.conference_year = "2026"
+        paper.external_id = f"iclr-{i}"
+        paper.url = f"https://openreview.net/forum?id=iclr-{i}"
+        conference.append(paper)
+    monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: conference)
+    monkeypatch.setattr(registered_retrievers["openreview"], "attach_ratings", lambda self, papers: None)
 
     sent = []
     monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp(sent))
@@ -357,11 +362,11 @@ def test_run_sends_conference_digest_separately(config, monkeypatch):
 
     subjects = [subject_of(body) for _, _, body in sent]
     assert any(subject.startswith("Daily arXiv") for subject in subjects)
-    assert any(subject.startswith("ICLR 精选") for subject in subjects)
-    digest = next(body for _, _, body in sent if subject_of(body).startswith("ICLR 精选"))
+    assert any(subject.startswith("ICLR 2026 精选") for subject in subjects)
+    digest = next(body for _, _, body in sent if subject_of(body).startswith("ICLR 2026 精选"))
     html = message_from_string(digest).get_payload(decode=True).decode()
-    assert "今日公开 4 篇" in html
-    assert "选出 2 篇" in html
+    assert "4 papers ranked by relevance" in html
+    assert "first 4" in html
 
 
 def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
@@ -397,9 +402,13 @@ def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
     for i in range(4):
         paper = _paper(f"ICLR {i}", source="openreview", venue="ICLR")
         paper.external_id = f"note-{i}"
+        paper.status = "accepted"
+        paper.conference_year = "2026"
+        paper.url = f"https://openreview.net/forum?id=note-{i}"
         openreview_papers.append(paper)
     monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
     monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: openreview_papers)
+    monkeypatch.setattr(registered_retrievers["openreview"], "attach_ratings", lambda self, papers: None)
     monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp([]))
     monkeypatch.setattr("zotero_arxiv_daily.retriever.base.sleep", lambda _: None)
 
@@ -410,4 +419,4 @@ def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
     assert (tmp_path / "site" / "index.html").is_file()
     archived = list((tmp_path / "data" / "pages").glob("*.html"))
     assert any(path.name.endswith("-daily.html") for path in archived)
-    assert any(path.name.endswith("-ICLR.html") for path in archived)
+    assert any(path.name == "ICLR-2026-digest.html" for path in archived)

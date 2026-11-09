@@ -2,11 +2,15 @@ from datetime import date, datetime, timedelta, timezone
 from time import sleep
 from typing import Any
 
+import re
+
 import requests
 from loguru import logger
 
 from .base import BaseRetriever, register_retriever
+from ..conference_programs import ListedPaper, load_conference_programs
 from ..openreview_state import OpenReviewState, project_root
+from ..paper_enrich import enrich_papers
 from ..protocol import Paper
 
 
@@ -50,6 +54,9 @@ _INACTIVE_VENUE_SUFFIXES = (
     "/Desk_Rejected_Submission",
     "/Rejected_Submission",
 )
+_YEAR_IN_ID = re.compile(r"(?:19|20)\d{2}")
+_RATING_NUMBER = re.compile(r"(\d+(?:\.\d+)?)")
+_RATING_FIELDS = ("rating", "overall_recommendation", "recommendation")
 
 
 @register_retriever("openreview")
@@ -71,7 +78,6 @@ class OpenReviewRetriever(BaseRetriever):
 
     api_base = "https://api2.openreview.net"
     page_size = 50
-    max_notes_per_venue = 3000
     request_timeout = 60
 
     def __init__(self, config):
@@ -294,6 +300,7 @@ class OpenReviewRetriever(BaseRetriever):
         *,
         cutoff: datetime | None = None,
         latest_day: bool = False,
+        unlimited: bool = False,
     ) -> tuple[list[dict[str, Any]], date | None]:
         """Collect notes newest-first.
 
@@ -305,7 +312,7 @@ class OpenReviewRetriever(BaseRetriever):
         collected: list[dict[str, Any]] = []
         anchor: date | None = None
         offset = 0
-        while len(collected) < self.max_notes_per_venue:
+        while unlimited or len(collected) < 100000:
             payload = self._request(
                 "GET",
                 "/notes",
@@ -330,78 +337,90 @@ class OpenReviewRetriever(BaseRetriever):
                     if noted_at.date() != anchor:
                         stop = True
                         break
-                elif noted_at is None or cutoff is None or noted_at < cutoff:
+                elif cutoff is not None and (noted_at is None or noted_at < cutoff):
                     stop = True
                     break
                 if self._usable_note(note, group):
+                    note["_conference_year"] = _conference_year(group.get("id") or "")
                     collected.append(note)
             if stop or len(notes) < self.page_size:
                 break
             offset += self.page_size
-        if len(collected) >= self.max_notes_per_venue:
-            logger.warning(
-                f"Stopped after {self.max_notes_per_venue} recent notes for {submission_id}."
-            )
         return collected, anchor
+
+    def _paper_status(self, note: dict[str, Any], group_id: str) -> str | None:
+        content = note.get("content") or {}
+        venue = str(self._content_value(content, "venue") or "")
+        venueid = str(self._content_value(content, "venueid") or "")
+        blob = f"{venue} {venueid}".lower()
+        if any(marker in blob for marker in ("withdrawn", "desk_rejected", "desk rejected", "/rejected")):
+            return None
+        if any(marker in blob for marker in ("oral", "spotlight", "poster")):
+            return "accepted"
+        if venueid and "submission" not in venueid.lower() and group_id and venueid.rstrip("/") == group_id.rstrip("/"):
+            return "accepted"
+        return "under_review"
 
     def _retrieve_raw_papers(self) -> list[dict[str, Any]]:
         self._login()
         now = datetime.now(timezone.utc)
-        cutoff = now - timedelta(hours=self.lookback_hours)
         years = [now.year - 1, now.year, now.year + 1]
         groups = self._submission_groups(self.venues, years)
 
-        grouped: dict[str, list[dict[str, Any]]] = {}
-        for label, group in groups:
-            grouped.setdefault(label, []).append(group)
-
         notes = []
         seen_this_run: set[str] = set()
-        for label, venue_groups in grouped.items():
-            recent: list[dict[str, Any]] = []
-            for group in venue_groups:
-                try:
-                    group_notes, _ = self._collect_notes(group, cutoff=cutoff)
-                except (RuntimeError, requests.RequestException) as exc:
-                    logger.warning(f"Skipping {group.get('id')}: {exc}")
+        for label, group in groups:
+            try:
+                group_notes, _ = self._collect_notes(group, unlimited=True)
+            except (RuntimeError, requests.RequestException) as exc:
+                logger.warning(f"Skipping {group.get('id')}: {exc}")
+                continue
+            group_id = group.get("id") or ""
+            kept = 0
+            for note in group_notes:
+                status = self._paper_status(note, group_id)
+                if status is None:
                     continue
-                recent.extend(group_notes)
-            chosen = recent
-            if not chosen and label not in self.state.bootstrapped:
-                latest_day: date | None = None
-                day_notes: list[dict[str, Any]] = []
-                queried = False
-                for group in venue_groups:
-                    try:
-                        batch, day = self._collect_notes(group, latest_day=True)
-                    except (RuntimeError, requests.RequestException) as exc:
-                        logger.warning(f"Skipping bootstrap for {group.get('id')}: {exc}")
-                        continue
-                    queried = True
-                    if day is None:
-                        continue
-                    if latest_day is None or day > latest_day:
-                        latest_day = day
-                        day_notes = batch
-                    elif day == latest_day:
-                        day_notes.extend(batch)
-                if queried:
-                    chosen = day_notes
-                    self.newly_bootstrapped.add(label)
-                    logger.info(f"Bootstrapped {label} from the last public day {latest_day}.")
-            logger.info(f"Retrieved {len(chosen)} notes for {label}")
-            for note in chosen:
                 note_id = note.get("id")
                 if note_id and note_id in seen_this_run:
                     continue
                 if note_id:
                     seen_this_run.add(note_id)
                 note["_digest_label"] = label
+                note["_status"] = status
                 notes.append(note)
+                kept += 1
+            logger.info(f"Retrieved {kept} notes for {group_id}")
+
+        try:
+            for paper in load_conference_programs(now.year):
+                notes.append(_program_note(paper))
+        except Exception as exc:
+            logger.warning(f"Skipping official conference lists: {exc}")
 
         if not notes:
-            logger.warning(f"No OpenReview papers found in the last {self.lookback_hours} hours.")
+            logger.warning("No conference papers found.")
         return notes
+
+    def retrieve_papers(self) -> list[Paper]:
+        papers = []
+        for raw_paper in self._retrieve_raw_papers():
+            try:
+                paper = self.convert_to_paper(raw_paper)
+            except Exception as exc:
+                logger.warning(f"Skipping paper {raw_paper.get('id', raw_paper)}: {exc}")
+                continue
+            if paper is not None:
+                papers.append(paper)
+        needs = [
+            paper for paper in papers
+            if not paper.abstract or (
+                paper.status == "accepted" and not paper.arxiv_url and "openreview.net/forum" not in (paper.url or "")
+            )
+        ]
+        if needs:
+            enrich_papers(needs)
+        return [paper for paper in papers if paper.abstract]
 
     def convert_to_paper(self, raw_paper: dict[str, Any]) -> Paper | None:
         content = raw_paper.get("content") or {}
@@ -411,8 +430,6 @@ class OpenReviewRetriever(BaseRetriever):
             return None
         abstract = self._content_value(content, "abstract") or ""
         abstract = " ".join(str(abstract).split())
-        if not abstract:
-            return None
         authors = self._content_value(content, "authors") or []
         if isinstance(authors, str):
             authors = [authors]
@@ -420,8 +437,8 @@ class OpenReviewRetriever(BaseRetriever):
         if not authors:
             authors = ["Anonymous"]
         note_id = raw_paper.get("id") or ""
-        url = f"https://openreview.net/forum?id={note_id}" if note_id else "https://openreview.net"
-        pdf_url = f"https://openreview.net/pdf?id={note_id}" if note_id else None
+        url = raw_paper.get("_url") or (f"https://openreview.net/forum?id={note_id}" if note_id else "https://openreview.net")
+        pdf_url = f"https://openreview.net/pdf?id={note_id}" if note_id and not raw_paper.get("_url") else None
         return Paper(
             source=self.name,
             title=title,
@@ -432,4 +449,89 @@ class OpenReviewRetriever(BaseRetriever):
             full_text=None,
             venue=raw_paper.get("_digest_label"),
             external_id=raw_paper.get("id") or None,
+            conference_year=raw_paper.get("_conference_year"),
+            status=raw_paper.get("_status") or "under_review",
+            arxiv_url=_arxiv_from_content(content),
         )
+
+    def attach_ratings(self, papers: list[Paper]) -> None:
+        """Fill public review scores for papers that will be shown.
+
+        A forum with no visible reviews leaves ``rating_summary`` empty.
+        A failed request for one paper does not stop the rest.
+        """
+        if not any(paper.source == "openreview" and paper.external_id for paper in papers):
+            return
+        if not self._token:
+            try:
+                self._login()
+            except (RuntimeError, requests.RequestException) as exc:
+                logger.warning(f"Skipping OpenReview ratings: {exc}")
+                return
+        for paper in papers:
+            if paper.source != "openreview" or not paper.external_id:
+                continue
+            try:
+                paper.rating_summary = self._rating_summary(paper.external_id)
+            except (RuntimeError, requests.RequestException) as exc:
+                logger.warning(f"Skipping rating for {paper.external_id}: {exc}")
+
+    def _rating_summary(self, forum_id: str) -> str | None:
+        payload = self._request("GET", "/notes", params={"forum": forum_id, "limit": 100})
+        scores: list[float] = []
+        for note in (payload or {}).get("notes") or []:
+            if note.get("id") == forum_id:
+                continue
+            content = note.get("content") or {}
+            for field in _RATING_FIELDS:
+                score = _parse_rating(self._content_value(content, field))
+                if score is not None:
+                    scores.append(score)
+                    break
+        if not scores:
+            return None
+        average = sum(scores) / len(scores)
+        noun = "review" if len(scores) == 1 else "reviews"
+        return f"{average:.1f} / {len(scores)} {noun}"
+
+
+def _conference_year(group_id: str) -> str | None:
+    match = _YEAR_IN_ID.search(group_id)
+    return match.group(0) if match else None
+
+
+def _program_note(paper: ListedPaper) -> dict[str, Any]:
+    return {
+        "id": paper.external_id,
+        "_digest_label": paper.venue,
+        "_conference_year": paper.year,
+        "_status": "accepted",
+        "_url": paper.url,
+        "content": {
+            "title": {"value": paper.title},
+            "abstract": {"value": paper.abstract},
+            "authors": {"value": paper.authors},
+        },
+    }
+
+
+def _arxiv_from_content(content: dict[str, Any]) -> str | None:
+    for key in ("arxiv", "arxiv_id", "code", "pdf"):
+        value = content.get(key)
+        if isinstance(value, dict):
+            value = value.get("value")
+        if isinstance(value, str) and "arxiv.org/abs/" in value:
+            return value.split()[0]
+    return None
+
+
+def _parse_rating(value: Any) -> float | None:
+    if isinstance(value, bool) or value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        match = _RATING_NUMBER.search(value)
+        if match:
+            return float(match.group(1))
+    return None
