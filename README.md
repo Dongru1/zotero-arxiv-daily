@@ -69,6 +69,8 @@ Below are all the secrets you need to set. They are invisible to anyone includin
 | RECEIVER | The e-mail address that receives the paper list. | abc@outlook.com |
 | OPENAI_API_KEY | API Key when using the API to access LLMs. You can get FREE API for using advanced open source LLMs in [SiliconFlow](https://cloud.siliconflow.cn/i/b3XhBRAm). | sk-xxx |
 | OPENAI_API_BASE | API URL when using the API to access LLMs. | https://api.siliconflow.cn/v1 |
+| OPENREVIEW_USERNAME | OpenReview login email. Required only if `executor.source` includes `openreview`. Logged-out note requests are rejected. | name@example.com |
+| OPENREVIEW_PASSWORD | OpenReview login password. | your-openreview-password |
 
 Then you should also set a public variable `CUSTOM_CONFIG` for your custom configuration.
 ![vars](./assets/repo_var.png)
@@ -102,9 +104,19 @@ source:
 
 executor:
   debug: ${oc.env:DEBUG,null}
-  source: ['arxiv']
+  source: ['arxiv'] # Add 'openreview' here to also retrieve conference submissions.
 ```
 Set `source.arxiv.include_cross_list: true` if you want cross-listed papers included.
+
+To follow ICLR, NeurIPS, ICML, EMNLP, ACL, or SLT, add `openreview` to `executor.source` and set the two OpenReview secrets above. The default venue list is already in `config/base.yaml`, so `CUSTOM_CONFIG` only needs the source name unless you want to override it:
+
+```yaml
+executor:
+  source: ['arxiv', 'openreview']
+```
+
+ICASSP and Interspeech can be named in `source.openreview.venues`, but their main conferences are not hosted on OpenReview, so those two names do not return papers. Speech preprints still arrive through arXiv categories such as `cs.SD` and `eess.AS`.
+
 >[!NOTE]
 > `${oc.env:XXX,yyy}` means the value of the environment variable `XXX`. If the variable is not set, the default value `yyy` will be used.
 
@@ -140,6 +152,7 @@ source:
     lookback_hours: 48 # Submissions created or updated within this many hours. Example: 48
     digest_min_papers: 30 # At least this many new papers from one venue triggers a separate curated email. Example: 30
     digest_paper_num: 20 # Papers kept in that curated email. Example: 20
+    persist_state: ${oc.env:PERSIST_OPENREVIEW_STATE,false} # The daily workflow sets this. It records seen papers and the one-time backfill. Example: true
 
 email:
   sender: ??? # The email account of the SMTP server that sends you email. Example: abc@qq.com
@@ -188,7 +201,13 @@ That's all! Now you can test the workflow by manually triggering it:
 
 Then check the log and the receiver email after it finishes.
 
-By default, the main workflow runs on 22:00 UTC everyday. You can change this time by editting the workflow config `.github/workflows/main.yml`.
+By default, the main workflow runs on 22:00 UTC everyday. You can change this time by editting the workflow config `.github/workflows/main.yml`. That run is what checks OpenReview. It does not poll during the day. A public release is picked up on the next scheduled run if it falls inside `lookback_hours` (48 by default).
+
+The daily workflow records processed OpenReview note ids in `data/openreview_state.json`. A note that was already handled is not ranked or mailed again, including later revisions of the same submission. The first time a venue has no papers inside the lookback window, the workflow takes only the UTC day of the newest note, sends that batch once, and does not walk into older days afterward. The Test workflow does not write this state file.
+
+If one venue has at least `digest_min_papers` new papers, those papers leave the daily mail and are sent as a separate curated email, for example `ICLR 精选 2026/11/09`. The message says how many papers were public and how many were kept (`digest_paper_num`). Several venues releasing on the same day produce one email each. Smaller updates stay in the daily mail and compete for `max_paper_num`.
+
+The same daily run publishes the rendered pages with GitHub Pages. In the repository settings, open Pages and set the source to GitHub Actions. The site is then `https://<username>.github.io/zotero-arxiv-daily/`. A public repository makes this site public. It contains paper titles, relevance scores, and TLDR text, not secrets.
 
 ### Local Running
 Supported by [uv](https://github.com/astral-sh/uv), this workflow can easily run on your local device if uv is installed:
