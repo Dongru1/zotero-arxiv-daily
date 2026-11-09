@@ -77,7 +77,7 @@ class OpenReviewRetriever(BaseRetriever):
     """
 
     api_base = "https://api2.openreview.net"
-    page_size = 50
+    page_size = 1000
     request_timeout = 60
 
     def __init__(self, config):
@@ -157,7 +157,12 @@ class OpenReviewRetriever(BaseRetriever):
             if response.status_code == 401 and authenticated and attempt == 0:
                 self._login()
                 continue
-            if response.status_code in {429, 500, 502, 503, 504} and attempt < retry_num - 1:
+            if response.status_code == 429 and attempt == 0:
+                delay = _rate_limit_delay(response)
+                logger.warning(f"OpenReview rate limit for {path}. Waiting {int(delay)}s.")
+                sleep(delay)
+                continue
+            if response.status_code in {500, 502, 503, 504} and attempt < retry_num - 1:
                 logger.warning(
                     f"OpenReview returned {response.status_code} for {path}. Retry in {delay_time}s."
                 )
@@ -493,6 +498,22 @@ class OpenReviewRetriever(BaseRetriever):
         average = sum(scores) / len(scores)
         noun = "review" if len(scores) == 1 else "reviews"
         return f"{average:.1f} / {len(scores)} {noun}"
+
+
+def _rate_limit_delay(response: Any) -> float:
+    """Wait until OpenReview says the hourly quota resets, plus a small buffer."""
+    try:
+        payload = response.json()
+    except Exception:
+        payload = {}
+    reset = ((payload or {}).get("details") or {}).get("resetTime")
+    if isinstance(reset, str):
+        try:
+            reset_at = datetime.fromisoformat(reset.replace("Z", "+00:00"))
+            return min(4200.0, max(1.0, (reset_at - datetime.now(timezone.utc)).total_seconds() + 5))
+        except ValueError:
+            pass
+    return 60.0
 
 
 def _conference_year(group_id: str) -> str | None:

@@ -342,6 +342,18 @@ def test_openreview_bootstraps_only_the_latest_public_day(config, monkeypatch, f
     assert {paper.status for paper in papers} == {"under_review"}
 
 
+def test_rate_limit_delay_uses_reset_time():
+    from datetime import timedelta
+    from types import SimpleNamespace
+
+    from zotero_arxiv_daily.retriever.openreview_retriever import _rate_limit_delay
+
+    reset = (FIXED_NOW + timedelta(minutes=57)).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    response = SimpleNamespace(json=lambda: {"details": {"resetTime": reset}})
+    delay = _rate_limit_delay(response)
+    assert 57 * 60 <= delay <= 58 * 60 + 10
+
+
 def test_attach_ratings_averages_public_reviews(config):
     from zotero_arxiv_daily.protocol import Paper
 
