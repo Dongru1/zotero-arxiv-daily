@@ -1,0 +1,16 @@
+[
+  {
+    "file": "2026-11-09-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-09",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-09-ICLR.html",
+    "kind": "digest",
+    "run_date": "2026-11-09",
+    "venue": "ICLR",
+    "conference_year": "2026"
+  }
+]
