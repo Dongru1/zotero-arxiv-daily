@@ -5,7 +5,7 @@ import json
 import requests
 
 from zotero_arxiv_daily.conference_programs import (
-    candidate_years,
+    biennial_years,
     load_conference_programs,
     papers_for_venue_year,
     parse_dblp_hits,
@@ -68,9 +68,11 @@ def test_dblp_parser_reads_title_and_link():
     assert papers[0].year == "2024"
 
 
-def test_slt_year_falls_back_two_years():
-    years = candidate_years(2026, extra_back=2)
-    assert select_newest(years, lambda year: year == 2024) == 2024
+def test_slt_checks_only_even_years():
+    assert biennial_years(2026) == [2026, 2024]
+    assert biennial_years(2025) == [2026, 2024]
+    assert biennial_years(2027) == [2028, 2026]
+    assert select_newest(biennial_years(2026), lambda year: year == 2024) == 2024
 
 
 class _Response:
@@ -101,7 +103,10 @@ def test_dblp_retries_when_rate_limited(monkeypatch):
 
 
 def test_slt_uses_older_year_when_newer_lists_are_missing(monkeypatch):
+    calls = []
+
     def fake_get(url, **kwargs):
+        calls.append(url)
         if "slt2024" in url:
             return _Response(200, json.dumps(DBLP))
         return _Response(404)
@@ -109,6 +114,11 @@ def test_slt_uses_older_year_when_newer_lists_are_missing(monkeypatch):
     monkeypatch.setattr("zotero_arxiv_daily.conference_programs.requests.get", fake_get)
     monkeypatch.setattr("zotero_arxiv_daily.conference_programs.time.sleep", lambda delay: None)
     papers = [paper for paper in load_conference_programs(2026) if paper.venue == "SLT"]
+    slt_calls = [url for url in calls if "slt20" in url]
+    assert slt_calls == [
+        "https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt2026.bht:&h=1000&format=json",
+        "https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt2024.bht:&h=1000&format=json",
+    ]
     assert [paper.title for paper in papers] == ["Spoken Paper"]
 
 

@@ -167,6 +167,12 @@ def candidate_years(now_year: int, extra_back: int = 0) -> list[int]:
     return years
 
 
+def biennial_years(now_year: int, editions: int = 2) -> list[int]:
+    """Even-year venues such as SLT, newest edition first."""
+    newest = now_year if now_year % 2 == 0 else now_year + 1
+    return [newest - 2 * index for index in range(editions)]
+
+
 def select_newest(years: list[int], available: Callable[[int], bool]) -> int | None:
     for year in years:
         if available(year):
@@ -249,8 +255,8 @@ def load_conference_programs(now_year: int) -> list[ListedPaper]:
         ("SLT", "dblp", "https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt{year}.bht:&h=1000&format=json"),
     )
     for venue, kind, template in templates:
-        extra = 2 if venue == "SLT" else 0
-        for year in candidate_years(now_year, extra):
+        years = biennial_years(now_year) if venue == "SLT" else candidate_years(now_year)
+        for year in years:
             if kind == "dblp":
                 time.sleep(1)
             try:
