@@ -51,7 +51,29 @@ def test_tldr_falls_back_to_abstract_on_error(llm_params):
     assert result == paper.abstract
 
 
-def test_tldr_truncates_long_prompt(llm_params):
+def test_tldr_serializes_nested_config(llm_params):
+    import json
+    from types import SimpleNamespace
+
+    from omegaconf import DictConfig, OmegaConf
+
+    received = {}
+
+    def create(**kwargs):
+        received.update(kwargs)
+        json.dumps(kwargs)
+        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content="Summary"))])
+
+    client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
+    llm_params["generation_kwargs"] = OmegaConf.create({
+        "model": "deepseek-flash",
+        "max_tokens": 32,
+        "extra_body": {"thinking": {"type": "enabled"}},
+    })
+    paper = make_sample_paper()
+    assert paper.generate_tldr(client, llm_params) == "Summary"
+    assert received["extra_body"] == {"thinking": {"type": "enabled"}}
+    assert not isinstance(received["extra_body"], DictConfig)
     client = make_stub_openai_client()
     paper = make_sample_paper(full_text="word " * 10000)
     result = paper.generate_tldr(client, llm_params)

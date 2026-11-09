@@ -4,14 +4,22 @@ from datetime import datetime
 import re
 import tiktoken
 from openai import OpenAI
+from omegaconf import DictConfig, ListConfig, OmegaConf
 from loguru import logger
 import json
 RawPaperItem = TypeVar('RawPaperItem')
 
 
+def _plain_data(value):
+    """Turn Hydra config nodes into JSON-serializable Python objects."""
+    if isinstance(value, (DictConfig, ListConfig)):
+        return OmegaConf.to_container(value, resolve=True)
+    return value
+
+
 def _request_llm(openai_client: OpenAI, llm_params: dict, messages: list[dict]) -> str:
     api_mode = llm_params.get("api_mode", "chat_completion")
-    generation_kwargs = dict(llm_params.get("generation_kwargs", {}))
+    generation_kwargs = dict(_plain_data(llm_params.get("generation_kwargs", {})) or {})
 
     if api_mode == "chat_completion":
         response = openai_client.chat.completions.create(
