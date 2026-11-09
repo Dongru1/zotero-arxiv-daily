@@ -12,7 +12,6 @@ from loguru import logger
 from .base import BaseRetriever, register_retriever
 from ..conference_programs import ListedPaper, load_conference_programs
 from ..openreview_state import OpenReviewState, project_root
-from ..paper_enrich import enrich_papers
 from ..protocol import Paper
 
 
@@ -460,15 +459,7 @@ class OpenReviewRetriever(BaseRetriever):
                 continue
             if paper is not None:
                 papers.append(paper)
-        needs = [
-            paper for paper in papers
-            if not paper.abstract or (
-                paper.status == "accepted" and not paper.arxiv_url and "openreview.net/forum" not in (paper.url or "")
-            )
-        ]
-        if needs:
-            enrich_papers(needs)
-        return [paper for paper in papers if paper.abstract]
+        return papers
 
     def convert_to_paper(self, raw_paper: dict[str, Any]) -> Paper | None:
         content = raw_paper.get("content") or {}

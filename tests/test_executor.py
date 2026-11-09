@@ -344,6 +344,7 @@ def test_run_sends_conference_digest_separately(config, monkeypatch):
         conference.append(paper)
     monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: conference)
     monkeypatch.setattr(registered_retrievers["openreview"], "attach_ratings", lambda self, papers: None)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.attach_arxiv_links", lambda papers, **kwargs: None)
 
     sent = []
     monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp(sent))
@@ -409,6 +410,7 @@ def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
     monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
     monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: openreview_papers)
     monkeypatch.setattr(registered_retrievers["openreview"], "attach_ratings", lambda self, papers: None)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.attach_arxiv_links", lambda papers, **kwargs: None)
     monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp([]))
     monkeypatch.setattr("zotero_arxiv_daily.retriever.base.sleep", lambda _: None)
 
@@ -420,3 +422,100 @@ def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
     archived = list((tmp_path / "data" / "pages").glob("*.html"))
     assert any(path.name.endswith("-daily.html") for path in archived)
     assert any(path.name == "ICLR-2026-digest.html" for path in archived)
+
+
+def test_daily_scope_does_not_retrieve_openreview(config, monkeypatch, tmp_path):
+    import smtplib
+
+    from omegaconf import open_dict
+
+    from tests.canned_responses import make_stub_openai_client, make_stub_smtp, make_stub_zotero_client
+
+    with open_dict(config):
+        config.executor.source = ["arxiv", "openreview"]
+        config.executor.reranker = "api"
+        config.executor.send_empty = False
+        config.source.openreview.username = "reviewer@example.com"
+        config.source.openreview.password = "secret"
+        config.source.openreview.venues = ["iclr"]
+
+    monkeypatch.setenv("RUN_SCOPE", "daily")
+    monkeypatch.setattr("zotero_arxiv_daily.executor.project_root", lambda: tmp_path)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.zotero.Zotero", lambda *a, **kw: make_stub_zotero_client())
+    stub_client = make_stub_openai_client()
+    monkeypatch.setattr("zotero_arxiv_daily.executor.OpenAI", lambda **kw: stub_client)
+    monkeypatch.setattr("zotero_arxiv_daily.reranker.api.OpenAI", lambda **kw: stub_client)
+
+    import zotero_arxiv_daily.retriever.arxiv_retriever  # noqa: F401
+    import zotero_arxiv_daily.retriever.openreview_retriever  # noqa: F401
+    from zotero_arxiv_daily.retriever.base import registered_retrievers
+
+    calls = {"openreview": 0}
+
+    def retrieve_openreview(self):
+        calls["openreview"] += 1
+        return []
+
+    monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
+    monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", retrieve_openreview)
+    monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp([]))
+
+    Executor(config).run()
+
+    assert calls["openreview"] == 0
+
+
+def test_conference_scope_enriches_before_the_mailed_check(config, monkeypatch, tmp_path):
+    import smtplib
+
+    from omegaconf import open_dict
+
+    from tests.canned_responses import make_stub_openai_client, make_stub_smtp, make_stub_zotero_client
+
+    with open_dict(config):
+        config.executor.source = ["arxiv", "openreview"]
+        config.executor.reranker = "api"
+        config.executor.send_empty = False
+        config.executor.max_paper_num = 5
+        config.source.openreview.username = "reviewer@example.com"
+        config.source.openreview.password = "secret"
+        config.source.openreview.venues = ["iclr"]
+        config.source.openreview.persist_state = True
+
+    unfinished = _paper("Still missing", source="openreview", venue="ICLR")
+    unfinished.abstract = ""
+    unfinished.status = "accepted"
+    unfinished.conference_year = "2026"
+    unfinished.external_id = "missing"
+    unfinished.url = "https://openreview.net/forum?id=missing"
+    state = OpenReviewState(mailed={"ICLR-2026-digest": ["missing"]})
+    state.save(tmp_path)
+
+    monkeypatch.setenv("RUN_SCOPE", "conference")
+    monkeypatch.setattr("zotero_arxiv_daily.executor.project_root", lambda: tmp_path)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.zotero.Zotero", lambda *a, **kw: make_stub_zotero_client())
+    stub_client = make_stub_openai_client()
+    monkeypatch.setattr("zotero_arxiv_daily.executor.OpenAI", lambda **kw: stub_client)
+    monkeypatch.setattr("zotero_arxiv_daily.reranker.api.OpenAI", lambda **kw: stub_client)
+
+    import zotero_arxiv_daily.retriever.arxiv_retriever  # noqa: F401
+    import zotero_arxiv_daily.retriever.openreview_retriever  # noqa: F401
+    from zotero_arxiv_daily.retriever.base import registered_retrievers
+
+    seen = {"titles": []}
+
+    def enrich(papers, **kwargs):
+        seen["titles"] = [paper.title for paper in papers]
+        for paper in papers:
+            paper.abstract = "Filled in this run"
+
+    monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
+    monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: [unfinished])
+    monkeypatch.setattr(registered_retrievers["openreview"], "attach_ratings", lambda self, papers: None)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.enrich_papers", enrich)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.attach_arxiv_links", lambda papers, **kwargs: None)
+    monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp([]))
+
+    Executor(config).run()
+
+    assert seen["titles"] == ["Still missing"]

@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: daily-email
   cancel-in-progress: false
 
 jobs:
@@ -24,6 +24,7 @@ jobs:
         with:
           repository: ${{ vars.REPOSITORY }}
           ref: ${{ vars.REF }}
+          fetch-depth: 0
 
       - name: Setup uv
         uses: astral-sh/setup-uv@v7
@@ -40,6 +41,7 @@ jobs:
           OPENREVIEW_USERNAME: ${{ secrets.OPENREVIEW_USERNAME }}
           OPENREVIEW_PASSWORD: ${{ secrets.OPENREVIEW_PASSWORD }}
           PERSIST_OPENREVIEW_STATE: "true"
+          RUN_SCOPE: daily
           CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
         run: |
           printf "%b\n" "$CUSTOM_CONFIG" > config/custom.yaml
@@ -63,12 +65,23 @@ jobs:
           if [ -f data/paper_cache.json ]; then
             git add data/paper_cache.json
           fi
-          if git diff --staged --quiet; then
-            echo "No OpenReview state changes"
-          else
-            git commit -m "chore: record openreview state [skip ci]"
-            git push
+          if compgen -G "data/pages/*.html" > /dev/null; then
+            git add data/pages/*.html
           fi
+          git checkout -- data/pages/manifest.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No daily page changes"
+          else
+            git commit -m "chore: record daily pages [skip ci]"
+          fi
+          git checkout -- config/custom.yaml 2>/dev/null || true
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
+          git add data/pages/manifest.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: refresh pages index [skip ci]"
+          fi
+          git push
 
       - name: Check published site
         id: publish

@@ -22,6 +22,8 @@ class OpenReviewState:
     seen_ids: set[str] = field(default_factory=set)
     bootstrapped: set[str] = field(default_factory=set)
     mailed: dict[str, list[str]] = field(default_factory=dict)
+    indexed_titles: set[str] = field(default_factory=set)
+    indexed_urls: set[str] = field(default_factory=set)
 
     @classmethod
     def load(cls, root: Path | None = None) -> "OpenReviewState":
@@ -39,6 +41,8 @@ class OpenReviewState:
             seen_ids={str(note_id) for note_id in payload.get("seen_ids") or []},
             bootstrapped=bootstrapped,
             mailed={str(key): list(value) for key, value in (payload.get("mailed") or {}).items()},
+            indexed_titles={str(title) for title in payload.get("indexed_titles") or []},
+            indexed_urls={str(url) for url in payload.get("indexed_urls") or []},
         )
 
     def save(self, root: Path | None = None) -> Path:
@@ -51,6 +55,8 @@ class OpenReviewState:
             },
             "seen_ids": sorted(self.seen_ids),
             "mailed": {key: value for key, value in sorted(self.mailed.items())},
+            "indexed_titles": sorted(self.indexed_titles),
+            "indexed_urls": sorted(self.indexed_urls),
         }
         path.write_text(json.dumps(payload, indent=2) + "\n")
         return path

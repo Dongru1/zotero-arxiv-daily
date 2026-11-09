@@ -1,3 +1,4 @@
+import os
 from loguru import logger
 from pyzotero import zotero
 from omegaconf import DictConfig, ListConfig
@@ -11,6 +12,7 @@ import re
 from collections import Counter
 from .construct_email import render_email
 from .openreview_state import OpenReviewState, persist_enabled, project_root
+from .paper_enrich import attach_arxiv_links, enrich_papers
 from .publish import PageRecord, publish_results, render_site_page
 from .utils import send_email
 from openai import OpenAI
@@ -178,14 +180,31 @@ class Executor:
             return None
         return Counter(years).most_common(1)[0][0]
 
+    def _run_scope(self) -> str:
+        scope = os.environ.get("RUN_SCOPE", "all").strip().lower()
+        if scope in {"daily", "conference"}:
+            return scope
+        return "all"
+
+    def _sources_for_scope(self) -> list[str]:
+        scope = self._run_scope()
+        sources = list(self.retrievers)
+        if scope == "daily":
+            return [source for source in sources if source == "arxiv"]
+        if scope == "conference":
+            return [source for source in sources if source == "openreview"]
+        return sources
+
     def run(self):
+        scope = self._run_scope()
         corpus = self.fetch_zotero_corpus()
         corpus = self.filter_corpus(corpus)
         if len(corpus) == 0:
             logger.error(f"No zotero papers found. Please check your zotero settings:\n{self.config.zotero}")
             return
         all_papers = []
-        for source, retriever in self.retrievers.items():
+        for source in self._sources_for_scope():
+            retriever = self.retrievers[source]
             logger.info(f"Retrieving {source} papers...")
             papers = retriever.retrieve_papers()
             if len(papers) == 0:
@@ -193,44 +212,56 @@ class Executor:
                 continue
             logger.info(f"Retrieved {len(papers)} {source} papers")
             all_papers.extend(papers)
+        if scope != "daily":
+            missing = [paper for paper in all_papers if not paper.abstract]
+            if missing:
+                enrich_papers(missing)
+            all_papers = [paper for paper in all_papers if paper.abstract or not self._is_conference_paper(paper)]
         logger.info(f"Total {len(all_papers)} papers retrieved from all sources")
         daily_papers, accepted, reviewing = self._split_by_status(all_papers)
         published: list[PageRecord] = []
         day = datetime.now().strftime("%Y-%m-%d")
         today = datetime.now().strftime("%Y/%m/%d")
         limit = int(self.config.executor.max_paper_num)
-        if daily_papers:
-            ranked = self._rank(daily_papers, corpus)[:limit]
-            self._write_email(ranked, subject=None, intro=None, with_ratings=False)
-            published.append(PageRecord(
-                filename=f"{day}-daily.html",
-                html=render_site_page(f"Daily {day}", ranked),
-                kind="daily",
-                run_date=day,
-            ))
-        elif not accepted and not reviewing and self.config.executor.send_empty:
-            self._write_email([], subject=None, intro=None, with_ratings=False)
-            published.append(PageRecord(
-                filename=f"{day}-daily.html",
-                html=render_site_page(f"Daily {day}", []),
-                kind="daily",
-                run_date=day,
-            ))
-        elif not accepted and not reviewing:
-            logger.info("No new papers found. No email will be sent.")
-            self._save_openreview_progress(all_papers, published)
-            return
-        for (venue, year), papers in accepted.items():
-            self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "digest", "精选", limit)
-        for (venue, year), papers in reviewing.items():
-            self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "under_review", "Under Review", limit)
+        if scope != "conference":
+            if daily_papers:
+                ranked = self._rank(daily_papers, corpus)[:limit]
+                self._write_email(ranked, subject=None, intro=None, with_ratings=False)
+                published.append(PageRecord(
+                    filename=f"{day}-daily.html",
+                    html=render_site_page(f"Daily {day}", ranked),
+                    kind="daily",
+                    run_date=day,
+                ))
+            elif not accepted and not reviewing and self.config.executor.send_empty:
+                self._write_email([], subject=None, intro=None, with_ratings=False)
+                published.append(PageRecord(
+                    filename=f"{day}-daily.html",
+                    html=render_site_page(f"Daily {day}", []),
+                    kind="daily",
+                    run_date=day,
+                ))
+            elif not accepted and not reviewing:
+                logger.info("No new papers found. No email will be sent.")
+                self._save_openreview_progress(all_papers, published)
+                return
+        if scope != "daily":
+            for (venue, year), papers in accepted.items():
+                self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "digest", "精选", limit)
+            for (venue, year), papers in reviewing.items():
+                self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "under_review", "Under Review", limit)
         self._save_openreview_progress(all_papers, published)
+
+    @staticmethod
+    def _is_conference_paper(paper: Paper) -> bool:
+        return bool(paper.venue and paper.status in {"accepted", "under_review"})
 
     def _split_by_status(self, papers: list[Paper]):
         accepted: dict[tuple[str, str], list[Paper]] = {}
         reviewing: dict[tuple[str, str], list[Paper]] = {}
-        conference_keys = set()
-        conference_titles = set()
+        stored = OpenReviewState.load(project_root())
+        conference_keys = set(stored.indexed_urls)
+        conference_titles = set(stored.indexed_titles)
         for paper in papers:
             if paper.venue and paper.status in {"accepted", "under_review"}:
                 if paper.arxiv_url:
@@ -267,6 +298,13 @@ class Executor:
     def _publish_group(self, published, ranked, venue, year, day, today, kind, label, email_limit) -> None:
         filename = f"{venue}-{year}-{kind}.html"
         title = f"{venue} {year} {label}".strip()
+        top = ranked[:email_limit]
+        mailed_key = f"{venue}-{year}-{kind}"
+        top_ids = [paper.external_id or paper.title for paper in top]
+        state = OpenReviewState.load(project_root()) if self._persist_openreview_state() else OpenReviewState()
+        send_mail = state.mailed.get(mailed_key) != top_ids
+        if send_mail:
+            attach_arxiv_links(top)
         published.append(PageRecord(
             filename=filename,
             html=render_site_page(title, ranked, intro=f"{len(ranked)} papers, ranked by relevance to the Zotero library."),
@@ -275,11 +313,7 @@ class Executor:
             venue=venue,
             conference_year=year or None,
         ))
-        top = ranked[:email_limit]
-        mailed_key = f"{venue}-{year}-{kind}"
-        top_ids = [paper.external_id or paper.title for paper in top]
-        state = OpenReviewState.load(project_root()) if self._persist_openreview_state() else OpenReviewState()
-        if state.mailed.get(mailed_key) == top_ids:
+        if not send_mail:
             logger.info(f"Skipping {title} email because the mailed set is unchanged.")
             return
         self._write_email(
@@ -302,6 +336,12 @@ class Executor:
         for paper in papers:
             if paper.source == "openreview" and paper.external_id:
                 state.seen_ids.add(paper.external_id)
+            if self._is_conference_paper(paper) and paper.abstract:
+                state.indexed_titles.add(_normalized_title(paper.title))
+                if paper.arxiv_url:
+                    state.indexed_urls.add(paper.arxiv_url)
+                if "arxiv.org/abs/" in (paper.url or ""):
+                    state.indexed_urls.add(paper.url)
         state.save(root)
         publish_results(published, root)
         logger.info("Saved OpenReview state and published pages.")

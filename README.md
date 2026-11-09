@@ -201,9 +201,9 @@ That's all! Now you can test the workflow by manually triggering it:
 
 Then check the log and the receiver email after it finishes.
 
-By default, the main workflow runs at 02:00 UTC (10:00 Beijing time) every day, after arXiv posts its daily announcement. You can change this time by editting the workflow config `.github/workflows/main.yml`. That run is what checks OpenReview. It does not poll during the day. A public release is picked up on the next scheduled run if it falls inside `lookback_hours` (48 by default).
+By default, the daily workflow runs at 02:00 UTC (10:00 Beijing time), after arXiv posts its announcement. It only sends the arXiv email. The conference workflow runs at 04:00 UTC (12:00 Beijing time), reads OpenReview and the official program lists, and sends the curated conference mail. Change either time in `.github/workflows/main.yml` or `.github/workflows/conference.yml`.
 
-The daily workflow records processed OpenReview note ids in `data/openreview_state.json`. A note that was already handled is not ranked or mailed again, including later revisions of the same submission. The first time a venue has no papers inside the lookback window, the workflow takes only the UTC day of the newest note, sends that batch once, and does not walk into older days afterward. The Test workflow does not write this state file.
+The conference workflow records processed OpenReview note ids in `data/openreview_state.json`. Titles already matched against arXiv are cached in `data/paper_cache.json` and are not requested again. A conference email is skipped when its top papers are unchanged, after any unfinished title lookups from the previous run have continued. The Test workflow does not write this state file.
 
 If one venue has at least `digest_min_papers` new papers, those papers leave the daily mail and are sent as a separate curated email, for example `ICLR 精选 2026/11/09`. The message says how many papers were public and how many were kept (`digest_paper_num`). Several venues releasing on the same day produce one email each. Smaller updates stay in the daily mail and compete for `max_paper_num`.
 
