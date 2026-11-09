@@ -1,656 +1,389 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily 2026-11-09</title>
   <style>
-    .star-wrapper {
-      font-size: 1.3em; /* 调整星星大小 */
-      line-height: 1; /* 确保垂直对齐 */
-      display: inline-flex;
-      align-items: center; /* 保持对齐 */
-    }
-    .half-star {
-      display: inline-block;
-      width: 0.5em; /* 半颗星的宽度 */
-      overflow: hidden;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-    .full-star {
-      vertical-align: middle;
-    }
-  </style>
+body { margin: 0; background: #f4f5f7; color: #1f2430; font-family: Georgia, "Iowan Old Style", Palatino, serif; }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 72px; }
+a { color: #16325c; }
+h1 { font-size: 1.9rem; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+.lead { color: #5c6570; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.card { background: #fff; border: 1px solid #e4e6eb; border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
+.card h2 { font-size: 1.15rem; line-height: 1.35; margin: 0 0 8px; }
+.card h2 a { text-decoration: none; }
+.card h2 a:hover { text-decoration: underline; }
+.meta, .index, .actions { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.meta { color: #5c6570; font-size: 0.92rem; line-height: 1.5; }
+.tldr, .abstract { margin: 12px 0; line-height: 1.55; }
+.abstract { color: #333; }
+.rating { display: inline-block; background: #e8f6ec; color: #17693a; border-radius: 999px; padding: 2px 8px; font-weight: 650; }
+.actions { display: flex; gap: 8px; margin-top: 14px; }
+.btn { display: inline-block; text-decoration: none; font-size: 0.88rem; font-weight: 650; padding: 8px 14px; border-radius: 999px; }
+.btn.primary { background: #16325c; color: #fff; }
+.btn.secondary { background: #fff; color: #16325c; border: 1px solid #c9d0da; }
+.year { margin: 22px 0 4px; }
+.venue { margin: 10px 0 4px; }
+.index ul { margin-top: 6px; }
+</style>
 </head>
 <body>
+<main>
+  <h1>Daily 2026-11-09</h1>
+  
+  <article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09516">Benchmarking Speaker Embedders in the Sub-Second Regime for Real-Time Voice AI Agents</a></h2>
+  <p class="meta">Abhishek Gautam · Relevance 5.7</p>
+  <p class="abstract">Real-time Voice AI agents must separate the active user from intelligible background speech that survives conventional noise suppression. Background sources include television audio, family members, and colleagues. Production denoisers remove non-stationary environmental noise effectively. Background speech shares the spectral characteristics of the target and passes through, causing false acceptances in downstream speaker verification (SV) and automatic speech recognition (ASR). We benchmark open-source speaker embedders TitaNet-Large, TitaNet-Small, ECAPA-TDNN, CAM++, and SpeakerNet under a strict sub-second latency budget. Evaluation combines a controlled benchmark with a weighted human-annotated production set. Our controlled benchmark is built from real calls in which a second real speaker is injected into silence intervals at modulated amplitude. We report three findings. First, denoising before embedding is generally harmful and raises equal error rate (EER) across architectures. Second, truncating audio below the full voice-activity segment degrades every model. Third, roughly half of the TitaNet embedding is redundant for this task. Trailing dimensions encode population attributes such as language and gender. Such attributes carry little discriminative value in a demographically homogeneous user base. We distill these results into deployment guidance. Verification should run on raw audio with full voice-activity chunks. Thresholds should favor precision over F1. Truncated embeddings reduce the cost of similarity search.</p>
+  <p class="tldr"><strong>TLDR:</strong> This paper benchmarks five open-source speaker embedders for sub-second real-time voice AI, finding that denoising and truncating voice-activity segments hurt verification, roughly half of TitaNet’s 192-D embedding is redundant, and deployment should use raw full voice-activity chunks with precision-oriented thresholds and truncated embeddings to reduce similarity-search cost.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09516">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09516v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08972">AccentCanvas: Activity-Guided Bidirectional Accent Conversion</a></h2>
+  <p class="meta">Jaehun Kim, Kang Zhang, Sung Woo Kim, Junmo Kim, Joon Son Chung · Relevance 5.6</p>
+  <p class="abstract">Accent conversion for dubbing must change pronunciation while preserving content, voice, and source timing. Normalization alone cannot produce requested non-native accents, and matching total duration does not ensure local speech/pause alignment. We present AccentCanvas, a shared discrete diffusion model for normalization and L1-to-L2 conversion, trained on cross-paired shared-prompt recordings and synthetic pairs. Frame-level speech activity and repetition-preserving units guide local timing through synthesis. Across both tasks, AccentCanvas achieves the highest accent conversion performance (Accent Arrival) and mean listener-rated accent similarity among compared systems, with over 73% lower speech-boundary error than the best baseline for each task. These gains accompany higher L1-to-L2 WER than TokAN and Vevo-Style, highlighting a tradeoff between requested-accent resemblance and ASR-based content recognition. https://smokedindia.github.io/accentcanvas/</p>
+  <p class="tldr"><strong>TLDR:</strong> AccentCanvas is a shared discrete diffusion model for bidirectional accent normalization and L1-to-L2 conversion that uses frame-level speech-activity guidance and cross-paired real/synthetic data to improve requested-accent matching and source speech/pause synchronization, at the cost of higher L1-to-L2 WER.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08972">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08972v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09122">Improving Large Audio-Language Model Embedding Baselines for Instruction-Aware Speech Retrieval</a></h2>
+  <p class="meta">Chen-An Li, Cheng-Han Chiang, Hung-yi Lee · Relevance 5.6</p>
+  <p class="abstract">Speech retrieval finds relevant spoken documents given a spoken query. The spoken query alone may not reveal the retrieval goal, such as finding an answer or matching speaker identity. Instruction-aware speech retrieval expresses this goal through a natural-language text instruction. Large audio-language models (LALMs) effectively process speech and text, and our analysis shows that different retrieval requirements favor hidden states from different audio-encoder layers. We introduce IRIS-Embed, which adapts LALMs into embedding models through contrastive training and instruction-aware audio layer weighting. We construct about 900K training samples from real data and synthetic data, with instructions expressing requirements for one or more speech attributes. On INSPIRE, an instruction-aware speech retrieval benchmark, IRIS-Embed consistently outperforms the corresponding LALM baselines. The best model achieves 62.92% macro-average Recall@50, surpassing the strongest baseline at 45.15%. Controlled comparisons demonstrate instruction awareness and the benefits of audio layer weighting. On MAEB, a massive audio embedding benchmark, macro-average gains of 9.4-19.8 points over the corresponding baselines show generalization beyond speech retrieval.</p>
+  <p class="tldr"><strong>TLDR:</strong> IRIS-Embed adapts large audio-language models into embedding models via contrastive training and instruction-aware weighting of frozen audio-encoder layers, substantially improving instruction-aware speech retrieval over LALM baselines and generalizing to broader audio embedding tasks.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09122">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09122v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09351">AUTEUR: Acoustic Plan Learning for Red-Teaming Text-to-Audio Models</a></h2>
+  <p class="meta">Jiashu Zhang, Jiaming He, Zheming Zhang, Kaizheng Wang, Bing Li, Zhiyuan Zha, Yi Yu · Relevance 5.4</p>
+  <p class="abstract">Automated red-teaming of text-to-audio models requires test prompts that pass textual screening and expose harmful acoustic content. The central challenge is to connect the sounds produced by the target model to both reusable test generation and prompt revision. Our key idea is to represent test descriptions as structured acoustic plans that organize foreground sounds, context, and vocal attributes. To this end, we propose acoustic plan learning, a framework that learns and refines these plans using waveform feedback. We train the plan generator through supervised fine-tuning followed by reinforcement learning with audio feedback while keeping the target audio model fixed. At inference time, the same trained model generates initial plans and uses feedback to revise their context and vocal attributes while preserving the foreground. Experiments across four target systems show attack success rates of 79.4% on TangoFlux and 95.6% on Kling. The resulting test prompts also transfer across open-source and closed-source models, indicating shared acoustic vulnerabilities.</p>
+  <p class="tldr"><strong>TLDR:</strong> AUTEUR introduces acoustic plan learning, which uses structured acoustic plans and waveform feedback to train and refine a red-teaming prompt generator—via supervised fine-tuning and reinforcement learning—so it can elicit harmful text-to-audio outputs while preserving intended foreground sounds, achieving high attack success and transfer across models.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09351">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09351v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09057">Real-Time Short-Response Selection for Spoken Dialogue Systems</a></h2>
+  <p class="meta">Hien Ohnaka, Kazuyo Onishi, Koichiro Yoshino · Relevance 5.2</p>
+  <p class="abstract">To realize spoken dialogue systems that can interact naturally with users, it is important for the system to respond to user utterances at appropriate timings. To achieve such natural turn-taking, the system needs not only to predict appropriate response timings but also to mask delays caused by language generation and speech synthesis so that they are not perceived by the user. We propose a real-time short-response selection task that can be integrated with existing turn-taking models to mask generation delay. To address this task, the proposed model learns the mapping between dialogue context and short responses using contrastive learning. When a turn-taking event is detected, the system selects a response from a set of pre-generated candidates. The selected response is played while the main response is being generated. Experimental results show that the proposed method learns to select short responses based on dialogue context, outperforming random and LLM-based baselines. Moreover, integrating response selection maintained turn-taking prediction performance and added minimal processing overhead.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes a real-time short-response selection method that uses contrastive learning to choose contextually appropriate pre-generated fillers when a turn-taking event is detected, masking generation delay in spoken dialogue systems without degrading turn-taking prediction performance.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09057">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09057v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09768">Language as Trait, Politeness as Strategy: Controlled Tests of Linguistic Effects in LLM Social-Deduction Agents</a></h2>
+  <p class="meta">Yuchen Li, Lisa Liu, Runqi Zou, Shuxuan Kuang, Qingquan Zhang, Julian Togelius · Relevance 5.1</p>
+  <p class="abstract">Large language model (LLM) agents coordinate through conversation, and the same message can be phrased in simpler or more complex language, bluntly or politely. We test whether such differences change how other agents judge and act, using the LURK Werewolf framework, which separates each utterance&#x27;s speech-act predicate from its natural-language realization. We rewrite only the realization, check that the game content is preserved, and replay each game day from saved checkpoints against a re-sampled control. We vary linguistic range consistently across a speaker&#x27;s messages and politeness strategy per utterance. Across 30 games and 4,335 replays, neither manipulation changes the trust other agents place in the speaker, and no effect on votes or night actions survives correction for multiple comparisons; the largest uncorrected effect is that shifting range away from a neutral paraphrase changes about 4 percentage points more of the other players&#x27; votes. In natural play, 88% of face-threatening speech is bald on-record regardless of role.</p>
+  <p class="tldr"><strong>TLDR:</strong> Using meaning-controlled counterfactual replays in a Werewolf game, this paper finds that varying LLM agents’ linguistic range or politeness does not reliably change other agents’ trust, votes, or night actions, and that natural face-threatening speech is overwhelmingly bald on-record.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09768">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09768v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08695">FoleyForge: Free-form, Controllable, Rectified-flow Editing of Sound Effects</a></h2>
+  <p class="meta">Giovana Morais, Hugo Flores Garc\&#x27;ia, Prem Seetharaman, Johannes Imort, Justin Salamon, Magdalena Fuentes, Oriol Nieto · Relevance 5.1</p>
+  <p class="abstract">We present FoleyForge, a generative model for instruction-based editing of sound effects. Given an input clip and a free-form instruction describing the desired change, it applies the edit while preserving the input&#x27;s identity. A single model handles semantic, stylistic, and DSP-like changes. We introduce a data pipeline that guides an audio language model to author both DSP-based acoustic edits and similarity-preserving semantic edits, thus addressing the lack of publicly available audio editing data. Such data is then used to fine-tune a rectified-flow audio generation model, which we extend to expose attribute controls for loudness change, edit strength, and an input-derived contour envelope, each tunable via classifier-free guidance, yielding a more expressive editing model. FoleyForge achieves state-of-the-art instruction adherence at competitive audio quality and source faithfulness.</p>
+  <p class="tldr"><strong>TLDR:</strong> FoleyForge is an instruction-based sound-effect editing model that uses a synthetic data pipeline to fine-tune a rectified-flow audio generator with tunable loudness, edit-strength, and envelope controls, achieving state-of-the-art instruction adherence while preserving source identity and competitive audio quality.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08695">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08695v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09358">GTCRN-SS: Lightweight Causal Speech Separation with Residual Allocation and Reconstruction Refinement</a></h2>
+  <p class="meta">Shao-Chun Hu, Zi-Xiang Lin, Hsin-Min Wang, Jeih-Weih Hung, Hung-Shin Lee · Relevance 5.0</p>
+  <p class="abstract">Low-complexity causal speech separation must preserve speaker information and allocate residual mixture energy without relying on future feature frames. We present GTCRN-SS, a two-stage time-frequency separator that adapts the compact GTCRN enhancement backbone to fixed-output speech separation. The model combines internal residual allocation, reconstruction-conditioned refinement, and frame-aligned recurrent-state transfer. Its complex-mask estimator assigns non-target content to an unreturned residual branch, while the complementary speech estimate conditions a second stage whose final masks remain anchored to the original mixture. A lightweight low-rank adapter transfers causal recurrent evidence between recursive executions without adding another recurrent memory network. The neural graph excludes future feature frames and incurs only the fixed analysis look-ahead of the centered short-time Fourier transform. On noisy Libri2Mix, GTCRN-SS achieves 10.1 dB SDRi and 9.5 dB SI-SNRi with fewer than one million parameters and a low computational footprint. Independently trained ablations confirm the benefits of recurrent-state transfer and reconstruction conditioning, and corpus-level diagnostics show that the internal branch primarily captures residual rather than target-speech content. These results establish GTCRN-SS as an effective quality-efficiency operating point for causal monaural speech separation.</p>
+  <p class="tldr"><strong>TLDR:</strong> GTCRN-SS is a lightweight causal two-stage speech separator that adapts the compact GTCRN backbone with internal residual allocation, reconstruction-conditioned refinement, and frame-aligned recurrent-state transfer to achieve strong low-complexity separation without relying on future feature frames.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09358">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09358v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09491">An Effective Spoken Language Understanding Approach Leveraging Query-Adaptive Intent Detection</a></h2>
+  <p class="meta">Bing-Long Kuo, Yu-Hsuan Fang, Tien-Hong Lo, Hsueh-Wei Liao, Berlin Chen · Relevance 4.9</p>
+  <p class="abstract">Large language models enable fine-tuning-free spoken language understanding (SLU) through in-context learning, but direct query-based retrieval may select semantically similar yet intent irrelevant demonstrations. This paper presents Query-Adaptive Intent Detection via Prototype Extraction (APEX), a two-stage retrieval framework that first selects candidate intents using intent-level prototypes and then retrieves contextual exemplars within the selected intent space. Experiments on the SLURP dataset evaluate joint SLU performance using Exact Match Accuracy (EMA) under full-transcript and perplexity-stratified conditions, with additional retrieval analysis on ASR-generated transcripts. Compared with query-based retrieval, APEX improves EMA by 4.34 and 3.97 percentage points with Qwen3 4B and Gemma-3-4B, respectively, on full transcripts. Under high-perplexity inputs, APEX also yields EMA gains of 7.66 and 2.13 percentage points. Retrieval analysis further indicates that prototype-guided candidate selection achieves higher ground truth intent coverage across multiple input conditions.</p>
+  <p class="tldr"><strong>TLDR:</strong> APEX is a two-stage, prototype-guided retrieval framework for fine-tuning-free spoken language understanding that first narrows retrieval to query-adaptive candidate intents and then selects in-context exemplars, improving joint intent–slot exact match accuracy over direct query-based retrieval on SLURP.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09491">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09491v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09282">Ontology-Driven Control of Conversational Agents with a Use-Case for Job Interview Practice</a></h2>
+  <p class="meta">Barbara Gendron (LORIA, UL), Ga\&quot;el Guibon (LIPN, LORIA), Mathieu D&#x27;aquin (LORIA, UL) · Relevance 4.8</p>
+  <p class="abstract">Large Language Models (LLMs) have been widely used as conversational agents in both domain-specific and open-domain situations. In domain-specific context, it is often necessary to adapt those LLMs to obtain conversations with desired characteristics, whether those apply at the level of each response (e.g. for tone or style) or more globally (i.e. at the level of a conversational strategy). Such adaptations are, however, generally realized in an ad hoc way, through specific, non-reusable, and non-transparent developments. In this paper, we propose an ontology-based approach to design conversational strategies that rely on the desired and measured characteristics of textual utterances in the conversation. Through a use case related to job interview practice, we show how this approach can be used to control LLMs to follow the strategy defined in the ontology. To this end, we automatically fine-tune the LLM to improve its compliance with ontologically-defined conversation characteristics. Our results show that training the LLM from formally defined concepts effectively enhances alignment with the requested characteristics. Hence, this work demonstrates how ontology-guided conversation control can be achieved while taking into account multiple, concurrent conversation aspects that are formally and transparently defined.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes an ontology-driven framework for formally defining and controlling LLM-based conversational agents’ strategies, demonstrated on job interview practice, and shows that fine-tuning improves the model’s adherence to multiple concurrently defined conversational characteristics.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09282">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09282v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09074">Emo-LiveSync: Real-Time Universal Lip Synchronization with Explicit Emotion Control</a></h2>
+  <p class="meta">Sangjoon Yu, Seungeun Lee, JoonHeyok Shin, Ji-Su Kang · Relevance 4.8</p>
+  <p class="abstract">Lip synchronization, the task of generating realistic lip movements synchronized with audio signals, is fundamental to applications such as film dubbing, virtual avatars, and digital content creation. Recent GAN-based methods offer computational efficiency but often lack visual fidelity, while diffusion-based approaches achieve high-quality results at the cost of substantial computational overhead. Moreover, most existing methods are limited to photo-realistic human faces, restricting their applicability to stylized characters and non-human entities. In this paper, we propose an efficient universal lip-sync video generation framework that achieves high-quality results without compromising computational efficiency. We build on LivePortrait, a warp-based portrait animation model, and introduce a training strategy that aligns audio signals to an implicit motion space by distilling knowledge from a pre-trained video-to-motion model. This enables real-time inference while maintaining high visual fidelity, and naturally generalizes to diverse stylistic characters beyond photo-realistic humans. Furthermore, we introduce an expressive control gate that enables explicit manipulation of emotional expressions for content enrichment. Extensive experiments demonstrate that our method achieves state-of-the-art performance in both visual quality and lip-sync accuracy while ensuring real-time inference.</p>
+  <p class="tldr"><strong>TLDR:</strong> Emo-LiveSync enables real-time, high-fidelity universal lip synchronization for diverse human and stylized characters by distilling a pre-trained video-to-motion model to map audio into an implicit keypoint motion space, while adding explicit emotion control.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09074">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09074v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08758">Conflict-Aware Meta-Learning for Generalizable Speech Deepfake Detection</a></h2>
+  <p class="meta">Siqing Qin, Kong Aik Lee, Youzhi TU, Eng Siong Chng, Man-Wai Mak · Relevance 4.8</p>
+  <p class="abstract">Speech deepfake detectors built on large self-supervised learning front-ends achieve high in-domain accuracy, yet suffer degradation under domain shift caused by unseen synthesizers, transmission codecs, or unfamiliar acoustic conditions. Meta-learning, particularly model-agnostic meta-learning for domain generalization (MLDG), addresses this issue by simulating domain shifts. However, applying MLDG directly introduces a bi-level optimization challenge that remains unsolved. First, effective domain-shift emulation requires genuine distributional gaps between meta-splits, yet such gaps can frequently produce gradient conflicts, destabilizing the bi-level optimization. Second, the stochastic nature of mini-batch gradients causes the reference direction to fluctuate across iterations, resulting in an optimization trajectory that fails to achieve domain generalization. We propose a conflict-aware meta-learning (CAML) framework, which addresses both challenges through three complementary components. Firstly, base domain gradient surgery (base-DGS) introduces an asymmetric projection that treats the meta-train gradient as a primary anchor. Secondly, EMA-DGS replaces the unstable anchor with its exponential moving average (EMA), providing a stable optimization trajectory anchor that substantially reduces domain-shift-induced conflict detections. Thirdly, layer-wise DGS (LW-DGS) further extends the framework to individual parameter tensors, enabling fine-grained, layer-specific intervention that targets conflict-prone layers while leaving well-aligned parameters intact. Experimental results demonstrate that the proposed CAML framework achieves lower EER than the compared baselines on most cross-dataset evaluations across multiple cross-dataset benchmarks and architectures, achieving a maximum relative improvement of 45.2% in terms of EER.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes a conflict-aware meta-learning (CAML) framework for generalizable speech deepfake detection that stabilizes meta-learning under domain shift by using asymmetric, EMA-stabilized, and layer-wise gradient surgery to mitigate gradient conflicts between meta-train and meta-test objectives, achieving lower EER on most cross-dataset evaluations.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08758">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08758v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09275">AudioSphere: Towards Self-Supervised Spatial Audio Representation Models</a></h2>
+  <p class="meta">Goksenin Yuksel, Marcel van Gerven, Kiki van der Heijden · Relevance 4.6</p>
+  <p class="abstract">Recent audio embedding models learn representations that transfer across clip- and frame-level tasks, yet they operate almost exclusively on single-channel signals and are blind to spatial structure. Spatial audio models capture that structure but rely on clip-level supervision or contrastive objectives, yielding embeddings unsuitable for frame-level tasks like sound event detection and localization (SELD). We argue this dichotomy is not fundamental: patch-level spatial self-supervision can jointly learn acoustic and spatial features at both temporal granularities. We introduce AudioSphere, a multi-channel masked autoencoder trained on Ambisonics recordings that reconstructs both spectral content and directional cues via a joint spatiotemporal masking strategy that masks both time-frequency patches and intensity vectors. AudioSphere supports frame-level predictions while producing strong clip-level representations via aggregation. Alongside the model, we release RealSELD, a standardized benchmark for evaluating frozen backbones on real-world multi-channel SELD. AudioSphere enables, for the first time, SELD with a frozen self-supervised backbone, while matching or exceeding prior self-supervised audio embedding models on clip-level classification tasks spanning environmental sound, speech, and music, and on frame-level sound event detection. All code and data are available at https://github.com/labhamlet/AudioSphere and https://huggingface.co/labhamlet.</p>
+  <p class="tldr"><strong>TLDR:</strong> **TLDR:** AudioSphere is a self-supervised multi-channel masked autoencoder trained on Ambisonics recordings that jointly reconstructs spectral and directional cues via spatiotemporal masking, producing frozen audio embeddings that support both frame-level sound event detection/localization and strong clip-level classification.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09275">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09275v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08860">Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM Prompting for Conversational Emotion Recognition</a></h2>
+  <p class="meta">Jingwen Wang, Jiao Li, Yuhang Qian, Yuyin Wang, Min Zhang · Relevance 4.6</p>
+  <p class="abstract">Multimodal emotion recognition in conversations (MERC) integrates textual, acoustic, and visual cues to identify utterance-level emotions. However, existing approaches generally do not explicitly adapt multimodal processing to the degree of inter-modal predictive disagreement. In real conversations, semantic incongruity, concealed emotion, noisy observations, and ambiguity can affect modality-specific emotional evidence differently, while the reliability of individual modalities varies across samples. Rather than identifying each source of inconsistency separately, we model their common consequence for emotion recognition as predictive disagreement among unimodal emotion distributions over the same emotion-label set. Such disagreement makes indiscriminate fusion prone to propagating unreliable or competing evidence. Inspired by the Brunswik Lens Model, we propose MiD-ERC, a divergence-centric framework that quantifies inter-modal predictive disagreement using a normalized divergence score and estimates sample-specific modality reliability. MiD-ERC uses these signals to coordinate divergence-guided cross-modal gating, divergence-modulated reliability weighting, and divergence-conditioned adaptive LLM prompting. The framework is trained end-to-end using only standard emotion annotations, without requiring additional conflict labels, auxiliary data construction, or external retrieval modules. Experiments on IEMOCAP and MELD demonstrate that MiD-ERC achieves state-of-the-art performance, with particularly pronounced improvements on high-divergence samples.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes MiD-ERC, a divergence-centric framework that uses inter-modal predictive disagreement and sample-specific modality reliability to guide cross-modal gating, reliability-weighted fusion, and adaptive LLM prompting for conversational emotion recognition, achieving state-of-the-art performance especially on high-divergence samples.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08860">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08860v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09313">Asymmetric Correspondence Learning for Lexical and Style Embeddings: Interpreting Latent Space via Acoustic Features</a></h2>
+  <p class="meta">Michael Whealing, Robert Gaizauskas, Thomas Hain · Relevance 4.6</p>
+  <p class="abstract">Self-supervised speech embeddings jointly encode lexical, speaker, and prosodic information, complicating feature isolation. We introduce Asymmetric Correspondence Learning (ACL), distilling HuBERT features into separate Acoustic Word Embeddings (AWEs) and Acoustic Style Embeddings (ASEs) via a split-latent correspondence bottleneck. Through probing and clustering evaluations on single-word utterances, we demonstrate that substantial variance from extrinsic sources remains encoded within each latent space, despite linear probing indicating the information has been stripped. Whilst the AWE space exhibits cohesive lexical clustering (AP$\approx$0.90, Fisher$\approx$6.28), linear probing on the ASE space achieves 97.9\% speaker accuracy across a diffuse topology (Fisher$\approx$1.01), yet preserves substantial lexical variance (Fisher$\approx$0.86) that remains linearly unrecoverable (0.17\%). To explain these findings, we apply group-level permutation feature importance over eGeMAPS acoustic features, finding that AWEs partition by vocal tract filters and ASEs by $F_0$ dynamics. These findings suggest that standard diagnostic benchmarks may be insufficient for verifying feature isolation, as substantial speech structure can be retained even when it remains entirely hidden from probes.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces Asymmetric Correspondence Learning (ACL), which distills HuBERT into separate lexical and style embeddings and uses acoustic feature-importance analysis to show that linear probes can miss substantial structured information still retained in each latent space.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09313">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09313v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09140">SPDMX: Large-Scale Open Stem Audio From Symbolic Music</a></h2>
+  <p class="meta">Phillip Long, Eduardo Escoto, Julian McAuley, Zachary Novack · Relevance 4.6</p>
+  <p class="abstract">Large public datasets have driven recent progress in machine learning, from text and vision to speech and general audio. Music remains an outlier, as copyright blocks redistribution of training audio, while many modern tasks need individual stems rather than mixtures. Existing multitrack resources trade off realism, scale, and licensing, while synthetic alternatives rely on proprietary VSTs or naive open rendering that yields weak stems. We introduce SPDMX, a listening-guided rendering of public-domain PDMX scores into an openly-licensed stem corpus with aligned scores and an open render pipeline: $253{,}982$ songs, $490{,}159$ mono stems, and $5{,}469$ song-hours at $44.1$ kHz under CC BY 4.0, with paired MIDI and identifiers linking to PDMX metadata. $88{,}403$ songs ($34.8\%$; $2{,}734$ song-hours) provide multitrack supervision. To our knowledge, this is the largest openly-licensed synthetic multitrack subset by song-hours, enabling source separation, stem-conditioned synthesis, MIDI-to-audio, transcription, and joint symbolic-audio modeling. We release the corpus, metadata, and open pipeline for reuse on other symbolic collections. Demos and experimental notes are on the project page.</p>
+  <p class="tldr"><strong>TLDR:</strong> SPDMX introduces a large openly licensed synthetic stem-audio corpus rendered from public-domain PDMX scores—253,982 songs and 5,469 hours under CC BY 4.0, including 88,403 multitrack songs—with aligned MIDI and an open rendering pipeline to enable source separation, synthesis, transcription, and joint symbolic–audio research.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09140">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09140v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09502">TimeOmni-Live: Continuous &amp; Live Time Series Understanding with Long-Term Memory</a></h2>
+  <p class="meta">Tong Guan, Alexander Chemeris, Yiqing Guo, Warren Jin, Zhao Li, Shirui Pan, Ming Jin · Relevance 4.6</p>
+  <p class="abstract">Existing time series language models predominantly follow an offline, one-shot paradigm: they process fixed-length inputs independently and do not retain past states. This static approach fundamentally misaligns with the continuous nature of real-world streaming applications and fails to maintain the historical context necessary for cross-window reasoning. To bridge this gap, we introduce Continuous &amp; Live Time Series Understanding (CL-TSU), a novel paradigm that shifts the focus toward maintaining a persistent, stateful understanding over open-ended data streams. To systematically evaluate this paradigm, we present LiveTS-Suite, the first comprehensive data suite tailored for CL-TSU, supporting data generation, model training, and systematic evaluation across 18 tasks spanning six core capabilities. It comprises over 5K streams totaling 2.2B timesteps, annotated with 15K specific response events. We further design an evaluation protocol that jointly assesses response timeliness, content accuracy, and computational efficiency. Building on this foundation, we propose TimeOmni-Live, the first live time series understanding model. It integrates a hybrid time series encoding for natively temporal input, a stream-persistent hybrid memory mechanism to effectively preserve exact historical evidence and long-term task states, and an elastic stream-inference synchronization strategy to reduce processing lag. Evaluations show that TimeOmni-Live establishes a strong baseline for CL-TSU, outperforming frontier LLMs (90.0 vs. 79.3 for Opus 5) with only 4B parameters and achieving 206$\times$ lower p95 latency than its backbone. Deployment on a Jetson edge device further shows its ability to support real-time continuous temporal understanding locally at the edge.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces Continuous &amp; Live Time Series Understanding (CL-TSU), the LiveTS-Suite benchmark, and TimeOmni-Live, a 4B-parameter streaming model with hybrid time-series encoding and persistent hybrid memory that outperforms frontier LLMs and enables low-latency real-time time-series understanding on edge devices.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09502">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09502v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09368">AISHELL8-FISHEYE: A Fisheye Audio-Visual Dataset for Target Speaker Extraction with Distortion-Aware Baselines</a></h2>
+  <p class="meta">Peijun Yang, Zhan Jin, Juan Liu, Hui Bu, Xiaoyi Qin, Ruyi Gan, Hao Wang, Ming Li · Relevance 4.6</p>
+  <p class="abstract">Fisheye cameras offer wide visual coverage but distort facial and lip geometry, challenging audio-visual target speaker extraction. We introduce AISHELL8-FISHEYE, a 47.03-hour corpus of 94 Mandarin speakers with synchronized audio and paired fisheye and normal-camera videos. Speaker-disjoint splits and synthetic two-speaker mixtures support reproducible evaluation under matched acoustic conditions. We also establish a baseline that combines a lip-reading encoder with a frozen distortion-aware branch transferred from fisheye head pose estimation. On fisheye video, adding this branch to an adapted lip encoder improves scale-invariant signal-to-distortion ratio improvement from 10.47 to 11.84 dB. The branch does not improve performance with a frozen lip encoder, highlighting the importance of visual adaptation. A substantial gap to paired normal-camera inputs remains. The corpus and baseline resources support further research on speech extraction from distorted visual cues.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces AISHELL8-FISHEYE, a 47.03-hour Mandarin audio-visual dataset with paired fisheye and normal-camera videos, and shows that adding a frozen distortion-aware branch to an adapted lip-reading encoder improves fisheye target-speaker extraction from 10.47 to 11.84 dB SI-SDRi, though a notable gap to normal-camera performance remains.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09368">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09368v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08669">ChainFlow: Few-Step Latent Flow Matching for Speculative Decoding</a></h2>
+  <p class="meta">Selim Aktas, Yusuf Erdem Erdem, Ahmed Zeer, Himmet Toprak Kesgin, Muzaffer Kaan Yuce, Mehmet Fatih Amasyali · Relevance 4.5</p>
+  <p class="abstract">Speculative decoding has become a standard way to accelerate LLM inference: a lightweight drafter proposes tokens that the target verifies in one parallel pass. Existing drafters face trade-offs that limits their speedups: autoregressive drafters generate tokens one at a time, so drafting cost grows with draft length, while diffusion drafters generate tokens in parallel but predict each position independently, ignoring inter-token dependencies. We introduce ChainFlow, a new speculative decoding paradigm and the first flow-matching drafter conditioned on the target&#x27;s hidden states. ChainFlow treats drafting as a short transport over hidden states, needing one or two flow steps instead of the many denoising steps of generation from noise. A variational autoencoder compresses these states so drafting cost barely grows with target size, lightweight feedback heads restore inter-token dependencies, and tree drafting raises acceptance. On Qwen3.5 models, at matched drafter size and training data, ChainFlow outperforms EAGLE-3 and DFlash in vLLM by 39% and 11%, respectively. These gains further widen as drafters are adapted to new languages sequentially. Our ablations cover drafter design and concurrent serving, and we open-source our code and drafter models.</p>
+  <p class="tldr"><strong>TLDR:</strong> ChainFlow is a few-step latent flow-matching speculative-decoding drafter that transports compressed target hidden states instead of generating tokens autoregressively or from noise, using lightweight feedback and tree drafting to boost acceptance and outperform EAGLE-3 and DFlash by 39% and 11% on Qwen3.5.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08669">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08669v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09222">Khmer PFGen-Bench: Building a Judge-Free Benchmark for Open-Ended Generation in a Low-Resource Language</a></h2>
+  <p class="meta">Mengsay Loem, Kentaro Imajo, Ryota Ozaki, Masanori Hirano · Relevance 4.4</p>
+  <p class="abstract">Benchmarks for open-ended generation often rely on large language model (LLM) judges, whose reliability in low-resource languages is uncertain. We introduce Khmer PFGen-Bench, to our knowledge the first judge-free benchmark for multi-sentence answers to questions composed directly in Khmer, a low-resource language. Khmer PFGen-Bench adapts the scorer of PFGen-Bench, a benchmark for Japanese that scores responses with keyword rules and n-gram statistics from LLM-generated references. This scoring requires references that are both valid and varied, which LLMs may not produce in Khmer, so we examine how to build such references. We find that post-trained models can give more valid but less varied references than their base variants, and that mixing model families increases variety for the same number of references. Using references from post-trained models in nine families, the benchmark yields model rankings that are stable across reference sets and consistent with a native speaker&#x27;s ratings. These findings offer guidance for building judge-free benchmarks in other low-resource languages.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces Khmer PFGen-Bench, the first judge-free benchmark for multi-sentence open-ended generation in Khmer, adapting PFGen-Bench’s keyword/n-gram scorer to LLM-generated references and showing that mixing model families improves reference variety while producing stable model rankings consistent with native-speaker ratings.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09222">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09222v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09848">How far does a hash-only sender go? A pre-registered map of sender memory versus bits for short text messages</a></h2>
+  <p class="meta">Marcelo Samoilenko · Relevance 4.3</p>
+  <p class="abstract">Can a sender that only computes hashes, with a language model only at the receiver, transmit short human text more cheaply than a classical sender trained on the same domain? We answer with one pre-registered run on 1,000 English user utterances from Taskmaster-1. The primary endpoint is the cost per message to deliver 100% of the messages (hash bits, plus a 2-byte negative acknowledgement and the raw text when the first attempt fails), paired against an in-domain PPM order-1 sender. The hash-only sender delivered 857 of 1,000 messages on the first attempt and cost 192.8 bits per message, 18.4 bits more than PPM order 1 (95% bootstrap interval 10.9 to 26.3); by the pre-registered rule it spends more and is not equivalent within one byte. As secondary results we map measured sender memory against bits. The hash-only sender (8,190 B on a host build, keyed BLAKE2b tag included, as in every method) was the cheapest point in bits from 8,190 B up to, but excluding, PPM order 1 at 24,844 B, 45 to 46 bits below smaz2 and Unishox2; from PPM order 1 upwards, in-domain senders spend fewer bits, except order 2 pruned to 16 KiB. In airtime it loses to PPM order 1 on all five links priced, to Unishox2 on four, and to raw text with a tag on two, because each failure costs an acknowledgement frame and a fallback frame. A wider receiver search recovers half of the failures and makes the cost 7.7 bits lower than PPM order 1, at about three minutes of receiver time per failure, and still loses in airtime on four of five links. We report the measurement as a delimitation, with every deviation of the run.</p>
+  <p class="tldr"><strong>TLDR:</strong> In a preregistered test on 1,000 short Taskmaster utterances, a hash-only sender with a language-model receiver delivered 857/1,000 messages on the first attempt but cost 192.8 bits per message—18.4 bits more than an in-domain PPM order-1 sender—so it was not bit-cheaper overall, though it was the cheapest in bits only within a narrow 8,190–24,843-byte sender-memory band and generally lost in airtime.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09848">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09848v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09476">LEMMO: A Large Electromagnetic Model leveraging Pretrained LLMs for Million-Sample Signal Understanding</a></h2>
+  <p class="meta">Mingkai Li, Jiajun Wu, Yihan Mao, Zilin Sang, Taosong Yu, Yuan Ma, Minghe Liu, Qianqian Yang, Zhiguo Shi · Relevance 4.3</p>
+  <p class="abstract">Large language models have expanded beyond text to vision, audio, and other modalities, but understanding raw electromagnetic (EM) signals remains challenging. Wideband recordings can contain millions of samples, whereas existing waveform-based EM models are primarily evaluated on short in-phase and quadrature (IQ) segments, leaving long-recording understanding and detailed description insufficiently explored. We introduce LEMMO, a large EM model for instruction-driven recognition and description of long raw IQ recordings. LEMMO combines a linear-attention EM encoder with anti-aliased temporal resampling to process up to eight million complex samples. Its EM-text interaction module conditions learnable queries on instructions before retrieving signal evidence. Compact queries support recognition, while structured queries with auxiliary factual supervision organize scene-level properties, signal attributes, and cross-signal relationships for detailed description. We also construct and release a unified 1.38-TB corpus of real-world and synthetic EM signals, including LEMMO-ShortQA and LEMMO-LongDesc. Compared with MERLIN-LoRA, LEMMO improves mean EM-Bench perception accuracy by 15.77 %, mean strategy-generation ROUGE-L F1 by 4.38 points, and mean LEMMO-ShortQA accuracy by 14.31 %. It also improves categorical and numerical fact F1 on both LEMMO-LongDesc tasks while preserving its language backbone&#x27;s MMLU performance. Our code and datasets are available at https://github.com/N1rv4n4/LEMMO and https://huggingface.co/datasets/DaftJun/RFLAS, respectively.</p>
+  <p class="tldr"><strong>TLDR:</strong> TLDR: LEMMO is a large electromagnetic model that combines a linear-attention raw-IQ encoder, temporal resampling, and instruction-conditioned queries to let a pretrained LLM recognize and describe long recordings of up to eight million samples, outperforming MERLIN-LoRA on EM perception, generation, and QA benchmarks while releasing a 1.38-TB signal corpus.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09476">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09476v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09085">The Invisible Gap: Romanized Indic Generation Fails Where Automatic Metrics Succeed</a></h2>
+  <p class="meta">Madhu Sudhan Rao Beesetty, Surbhi Sharma, Devesh Maheshwari, Lokesh Meesala · Relevance 4.2</p>
+  <p class="abstract">Hundreds of millions of Indians communicate with digital systems in romanized Latin characters -- typing &quot;aap kaise hain&quot; rather than native script -- yet romanized Indic generation is absent from NLP benchmarks and evaluation frameworks. We demonstrate that automatic metrics (BGE-M3, BERTScore) systematically misrepresent the quality of romanized Hindi, Telugu, and Kannada generation. We evaluate four LLMs (Claude Opus 4.8, GPT-5.5, Gemini 2.5-flash, Qwen3.5-35B) on 142 OpenAssistant query-response pairs. On a 72-response diagnostic subset, native speakers rate GPT-5.5 1.43 points higher than Claude Opus 4.8 on a 12-point rubric, whereas their full-dataset BGE-M3 means differ by only 0.004. Two distinct model-specific failure modes emerge: Gemini produces script spillage (16.9% of Telugu responses leak native script), while Qwen collapses to English-only output (16.2% of Kannada responses). We introduce a failure-aware evaluation policy that assigns zero to empty outputs, script-corrupted responses, and instruction collapses -- revealing failures metrics alone cannot detect. Our results show that evaluating romanized Indic generation requires a coordinated bundle: semantic similarity, script compliance, failure coverage, and native-speaker acceptability.</p>
+  <p class="tldr"><strong>TLDR:</strong> Automatic metrics like BGE-M3 and BERTScore mask serious failures in LLM-generated romanized Hindi, Telugu, and Kannada—including large native-speaker quality gaps and model-specific script spillage or English collapse—so evaluating this task requires a failure-aware bundle combining semantic similarity, script compliance, failure coverage, and native-speaker acceptability.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09085">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09085v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09239">DUET: Dual-Sparse Inference for Block Diffusion Language Models</a></h2>
+  <p class="meta">Siyuan Yan, Shen Gu, Xiaoxing Ma, Chun Cao, Jingwei Xu · Relevance 4.2</p>
+  <p class="abstract">Diffusion language models (DLMs) enable parallel token generation through iterative denoising, yet their inference remains costly due to repeated attention over a growing historical prefix and repeated processing of the entire current generation block. Historical attention becomes increasingly expensive as generation progresses, while all current-block positions are propagated through the Transformer at every denoising step even though only a small fraction are typically resolved at that step. In this paper, we introduce Duet, a training-free dual-sparse inference framework that addresses these challenges through prefix Key-Value (KV) sparsity and early query sparsity, respectively. Specifically, Duet exploits the concentration and cross-step stability of historical attention within each generation block to construct a compact historical KV subset that is reused across denoising steps. For query sparsity, Duet predicts update positions from shallow representations and propagates only the corresponding queries through the suffix Transformer layers, avoiding deep computation at positions unlikely to be updated in the current step. Experiments show that Duet maintains competitive accuracy while achieving 1.34$\times$/2.83$\times$ end-to-end/per-step speedups on LLaDA2.1-mini and 2.41$\times$/4.72$\times$ on SDAR-8B-Chat-b32 at a 32K context length.</p>
+  <p class="tldr"><strong>TLDR:</strong> **TLDR:** DUET is a training-free dual-sparse inference framework for block diffusion language models that uses prefix KV sparsity and early query sparsity to reduce redundant historical attention and current-block computation, achieving up to 2.41×/4.72× end-to-end/per-step speedups while maintaining competitive accuracy.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09239">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09239v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09729">One Run Is Not Enough: A Monte Carlo Protocol for Evaluating LLM Reliability on Data Science Tasks</a></h2>
+  <p class="meta">Wenqi Ni, Ozan Evkaya, Miguel de Carvalho · Relevance 4.2</p>
+  <p class="abstract">Large language models (LLMs) have shown promise for automating data science workflows. Benchmarks such as DataSciBench (2026) and StatQA (2024) have advanced the evaluation of their capabilities across data science and statistical tasks. Assessing their reliability requires examining both the quality of their responses and their consistency across repeated runs, task types, and difficulty levels. With this aim, we introduce DS-QA, a benchmark comprising 100 data science and statistics questions drawn from UK university courses, spanning 16 datasets and three difficulty levels. We develop a three-layer evaluation framework that combines general response properties (runtime, verbosity and text similarity), coarse-grained metrics (accuracy, code executability and completeness), and task-specific metrics. We evaluate OpenAI models using a Monte Carlo protocol with 100 repeated runs. The results reveal substantial variability in responses to data visualisation and supervised learning tasks, particularly at medium and hard difficulty levels, highlighting the importance of evaluating consistency alongside response quality. We also find that an increase of 0.1 in the word verbosity ratio corresponds to an increase of about 0.013 in the token verbosity ratio.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces DS-QA, a 100-question university-level data science benchmark, and uses a three-layer evaluation framework with a 100-run Monte Carlo protocol to show that LLM reliability on data science tasks—especially data visualization and supervised learning at medium and hard difficulty—requires assessing consistency across repeated runs, not just single-response quality.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09729">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09729v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09233">Cross-Layer TopK: Dynamically Allocating Sparsity Across Layers in Transcoders</a></h2>
+  <p class="meta">Anyuan Zhuo, Shaohua Zhang, Tianle Li, Yuan Lin, Diandian Gu, Jun Wang, Pinyan Lu · Relevance 4.2</p>
+  <p class="abstract">Cross-Layer Transcoders (CLTs) decompose the activations of large language models into human-interpretable features and trace how these features interact across layers to form circuits, making them a key tool for mechanistic interpretability. However, training CLTs effectively and efficiently is hard. Beyond the usual trade-off between sparsity and reconstruction quality, a CLT has to model all layers at once, which adds a further challenge. The common JumpReLU recipe controls sparsity only indirectly through a penalty, while the direct extension of TopK selects a fixed number of latents in every layer. Yet reconstruction difficulty differs widely across layers, and intermediate layers are much harder than others, so giving every layer the same budget is suboptimal. We propose Cross-Layer TopK, which sets a single L0 budget for the whole model and dynamically allocates it across layers during training. In a comparison with JumpReLU and other TopK variants on Qwen3-8B-Base, this gives lower FVU while using 20% fewer active latents than JumpReLU. The better reconstruction carries over to circuit tracing, yielding more complete circuits with higher replacement and completeness scores. The fixed per-token budget of Cross-Layer TopK also makes it easy to pair with sparse decoding, which cuts both computation and communication and gives a 2.9x speedup per training step. We further show that Cross-Layer TopK follows scaling laws in both latent size and sparsity. We have open-sourced the weights of our CLT at https://huggingface.co/ByteDance-Seed/Cross-Layer-TopK-CLT.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes **Cross-Layer TopK**, a transcoder training method that sets a single global L0 sparsity budget and dynamically allocates active latents across layers, improving reconstruction and circuit tracing with fewer active features and faster sparse-decoding training than JumpReLU or fixed per-layer TopK.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09233">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09233v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09872">On the Reliability of Majority-Vote Pseudo-Labels in Test-Time Reinforcement Learning</a></h2>
+  <p class="meta">Haoyu Wang, Ru Wang, Yuanyuan Wang, Jiaxian Guo, Mingming Gong · Relevance 4.2</p>
+  <p class="abstract">Test-time reinforcement learning (TTRL) adapts pretrained language models to unlabeled target-domain data using self-generated pseudo-labels, whose reliability remains poorly understood. We analyze majority-vote supervision for TTRL with online Direct Preference Optimization (DPO) and decompose its error into population-majority bias and prompt-dependent finite-rollout variation. Because population-majority bias is generally unidentifiable without external supervision, we focus on mitigating the downstream effects of finite-rollout variation. We propose \emph{Prompt-Conditional Distributionally Robust DPO (PC-Dr.DPO)}, which conditions within-prompt robust reweighting on observed vote reliability to make updates from sampling-sensitive prompts more conservative. We further introduce a cache-based mechanism to reduce self-supervised forgetting during online adaptation. Across six mathematical and knowledge-intensive reasoning benchmarks and five model backbones, PC-Dr.DPO matches or outperforms the strongest TTRL baseline in 24 of 30 settings.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper analyzes majority-vote pseudo-label reliability in test-time reinforcement learning and proposes PC-Dr.DPO, a prompt-conditional distributionally robust DPO method that uses observed vote reliability to make sampling-sensitive prompt updates more conservative—plus a cache mechanism to reduce forgetting—matching or outperforming the strongest TTRL baseline in 24 of 30 settings.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09872">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09872v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08892">Richness Is Not Evenness: Ordered Renyi Crossings under Self-Training</a></h2>
+  <p class="meta">Pranjal Srivastava · Relevance 4.2</p>
+  <p class="abstract">Recursive self-training of language models, a setting studied in model collapse, can reduce vocabulary while making frequent words, mostly function words, less dominant. We fine-tune English GPT-2 on its own output for nine generations, vary the training-data sampling temperature, and measure every model with one fixed sampler. As training temperature rises, Renyi entropy changes turn from loss to gain at distinct temperatures: min-entropy first, then collision entropy, Shannon entropy and observed richness. Between the outer crossings, word types fall while the most-common word becomes less dominant. Untruncated training at T = 1 lies in this interval: at 13,000 words, generation 9 has 24% fewer types than generation 0 yet collision entropy is 0.91 bits higher. The ordering persists with a finer grid, different measurement samplers, a fixed word budget and five fresh training seeds. Min-entropy again crosses before richness in four further settings (in Hindi only at interpolated roots) and in 12 of 13 distinct measurements under eight text representations. Next-token identities and a categorical simulation isolate decoding and sampling effects; the crossing order remains empirical. Fine-tuning on human text can produce the same split while likelihood improves, and no single order&#x27;s sign reliably identifies worse likelihood across the tested settings. We recommend reporting entropy profiles at stated budgets with an independent quality measure.</p>
+  <p class="tldr"><strong>TLDR:</strong> In recursive GPT-2 self-training, Renyi entropy changes cross from loss to gain at distinct temperatures—min-entropy first, then collision entropy, Shannon entropy, and observed richness—so vocabulary richness can decline while common-word dominance falls, meaning diversity should be reported as an entropy profile alongside an independent quality measure rather than as a single score.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08892">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08892v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09506">On the Effectiveness and Limitations of Open-Weight LLMs for Low-Resource Offensive Language Detection in Danish</a></h2>
+  <p class="meta">Elnur Adl Zarabi, Amit Kumar, Adi Singh, Sierra Nelson, Megan Stubbs-Richardson, Taoran Ji · Relevance 4.2</p>
+  <p class="abstract">We study the effectiveness and robustness of open-weight large language models (LLMs) for Danish offensive language detection, an underexplored low-resource task. We evaluate four model families (Llama, Mistral, Gemma, and Qwen) across eleven prompting strategies spanning five design categories, cross-prompt generalization, Danish orthographic variation, and robustness under balanced and naturally imbalanced class distributions. We compare against three BERT-family baselines with distinct pre-training strategies, evaluated via both masked language model prompting and supervised fine-tuning. Even without task-specific fine-tuning, LLMs can surpass all three fine-tuned BERT baselines, and lightweight finetuning yields substantial further gains. No single model or prompt category dominates, underscoring that prompt design interacts with model pre-training in ways that cannot be predicted a priori. Semantically grounded prompts transfer more robustly, while format-constrained patterns consistently fail to generalize. ASCII transliteration of Danish-specific characters ({\ae}, {\o}, {\aa}) generally degrades performance, indicating these characters encode meaningful signal. At the same time, the gap between a balanced test set (best F1 of 0.84) and the corpus&#x27;s natural class skew (0.62 trained on skewed data, 0.70 trained on balanced data) -- relative drops of 26.2\% and 16.7\% -- shows that class imbalance remains a critical open challenge. Our code and configurations are available at https://github.com/PASHAADC/Danish-LLM-HateSpeech.</p>
+  <p class="tldr"><strong>TLDR:</strong> This paper systematically evaluates open-weight LLMs for low-resource Danish offensive language detection, finding that they can outperform fine-tuned BERT baselines and improve further with lightweight fine-tuning, but performance is highly prompt- and model-dependent, sensitive to Danish orthographic characters, and still substantially degraded by natural class imbalance.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09506">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09506v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09191">Bootstrap Your Own AV-Proxies: Adaptive Contrastive and Prototype Learning for Audio-Visual Segmentation</a></h2>
+  <p class="meta">Junbo Zhang, Hang Su, Zhaofan Li, Hang Dong, Chao Sun · Relevance 4.1</p>
+  <p class="abstract">Audio-Visual Segmentation (AVS) aims to accurately segment sounding objects in video frames by leveraging audio-visual correspondence cues. However, it remains challenging due to the intrinsic semantic incompleteness within a single modality and the semantic gap between audio and visual representations. Traditional feature-fusion decoding approaches struggle to suppress fusion noise effectively, while recent methods that incorporate data-dependent priors often increase the complexity of modeling audio-visual correlations, leading to poor cross-domain generalization. To address these issues, we propose a novel adaptive contrastive and prototype learning framework, BYOAVP, for AVS. Specifically, we design a Self-Supervised Audio Enhancement (SSAE) module that introduces contrastive learning to adaptively align audio representations with gradient-blocked visual embeddings, thus narrowing the semantic gap between modalities. Furthermore, a Dynamic Prototype Constraint (DPC) module is developed to refine pixel-wise category perception via momentum-based prototype updating, while enhancing localization of sounding regions through cross-modal interaction. Extensive experiments demonstrate that our method achieves SOTA performance across two AVS benchmarks and six sub-tasks, exhibiting strong robustness and generalization ability.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes BYOAVP, a fully adaptive audio-visual segmentation framework that combines self-supervised contrastive audio enhancement with gradient-blocked visual guidance and a momentum-updated dynamic prototype constraint to suppress intra-modal noise and improve fine-grained sounding-object segmentation, achieving state-of-the-art performance across two benchmarks and six sub-tasks.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09191">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09191v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09472">ENGRAM: From Agent Experience to Weights through Verified Consolidation</a></h2>
+  <p class="meta">Ruiyi Yang, Zechen Li, Lihuan Li, Du Yin, Hao Xue, Flora D. Salim · Relevance 4.1</p>
+  <p class="abstract">Language-model agents use experience through external retrieval and parameter learning. Consolidating stored experience into model weights requires deciding both which experience to train on and when its external records can leave retrieval. Admission based solely on student mastery can exclude useful teacher demonstrations, while removal immediately after training can discard guidance that the model still needs. We introduce ENGRAM, a framework that separates training admission from memory release. A demonstration-aware gate admits skills based on student mastery or sufficient successful teacher demonstrations. The student learns from selected action traces with context from an Engram Trace Graph (ETG). A verification gate then compares the updated model without episodic retrieval against the base model with retrieval on reserved probes. Release requires valid training participation and scores meeting both relative and absolute criteria; records for skills that fail verification remain retrievable. Experiments across interactive and reasoning benchmarks show consistent gains over frozen-weight ETG controls, with ablations supporting demonstration-aware admission and selective adapter activation. A controlled held-out comparison shows that verified release substantially reduces the retrievable footprint while remaining close to retain-all performance and outperforming immediate and budget-matched random release. ENGRAM also improves task performance while reducing input-token usage and model calls. Skill-level verification further reduces retrievable experience through selective archival, retaining external guidance for skills that do not meet the release criteria. Code is available in anonymous.4open.science/r/engram-anonymous.</p>
+  <p class="tldr"><strong>TLDR:</strong> ENGRAM is a framework that separates deciding which agent experiences to train on from deciding when to remove their external memory records, using demonstration-aware admission and post-training verification to consolidate verified skills into model weights while keeping unverified experience retrievable.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09472">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09472v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08756">Debate to Deceive: Poisoning LLM&#x27;s Fact-Checking via Game-Theoretic Multi-Agent Debate</a></h2>
+  <p class="meta">Liting Huang, Huizhi Liang, Yi Lei, Xingjun Ma, Varun Ojha · Relevance 4.1</p>
+  <p class="abstract">Knowledge attacks on Large Language Models, such as manipulating fact-checking judgments, pose significant risks to AI reliability. Existing approaches -- adversarial suffix/template injection and single-agent self-reflection -- lack robustness across diverse defenses and are prone to confirmation bias and costly trial-and-error, respectively. We propose Debate-to-Deceive (D2D), a multi-agent debate framework grounded in human debate structure and rhetorical style, enabling agents to generate adversarial passages that are semantically coherent, rhetorically effective, and resistant to early confirmation bias. D2D formalizes the adversarial process as an evolutionary game in which agents adaptively evolve their rhetorical strategies (Logos, Pathos, Ethos) through competition. To manage the intractably large LLM output space, we decouple agent behavior into a strategic layer, which selects a rhetorical action from a compact strategy space via evolutionary-inspired learning dynamics, and a generation layer, where the LLM produces a concrete passage conditioned on that strategy and the debate context. On four fact-checking benchmarks (FEVER, HealthVer, CLIMATE-FEVER, and SciFact), D2D substantially outperforms existing attacks and evades most defenses.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes **Debate-to-Deceive (D2D)**, a game-theoretic multi-agent debate framework that generates semantically coherent, rhetorically effective adversarial passages to poison LLM fact-checking, substantially outperforming existing attacks and evading most defenses across four benchmarks.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08756">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08756v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08818">Fuzzy-FedAvg: Server-Aware Client Selection for Federated Speech Emotion Recognition in Heterogeneous Environments</a></h2>
+  <p class="meta">Farrukh Pervez, Siddique Latif, Moid Sandhu, Raja Jurdak · Relevance 4.1</p>
+  <p class="abstract">Federated speech emotion recognition (SER) is challenged by speaker-dependent, class-imbalanced data and by heterogeneous client devices. This paper proposes \textit{Fuzzy-FedAvg}, a server-aware framework in which the server learns Client Selection Weights (CSWs) through fuzzy Q-learning from global-model feedback. The same CSWs weight client accuracy, training time, and \divkpi{} in both client selection and aggregation, while a dedicated PCAS node manages stragglers through staleness-discounted deferred updates. On IEMOCAP and CREMA-D, \textit{Fuzzy-FedAvg} achieves higher unweighted average recall (UAR) than FedAvg in all configurations under severe non-IID conditions, and in 22 of 24 participation-level and 10 of 12 training-horizon configurations overall. It also outperforms FedProx and Oort, while SCAFFOLD and Power-of-Choice remain competitive, and it reduces cumulative training time by 81.2\% in a FedScale-based evaluation. The benefit is greatest under strong statistical heterogeneity and narrows as data become more balanced.</p>
+  <p class="tldr"><strong>TLDR:</strong> **TLDR:** Fuzzy-FedAvg is a server-aware federated learning framework for speech emotion recognition that uses fuzzy Q-learning to adapt client-selection weights based on accuracy, training time, and model diversity—applying them to both client selection and aggregation while managing stragglers—thereby improving UAR under severe non-IID conditions and reducing training time.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08818">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08818v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08718">Memory-Aware Multi-Agent Architecture with LLM-based Orchestration for Conversational Recommendation</a></h2>
+  <p class="meta">Emilly Pitman de Castro, Vanessa Silva, Gustavo Kanno, Marcus Santos, Bruno Ferraz do Amaral, Marcelo Nogueira, Lucas Francisco Pellicer, Lucas Lanaro, Pedro Augusto Luiz, Jo\~ao Renato Ribeiro Manesco, Giovanni Carbinatti, Isabela de Lima Santos, Lucas Oliveira Jeronymo, Jeison Fappi, Raul Rotilli Aguirre, Fabio Andr\&#x27;e Frantz, Renata De Paris, Fabiana Marucci, Lohan Silva, Vinicius Diniz Reolon, Wandemberg Gibaut · Relevance 4.1</p>
+  <p class="abstract">Conversational recommender systems often treat user sessions in isolation, limiting their ability to capture how user intent evolves over time. While large language models (LLMs) have improved semantic understanding, they are typically used as isolated components, without addressing how memory, retrieval, and decision-making should be integrated at the system level. In this work, we propose a memory-aware multi-agent architecture for conversational recommendation, in which LLMs act as orchestration layers that coordinate intent refinement, query construction, and interaction flow. A key design principle is the integration of long-term memory as a first-class component, influencing both routing decisions and semantic query formation. We evaluate the system through cross-session memory experiments, multi-turn conversational simulations, and supervisor-driven interaction studies on the Amazon Reviews dataset. Results show that memory-enabled interactions recover up to 63\% of the gap toward explicit-query scenarios and prevent semantic degradation in extended dialogues. In addition, supervisory orchestration increases user acceptance by +28.9 percentage points, highlighting the importance of structured orchestration in guiding interaction and output quality. We also observe an exposure bottleneck between retrieved candidates and displayed recommendations. While LLM-reranking does not improve Hit@K, it consistently enhances semantic consistency and diversity. To capture these effects, we introduce the Semantic Consistency Score (SCS), a complementary evaluation measure. Overall, the results emphasize the importance of system-level design choices, suggesting that effective conversational recommendation benefits from explicit memory integration, orchestration, and evaluation beyond traditional ranking metrics.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper proposes a memory-aware multi-agent conversational recommendation architecture in which LLMs orchestrate intent refinement, query construction, and routing while long-term memory acts as a first-class signal, and shows on Amazon Reviews that memory recovers up to 63% of the gap to explicit queries and supervisory orchestration boosts user acceptance by 28.9 percentage points, while introducing the Semantic Consistency Score to complement traditional ranking metrics.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08718">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08718v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09701">Where Should Learning Live? Regret Analysis for Text, Parameter, and Joint Adaptation</a></h2>
+  <p class="meta">Jungtaek Kim, Jaden Park, Jongwon Jeong, Emmanouil-Vasileios Vlatakis-Gkaragkounis, Kangwook Lee · Relevance 4.1</p>
+  <p class="abstract">Language-model systems can select prompts and parameter adapters repeatedly during deployment, using feedback to guide later choices. Earlier choices may change the context or environment inherited by later configurations. We study selection among preconstructed candidates and compare cumulative loss with the best fixed prompt--parameter pair used from the beginning. This excess loss separates into three terms: selection regret within the available family, the gap from restricting that family, and the benefit or harm of the actual deployment history. Selection is evaluated using the history each candidate would have produced if used throughout, which separates candidate quality from the effects of switching. When loss functions are fixed independently of selector randomness, past choices affect loss for only a bounded number of rounds, and every candidate&#x27;s own-history loss is revealed, limiting switches yields sublinear expected regret within the selected family. We also quantify the costs and additional assumptions of independent probing and deployment-only feedback. Controlled experiments show that fewer switches can either lower or raise deployed loss, depending on whether inherited histories are harmful or helpful. With Qwen3.5-9B on Spider, text-only selection has lower within-family regret than joint selection, yet produces more failures because its candidate family excludes stronger configurations.</p>
+  <p class="tldr"><strong>TLDR:</strong> This paper analyzes repeated selection among text, parameter, and joint prompt–adapter configurations by decomposing deployed excess loss versus the best fixed joint configuration into within-family selection regret, family-restriction gap, and signed state effects, showing when switch-limiting yields sublinear regret and empirically demonstrating that fewer switches and text-only selection can trade lower selection regret for worse deployed performance due to weaker candidates and inherited histories.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09701">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09701v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08495">Rethinking Data Selection as Distribution Matching on Semantic Manifolds</a></h2>
+  <p class="meta">Peng Sun, Yi Yang, Mingshuo Chen, Chunxiao Li, Yao Zhu, Huawen Shen, Tianfan Fu · Relevance 4.1</p>
+  <p class="abstract">Instruction tuning of large language models and large vision language models relies on massive training data, which incurs substantial computational and storage costs. Meanwhile, training data often contains redundancy, noise, and low quality samples. Existing data selection methods mostly rely on diversity, importance, or a combination of both, without explicitly constraining the distributional consistency between the selected subset and the full data in the embedding space. We propose QMAC, a quality aware multiband characteristic function matching method that formulates data selection as a joint optimization problem of distribution matching and quality filtering. QMAC matches the empirical characteristic functions of the selected subset and the full data across multiple frequency scales, capturing both global semantic coverage and local perturbations, while using task related quality scores to filter noisy and low quality samples. We systematically evaluate QMAC on 4 data types, 8 target models, and 44 benchmarks. Experimental results show that QMAC outperforms existing data selection baselines on standard image-text instruction data, substantially surpasses random selection on standard text instruction, image-text reasoning, and text reasoning data, and exceeds full data training in multiple model and budget combinations. The code will be made publicly available upon acceptance of the paper.</p>
+  <p class="tldr"><strong>TLDR:</strong> QMAC reframes data selection as quality-aware multiband characteristic-function matching, choosing a subset that preserves the full dataset’s embedding distribution on semantic manifolds while filtering noisy and low-quality samples.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08495">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08495v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09295">Bridging Spiking and Continuous Dynamics in Spiking Neural Networks: A Muscle-Inspired Model</a></h2>
+  <p class="meta">Maryam Soltani, Philip N. Garner · Relevance 4.1</p>
+  <p class="abstract">Transforming the spike trains produced by spiking neural networks (SNNs) into continuous signals through biologically inspired mechanisms remains an open challenge in generative and regression tasks. In biological systems, a similar transformation occurs when muscles integrate neural spikes to produce smooth, coordinated movements. Inspired by this mechanism, we introduce a muscle-response model, a biologically motivated dynamical layer that converts spike trains into continuous representations. Our approach uses second-order dynamics to model the temporal integration of spiking activity. We investigate how the number of spiking neurons and temporal resolution affect the quality of the generated signals in a text-to-speech task, showing that increasing representational capacity has a greater impact than increasing temporal resolution under the evaluated configurations. Furthermore, an analysis of the learned dynamics reveals that, without explicit constraints on the response type, most neurons converge toward non-oscillatory behavior. These results demonstrate the potential of biologically inspired dynamical decoders for bridging spiking neural computation and continuous signal generation.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces a biologically inspired, thresholdless second-order “muscle-response” dynamical layer that converts spiking neural network outputs into continuous signals, showing on a text-to-speech task that representational capacity matters more than temporal resolution and that learned dynamics predominantly converge to non-oscillatory behavior.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09295">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09295v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08996">UniMore: Fine-Grained Supervision for Unified Understanding and Generation</a></h2>
+  <p class="meta">Haoyue Bai, Yinyi Luo, Yicheng He, Qingsong Wen, Sharon Li, Jindong Wang · Relevance 4.1</p>
+  <p class="abstract">Unified multimodal models combine image understanding and generation within one system, creating an opportunity to improve both capabilities through paired image--text supervision. We examine the outputs of a pretrained unified model in both directions and observe a loss of specificity: generated images can contain the requested objects with incorrect attributes, while captions identify a scene without expressing its distinguishing details. These failures call for supervision that specifies both the visual content to realize and the descriptive differences to distinguish. We propose UniMore, a post-training method that derives these complementary learning tasks from the fine-grained content of image--text pairs. The generation route predicts grounded crops from their corresponding phrases, matching the scope of the condition and visual target while using the native visual objective. The understanding route combines positive-caption fitting with ranking against captions that omit or alter details, conditioned on the full image. The two routes are optimized independently, and their learned updates are combined into a single unified model without changing its inference procedure. Experiments show gains across multiple understanding and generation benchmarks.</p>
+  <p class="tldr"><strong>TLDR:</strong> UniMore is a post-training method for unified multimodal models that uses fine-grained image–text pairs to train generation via phrase-to-grounded-crop prediction and understanding via full-image caption fitting and ranking against detail-altered captions, then combines the independently learned updates into a single model to improve both capabilities without changing inference.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08996">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08996v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09084">Training-Free Active Test-Time Adaptation for Vision-Language Models</a></h2>
+  <p class="meta">Jihwan Bang, Sumyeong Ahn, Hwanjun Song, Jae-Gil Lee · Relevance 4.1</p>
+  <p class="abstract">Test-time adaptation (TTA) for vision-language models (VLMs) is usually studied in a fully unsupervised regime, where adaptation relies on pseudo-labels, confidence scores, or entropy computed by the model itself. This is a severe restriction on hard shifted samples: the model is asked to repair its own uncertain predictions without any external evidence. At the other extreme, supervised online adaptation assumes labels can directly train or correct the model. We study the intermediate deployment regime between these two extremes. In Active Test-time Adaptation for VLMs (Active VLM-TTA), a pretrained VLM may spend an explicit labeling budget on selected test samples, but the prediction for the current sample must be emitted before its label can be used; queried labels are therefore costed, delayed evidence for future samples rather than free correction for the present one. Under this future-only constraint, the central question is how to reuse sparse labels conservatively. We instantiate this setting with ACTive VLM-TTA for Online Retrieval (ACTOR), a training-free plug-in module that routes uncertain samples among base prediction, label query, and memory-based correction using a consistency-and-reliability check over previously queried labels. Across ten cross-domain benchmarks and a domain-transfer benchmark based on ImageNet, ACTOR consistently improves strong VLM-TTA baselines on ResNet and ViT backbones with negligible inference overhead. Our implementation is publicly available at https://github.com/kaist-dmlab/ACTOR.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces ACTOR, a training-free plug-in module for active test-time adaptation of vision-language models that conservatively reuses a delayed labeling budget by routing uncertain samples among base prediction, label query, and memory-based correction using consistency-and-reliability checks, improving strong TTA baselines across cross-domain benchmarks with negligible inference overhead.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09084">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09084v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09154">Learning When to Think: Dual-Reference Offline Optimization for Adaptive VLM Reasoning</a></h2>
+  <p class="meta">Hongbin Lin, Sizhe Zou, Juangui Xu, Xinyue Xu, Zhuoli Ouyang, Stanislav Kolchin, Chengwei Qin, Zhongxiang Dai, Yao Shu · Relevance 4.1</p>
+  <p class="abstract">Reasoning traces improve vision-language models on complex multimodal tasks, but forcing every input to follow a long reasoning process leads to overthinking and unnecessary inference cost. We study adaptive fast/slow thinking for VLMs, where one model answers directly for simple inputs and reasons step by step when needed. Fast answers and slow traces often come from distinct behavior policies, making a single-reference offline objective misweight one mode. We propose DUAL-REFERENCE BOLT (DR-BOLT), which distinguishes the desired fast/slow mixture reference from the sampling distribution and corrects their mismatch in reward-weighted training. Fast/slow partition competition explains routing in the optimal target; an efficient source-wise correction approximates the exact objective when response formats are well separated. Matched Qwen3-VL comparisons use identical candidate banks to isolate the objective from slow-teacher quality. DR-BOLT improves score-length trade-offs over the evaluated offline and online baselines on ScienceQA and three held-out transfer benchmarks, with a 24.1% cross-benchmark slow ratio and a 2.90-fold end-to-end training speedup over reproduced GRPO. These results support adaptive reasoning in the studied two-reference setting, while broader robustness remains open. Our code is available at https://github.com/HongbinLin3589/DR-BOLT.</p>
+  <p class="tldr"><strong>TLDR:</strong> DR-BOLT is a dual-reference offline optimization method that corrects the mismatch between fast/slow sampling policies and a desired mixture reference, enabling VLMs to adaptively decide when to reason and improving score–length trade-offs with faster training.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09154">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09154v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09090">MARS: Training Multilingual Search Agents for Retriever-Free Evidence Acquisition</a></h2>
+  <p class="meta">Rui Qi, Yunlong Liang, Yufeng Chen, Jinan Xu, Fandong Meng, Kaiyu Huang · Relevance 4.1</p>
+  <p class="abstract">Existing multilingual retrieval-augmented generation relies heavily on learned retrievers and similarity-based ranking from multilingual collections, which are vulnerable to cross-lingual retrieval errors and indexing overhead. In this paper, we explore retriever-free multilingual search, where the model directly interacts with raw corpora through executable shell commands. This paradigm shifts the bottleneck to multilingual search action generation, where exact search is sensitive to entity surface forms and outcome-only supervision provides limited guidance for multi-turn search. To address these challenges, we propose MARS, a multilingual search agent in direct corpus interaction (DCI) with reinforcement learning (RL). MARS introduces corpus-native entity grounding to recover reliable lexical anchors from corpus evidence, mitigating failure to retrieve evidence. Meanwhile, we present a redundancy-aware search reward to encourage concise and effective search trajectories, addressing training collapse in RL of multilingual scenarios. Experiments show that \ours~consistently outperforms strong retrieval-based and DCI baselines, while demonstrating robust cross-lingual generalization and substantially reducing redundant corpus interactions.</p>
+  <p class="tldr"><strong>TLDR:</strong> MARS is a reinforcement-learned multilingual search agent that retrieves evidence directly from raw corpora via shell commands, using corpus-native entity grounding and a redundancy-aware reward to overcome cross-lingual lexical mismatch and inefficient multi-turn search without learned retrievers.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09090">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09090v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09412">MIRA: Mitigating Pole Geometry Bias in Recurrent Language Models</a></h2>
+  <p class="meta">R\&#x27;ois\&#x27;in Luo, Ihsan Ullah, Christian Gagn\&#x27;e, Dong Li, Karyn Morrissey · Relevance 4.1</p>
+  <p class="abstract">We show that the Transformer&#x27;s recurrent successors --- such as selective state-space models (SSMs), Receptance Weighted Key Value (RWKV), and Retentive Network (RetNet) --- can be characterized as infinite-impulse-response (IIR) systems. The zero--pole geometries of these IIR systems characterize the temporal modes they can represent. However, to trade parallelism, the algebraic structures of the parameterizations of these recurrent systems often give rise to poles constrained to the real axis, thereby inducing an architectural bias in their recurrent dynamics. To unify these recurrent architectures and eliminate their pole geometry bias, inspired by the lattice--ladder realization of general IIR systems, we present \textsc{Mira} (\textbf{M}odal \textbf{I}IR \textbf{R}ecurrent \textbf{A}rchitecture), a unified family of linear-time recurrent architectures for building large language models (LLMs) with a highly parallel algebraic structure. Each \textsc{Mira} block realizes a higher-order IIR system that represents temporal modes from token streams through a lattice--ladder structure, followed by a feed-forward network (FFN). This realization enables the model to represent the temporal modes associated with both real and complex-conjugate poles. We pretrain \textsc{Mira-S}, a 12-layer small-scale LLM with 0.14B parameters composed entirely of \textsc{Mira} blocks. Throughout the pretraining, \textsc{Mira-S} achieves lower perplexity than strong recurrent baselines, exhibits stronger context-window generalization beyond the training length, and attains higher throughput with a dedicated CUDA kernel.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces **MIRA**, a unified linear-time recurrent LLM architecture based on lattice–ladder higher-order IIR systems that removes the real-axis pole-geometry bias of recurrent successors, yielding lower perplexity, stronger context-window generalization, and higher throughput in a 0.14B-parameter pretrained model.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09412">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09412v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08763">CrowdDirector: Runtime Orchestration of Crowd Simulation through Natural-Language Directives</a></h2>
+  <p class="meta">Xiaohan Sun, Vuk Radovanovic, Merce Alvarez, Carol O&#x27;Sullivan, Yiorgos Chrysanthou, Panayiotis Charalambous · Relevance 4.1</p>
+  <p class="abstract">Natural language offers an intuitive way to direct a virtual crowd while a simulation is running. Handwritten rules execute efficiently but cannot respond flexibly to varied instructions, whereas asking a large language model (LLM) to control the crowd at every update introduces repeated latency, cost, and the risk of unsupported actions. We present CrowdDirector, a framework that uses an LLM only when the user adds or changes an instruction. The LLM translates the request into a structured instruction, and a scene validator checks whether the entities and actions it references exist in the current Unity scene. Accepted instructions are stored and remain continuously active as the simulation is running. At each simulation tick, a graph neural network uses the current scene state and active instruction to choose an available action and target for each agent, while Unity handles movement, interactions, and animation. The network is trained offline on simulated scenarios, with LLM guidance on how agents should respond to instructions. Our evaluations show the scene validator&#x27;s feasibility decisions matched human judgements more often than the LLM&#x27;s own assessment, and on a behavioural benchmark CrowdDirector follows user instructions more closely than handwritten rules while avoiding repeated LLM calls. It therefore provides a practical middle ground between fixed rules and continuous LLM control.</p>
+  <p class="tldr"><strong>TLDR:</strong> CrowdDirector is a Unity crowd-simulation framework that uses an LLM only once per natural-language instruction to convert it into a scene-validated active directive, which then guides a trained graph neural network policy at each simulation tick to select available actions and targets for agents—achieving more flexible instruction-following than handwritten rules without repeated LLM calls.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08763">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08763v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08704">Contextuality and Contradictions: Exploring Real-World Identifications of AI-Generated Writing</a></h2>
+  <p class="meta">Michelle Morgenstern, Julia Witte Zimmerman, Tabia Tanzin Prama, Kristine Harootunian, June Clark, Bryn Loftness, Calla Beauregard, Juniper Lovato · Relevance 4.0</p>
+  <p class="abstract">As AI-generated content spreads into nearly every domain of human interaction, practices and discourses of AI detection, both formal and informal, have become an everyday part of how people interact with text and with each other. In this paper, we explore the real-world practices and discourses of AI identification that have emerged in response to a shifting discursive landscape where the human provenance of a text can no longer be taken for granted. We pair qualitative coding with computational analysis of lexical change, grounded in linguistic anthropological perspectives on language and communication, to investigate AI identifications among English Wikipedia editors and students. We find that these identifications draw on a diversity of evidentiary types, from discrete textual features and judgments about content to circular sense-making claims and presumptions about the author&#x27;s moral character, and that they are contradictory, dynamic, and contextually dependent. In practice, what often motivates an AI identification is not the presence of any specific textual element, but pragmatic infelicity: a perceived mismatch between the elements present and those deemed appropriate within the text&#x27;s particular context. Consequently, real-world identifications of AI-generated writing do not merely neutrally point out the perceived presence of &quot;AI-like&quot; features, but can be leveraged as a discursive resource to maintain and define sociolinguistic norms: what can be said in a given context, what is appropriate, and, ultimately, what is human. Further, the design and implementation of systems and tools that treat AI-likeness as a context-free property of text may therefore inherit, and enforce at scale, the norms of whichever contexts they were trained on.</p>
+  <p class="tldr"><strong>TLDR:</strong> This paper shows that real-world identifications of AI-generated writing are contradictory, context-dependent judgments often driven by perceived pragmatic inappropriateness rather than stable textual features, and that they function as a discursive resource for enforcing sociolinguistic norms—implying that context-free AI detection tools may inherit and scale the norms of their training contexts.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08704">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08704v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08864">Adaptive Scheduling Pipeline for Multi-Instance Asynchronous Reinforcement Learning</a></h2>
+  <p class="meta">Salah Chikhi, Luis Zuin, Entong Li, Zeng Li · Relevance 4.0</p>
+  <p class="abstract">We present the Adaptive Scheduling Pipeline (ASP), an offline rollout scheduler for multi-instance asynchronous reinforcement learning (RL) of large language models (LLMs). ASP jointly reduces three sources of rollout underutilization - padding bubbles from intra-minibatch length heterogeneity, skewness bubbles from long-tail outputs, and sorting bubbles from fluctuations in training-queue occupancy induced by length-sorted dispatch - through a single offline preprocessing pass. This enables efficient multi-instance rollout that overcomes the early scaling plateau of single-instance inference while smoothing the arrival of generated samples at the trainer. We integrate the scheduler into an asynchronous architecture that decouples rollout from training while keeping policy lag observable and bounded. Complete ASP improves end-to-end throughput by up to 3.22 times and reduces iteration time by up to 76.8% relative to MindSpeed-RL, while reducing iteration time by up to 62.5% relative to verl. Within ASP, scheduling reduces mean iteration time by 10.9%. ASP also scales more robustly with additional generation resources than these baselines and shows no visible convergence degradation in the measured bounded-lag regime. ASP has since been used in an internal telecom-domain RL post-training workflow, reducing the reported training period from more than three months to about two months and producing a domain-enhanced model for knowledge answering and tool calling.</p>
+  <p class="tldr"><strong>TLDR:</strong> **TLDR:** ASP is an offline rollout scheduler for multi-instance asynchronous LLM reinforcement learning that uses predicted output lengths to construct length-homogeneous minibatches and balance their dispatch order, jointly reducing padding, skewness, and sorting bubbles to improve throughput and iteration time while keeping policy lag bounded.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08864">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08864v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09634">Steerable Multi-Objective Group-Relative Preference Optimization with Jointly Trained Low-Rank Adapters</a></h2>
+  <p class="meta">Constantinos Karouzos, Nikolaos Aletras · Relevance 4.0</p>
+  <p class="abstract">Language model deployment often requires different trade-offs between competing objectives as user preferences change, yet standard post-training methods typically produce a single policy for a fixed objective weighting. We introduce LambdaMix, a new parameter efficient method for learning a preference conditioned family of policies with group-relative online reinforcement learning. LambdaMix jointly trains one low-rank adapter per objective over a frozen base model. One preference vector selects the adapter mixture that generates responses and weights the separately normalized rewards used to update the adapters. A single training run supports changing preferences at inference without further optimization. We experiment with four models on helpfulness and harmlessness and on solving math problems while following instructions. We also evaluate the two largest models on rewriting comments to preserve wording while reducing clues about personal attributes. On the first two tasks, LambdaMix achieves higher hypervolume than all evaluated conditioned and policy merging baselines across all four models. LambdaMix uses fewer training completions and stores fewer adapter parameters than a set of GRPO specialist policies. With architecture and initialization fixed, varying adapter mixtures and objective weights together gives wider score ranges and higher coverage than varying either alone.</p>
+  <p class="tldr"><strong>TLDR:</strong> LambdaMix is a parameter-efficient, preference-conditioned group-relative RL method that jointly trains one low-rank adapter per objective over a frozen base model and uses a preference vector to mix adapters and weight rewards, enabling a single training run to serve different inference-time trade-offs and achieving higher hypervolume than conditioned and policy-merging baselines while using fewer training completions and adapter parameters than GRPO specialists.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09634">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09634v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.08975">Beyond Truncation? Entailment-Licensed Elision and the Limits of Semantic Preservation in LLM Decoding</a></h2>
+  <p class="meta">Mahmoud Alyosify, Mirna Imbabi, Eman Elkhamisi · Relevance 4.0</p>
+  <p class="abstract">Instruction-tuned large language models (LLMs) answer at greater length than a request needs. We ask whether a training-free controller inside the decoding loop can remove that surplus while preserving content, judged against the simplest possible baseline: truncating the model&#x27;s own answer to the same length. An entropy-gated logits processor removes 25.5-34.9% of tokens on MT-Bench development questions and 19.9-34.2% on a sealed test split within pre-registered BERTScore non-inferiority margins, yet we prove and confirm by audit that its output is always a prefix of the unmodified answer: the saving is truncation. A survey of 23 training-free mechanism families finds none that selects content better than truncation without oracle labels. We therefore introduce Entailment-Licensed In-Decoding Elision (ELIDE), which, at each sentence boundary, withholds a span from the reader only when a natural-language inference model judges it entailed by the text already shown, while leaving the model&#x27;s generation unchanged. ELIDE beats matched-length truncation on three model families, but reading 936 of its elisions on 670 public prompts shows that 59% harm the answer, a failure that no automatic measure detects. Scoping the licence to its discourse unit reduces the harmful share to about one elision in ten on two fresh tests.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper shows that a training-free entropy-gated decoder only shortens LLM answers by effectively truncating them, proposes an entailment-licensed span-elision method (ELIDE) that can beat matched-length truncation while leaving generation unchanged, and finds through large-scale human audit that most of its elisions harm answers despite passing automatic metrics, with a discourse-scoped version reducing this harm substantially.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.08975">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.08975v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09199">SAS: Scene-Annotated AudioSet Strong for Joint Scene-Event Analysis</a></h2>
+  <p class="meta">Michel Olvera (S2A, LTCI, IDS), Paraskevas Stamatiadis (S2A, LTCI, IDS), Romain Serizel (MULTISPEECH), Slim Essid (IDS, S2A, LTCI), Ga\&quot;el Richard (S2A, IDS) · Relevance 4.0</p>
+  <p class="abstract">Context is central to human auditory perception, as listeners interpret sounds within their acoustic environment to resolve ambiguity. However, large-scale datasets that jointly capture sound events and acoustic scenes remain limited. We address this by augmenting AudioSet Strong with clip-level scene annotations under two taxonomies for joint sceneevent modeling. A corpus-scale analysis shows that scene identity is better captured by events distinctive to a scene than by those that merely occur frequently. Reweighting event co-occurrences toward scene-specific associations produces representations that better align with human-derived taxonomies, while also exposing scenes where the acoustic and semantic views diverge. This geometric divergence predicts classification errors, while supervised validation confirms that the proposed scene annotations provide meaningful complementary information for developing scalable context-aware machine listening systems.</p>
+  <p class="tldr"><strong>TLDR:</strong> The paper introduces SAS, an extension of AudioSet Strong with clip-level acoustic scene annotations under two complementary taxonomies, and shows that scene-specific rather than merely frequent sound events better characterize scene identity, with reweighted event co-occurrences yielding representations aligned with human taxonomies and useful for context-aware machine listening.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09199">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09199v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09147">BMMS: Policy-Conditioned Measurement of Behavioral Compliance in Language Models</a></h2>
+  <p class="meta">Anthony Rhodes, Gadi Singer · Relevance 4.0</p>
+  <p class="abstract">Behavioral evaluation of language models fixes its dimensions in advance: hallucination, sycophancy, toxicity, over-refusal. An operator in a regulated industry needs a different question answered: does a system do what a particular rulebook requires? We introduce the Behavioral Misalignment Metric Suite (BMMS), which measures policy-conditioned misalignment by taking a policy corpus as an argument and returning a compliance profile over it, for any published policy and any system that answers in natural language. The Compliance Attainment Score (CAS) measures severity-weighted attainment over the obligations that bind the system, and the Compliance Robustness Margin (CRM) the share of that attainment surviving graded adversarial pressure; Behavioral Invariance (BIV) and the Behavioral Disposition Index (BDI) are specified and released with the suite. Dimensions enter only by passing a published admission test whose binding criterion is attribution: a quantity that moves when the judge changes, holding the target fixed, is measuring the instrument. Applying it excluded one of the quantities the suite itself reported. Across 1,003 obligations from eleven documents in five registers, the admission criterion holds 94.4% precision against blinded human judgment on vendor specifications and 50.0% on analytical guidance, extraction fidelity is 94.6%, and re-scoring under judges from two other providers leaves target ordering invariant while the absolute score of a single target spans up to 0.22. We apply it to the two most detailed published behavioral specifications. Own-specification advantage is not resolved from zero once document difficulty is subtracted, but absolute self-compliance is another matter: GPT-4o fails 70.7% of the hard constraints binding it in the Model Spec published by OpenAI, where the two Claude models fail 0.0% and 9.1% of theirs.</p>
+  <p class="tldr"><strong>TLDR:</strong> **TLDR:** The paper introduces BMMS, a policy-conditioned metric suite that evaluates whether a language model complies with any supplied rulebook and reports a robust compliance profile, then applies it to vendor specifications and finds that GPT-4o fails 70.7% of the hard constraints in OpenAI’s own Model Spec while the two Claude models fail 0.0% and 9.1% of theirs.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09147">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09147v1">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://arxiv.org/abs/2611.09096">Trajectory Forcing: Exploiting Diffusion Trajectories for Autoregressive Long Video Generation</a></h2>
+  <p class="meta">Bohan Wang, Shuo Chen, Yunzhi Li, Zhaozheng Chen, Junzhe Zhang, Hanwang Zhang · Relevance 4.0</p>
+  <p class="abstract">Autoregressive (AR) modeling is arguably the only way to extend a fixed-length video diffusion model to longer or even streaming videos. However, existing AR diffusion methods use only the previously predicted chunk as context for the next, discarding the intermediate predictions that constitute the chunk&#x27;s generation history. In contrast, conventional AR models such as LLMs condition on the entire history of preceding tokens. To this end, we propose Trajectory Forcing (TraF), an AR diffusion method that exploits the denoising trajectories of previous video chunks as context. TraF operates under two training regimes: (1) with ground-truth videos, where pseudo-trajectories are constructed from Gaussian interpolations and re-predicted by the model, and (2) with a teacher model, where real trajectories are obtained from the student&#x27;s own denoising rollout. The first regime naturally provides a strong initialization for the second. On the 5-second VBench benchmark, TraF achieves a Total score of 85.15, outperforming Self Forcing (+0.84) and Causal Forcing (+1.11), with Quality and Semantic improving simultaneously. On 30-second generation---6$\times$ the training horizon---TraF achieves the highest overall quality among all compared methods.</p>
+  <p class="tldr"><strong>TLDR:</strong> Trajectory Forcing (TraF) improves autoregressive long-video diffusion by conditioning each chunk on the denoising trajectories of previous chunks—using pseudo-trajectories during supervised training and rollout-derived trajectories during teacher-guided training—achieving higher VBench scores and better 30-second generation than prior forcing methods.</p>
+  <div class="actions"><a class="btn primary" href="https://arxiv.org/abs/2611.09096">arXiv</a><a class="btn secondary" href="https://arxiv.org/pdf/2611.09096v1">PDF</a></div>
+</article>
 
-<div>
-    <br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Benchmarking Speaker Embedders in the Sub-Second Regime for Real-Time Voice AI Agents
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Abhishek Gautam
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.6
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Real-time Voice AI agents must separate the active user from intelligible background speech that survives conventional noise suppression. Background sources include television audio, family members, and colleagues. Production denoisers remove non-stationary environmental noise effectively. Background speech shares the spectral characteristics of the target and passes through, causing false acceptances in downstream speaker verification (SV) and automatic speech recognition (ASR). We benchmark open-source speaker embedders TitaNet-Large, TitaNet-Small, ECAPA-TDNN, CAM++, and SpeakerNet under a strict sub-second latency budget. Evaluation combines a controlled benchmark with a weighted human-annotated production set. Our controlled benchmark is built from real calls in which a second real speaker is injected into silence intervals at modulated amplitude. We report three findings. First, denoising before embedding is generally harmful and raises equal error rate (EER) across architectures. Second, truncating audio below the full voice-activity segment degrades every model. Third, roughly half of the TitaNet embedding is redundant for this task. Trailing dimensions encode population attributes such as language and gender. Such attributes carry little discriminative value in a demographically homogeneous user base. We distill these results into deployment guidance. Verification should run on raw audio with full voice-activity chunks. Thresholds should favor precision over F1. Truncated embeddings reduce the cost of similarity search.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09516v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            AccentCanvas: Activity-Guided Bidirectional Accent Conversion
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Jaehun Kim, Kang Zhang, Sung Woo Kim, Junmo Kim, Joon Son Chung
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.6
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Accent conversion for dubbing must change pronunciation while preserving content, voice, and source timing. Normalization alone cannot produce requested non-native accents, and matching total duration does not ensure local speech/pause alignment. We present AccentCanvas, a shared discrete diffusion model for normalization and L1-to-L2 conversion, trained on cross-paired shared-prompt recordings and synthetic pairs. Frame-level speech activity and repetition-preserving units guide local timing through synthesis. Across both tasks, AccentCanvas achieves the highest accent conversion performance (Accent Arrival) and mean listener-rated accent similarity among compared systems, with over 73% lower speech-boundary error than the best baseline for each task. These gains accompany higher L1-to-L2 WER than TokAN and Vevo-Style, highlighting a tradeoff between requested-accent resemblance and ASR-based content recognition. https://smokedindia.github.io/accentcanvas/
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.08972v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Improving Large Audio-Language Model Embedding Baselines for Instruction-Aware Speech Retrieval
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Chen-An Li, Cheng-Han Chiang, Hung-yi Lee
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.5
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Speech retrieval finds relevant spoken documents given a spoken query. The spoken query alone may not reveal the retrieval goal, such as finding an answer or matching speaker identity. Instruction-aware speech retrieval expresses this goal through a natural-language text instruction. Large audio-language models (LALMs) effectively process speech and text, and our analysis shows that different retrieval requirements favor hidden states from different audio-encoder layers. We introduce IRIS-Embed, which adapts LALMs into embedding models through contrastive training and instruction-aware audio layer weighting. We construct about 900K training samples from real data and synthetic data, with instructions expressing requirements for one or more speech attributes. On INSPIRE, an instruction-aware speech retrieval benchmark, IRIS-Embed consistently outperforms the corresponding LALM baselines. The best model achieves 62.92% macro-average Recall@50, surpassing the strongest baseline at 45.15%. Controlled comparisons demonstrate instruction awareness and the benefits of audio layer weighting. On MAEB, a massive audio embedding benchmark, macro-average gains of 9.4-19.8 points over the corresponding baselines show generalization beyond speech retrieval.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09122v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            AUTEUR: Acoustic Plan Learning for Red-Teaming Text-to-Audio Models
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Jiashu Zhang, Jiaming He, Zheming Zhang, ..., Zhiyuan Zha, Yi Yu
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.3
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Automated red-teaming of text-to-audio models requires test prompts that pass textual screening and expose harmful acoustic content. The central challenge is to connect the sounds produced by the target model to both reusable test generation and prompt revision. Our key idea is to represent test descriptions as structured acoustic plans that organize foreground sounds, context, and vocal attributes. To this end, we propose acoustic plan learning, a framework that learns and refines these plans using waveform feedback. We train the plan generator through supervised fine-tuning followed by reinforcement learning with audio feedback while keeping the target audio model fixed. At inference time, the same trained model generates initial plans and uses feedback to revise their context and vocal attributes while preserving the foreground. Experiments across four target systems show attack success rates of 79.4% on TangoFlux and 95.6% on Kling. The resulting test prompts also transfer across open-source and closed-source models, indicating shared acoustic vulnerabilities.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09351v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Real-Time Short-Response Selection for Spoken Dialogue Systems
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Hien Ohnaka, Kazuyo Onishi, Koichiro Yoshino
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.1
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> To realize spoken dialogue systems that can interact naturally with users, it is important for the system to respond to user utterances at appropriate timings. To achieve such natural turn-taking, the system needs not only to predict appropriate response timings but also to mask delays caused by language generation and speech synthesis so that they are not perceived by the user. We propose a real-time short-response selection task that can be integrated with existing turn-taking models to mask generation delay. To address this task, the proposed model learns the mapping between dialogue context and short responses using contrastive learning. When a turn-taking event is detected, the system selects a response from a set of pre-generated candidates. The selected response is played while the main response is being generated. Experimental results show that the proposed method learns to select short responses based on dialogue context, outperforming random and LLM-based baselines. Moreover, integrating response selection maintained turn-taking prediction performance and added minimal processing overhead.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09057v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            GTCRN-SS: Lightweight Causal Speech Separation with Residual Allocation and Reconstruction Refinement
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Shao-Chun Hu, Zi-Xiang Lin, Hsin-Min Wang, Jeih-Weih Hung, Hung-Shin Lee
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.1
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Low-complexity causal speech separation must preserve speaker information and allocate residual mixture energy without relying on future feature frames. We present GTCRN-SS, a two-stage time-frequency separator that adapts the compact GTCRN enhancement backbone to fixed-output speech separation. The model combines internal residual allocation, reconstruction-conditioned refinement, and frame-aligned recurrent-state transfer. Its complex-mask estimator assigns non-target content to an unreturned residual branch, while the complementary speech estimate conditions a second stage whose final masks remain anchored to the original mixture. A lightweight low-rank adapter transfers causal recurrent evidence between recursive executions without adding another recurrent memory network. The neural graph excludes future feature frames and incurs only the fixed analysis look-ahead of the centered short-time Fourier transform. On noisy Libri2Mix, GTCRN-SS achieves 10.1 dB SDRi and 9.5 dB SI-SNRi with fewer than one million parameters and a low computational footprint. Independently trained ablations confirm the benefits of recurrent-state transfer and reconstruction conditioning, and corpus-level diagnostics show that the internal branch primarily captures residual rather than target-speech content. These results establish GTCRN-SS as an effective quality-efficiency operating point for causal monaural speech separation.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09358v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Language as Trait, Politeness as Strategy: Controlled Tests of Linguistic Effects in LLM Social-Deduction Agents
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Yuchen Li, Lisa Liu, Runqi Zou, ..., Qingquan Zhang, Julian Togelius
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 5.0
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Large language model (LLM) agents coordinate through conversation, and the same message can be phrased in simpler or more complex language, bluntly or politely. We test whether such differences change how other agents judge and act, using the LURK Werewolf framework, which separates each utterance's speech-act predicate from its natural-language realization. We rewrite only the realization, check that the game content is preserved, and replay each game day from saved checkpoints against a re-sampled control. We vary linguistic range consistently across a speaker's messages and politeness strategy per utterance. Across 30 games and 4,335 replays, neither manipulation changes the trust other agents place in the speaker, and no effect on votes or night actions survives correction for multiple comparisons; the largest uncorrected effect is that shifting range away from a neutral paraphrase changes about 4 percentage points more of the other players' votes. In natural play, 88% of face-threatening speech is bald on-record regardless of role.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09768v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            FoleyForge: Free-form, Controllable, Rectified-flow Editing of Sound Effects
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Giovana Morais, Hugo Flores Garc\'ia, Prem Seetharaman, ..., Magdalena Fuentes, Oriol Nieto
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.9
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> We present FoleyForge, a generative model for instruction-based editing of sound effects. Given an input clip and a free-form instruction describing the desired change, it applies the edit while preserving the input's identity. A single model handles semantic, stylistic, and DSP-like changes. We introduce a data pipeline that guides an audio language model to author both DSP-based acoustic edits and similarity-preserving semantic edits, thus addressing the lack of publicly available audio editing data. Such data is then used to fine-tune a rectified-flow audio generation model, which we extend to expose attribute controls for loudness change, edit strength, and an input-derived contour envelope, each tunable via classifier-free guidance, yielding a more expressive editing model. FoleyForge achieves state-of-the-art instruction adherence at competitive audio quality and source faithfulness.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.08695v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            ZeroSep: Separate Anything in Audio with Zero Training
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Chao Huang, Yuesheng Ma, Junxuan Huang, ..., Nima Mesgarani, Chenliang Xu
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.9
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Audio source separation is fundamental for machines to understand complex acoustic environments and underpins numerous audio applications. Current supervised deep learning approaches, while powerful, are limited by the need for extensive, task-specific labeled data and struggle to generalize to the immense variability and open-set nature of real-world acoustic scenes. Inspired by the success of generative foundation models, we investigate whether pre-trained text-guided audio diffusion models can overcome these limitations. We make a surprising discovery: zero-shot source separation can be achieved purely through a pre-trained text-guided audio diffusion model under the right configuration. Our method, named ZeroSep, works by inverting the mixed audio into the diffusion model's latent space and then using text conditioning to guide the denoising process to recover individual sources. Without any task-specific training or fine-tuning, ZeroSep repurposes the generative diffusion model for a discriminative separation task and inherently supports open-set scenarios through its rich textual priors. ZeroSep is compatible with a variety of pre-trained text-guided audio diffusion backbones and delivers strong separation performance on multiple separation benchmarks, surpassing even supervised methods.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://openreview.net/pdf?id=IIjiNTR1cV" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Emo-LiveSync: Real-Time Universal Lip Synchronization with Explicit Emotion Control
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Sangjoon Yu, Seungeun Lee, JoonHeyok Shin, Ji-Su Kang
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.8
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Lip synchronization, the task of generating realistic lip movements synchronized with audio signals, is fundamental to applications such as film dubbing, virtual avatars, and digital content creation. Recent GAN-based methods offer computational efficiency but often lack visual fidelity, while diffusion-based approaches achieve high-quality results at the cost of substantial computational overhead. Moreover, most existing methods are limited to photo-realistic human faces, restricting their applicability to stylized characters and non-human entities. In this paper, we propose an efficient universal lip-sync video generation framework that achieves high-quality results without compromising computational efficiency. We build on LivePortrait, a warp-based portrait animation model, and introduce a training strategy that aligns audio signals to an implicit motion space by distilling knowledge from a pre-trained video-to-motion model. This enables real-time inference while maintaining high visual fidelity, and naturally generalizes to diverse stylistic characters beyond photo-realistic humans. Furthermore, we introduce an expressive control gate that enables explicit manipulation of emotional expressions for content enrichment. Extensive experiments demonstrate that our method achieves state-of-the-art performance in both visual quality and lip-sync accuracy while ensuring real-time inference.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09074v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Ontology-Driven Control of Conversational Agents with a Use-Case for Job Interview Practice
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Barbara Gendron (LORIA, UL), Ga\"el Guibon (LIPN, ..., Mathieu D'aquin (LORIA, UL)
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.8
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Large Language Models (LLMs) have been widely used as conversational agents in both domain-specific and open-domain situations. In domain-specific context, it is often necessary to adapt those LLMs to obtain conversations with desired characteristics, whether those apply at the level of each response (e.g. for tone or style) or more globally (i.e. at the level of a conversational strategy). Such adaptations are, however, generally realized in an ad hoc way, through specific, non-reusable, and non-transparent developments. In this paper, we propose an ontology-based approach to design conversational strategies that rely on the desired and measured characteristics of textual utterances in the conversation. Through a use case related to job interview practice, we show how this approach can be used to control LLMs to follow the strategy defined in the ontology. To this end, we automatically fine-tune the LLM to improve its compliance with ontologically-defined conversation characteristics. Our results show that training the LLM from formally defined concepts effectively enhances alignment with the requested characteristics. Hence, this work demonstrates how ontology-guided conversation control can be achieved while taking into account multiple, concurrent conversation aspects that are formally and transparently defined.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09282v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            An Effective Spoken Language Understanding Approach Leveraging Query-Adaptive Intent Detection
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Bing-Long Kuo, Yu-Hsuan Fang, Tien-Hong Lo, Hsueh-Wei Liao, Berlin Chen
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.7
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Large language models enable fine-tuning-free spoken language understanding (SLU) through in-context learning, but direct query-based retrieval may select semantically similar yet intent irrelevant demonstrations. This paper presents Query-Adaptive Intent Detection via Prototype Extraction (APEX), a two-stage retrieval framework that first selects candidate intents using intent-level prototypes and then retrieves contextual exemplars within the selected intent space. Experiments on the SLURP dataset evaluate joint SLU performance using Exact Match Accuracy (EMA) under full-transcript and perplexity-stratified conditions, with additional retrieval analysis on ASR-generated transcripts. Compared with query-based retrieval, APEX improves EMA by 4.34 and 3.97 percentage points with Qwen3 4B and Gemma-3-4B, respectively, on full transcripts. Under high-perplexity inputs, APEX also yields EMA gains of 7.66 and 2.13 percentage points. Retrieval analysis further indicates that prototype-guided candidate selection achieves higher ground truth intent coverage across multiple input conditions.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09491v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Conflict-Aware Meta-Learning for Generalizable Speech Deepfake Detection
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Siqing Qin, Kong Aik Lee, Youzhi TU, Eng Siong Chng, Man-Wai Mak
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.7
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Speech deepfake detectors built on large self-supervised learning front-ends achieve high in-domain accuracy, yet suffer degradation under domain shift caused by unseen synthesizers, transmission codecs, or unfamiliar acoustic conditions. Meta-learning, particularly model-agnostic meta-learning for domain generalization (MLDG), addresses this issue by simulating domain shifts. However, applying MLDG directly introduces a bi-level optimization challenge that remains unsolved. First, effective domain-shift emulation requires genuine distributional gaps between meta-splits, yet such gaps can frequently produce gradient conflicts, destabilizing the bi-level optimization. Second, the stochastic nature of mini-batch gradients causes the reference direction to fluctuate across iterations, resulting in an optimization trajectory that fails to achieve domain generalization. We propose a conflict-aware meta-learning (CAML) framework, which addresses both challenges through three complementary components. Firstly, base domain gradient surgery (base-DGS) introduces an asymmetric projection that treats the meta-train gradient as a primary anchor. Secondly, EMA-DGS replaces the unstable anchor with its exponential moving average (EMA), providing a stable optimization trajectory anchor that substantially reduces domain-shift-induced conflict detections. Thirdly, layer-wise DGS (LW-DGS) further extends the framework to individual parameter tensors, enabling fine-grained, layer-specific intervention that targets conflict-prone layers while leaving well-aligned parameters intact. Experimental results demonstrate that the proposed CAML framework achieves lower EER than the compared baselines on most cross-dataset evaluations across multiple cross-dataset benchmarks and architectures, achieving a maximum relative improvement of 45.2% in terms of EER.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.08758v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Asymmetric Correspondence Learning for Lexical and Style Embeddings: Interpreting Latent Space via Acoustic Features
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Michael Whealing, Robert Gaizauskas, Thomas Hain
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.6
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Self-supervised speech embeddings jointly encode lexical, speaker, and prosodic information, complicating feature isolation. We introduce Asymmetric Correspondence Learning (ACL), distilling HuBERT features into separate Acoustic Word Embeddings (AWEs) and Acoustic Style Embeddings (ASEs) via a split-latent correspondence bottleneck. Through probing and clustering evaluations on single-word utterances, we demonstrate that substantial variance from extrinsic sources remains encoded within each latent space, despite linear probing indicating the information has been stripped. Whilst the AWE space exhibits cohesive lexical clustering (AP$\approx$0.90, Fisher$\approx$6.28), linear probing on the ASE space achieves 97.9\% speaker accuracy across a diffuse topology (Fisher$\approx$1.01), yet preserves substantial lexical variance (Fisher$\approx$0.86) that remains linearly unrecoverable (0.17\%). To explain these findings, we apply group-level permutation feature importance over eGeMAPS acoustic features, finding that AWEs partition by vocal tract filters and ASEs by $F_0$ dynamics. These findings suggest that standard diagnostic benchmarks may be insufficient for verifying feature isolation, as substantial speech structure can be retained even when it remains entirely hidden from probes.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09313v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            AudioSphere: Towards Self-Supervised Spatial Audio Representation Models
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Goksenin Yuksel, Marcel van Gerven, Kiki van der Heijden
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.6
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Recent audio embedding models learn representations that transfer across clip- and frame-level tasks, yet they operate almost exclusively on single-channel signals and are blind to spatial structure. Spatial audio models capture that structure but rely on clip-level supervision or contrastive objectives, yielding embeddings unsuitable for frame-level tasks like sound event detection and localization (SELD). We argue this dichotomy is not fundamental: patch-level spatial self-supervision can jointly learn acoustic and spatial features at both temporal granularities. We introduce AudioSphere, a multi-channel masked autoencoder trained on Ambisonics recordings that reconstructs both spectral content and directional cues via a joint spatiotemporal masking strategy that masks both time-frequency patches and intensity vectors. AudioSphere supports frame-level predictions while producing strong clip-level representations via aggregation. Alongside the model, we release RealSELD, a standardized benchmark for evaluating frozen backbones on real-world multi-channel SELD. AudioSphere enables, for the first time, SELD with a frozen self-supervised backbone, while matching or exceeding prior self-supervised audio embedding models on clip-level classification tasks spanning environmental sound, speech, and music, and on frame-level sound event detection. All code and data are available at https://github.com/labhamlet/AudioSphere and https://huggingface.co/labhamlet.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09275v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            AISHELL8-FISHEYE: A Fisheye Audio-Visual Dataset for Target Speaker Extraction with Distortion-Aware Baselines
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Peijun Yang, Zhan Jin, Juan Liu, ..., Hao Wang, Ming Li
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.6
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Fisheye cameras offer wide visual coverage but distort facial and lip geometry, challenging audio-visual target speaker extraction. We introduce AISHELL8-FISHEYE, a 47.03-hour corpus of 94 Mandarin speakers with synchronized audio and paired fisheye and normal-camera videos. Speaker-disjoint splits and synthetic two-speaker mixtures support reproducible evaluation under matched acoustic conditions. We also establish a baseline that combines a lip-reading encoder with a frozen distortion-aware branch transferred from fisheye head pose estimation. On fisheye video, adding this branch to an adapted lip encoder improves scale-invariant signal-to-distortion ratio improvement from 10.47 to 11.84 dB. The branch does not improve performance with a frozen lip encoder, highlighting the importance of visual adaptation. A substantial gap to paired normal-camera inputs remains. The corpus and baseline resources support further research on speech extraction from distorted visual cues.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09368v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            TimeOmni-Live: Continuous & Live Time Series Understanding with Long-Term Memory
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Tong Guan, Alexander Chemeris, Yiqing Guo, ..., Shirui Pan, Ming Jin
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.5
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Existing time series language models predominantly follow an offline, one-shot paradigm: they process fixed-length inputs independently and do not retain past states. This static approach fundamentally misaligns with the continuous nature of real-world streaming applications and fails to maintain the historical context necessary for cross-window reasoning. To bridge this gap, we introduce Continuous & Live Time Series Understanding (CL-TSU), a novel paradigm that shifts the focus toward maintaining a persistent, stateful understanding over open-ended data streams. To systematically evaluate this paradigm, we present LiveTS-Suite, the first comprehensive data suite tailored for CL-TSU, supporting data generation, model training, and systematic evaluation across 18 tasks spanning six core capabilities. It comprises over 5K streams totaling 2.2B timesteps, annotated with 15K specific response events. We further design an evaluation protocol that jointly assesses response timeliness, content accuracy, and computational efficiency. Building on this foundation, we propose TimeOmni-Live, the first live time series understanding model. It integrates a hybrid time series encoding for natively temporal input, a stream-persistent hybrid memory mechanism to effectively preserve exact historical evidence and long-term task states, and an elastic stream-inference synchronization strategy to reduce processing lag. Evaluations show that TimeOmni-Live establishes a strong baseline for CL-TSU, outperforming frontier LLMs (90.0 vs. 79.3 for Opus 5) with only 4B parameters and achieving 206$\times$ lower p95 latency than its backbone. Deployment on a Jetson edge device further shows its ability to support real-time continuous temporal understanding locally at the edge.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09502v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM Prompting for Conversational Emotion Recognition
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Jingwen Wang, Jiao Li, Yuhang Qian, Yuyin Wang, Min Zhang
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.4
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Multimodal emotion recognition in conversations (MERC) integrates textual, acoustic, and visual cues to identify utterance-level emotions. However, existing approaches generally do not explicitly adapt multimodal processing to the degree of inter-modal predictive disagreement. In real conversations, semantic incongruity, concealed emotion, noisy observations, and ambiguity can affect modality-specific emotional evidence differently, while the reliability of individual modalities varies across samples. Rather than identifying each source of inconsistency separately, we model their common consequence for emotion recognition as predictive disagreement among unimodal emotion distributions over the same emotion-label set. Such disagreement makes indiscriminate fusion prone to propagating unreliable or competing evidence. Inspired by the Brunswik Lens Model, we propose MiD-ERC, a divergence-centric framework that quantifies inter-modal predictive disagreement using a normalized divergence score and estimates sample-specific modality reliability. MiD-ERC uses these signals to coordinate divergence-guided cross-modal gating, divergence-modulated reliability weighting, and divergence-conditioned adaptive LLM prompting. The framework is trained end-to-end using only standard emotion annotations, without requiring additional conflict labels, auxiliary data construction, or external retrieval modules. Experiments on IEMOCAP and MELD demonstrate that MiD-ERC achieves state-of-the-art performance, with particularly pronounced improvements on high-divergence samples.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.08860v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            SPDMX: Large-Scale Open Stem Audio From Symbolic Music
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Phillip Long, Eduardo Escoto, Julian McAuley, Zachary Novack
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.4
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Large public datasets have driven recent progress in machine learning, from text and vision to speech and general audio. Music remains an outlier, as copyright blocks redistribution of training audio, while many modern tasks need individual stems rather than mixtures. Existing multitrack resources trade off realism, scale, and licensing, while synthetic alternatives rely on proprietary VSTs or naive open rendering that yields weak stems. We introduce SPDMX, a listening-guided rendering of public-domain PDMX scores into an openly-licensed stem corpus with aligned scores and an open render pipeline: $253{,}982$ songs, $490{,}159$ mono stems, and $5{,}469$ song-hours at $44.1$ kHz under CC BY 4.0, with paired MIDI and identifiers linking to PDMX metadata. $88{,}403$ songs ($34.8\%$; $2{,}734$ song-hours) provide multitrack supervision. To our knowledge, this is the largest openly-licensed synthetic multitrack subset by song-hours, enabling source separation, stem-conditioned synthesis, MIDI-to-audio, transcription, and joint symbolic-audio modeling. We release the corpus, metadata, and open pipeline for reuse on other symbolic collections. Demos and experimental notes are on the project page.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.09140v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br><br>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
-    <tr>
-        <td style="font-size: 20px; font-weight: bold; color: #333;">
-            ChainFlow: Few-Step Latent Flow Matching for Speculative Decoding
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #666; padding: 8px 0;">
-            Selim Aktas, Yusuf Erdem Erdem, Ahmed Zeer, ..., Muzaffer Kaan Yuce, Mehmet Fatih Amasyali
-            <br>
-            <i>Unknown Affiliation</i>
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>Relevance:</strong> 4.4
-        </td>
-    </tr>
-    <tr>
-        <td style="font-size: 14px; color: #333; padding: 8px 0;">
-            <strong>TLDR:</strong> Speculative decoding has become a standard way to accelerate LLM inference: a lightweight drafter proposes tokens that the target verifies in one parallel pass. Existing drafters face trade-offs that limits their speedups: autoregressive drafters generate tokens one at a time, so drafting cost grows with draft length, while diffusion drafters generate tokens in parallel but predict each position independently, ignoring inter-token dependencies. We introduce ChainFlow, a new speculative decoding paradigm and the first flow-matching drafter conditioned on the target's hidden states. ChainFlow treats drafting as a short transport over hidden states, needing one or two flow steps instead of the many denoising steps of generation from noise. A variational autoencoder compresses these states so drafting cost barely grows with target size, lightweight feedback heads restore inter-token dependencies, and tree drafting raises acceptance. On Qwen3.5 models, at matched drafter size and training data, ChainFlow outperforms EAGLE-3 and DFlash in vLLM by 39% and 11%, respectively. These gains further widen as drafters are adapted to new languages sequentially. Our ablations cover drafter design and concurrent serving, and we open-source our code and drafter models.
-        </td>
-    </tr>
-
-    <tr>
-        <td style="padding: 8px 0;">
-            <a href="https://arxiv.org/pdf/2611.08669v1" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
-        </td>
-    </tr>
-</table>
-</br>
-</div>
-
-<br><br>
-<div>
-To unsubscribe, remove your email in your Github Action setting.
-</div>
-
+  <p class="meta"><a href="index.html">All results</a></p>
+</main>
 </body>
 </html>
