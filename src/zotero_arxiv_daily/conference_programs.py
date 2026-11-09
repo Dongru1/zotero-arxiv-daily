@@ -2,6 +2,7 @@
 
 import json
 import re
+import time
 from dataclasses import dataclass
 from typing import Callable
 
@@ -186,16 +187,32 @@ def program_sources(year: int) -> list[tuple[str, str, str]]:
     ]
 
 
+def _retry_delay(response: requests.Response) -> float:
+    raw = response.headers.get("Retry-After") or "10"
+    try:
+        delay = float(raw)
+    except ValueError:
+        delay = 10
+    return min(max(delay, 1), 120)
+
+
 def _get(url: str) -> str:
-    response = requests.get(
-        url,
-        headers={"User-Agent": "zotero-arxiv-daily"},
-        timeout=60,
-    )
-    if response.status_code == 404:
-        return ""
-    response.raise_for_status()
-    return response.text
+    for attempt in range(3):
+        response = requests.get(
+            url,
+            headers={"User-Agent": "zotero-arxiv-daily (conference list)"},
+            timeout=60,
+        )
+        if response.status_code == 404:
+            return ""
+        if response.status_code == 429 and attempt < 2:
+            delay = _retry_delay(response)
+            logger.warning(f"Rate limited by {url}. Waiting {int(delay)}s.")
+            time.sleep(delay)
+            continue
+        response.raise_for_status()
+        return response.text
+    return ""
 
 
 def papers_for_venue_year(venue: str, kind: str, url: str, year: int) -> list[ListedPaper]:
@@ -233,18 +250,21 @@ def load_conference_programs(now_year: int) -> list[ListedPaper]:
     )
     for venue, kind, template in templates:
         extra = 2 if venue == "SLT" else 0
-        try:
-            for year in candidate_years(now_year, extra):
+        for year in candidate_years(now_year, extra):
+            if kind == "dblp":
+                time.sleep(1)
+            try:
                 papers = papers_for_venue_year(venue, kind, template.format(year=year), year)
-                if not papers:
-                    continue
-                for paper in papers:
-                    key = (paper.venue, paper.external_id)
-                    if key in seen:
-                        continue
-                    seen.add(key)
-                    found.append(paper)
+            except Exception as exc:
+                logger.warning(f"Skipping {venue} {year} program list: {exc}")
                 break
-        except Exception as exc:
-            logger.warning(f"Skipping {venue} program list: {exc}")
+            if not papers:
+                continue
+            for paper in papers:
+                key = (paper.venue, paper.external_id)
+                if key in seen:
+                    continue
+                seen.add(key)
+                found.append(paper)
+            break
     return found

@@ -1,7 +1,13 @@
 """Parsers and title matching for official conference lists."""
 
+import json
+
+import requests
+
 from zotero_arxiv_daily.conference_programs import (
     candidate_years,
+    load_conference_programs,
+    papers_for_venue_year,
     parse_dblp_hits,
     parse_icassp_accepted,
     parse_isca_index,
@@ -65,6 +71,59 @@ def test_dblp_parser_reads_title_and_link():
 def test_slt_year_falls_back_two_years():
     years = candidate_years(2026, extra_back=2)
     assert select_newest(years, lambda year: year == 2024) == 2024
+
+
+class _Response:
+    def __init__(self, status: int, text: str = ""):
+        self.status_code = status
+        self.text = text
+        self.headers = {"Retry-After": "2"}
+
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            raise requests.HTTPError(f"{self.status_code} Client Error")
+
+
+def test_dblp_retries_when_rate_limited(monkeypatch):
+    calls = []
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        if len(calls) == 1:
+            return _Response(429)
+        return _Response(200, json.dumps(DBLP))
+
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.requests.get", fake_get)
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.time.sleep", lambda delay: None)
+    papers = papers_for_venue_year("SLT", "dblp", "https://dblp.org/search/publ/api?q=slt2024", 2024)
+    assert len(calls) == 2
+    assert papers[0].title == "Spoken Paper"
+
+
+def test_slt_uses_older_year_when_newer_lists_are_missing(monkeypatch):
+    def fake_get(url, **kwargs):
+        if "slt2024" in url:
+            return _Response(200, json.dumps(DBLP))
+        return _Response(404)
+
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.requests.get", fake_get)
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.time.sleep", lambda delay: None)
+    papers = [paper for paper in load_conference_programs(2026) if paper.venue == "SLT"]
+    assert [paper.title for paper in papers] == ["Spoken Paper"]
+
+
+def test_failed_newer_list_does_not_fall_back_to_an_older_year(monkeypatch):
+    def fake_get(url, **kwargs):
+        if "slt2026" in url:
+            raise requests.ConnectionError("temporary failure")
+        if "slt2024" in url:
+            return _Response(200, json.dumps(DBLP))
+        return _Response(404)
+
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.requests.get", fake_get)
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.time.sleep", lambda delay: None)
+    papers = [paper for paper in load_conference_programs(2026) if paper.venue == "SLT"]
+    assert papers == []
 
 
 def test_arxiv_title_match_ignores_case_and_punctuation():

@@ -7,6 +7,7 @@ from pathlib import Path
 from xml.etree import ElementTree
 
 import requests
+from loguru import logger
 
 from .conference_programs import parse_abstract
 from .openreview_state import project_root
@@ -47,8 +48,14 @@ def lookup_arxiv(title: str) -> tuple[str, str] | None:
     """Return ``(abs_url, abstract)`` only when the hit title matches exactly."""
     response = _arxiv_get(title)
     if response.status_code == 429:
-        delay = int(response.headers.get("Retry-After") or 60)
-        time.sleep(min(delay, 600))
+        raw_delay = response.headers.get("Retry-After") or "60"
+        try:
+            delay = int(float(raw_delay))
+        except ValueError:
+            delay = 60
+        delay = min(max(delay, 1), 600)
+        logger.warning(f"arXiv rate limit while matching a title. Waiting {delay}s.")
+        time.sleep(delay)
         response = _arxiv_get(title)
     response.raise_for_status()
     root = ElementTree.fromstring(response.text)
@@ -83,9 +90,19 @@ def _detail_abstract(url: str) -> str:
 
 
 def enrich_papers(papers: list[Paper], root: Path | None = None, pause_seconds: float = 3.0) -> None:
+    total = len(papers)
+    if total == 0:
+        return
+    logger.info(f"Enriching papers: 0% (0/{total})")
     cache = load_cache(root)
     dirty = False
-    for paper in papers:
+    last_percent = 0
+    for index, paper in enumerate(papers, start=1):
+        percent = index * 100 // total
+        if percent != last_percent or index % 25 == 0:
+            title = " ".join(paper.title.split())
+            logger.info(f"Enriching papers: {percent}% ({index}/{total}) {title[:80]}")
+            last_percent = percent
         key = normalize_title(paper.title)
         if not key:
             continue
