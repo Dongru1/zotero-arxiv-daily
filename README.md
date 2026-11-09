@@ -201,7 +201,7 @@ That's all! Now you can test the workflow by manually triggering it:
 
 Then check the log and the receiver email after it finishes.
 
-By default, the main workflow runs on 22:00 UTC everyday. You can change this time by editting the workflow config `.github/workflows/main.yml`. That run is what checks OpenReview. It does not poll during the day. A public release is picked up on the next scheduled run if it falls inside `lookback_hours` (48 by default).
+By default, the main workflow runs at 02:00 UTC (10:00 Beijing time) every day, after arXiv posts its daily announcement. You can change this time by editting the workflow config `.github/workflows/main.yml`. That run is what checks OpenReview. It does not poll during the day. A public release is picked up on the next scheduled run if it falls inside `lookback_hours` (48 by default).
 
 The daily workflow records processed OpenReview note ids in `data/openreview_state.json`. A note that was already handled is not ranked or mailed again, including later revisions of the same submission. The first time a venue has no papers inside the lookback window, the workflow takes only the UTC day of the newest note, sends that batch once, and does not walk into older days afterward. The Test workflow does not write this state file.
 
