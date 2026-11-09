@@ -52,7 +52,44 @@ def get_empty_html():
   """
   return block_template
 
-def get_block_html(title:str, authors:str, rate:str, tldr:str, pdf_url:str, affiliations:str=None):
+def _page_links(paper: Paper) -> list[tuple[str, str]]:
+    """Buttons for the abstract or forum page, separate from the PDF."""
+    links: list[tuple[str, str]] = []
+    seen: set[str] = set()
+
+    def add(label: str, url: str | None) -> None:
+        if not url or url in seen or url == paper.pdf_url:
+            return
+        seen.add(url)
+        links.append((label, url))
+
+    url = paper.url or ""
+    if "openreview.net" in url:
+        add("OpenReview", url)
+    arxiv_url = paper.arxiv_url or ""
+    if not arxiv_url and "arxiv.org/abs/" in url:
+        arxiv_url = url
+    if not arxiv_url and paper.pdf_url and "arxiv.org/pdf/" in paper.pdf_url:
+        arxiv_url = paper.pdf_url.replace("/pdf/", "/abs/", 1)
+    add("arXiv", arxiv_url)
+    if url and "openreview.net" not in url and "arxiv.org" not in url:
+        add("Page", url)
+    return links
+
+
+def get_block_html(title:str, authors:str, rate:str, tldr:str, pdf_url:str, affiliations:str=None, page_links:list[tuple[str, str]] | None = None):
+    buttons = []
+    for label, url in page_links or []:
+        buttons.append(
+            f'<a href="{url}" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #0275d8; padding: 8px 16px; border-radius: 4px; margin-right: 8px;">{label}</a>'
+        )
+    if pdf_url:
+        buttons.append(
+            f'<a href="{pdf_url}" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>'
+        )
+    title_html = title
+    if page_links:
+        title_html = f'<a href="{page_links[0][1]}" style="color: #333; text-decoration: none;">{title}</a>'
     block_template = """
     <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
     <tr>
@@ -80,12 +117,19 @@ def get_block_html(title:str, authors:str, rate:str, tldr:str, pdf_url:str, affi
 
     <tr>
         <td style="padding: 8px 0;">
-            <a href="{pdf_url}" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+            {buttons}
         </td>
     </tr>
 </table>
 """
-    return block_template.format(title=title, authors=authors,rate=rate, tldr=tldr, pdf_url=pdf_url, affiliations=affiliations)
+    return block_template.format(
+        title=title_html,
+        authors=authors,
+        rate=rate,
+        tldr=tldr,
+        buttons="".join(buttons),
+        affiliations=affiliations,
+    )
 
 def get_stars(score:float):
     full_star = '<span class="full-star">⭐</span>'
@@ -128,7 +172,7 @@ def render_email(papers:list[Paper], intro:str | None = None) -> str:
                 affiliations += ', ...'
         else:
             affiliations = 'Unknown Affiliation'
-        parts.append(get_block_html(p.title, authors, rate, p.tldr, p.pdf_url, affiliations))
+        parts.append(get_block_html(p.title, authors, rate, p.tldr, p.pdf_url, affiliations, _page_links(p)))
 
     content = '<br>' + '</br><br>'.join(parts) + '</br>'
     if intro:

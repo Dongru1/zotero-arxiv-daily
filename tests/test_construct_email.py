@@ -10,6 +10,19 @@ def test_render_email_with_papers():
     assert "Sample Paper Title" in html
     assert "A great paper." in html
     assert "MIT" in html
+    assert 'href="https://arxiv.org/abs/2026.00001"' in html
+    assert 'href="https://arxiv.org/pdf/2026.00001"' in html
+
+
+def test_render_email_derives_abs_link_from_pdf():
+    paper = make_sample_paper(
+        url="https://arxiv.org/pdf/2611.09122v1",
+        pdf_url="https://arxiv.org/pdf/2611.09122v1",
+        arxiv_url=None,
+    )
+    html = render_email([paper])
+    assert 'href="https://arxiv.org/abs/2611.09122v1"' in html
+    assert 'href="https://arxiv.org/pdf/2611.09122v1"' in html
 
 
 def test_render_email_empty_list():
