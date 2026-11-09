@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    .star-wrapper {
+      font-size: 1.3em; /* 调整星星大小 */
+      line-height: 1; /* 确保垂直对齐 */
+      display: inline-flex;
+      align-items: center; /* 保持对齐 */
+    }
+    .half-star {
+      display: inline-block;
+      width: 0.5em; /* 半颗星的宽度 */
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .full-star {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<div>
+    <p style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">ICLR 今日公开 547 篇，按文献库相关度选出 20 篇。</p><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Duplex-MPE: Benchmarking Multi-Party Interaction in Full-Duplex Dialogue
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.8
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Real-time full-duplex speech models can listen while speaking, enabling natural interaction without rigid turn boundaries. Existing benchmarks evaluate turn-taking, interruption handling and multi-round dialogue, but largely centre on a designated user rather than an assistant participating in a shared conversation among several people. We introduce Duplex-MPE to evaluate when such an assistant should answer, remain silent or stop speaking. The benchmark contains 2,000 scenarios with three or four human speakers and one assistant, each paired across explicit and implicit addressing of the same request. Models receive continuous conversation audio without transcripts or supplied turn boundaries. Four scores measure fresh response initiation, answer accuracy, silence preservation and stopping when a human resolves a request. We evaluate eight open-weight speech systems: MiniCPM-o 4.5, Moshi, FLM-Audio, Voila, Freeze-Omni, Realtime-Venus-Audio, Moshika-RL-Seamless and PersonaPlex. MiniCPM-o 4.5 leads on three scored capabilities, while frequent speech from other systems can coexist with inaccurate answers or failures to remain silent. A transcript-based Gemini 3.1 Pro reference responds 64.3 percentage points more often to explicit than implicit requests; paired tests detect no significant response-presence difference for the speech systems. Audio examples are provided in the supplementary material.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=3cCUAYrxFe" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Towards Quantifying Benchmark Optimization in ASR Models
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.4
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Public benchmarks are important measures of Automatic Speech Recognition (ASR) model capabilities. However, by nature of being public, there is risk of models being optimized for these benchmarks in ways that do not generalize well to real-world data. We present a methodology for quantifying benchmark optimization, focusing on cases where the audio underdetermines the reference transcript. We identify three families of behavioral probes that reveal models' capabilities of reproducing benchmark reference spans despite underdetermined audio: reference disagreement, masked-number recovery, and orthographic agreement. We find that the highest-scoring open source models output verbatim reference transcript spans even when the relevant audio is contradictory, masked, or ambiguous. Models respond to narrow acoustic cues to reproduce the reference transcript instead of the audio-faithful output. This benchmark-conditioned behavior can be causally manipulated via low-rank linear steering or simply appending audio to the end of a segment in some cases. Overall, our results indicate that high-performing models exhibit benchmark-conditioned behaviors that can inflate benchmark performance without reflecting improved general-purpose transcription ability.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=hiKt0Otgde" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            MOST-OPSD: Dual-Level Speech-Prior Distillation for High-Performance Language BCIs
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.4
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Language brain-computer interfaces (BCIs) offer promising approaches to restoring communication, but accurate speech decoding remains challenging with limited neural recordings. Existing methods mainly improve neural decoding by using phoneme context and enhancing temporal modeling. However, discrete phoneme labels may provide limited explicit guidance on continuous speech dynamics and graded similarities between phonemes, thereby limiting decoding performance and generalization. Here, we propose the **MOST-OPSD** neural decoding framework, combining Mixture of Speech Teachers with privileged On-Policy Self-Distillation, which transfers transcript-generated speech priors to the decoding model at the representation and prediction levels. Specifically, the MOST module transfers structured speech representations across multiple neural stages via independent projections and length-aware Soft-DTW loss, while the OPSD module distills speech-conditioned phoneme distributions by querying speech features using current neural states and applying a shared phoneme head. On the *Brain-to-Text Benchmark '24*, the complete system of the MOST-OPSD neural decoding framework with the language model achieved state-of-the-art performance, achieving a word error rate (WER) of **3.63%** on the hidden test set. Supplementary experiments on the second dataset *Brain-to-Text '25* also show that our method significantly outperforms baselines. The results indicate that the proposed dual-level speech-prior distillation framework provides a promising technical path for high-performance language BCIs.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=8OuDiCC4lw" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            When Reward Doesn't See Everything: Modality-Blind Credit Assignment for Simultaneous Speech-To-Speech Translation
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.2
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Reinforcement learning is increasingly used to fine-tune simultaneous speech-to-speech translation (S2ST) models. These models produce both text and audio at the same time, but the reward functions used to train them are computed almost entirely from text. We show that this mismatch causes a failure the training process cannot detect on its own, in which the training reward rises steadily while the model's own voice quality collapses beneath it. We test this by applying group relative policy optimization (GRPO) with a text-only bilingual evaluation understudy (BLEU) reward to Hibiki-Zero, a 3-billion-parameter S2ST model. During training, the reward score rises steadily, but translation quality on held-out data does not follow it, and audio quality falls sharply. By step 1000, speaker similarity drops by more than 40%, and naturalness, measured by the UTokyo-SaruLab mean opinion score (UTMOS), falls from 3.410 to 2.610. This is not simply a missing safeguard: the collapse persists even when we restore GRPO's Kullback-Leibler (KL) divergence penalty, which limits how far the model may drift from its starting point. Holding the reward fixed, we compare GRPO against proximal policy optimization with generalized advantage estimation (PPO+GAE), which scores each position separately with a learned value function. At equal held-out reward and equal realized KL drift from the initial policy, PPO+GAE degrades naturalness, speaker similarity, and latency significantly less than GRPO in all seed combinations on Europarl-ST, with significantly higher naturalness and lower latency also on FLEURS fr-en, and blind human listeners prefer its output. Replacing only the advantage estimator with a group-normalized one, with reward, KL penalty, group size, and learning rate unchanged, brings the degradation back. We further test four cheaper alternatives, including one with no learned value estimator at all. None prevents the collapse: each regresses significantly from baseline on naturalness, speaker similarity, and latency. This indicates that the degradation depends on how credit is assigned rather than on what the reward measures, and that what matters is not whether a value estimator is present, but whether credit is assigned by comparing samples.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=iWaWySDI6Z" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            LongAudioSpan: Spanning the Duration and Depth of Audio Comprehension
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.1
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> General audio comprehension now covers speech, sound, and music over durations from seconds to hours, driven by large audio-language models (LALMs) that are increasingly omni-modal. Yet the benchmarks that test them still rely on clips of seconds, where scores saturate and models converge; recent long-form efforts extend duration but evaluate long audio much as short clips are. We introduce LongAudioSpan, a benchmark that spans both duration and depth: it pairs audio from 10 minutes to over 2 hours with 3,240 questions across three cognitive levels, namely perception, understanding, and reasoning. Two paths supply the questions, differing in how question content is sourced and how ground truth is obtained. Native QA extracts questions from the audio's content, posing each as a multiple-choice item and an open-ended one graded by detailed rubrics. Anchor QA instead injects ground truth, planting acoustic anchors into the audio and building a perception-to-reasoning chain scored only to the first error. A fully automated pipeline constructs every item through structured captioning, QA generation, and adversarial critic feedback. Evaluating 12 LALMs on LongAudioSpan, we find the hard part comes before reasoning: distilling a few relevant facts from a long, redundant signal. This difficulty grows with audio length and falls hardest on perception, especially temporal grounding. LongAudioSpan is available at https://huggingface.co/datasets/audiospan/LongAudioSpan.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=bABvAduSNW" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            VIPSim: A Dual-Role User Simulation and Judgment Framework for Personalized VLM Alignment
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.0
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Personalized vision-language model (VLM) alignment has become an increasingly important as general-purpose VLMs still fall short of satisfying individual needs. However, the user perspective in this area remains predominantly overlooked. Existing approaches confine interactions and evaluation to limited, static, and single-turn settings. They fail to capture the complexity of real-world multi-turn dialogues, where users' needs vary across individuals and continuously evolve throughout conversations. Furthermore, user simulators remain largely unexplored for multi-modal personalized conversational settings. Prior work has shown that simply prompting assistant-aligned models to act as users often produces unsatisfactory and unrealistic behaviors. In this paper, we introduce \textbf{VIPSim}, a novel dual-role simulation and judgment framework designed to bridge the gap between static evaluation and real-world personalized VLM alignment. Conditioned on minimal personalized profiles and visual assets, our simulator dynamically synthesizes realistic, multi-turn interactions centered around personalized entities. It also serves as a judge to provide internal, multi-dimensional, session-level feedback on the assistant's performance in personalized scenarios. Experiments demonstrate that our fine-tuned \textbf{VIPSim} significantly outperforms both open-source baselines and proprietary models in simulating human-like interactions. Notably, our approach also substantially mitigates hallucination and sycophancy compared to its vanilla counterpart. By leveraging personalized user simulation, our method enables evaluation of personalized VLM alignment performance in realistic settings, bringing personalized VLM alignment one step closer to satisfying individual needs.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=I18ISQs9TC" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Situated Inference: Adapting Frozen Generative Speech Enhancement under Acoustic Distribution Shift
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 5.0
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Diffusion and flow matching models typically enhance speech using fixed inference strategies that may become unsuitable under acoustic distribution shifts in real-world deployment. Our cross-condition analysis shows that the advantage of an inference strategy is not consistently preserved across acoustic conditions, even when the model weights and solver update rule remain fixed. This finding motivates Situated Inference, which specializes the inference strategy of a frozen generative enhancer to its situation, the target acoustic distribution under which it is deployed. Using paired target speech, Situated Inference evaluates a structured inference space that jointly varies observation processing, the reverse starting point, and the solver step count, thereby constructing a target-specific quality and computation profile. From this profile, it selects one strategy either to maximize enhancement quality or to minimize computation subject to the default quality, then fixes that strategy for subsequent inputs. Across four generative backbones and three acoustic conditions, Situated Inference improves perceptual speech quality under quality specialization and reduces the number of function evaluations under efficiency specialization. Deployment on the Ameca humanoid further illustrates the efficiency advantage of Situated Inference in practice, with demonstrations available at https://anonymous.4open.science/w/situated-inference-demo-0761/.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=SiF9YBf3x7" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            How Much to Trust the Eyes? Reliability-Guided Inference for Diffusion-Based Audio-Visual Speech Enhancement
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.9
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Diffusion-based audio-visual speech enhancement (AVSE) iteratively recovers speech from noisy audio conditioned on temporally aligned visual cues. Its real-world deployment may confront distribution shifts, such as visual degradation and audio-visual mismatch, which misguide the reverse diffusion process. Our analysis discloses that visual quality alone does not necessarily determine whether visual conditioning remains useful or misguides enhancement since its effect is coupled with both the pretrained model and the acoustic input. Motivated by these observations, we propose Reliability-Guided Inference (RGI), which takes the departure of both internal visual representations and model responses from those of matched audio-video pairs as evidence of distribution shift inside the pretrained model and converts this evidence into a reliability score that regulates visual conditioning during reverse diffusion. Specifically, at each reverse step, RGI weights the difference between audio-visual and audio-only predictions according to the reliability score, without updating the pretrained models. To retain visual cues that can remain useful at low input signal-to-noise ratio, RGI imposes a lower bound on the conditioning coefficient, the conditioning floor. A diffusion-step schedule further modulates the retained visual contribution along the sampling trajectory. Experiments across four corpora and three frozen diffusion AVSE backbones show that RGI improves enhancement under a range of distribution shifts on the corpora with clean references, with gains that depend on the backbone and corpus. Recordings collected from the Ameca humanoid robot further show that RGI can be deployed for robot interaction, with demonstrations available at https://anonymous.4open.science/w/ameca-demo/.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=2N8aFXk52A" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            SWIFT: Sequence-aware Wasserstein Informed Flow Transport for Conditional Audio Generation
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.8
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Existing methods for coupling audio sequences with noise sequences in flow matching use a frame-level Euclidean ground metric that treats each sequence as a flat vector, entirely ignoring both the temporal structure of acoustic events and the semantic content of the conditioning signal. We propose SWIFT (Sequence-aware Wasserstein Informed Flow Transport), a flow matching training framework for audio generation built on a novel ground metric called the Sliced Wasserstein Sequence Distance (SWSD). SWSD lifts each audio and noise sequence to a probability measure on its time-augmented path embedding, encoding temporal ordering explicitly into the geometry of the ground metric, and computes sliced Wasserstein distances using a semantic-aware slicing measure that concentrates projections along the acoustic subspace indicated by the text or visual conditioning vector. We validate SWIFT on two audio generation tasks: text-to-audio and video-to-audio. SWIFT outperforms baselines across evaluation metrics and inference budgets, with the largest improvements at low numbers of function evaluations, consistent with the design motivation that a semantically informed coupling produces straighter flow paths consistent with the test-time prior. We further demonstrate that a model pretrained with SWIFT provides a stronger initialisation for the reflow procedure, amplifying the benefit of trajectory straightening and achieving lower Fréchet Audio Distance at a fixed inference budget.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=wENkeEgMU7" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            CacheSep: Amortizing Text-Queried Sound Extraction Across Queries in Codec Latents
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.8
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Text-queried target sound extraction models, including recent ones that operate in the latent space of a neural audio codec, condition nearly every layer of their separator on the query, so a recording queried for several sources is processed in full for every query. We study empirically whether the separator needs the query in every layer. We present CacheSep, which changes a codec-domain separator, CodecSep, only in where the query enters: a query-independent Transformer trunk runs once over the mixture's DAC latent and is cached, and each query runs only a shorter tail conditioned on a frozen CLAP text embedding. We retrain CodecSep under identical conditions and decode every codec-latent system through the same lightweight decoder, so with a dense tail CacheSep differs from CodecSep only in where the query enters. On 8,900 held-out mixtures of 89 sound classes from 25 public datasets, making half of the 16 blocks query-independent changes SI-SDRi by +0.04 dB on average over five training seeds and by at most 0.10 dB over ten times longer training, while later queries run 1.84x faster, with no sign of a larger cost in harder mixtures. Removing the query from every block, so that it enters only at the mask head, makes later queries 6.36x faster but changes SI-SDRi by -1.54 dB. Thus we show that a text-queried separator does not need the query in every layer: half of its depth can be computed once per recording and shared by every later query at quality comparable to conditioning every layer, but part of the network must still see the query.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=AVj0zmxl0c" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Task-Aware Answer Preservation under Audio Compression for Large Audio Language Models
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.8
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Large audio language models (LALMs) increasingly reason over long audio clips, motivating audio compression to reduce memory use and inference latency. However, audio compression can leave the model's overall answer accuracy acceptable while severely degrading accuracy for particular query families. We introduce a framework for auditing a given audio compression method by measuring the increase in an LALM's answer error relative to uncompressed audio. We formalize an acceptance criterion that limits this increase for every required query family and derive a practical protocol for testing compression settings with statistical confidence. Experiments spanning five multiple-choice audio question-answering benchmarks and four LALMs expose compression-induced damage hidden by overall accuracy.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=wNQTWSkrge" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            There and Back Again: Bidirectional Diffusion Bridges for Multimodality Translation
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.6
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Multimodality translation (e.g., text-to-image) is a core generative AI task. However, existing approaches (1) have semantically meaningless generative paths, greatly limiting the flexibility of sampling algorithms; (2) are unidirectional, preventing inversion (e.g., image-to-text). We propose BIT: Bidirectional Image-Text Diffusion Bridges. In contrast to previous approaches, BIT starts directly from text and interpolates into images, providing (1) a semantically rich generative path that enables diverse and flexible sampling algorithms; (2) inherent reversibility of the model from image to text, providing a unified, bidirectional generative framework. BIT is derived through rigorous stochastic calculus, yielding SDE forms friendly to simulation and tractable loss functions that scale to high dimensions. Our theoretical and empirical results confirm competitiveness, and often advantage over denoising diffusion and deterministic flow model baselines; not only in vision-language, but also in natural science tasks.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=FSwTPYp45Q" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            BlueMage: Tracing Learning Dynamics of Web-Scale Text-to-Image Flow Models
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.5
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> An open resource of pretrained models and data is critical for studying the dynamics of large-scale models. Despite efforts like Pythia and OLMo in language modeling research, such work has been largely absent for text-to-image generation models. To this end, we introduce BlueMage, a fully traceable suite of web-scale MMDiT flow models of 0.5B, 2.0B, and 3.9B parameters, trained from scratch on 1M, 10M, and 100M images from GPIC, with 40–117 resumable checkpoints per run. Each run’s data order, flow time, noise, and caption dropout are deterministic, so the training history of any checkpoint can be traced. To track concept exposure, we also provide attribute–entity annotations for every training caption. Tracing these runs, we report five findings. (i) An attribute–entity pair such as “red bus” exposed more often is more likely to be generated but barely earlier. (ii) A frequently exposed entity becomes easier to generate, but harder to bind attributes to. (iii) When given two pairs, models initially mix up their attributes, with wrong combinations seen more often during training peaking higher before declining. (iv) Retrieval takes more updates yet fewer repetitions in a larger corpus at the highest dose. (v) Varied captions weaken retrieval through the trained caption while strengthening it through captions never trained on. We release the code, plans, exposure records, and checkpoints.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=ixV0cP8et2" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Removing Brainless Shortcuts Improves Non-Invasive Brain-to-Text
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.5
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> We find that major reported improvements in decoding words from non-invasive brain recordings are largely reproducible without any brain data. In the influential work of d'Ascoli et al. (2025), time series of brain activity from subjects perceiving continuous speech are segmented into fixed-length windows starting at each word. A neural network then generates predictions for all of the words in a sentence together. Neighbouring windows partially overlap, implicitly revealing the interval between words. Since these intervals indicate the duration of the words spoken, and different words tend to take longer – for example, "the" is much shorter than "supercalifragilisticexpialidocious" – the neural network can improve its predictions of words without relying on the underlying brain activity. Consistent with this, the method reaches 22.0% balanced accuracy on synthetic signals containing no brain information, compared with 22.3% on real brain recordings. To prevent the network from learning this shortcut, we make a single, simple change. Instead of jointly encoding all windows in a sentence, we process each independently. As a result, the neural network achieves better performance by learning underlying word-specific information from brain recordings. This makes two existing strategies become much more effective than before. Both aggregating predictions from distinct neural responses to the same word and using a pretrained LLM as a linguistic prior now substantially improve results. On our clinically motivated perceived speech benchmark, this simple recipe (SimpleB2T) achieves a word error rate of 36.6% with five observations per word, approaching past invasive speech decoding performance, albeit under different conditions. The results in this work expose an important shortcut in brain-to-text decoding and show that removing it leads to a simple and considerably more effective strategy.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=Gz6H1YZtjC" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            EMO: A Closed-Loop Test-Time Computation Framework via Alternating Context Optimization and Logits Steering
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.4
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Test-time context optimization adapts frozen language models through textual feedback, but ordinary conditional generation provides no separate control over how strongly to reinforce the distributional changes induced by a context update. We introduce \textbf{EMO}, a training-free framework that couples question-specific context optimization with logits steering. The E-step revises a system context using textual gradients from an external judge without access to gold answers. The M-step contrasts next-token distributions under the revised and preceding contexts at a shared decoding prefix, transforms this contrast into a steering vector, and applies a confidence-constrained logit correction. Feedback on the steered response drives the next context update, coupling adaptation across rounds with intervention within each generation. A logit-space analysis connects the steering vector to the context-induced logit displacement and identifies sufficient conditions for one-round target-KL improvement. Under greedy decoding across eight models and six benchmarks, EMO improves the zero-shot baseline in 39 of 40 aggregated settings (47 of 48 before merging the two AIME editions), averaging $+9.10$ percentage points over the 40 model--task-group pairs. With the same judge, it adds $+1.58$ points on average over context-only optimization, winning in 25 settings and tying in four, with MMLU-Pro gains across all eight models. At matched target-model generation budgets, accuracy advantages over best-of-$N$ are strongest on Llama, while oracle coverage is higher in four of six comparisons despite fewer candidates. The coverage--selection gap motivates allocating test-time computation jointly to candidate generation and verification.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=oks4VA7ho2" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            MoTween: In-Betweening for Part-wise Text-to-Motion Generation
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.4
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Text-to-motion generation aims to synthesize semantically consistent 3D human motions from natural language descriptions. Although recent approaches have achieved remarkable progress, existing methods either overlook the inherent hierarchical structure of the human body or struggle to capture the temporal dynamics described in the text. To address these limitations, we propose MoTween, a novel two-stage framework consisting of Hierarchical Vector Quantized Variational Autoencoder (Hierarchical VQ-VAE) and In-Betweening Motion Generation. In the first stage, we introduce a Hierarchical VQ-VAE that decomposes each pose into fine-grained body parts and coarse body groups, propagating group-level context into part representations to reflect the inherent body structure. In the second stage, we generate motion representations at semantically critical keyframes and subsequently complete the full sequence by in-betweening the remaining frames, enabling temporally coherent generation. Experiments on the HumanML3D and KIT-ML datasets show that MoTween achieves FID on par with the strongest current methods on both benchmarks at a fraction of their inference cost, while also enabling flexible part-level motion editing. The code will be released upon publication.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=yDwwnEdFu0" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            Intervention, Not Shared Latents: Blocking Visual Shortcuts in Audio-Video Generation
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.4
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Joint audio--video (AV) generators are trained on data in which \emph{what an event looks like} and \emph{what it sounds like} are spuriously correlated. We present a \emph{controlled causal study} of the resulting failure mode. In an AV structural causal model where the audio is, by construction, independent of the video's nuisance appearance, models that let audio read video directly---through cross-attention or a shared latent---learn a \emph{visual shortcut}: they predict sound from appearance rather than the causal event and, when the appearance--event correlation is broken at test time, synthesize the wrong event's sound. Crucially, the popular remedy of routing both modalities through a \emph{shared common-cause latent} does \emph{not} fix this---a bottleneck, an unsupervised shared/private factorization, and a faithful shared-prior model all grab the appearance proxy and fail like the direct model. Blocking the shortcut instead requires an \emph{intervention on the nuisance}: under the stated assumptions we prove that counterfactual invariance is necessary and sufficient to identify the causal predictor, and we verify the mechanism from feature-vector \rev{structural causal models to procedural pixel video}, real images with spectrogram audio, moving real digits, and a conditional generator. On a \emph{real, pretrained} V2A generator (MMAudio), an input-intervention test shows the model is far from invariant to sound-irrelevant edits, though a generic-noise control reveals it is broadly input-brittle rather than specifically colour-shortcutting---clean isolation of the shortcut needs the controlled confounds our synthetic studies provide. We characterize \emph{when} the shortcut occurs, compare the objective against supervised counterfactual augmentation, and isolate the \emph{unknown-nuisance} regime---where the intervention cannot be applied---as the central open problem.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=YNfbxnx8yM" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            STRAND: Benchmarking and Improving Object-Centric Spatio-Temporal Monitoring in Video Large Language Models
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.3
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> While multimodal large language models (MLLMs) have advanced video understanding, they remain highly prone to hallucinations in dynamic scenes. We argue this stems from a failure in spatio-temporal monitoring, the ability to persistently track object identities, states, and relations over time. Existing benchmarks obscure this deficit by relying on single final-answer evaluations for queries that can often be resolved via local visual cues or statistical priors. To rigorously diagnose this, we introduce STRAND (Spatio-Temporal Reasoning Audited by Necessary Decomposition), a benchmark of human-verified object-centric facts that evaluates intermediate reasoning by decomposing queries into sub-questions, distinguishing genuine temporal understanding from coincidental correctness. Crucially, we score models with Faithful Accuracy, an unconditional joint metric that credits a prediction only when the target answer and every prerequisite sub-question are correct, so that a model cannot inflate its score by being selectively consistent on the small subset of targets it happens to answer correctly. To address failure modes exposed by STRAND, we further propose STRAND-Track, an object-centric framework that explicitly constructs and reasons over structured object trajectories via chunk-wise state extraction and temporal aggregation. Extensive experiments, including comparisons against end-to-end MLLMs and modular video harnesses on a matched backbone, a configuration matched on frames, calls and tokens simultaneously, and a configuration matched on the answering prompt and its decoding settings, demonstrate that our object-centric framework significantly reduces hallucinated answers and improves spatio-temporal reasoning consistency over state-of-the-art MLLMs. Component ablations isolate cross-chunk identity linking as the step the gain rests on, while an oracle-trajectory reference shows that constructing the trajectories and reasoning over them leave comparable shares of the remaining error, so neither stage alone closes the gap.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=9vVrNt0PtJ" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            ActionLens: Diagnosing Spatial-Temporal Binding Failures in Vision-Language Models
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.3
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Video-capable vision-language models score above 80% on popular benchmarks, yet they systematically fail at something more fundamental: spatial-temporal binding, i.e., associating the right action with the right person at the right moment. We introduce ActionLens, a diagnostic benchmark of 6,701 multiple-choice video questions that decomposes this capability into five orthogonal diagnostics: transition detection, actor-specific identification, concurrent action binding, directed interaction reasoning, and gaze detection. Every ground-truth answer is derived deterministically from AVAv2.2's 1.58 million per-second, per-person annotations, no language model generated our labels. Fourteen rounds of human quality engineering raised answer clarity from 53% to above 90% human accuracy. Evaluating 20 VLMs reveals a sobering gap: the best open-weight model achieves 68.8% weighted average accuracy against 91.0% for humans, with gaze detection collapsing near chance despite 98.6% human accuracy. A coordinate-variant ablation, replacing visual bounding-box overlays with text coordinates, exposes up to a 19.2-point grounding deficit concentrated exclusively on diagnostics that require person-identity binding. A binding-trap analysis shows 13 of 16 models systematically select the wrong actor's action on D2. ActionLens is not another leaderboard; it is a probe: each diagnostic score is an independent measurement of a capability a model either has or does not. We release all data, code, and evaluation scripts at \url{https://anonymous.4open.science/r/lmms-eval-2276}, with ActionLens integrated into lmms-eval for one-command reproduction across any supported VLM.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=QiNIjyU0gq" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br><br>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+    <tr>
+        <td style="font-size: 20px; font-weight: bold; color: #333;">
+            The Cost of Comparing Coupled Generators
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #666; padding: 8px 0;">
+            Anonymous
+            <br>
+            <i>Unknown Affiliation</i>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>Relevance:</strong> 4.3
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size: 14px; color: #333; padding: 8px 0;">
+            <strong>TLDR:</strong> Pairwise evaluation of language models consumes resources both to generate responses and to judge their quality. Coupled sampling offers a way to reduce this cost by sharing randomness across generators. We study how to use this shared randomness to estimate the independent-output win probability at a prescribed accuracy. Our approach compares outputs across independent coupled pairs. When both pairs contain matching responses, symmetry determines the comparison score and the judgment is skipped. We combine this construction with adaptive stopping and characterize its generation and judgment costs in terms of the probability that coupled outputs differ. The analysis reveals a linear dependence for generation and a quadratic dependence for judgment in the high-precision regime. Lower bounds establish both dependencies on the same instances. On E2E and CommonGen, the proposed method uses up to 59\% fewer generated responses and 89\% fewer distinct judgments than the best independent baselines at the same target precision.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 8px 0;">
+            <a href="https://openreview.net/pdf?id=nghXYvp10v" style="display: inline-block; text-decoration: none; font-size: 14px; font-weight: bold; color: #fff; background-color: #d9534f; padding: 8px 16px; border-radius: 4px;">PDF</a>
+        </td>
+    </tr>
+</table>
+</br>
+</div>
+
+<br><br>
+<div>
+To unsubscribe, remove your email in your Github Action setting.
+</div>
+
+</body>
+</html>
