@@ -71,6 +71,14 @@ def fixed_now(monkeypatch):
 
 
 @pytest.fixture(autouse=True)
+def checkpoint_in_tmp(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        "zotero_arxiv_daily.retriever.openreview_retriever._checkpoint_file",
+        lambda: tmp_path / "checkpoint.json",
+    )
+
+
+@pytest.fixture(autouse=True)
 def no_live_program_lists(monkeypatch):
     monkeypatch.setattr(
         "zotero_arxiv_daily.retriever.openreview_retriever.load_conference_programs",
@@ -320,7 +328,7 @@ def test_openreview_skips_seen_ids(config, monkeypatch, fixed_now):
     retriever = _configure(config)
     retriever.state.seen_ids.add("seen")
     papers = retriever.retrieve_papers()
-    assert [paper.title for paper in papers] == ["Fresh paper"]
+    assert [paper.title for paper in papers] == ["Already handled", "Fresh paper"]
     assert retriever.newly_bootstrapped == set()
 
 
@@ -342,7 +350,12 @@ def test_openreview_bootstraps_only_the_latest_public_day(config, monkeypatch, f
     assert {paper.status for paper in papers} == {"under_review"}
 
 
-def test_rate_limit_delay_uses_reset_time():
+def test_pages_for_count_rounds_up():
+    from zotero_arxiv_daily.retriever.openreview_retriever import pages_for_count
+
+    assert pages_for_count(0, 1000) == 0
+    assert pages_for_count(1000, 1000) == 1
+    assert pages_for_count(1001, 1000) == 2
     from datetime import timedelta
     from types import SimpleNamespace
 

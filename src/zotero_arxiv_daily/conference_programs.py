@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Callable
 
 import requests
+from loguru import logger
 
 _TAG = re.compile(r"<[^>]+>")
 _ANTHOLOGY_PAPER = re.compile(
@@ -232,15 +233,18 @@ def load_conference_programs(now_year: int) -> list[ListedPaper]:
     )
     for venue, kind, template in templates:
         extra = 2 if venue == "SLT" else 0
-        for year in candidate_years(now_year, extra):
-            papers = papers_for_venue_year(venue, kind, template.format(year=year), year)
-            if not papers:
-                continue
-            for paper in papers:
-                key = (paper.venue, paper.external_id)
-                if key in seen:
+        try:
+            for year in candidate_years(now_year, extra):
+                papers = papers_for_venue_year(venue, kind, template.format(year=year), year)
+                if not papers:
                     continue
-                seen.add(key)
-                found.append(paper)
-            break
+                for paper in papers:
+                    key = (paper.venue, paper.external_id)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    found.append(paper)
+                break
+        except Exception as exc:
+            logger.warning(f"Skipping {venue} program list: {exc}")
     return found

@@ -1,4 +1,6 @@
 from datetime import date, datetime, timedelta, timezone
+import json
+from pathlib import Path
 from time import sleep
 from typing import Any
 
@@ -57,6 +59,8 @@ _INACTIVE_VENUE_SUFFIXES = (
 _YEAR_IN_ID = re.compile(r"(?:19|20)\d{2}")
 _RATING_NUMBER = re.compile(r"(\d+(?:\.\d+)?)")
 _RATING_FIELDS = ("rating", "overall_recommendation", "recommendation")
+HOURLY_REQUEST_BUDGET = 450
+CHECKPOINT_PATH = Path("data") / "openreview_checkpoint.json"
 
 
 @register_retriever("openreview")
@@ -100,6 +104,9 @@ class OpenReviewRetriever(BaseRetriever):
         self._token: str | None = None
         self.state = OpenReviewState.load(project_root())
         self.newly_bootstrapped: set[str] = set()
+        self._requests_used = 0
+        self._window_started: datetime | None = None
+        self._quota_reset_at: datetime | None = None
 
     def _headers(self) -> dict[str, str]:
         headers = {
@@ -134,6 +141,7 @@ class OpenReviewRetriever(BaseRetriever):
         delay_time = 5
         url = f"{self.api_base}{path}"
         for attempt in range(retry_num):
+            self._wait_for_request_budget()
             headers = self._headers()
             if not authenticated:
                 headers.pop("Authorization", None)
@@ -159,8 +167,11 @@ class OpenReviewRetriever(BaseRetriever):
                 continue
             if response.status_code == 429 and attempt == 0:
                 delay = _rate_limit_delay(response)
+                self._remember_reset(response)
                 logger.warning(f"OpenReview rate limit for {path}. Waiting {int(delay)}s.")
                 sleep(delay)
+                self._requests_used = 0
+                self._window_started = datetime.now(timezone.utc)
                 continue
             if response.status_code in {500, 502, 503, 504} and attempt < retry_num - 1:
                 logger.warning(
@@ -173,6 +184,9 @@ class OpenReviewRetriever(BaseRetriever):
             except requests.HTTPError as exc:
                 body = response.text[:300]
                 raise RuntimeError(f"OpenReview request failed for {path}: {exc}. {body}") from exc
+            self._requests_used += 1
+            if self._window_started is None:
+                self._window_started = datetime.now(timezone.utc)
             return response.json()
         raise RuntimeError(f"OpenReview request failed for {path} after {retry_num} attempts.")
 
@@ -221,9 +235,33 @@ class OpenReviewRetriever(BaseRetriever):
             if len(groups) < 100:
                 break
             offset += 100
-            if offset >= 500:
-                break
         return children
+
+    def _wait_for_request_budget(self) -> None:
+        if self._requests_used < HOURLY_REQUEST_BUDGET:
+            return
+        if self._quota_reset_at is not None:
+            delay = max(1.0, (self._quota_reset_at - datetime.now(timezone.utc)).total_seconds() + 5)
+        elif self._window_started is not None:
+            delay = max(1.0, 3600 - (datetime.now(timezone.utc) - self._window_started).total_seconds() + 5)
+        else:
+            delay = 60
+        delay = min(delay, 4200)
+        logger.warning(f"OpenReview hourly budget reached. Waiting {int(delay)}s before the next request.")
+        sleep(delay)
+        self._requests_used = 0
+        self._window_started = datetime.now(timezone.utc)
+
+    def _remember_reset(self, response: Any) -> None:
+        try:
+            reset = ((response.json() or {}).get("details") or {}).get("resetTime")
+        except Exception:
+            return
+        if isinstance(reset, str):
+            try:
+                self._quota_reset_at = datetime.fromisoformat(reset.replace("Z", "+00:00"))
+            except ValueError:
+                return
 
     def _digest_label(self, venue: str) -> str:
         key = venue.strip().lower()
@@ -294,9 +332,6 @@ class OpenReviewRetriever(BaseRetriever):
             return False
         if not self._content_value(note.get("content"), "title"):
             return False
-        note_id = note.get("id")
-        if note_id and note_id in self.state.seen_ids:
-            return False
         return True
 
     def _collect_notes(
@@ -314,9 +349,11 @@ class OpenReviewRetriever(BaseRetriever):
         read any earlier day.
         """
         submission_id = self._content_value(group.get("content"), "submission_id")
-        collected: list[dict[str, Any]] = []
+        group_id = group.get("id") or submission_id or ""
+        checkpoint = _load_checkpoint().get(group_id) or {}
+        collected: list[dict[str, Any]] = list(checkpoint.get("notes") or []) if not checkpoint.get("complete") else []
         anchor: date | None = None
-        offset = 0
+        offset = 0 if checkpoint.get("complete") else int(checkpoint.get("offset") or 0)
         while unlimited or len(collected) < 100000:
             payload = self._request(
                 "GET",
@@ -329,7 +366,11 @@ class OpenReviewRetriever(BaseRetriever):
                 },
             )
             notes = (payload or {}).get("notes") or []
+            total = int((payload or {}).get("count") or 0)
+            if total and offset == 0:
+                logger.info(f"{group_id} has {total} notes, {pages_for_count(total, self.page_size)} pages.")
             if not notes:
+                _save_group_checkpoint(group_id, offset, [], complete=True)
                 break
             stop = False
             for note in notes:
@@ -348,9 +389,11 @@ class OpenReviewRetriever(BaseRetriever):
                 if self._usable_note(note, group):
                     note["_conference_year"] = _conference_year(group.get("id") or "")
                     collected.append(note)
-            if stop or len(notes) < self.page_size:
-                break
             offset += self.page_size
+            done = stop or len(notes) < self.page_size or (total and offset >= total)
+            _save_group_checkpoint(group_id, offset, [] if done else collected, complete=done)
+            if done:
+                break
         return collected, anchor
 
     def _paper_status(self, note: dict[str, Any], group_id: str) -> str | None:
@@ -498,6 +541,31 @@ class OpenReviewRetriever(BaseRetriever):
         average = sum(scores) / len(scores)
         noun = "review" if len(scores) == 1 else "reviews"
         return f"{average:.1f} / {len(scores)} {noun}"
+
+
+def pages_for_count(count: int, page_size: int) -> int:
+    if count <= 0:
+        return 0
+    return (count + page_size - 1) // page_size
+
+
+def _checkpoint_file() -> Path:
+    return project_root() / CHECKPOINT_PATH
+
+
+def _load_checkpoint() -> dict[str, Any]:
+    path = _checkpoint_file()
+    if not path.is_file():
+        return {}
+    return json.loads(path.read_text())
+
+
+def _save_group_checkpoint(group_id: str, offset: int, notes: list[dict[str, Any]], complete: bool) -> None:
+    payload = _load_checkpoint()
+    payload[group_id] = {"offset": offset, "complete": complete, "notes": notes}
+    path = _checkpoint_file()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload) + "\n")
 
 
 def _rate_limit_delay(response: Any) -> float:

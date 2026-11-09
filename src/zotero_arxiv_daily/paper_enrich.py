@@ -45,12 +45,11 @@ def save_cache(cache: dict, root: Path | None = None) -> None:
 
 def lookup_arxiv(title: str) -> tuple[str, str] | None:
     """Return ``(abs_url, abstract)`` only when the hit title matches exactly."""
-    response = requests.get(
-        "https://export.arxiv.org/api/query",
-        params={"search_query": f'ti:"{title}"', "start": 0, "max_results": 1},
-        headers={"User-Agent": "zotero-arxiv-daily"},
-        timeout=60,
-    )
+    response = _arxiv_get(title)
+    if response.status_code == 429:
+        delay = int(response.headers.get("Retry-After") or 60)
+        time.sleep(min(delay, 600))
+        response = _arxiv_get(title)
     response.raise_for_status()
     root = ElementTree.fromstring(response.text)
     entry = root.find("atom:entry", _ATOM)
@@ -63,6 +62,15 @@ def lookup_arxiv(title: str) -> tuple[str, str] | None:
     paper_id = raw_id.rsplit("/abs/", 1)[-1]
     summary = " ".join(entry.findtext("atom:summary", default="", namespaces=_ATOM).split())
     return f"https://arxiv.org/abs/{paper_id}", summary
+
+
+def _arxiv_get(title: str):
+    return requests.get(
+        "https://export.arxiv.org/api/query",
+        params={"search_query": f'ti:"{title}"', "start": 0, "max_results": 1},
+        headers={"User-Agent": "zotero-arxiv-daily"},
+        timeout=60,
+    )
 
 
 def _detail_abstract(url: str) -> str:
@@ -98,6 +106,7 @@ def enrich_papers(papers: list[Paper], root: Path | None = None, pause_seconds: 
                     abstract = abstract or arxiv_abstract
             cached = {"abstract": abstract, "arxiv_url": arxiv_url}
             cache[key] = cached
+            save_cache(cache, root)
             dirty = True
         if not paper.abstract and cached.get("abstract"):
             paper.abstract = cached["abstract"]

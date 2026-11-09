@@ -57,6 +57,9 @@ jobs:
           if [ -d data/embeddings ]; then
             git add data/embeddings
           fi
+          if [ -f data/openreview_checkpoint.json ]; then
+            git add data/openreview_checkpoint.json
+          fi
           if [ -f data/paper_cache.json ]; then
             git add data/paper_cache.json
           fi
