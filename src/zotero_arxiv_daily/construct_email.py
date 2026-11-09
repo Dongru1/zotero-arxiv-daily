@@ -104,10 +104,13 @@ def get_stars(score:float):
         return '<div class="star-wrapper">'+full_star * full_star_num + half_star * half_star_num + '</div>'
 
 
-def render_email(papers:list[Paper]) -> str:
+def render_email(papers:list[Paper], intro:str | None = None) -> str:
     parts = []
     if len(papers) == 0 :
-        return framework.replace('__CONTENT__', get_empty_html())
+        body = get_empty_html()
+        if intro:
+            body = f'<p style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">{intro}</p>' + body
+        return framework.replace('__CONTENT__', body)
     
     for p in papers:
         #rate = get_stars(p.score)
@@ -128,4 +131,9 @@ def render_email(papers:list[Paper]) -> str:
         parts.append(get_block_html(p.title, authors, rate, p.tldr, p.pdf_url, affiliations))
 
     content = '<br>' + '</br><br>'.join(parts) + '</br>'
+    if intro:
+        content = (
+            f'<p style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">{intro}</p>'
+            + content
+        )
     return framework.replace('__CONTENT__', content)

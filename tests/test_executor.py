@@ -6,7 +6,8 @@ import pytest
 from omegaconf import OmegaConf
 
 from zotero_arxiv_daily.executor import Executor, normalize_path_patterns
-from zotero_arxiv_daily.protocol import CorpusPaper
+from zotero_arxiv_daily.openreview_state import OpenReviewState
+from zotero_arxiv_daily.protocol import CorpusPaper, Paper
 
 
 # ---------------------------------------------------------------------------
@@ -281,3 +282,132 @@ def test_run_no_papers_send_empty_true(config, monkeypatch):
     assert len(sent) == 1, "Email should be sent even with no papers when send_empty=true"
     _, _, body = sent[0]
     assert "text/html" in body
+
+
+def _paper(title: str, source: str = "arxiv", venue: str | None = None) -> Paper:
+    from tests.canned_responses import make_sample_paper
+
+    return make_sample_paper(title=title, source=source, venue=venue)
+
+
+def test_partition_openreview_digests_splits_a_large_release():
+    papers = [
+        _paper("arXiv paper"),
+        _paper("NeurIPS one", source="openreview", venue="NeurIPS"),
+        *[_paper(f"ICLR {i}", source="openreview", venue="ICLR") for i in range(3)],
+    ]
+    daily, digests = Executor.partition_openreview_digests(papers, min_papers=3)
+    assert [paper.title for paper in daily] == ["arXiv paper", "NeurIPS one"]
+    assert len(digests) == 1
+    venue, venue_papers = digests[0]
+    assert venue == "ICLR"
+    assert len(venue_papers) == 3
+
+
+def test_run_sends_conference_digest_separately(config, monkeypatch):
+    import smtplib
+    from email import message_from_string
+    from email.header import decode_header
+
+    from omegaconf import open_dict
+
+    from tests.canned_responses import make_stub_openai_client, make_stub_smtp, make_stub_zotero_client
+
+    with open_dict(config):
+        config.executor.source = ["arxiv", "openreview"]
+        config.executor.reranker = "api"
+        config.executor.send_empty = False
+        config.executor.max_paper_num = 5
+        config.source.openreview.username = "reviewer@example.com"
+        config.source.openreview.password = "secret"
+        config.source.openreview.venues = ["iclr"]
+        config.source.openreview.digest_min_papers = 3
+        config.source.openreview.digest_paper_num = 2
+
+    monkeypatch.setattr("zotero_arxiv_daily.executor.zotero.Zotero", lambda *a, **kw: make_stub_zotero_client())
+    stub_client = make_stub_openai_client()
+    monkeypatch.setattr("zotero_arxiv_daily.executor.OpenAI", lambda **kw: stub_client)
+    monkeypatch.setattr("zotero_arxiv_daily.reranker.api.OpenAI", lambda **kw: stub_client)
+
+    import zotero_arxiv_daily.retriever.arxiv_retriever  # noqa: F401
+    import zotero_arxiv_daily.retriever.openreview_retriever  # noqa: F401
+    from zotero_arxiv_daily.retriever.base import registered_retrievers
+
+    monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
+    monkeypatch.setattr(
+        registered_retrievers["openreview"],
+        "retrieve_papers",
+        lambda self: [_paper(f"ICLR {i}", source="openreview", venue="ICLR") for i in range(4)],
+    )
+
+    sent = []
+    monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp(sent))
+    monkeypatch.setattr("zotero_arxiv_daily.retriever.base.sleep", lambda _: None)
+
+    Executor(config).run()
+
+    assert len(sent) == 2
+
+    def subject_of(raw: str) -> str:
+        header = message_from_string(raw)["Subject"]
+        chunks = []
+        for text, encoding in decode_header(header):
+            chunks.append(text.decode(encoding or "utf-8") if isinstance(text, bytes) else text)
+        return "".join(chunks)
+
+    subjects = [subject_of(body) for _, _, body in sent]
+    assert any(subject.startswith("Daily arXiv") for subject in subjects)
+    assert any(subject.startswith("ICLR 精选") for subject in subjects)
+    digest = next(body for _, _, body in sent if subject_of(body).startswith("ICLR 精选"))
+    html = message_from_string(digest).get_payload(decode=True).decode()
+    assert "今日公开 4 篇" in html
+    assert "选出 2 篇" in html
+
+
+def test_run_persists_seen_ids_and_pages(config, monkeypatch, tmp_path):
+    import smtplib
+
+    from omegaconf import open_dict
+
+    from tests.canned_responses import make_stub_openai_client, make_stub_smtp, make_stub_zotero_client
+
+    with open_dict(config):
+        config.executor.source = ["arxiv", "openreview"]
+        config.executor.reranker = "api"
+        config.executor.send_empty = False
+        config.executor.max_paper_num = 5
+        config.source.openreview.username = "reviewer@example.com"
+        config.source.openreview.password = "secret"
+        config.source.openreview.venues = ["iclr"]
+        config.source.openreview.digest_min_papers = 3
+        config.source.openreview.digest_paper_num = 2
+        config.source.openreview.persist_state = True
+
+    monkeypatch.setattr("zotero_arxiv_daily.executor.project_root", lambda: tmp_path)
+    monkeypatch.setattr("zotero_arxiv_daily.executor.zotero.Zotero", lambda *a, **kw: make_stub_zotero_client())
+    stub_client = make_stub_openai_client()
+    monkeypatch.setattr("zotero_arxiv_daily.executor.OpenAI", lambda **kw: stub_client)
+    monkeypatch.setattr("zotero_arxiv_daily.reranker.api.OpenAI", lambda **kw: stub_client)
+
+    import zotero_arxiv_daily.retriever.arxiv_retriever  # noqa: F401
+    import zotero_arxiv_daily.retriever.openreview_retriever  # noqa: F401
+    from zotero_arxiv_daily.retriever.base import registered_retrievers
+
+    openreview_papers = []
+    for i in range(4):
+        paper = _paper(f"ICLR {i}", source="openreview", venue="ICLR")
+        paper.external_id = f"note-{i}"
+        openreview_papers.append(paper)
+    monkeypatch.setattr(registered_retrievers["arxiv"], "retrieve_papers", lambda self: [_paper("Daily arXiv paper")])
+    monkeypatch.setattr(registered_retrievers["openreview"], "retrieve_papers", lambda self: openreview_papers)
+    monkeypatch.setattr(smtplib, "SMTP", make_stub_smtp([]))
+    monkeypatch.setattr("zotero_arxiv_daily.retriever.base.sleep", lambda _: None)
+
+    Executor(config).run()
+
+    saved = OpenReviewState.load(tmp_path)
+    assert saved.seen_ids == {f"note-{i}" for i in range(4)}
+    assert (tmp_path / "site" / "index.html").is_file()
+    archived = list((tmp_path / "data" / "pages").glob("*.html"))
+    assert any(path.name.endswith("-daily.html") for path in archived)
+    assert any(path.name.endswith("-ICLR.html") for path in archived)

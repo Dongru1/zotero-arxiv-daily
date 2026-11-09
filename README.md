@@ -45,6 +45,7 @@
   - biorxiv
   - medrxiv
   - chemrxiv
+  - openreview (ICLR, NeurIPS, ICML, EMNLP, ACL, SLT; a large same-day release is emailed as its own curated digest)
 
 ## 📷 Screenshot
 ![screenshot](./assets/screenshot.png)
@@ -124,6 +125,21 @@ source:
     category: null # The categories of target medrxiv papers. Find categories from [here](https://www.medrxiv.org/) Example: ["psychiatry and clinical psychology", "neurology"]
   chemrxiv:
     include_new_versions: false # Whether to include revised versions (v2, v3, ...) of previously posted chemrxiv preprints in addition to new first postings. chemrxiv has no category filter: all new preprints (a few dozen per day) are retrieved via Crossref and left to the reranker. Example: true
+  openreview:
+    username: ${oc.env:OPENREVIEW_USERNAME,null} # OpenReview account email. Required because logged-out note requests are rejected. Example: name@example.com
+    password: ${oc.env:OPENREVIEW_PASSWORD,null} # OpenReview account password.
+    venues: # Known names: iclr, neurips, icml, emnlp, acl, slt, icassp, interspeech. A raw venue id is also accepted.
+      - iclr
+      - neurips
+      - icml
+      - emnlp
+      - acl
+      - slt
+      - icassp
+      - interspeech
+    lookback_hours: 48 # Submissions created or updated within this many hours. Example: 48
+    digest_min_papers: 30 # At least this many new papers from one venue triggers a separate curated email. Example: 30
+    digest_paper_num: 20 # Papers kept in that curated email. Example: 20
 
 email:
   sender: ??? # The email account of the SMTP server that sends you email. Example: abc@qq.com
@@ -160,7 +176,7 @@ executor:
   debug: false # Whether to use debug mode. Example: true
   send_empty: false # Whether to send an empty email even if no new papers today. Example: true
   max_paper_num: 100 # The maximum number of the papers presented in the email. Example: 100
-  source: ??? # The sources of papers to retrieve. Example: ['arxiv','biorxiv','medrxiv','chemrxiv']
+  source: ??? # The sources of papers to retrieve. Example: ['arxiv','biorxiv','medrxiv','chemrxiv','openreview']
   reranker: local # The reranker to use. Example: 'local' or 'api'
 ```
 
