@@ -19,5 +19,12 @@
     "run_date": "2026-11-10",
     "venue": null,
     "conference_year": null
+  },
+  {
+    "file": "2026-11-11-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-11",
+    "venue": null,
+    "conference_year": null
   }
 ]
