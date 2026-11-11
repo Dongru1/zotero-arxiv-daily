@@ -1,0 +1,1037 @@
+{
+  "priordynaflowaprioridynamicworkflowconstructionviamultiagentcollaboration": {
+    "abstract": "Recent studies have shown that carefully designed workflows coordinating large language models(LLMs) significantly enhance task-solving capabilities compared to using a single model. While an increasing number of works focus on autonomous workflow construction, most existing approaches rely solely on historical experience, leading to limitations in efficiency and adaptability. We argue that while historical experience is valuable, workflow construction should also flexibly respond to the unique characteristics of each task. To this end, we propose an a priori dynamic framework for automated workflow construction. Our framework first leverages Q-table learning to optimize the decision space, guiding agent decisions and enabling effective use of historical experience. At the same time, agents evaluate the current task progress and make a priori decisions regarding the next executing agent, allowing the system to proactively select the more suitable workflow structure for each given task. Additionally, we incorporate mechanisms such as cold-start initialization, early stopping, and pruning to further improve system efficiency. Experimental evaluations on four benchmark datasets demonstrate the feasibility and effectiveness of our approach. Compared to state-of-the-art baselines, our method achieves an average improvement of 4.05%, while reducing workflow construction and inference costs to only 30.68%-48.31% of those required by existing methods.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14547v1",
+    "arxiv_checked": true
+  },
+  "1bitunlimitedsamplingbeyondfourierdomainlowresolutionsamplingofquantizationnoise": {
+    "abstract": "Analog-to-digital converters (ADCs) play a critical role in digital signal acquisition across various applications, but their performance is inherently constrained by sampling rates and bit budgets. This bit budget imposes a trade-off between dynamic range (DR) and digital resolution, with ADC energy consumption scaling linearly with sampling rate and exponentially with bit depth. To bypass this, numerous approaches, including oversampling with low-resolution ADCs, have been explored. A prominent example is 1-Bit ADCs with Sigma-Delta Quantization (SDQ), a widely used consumer-grade solution. However, SDQs suffer from overloading or saturation issues, limiting their ability to handle inputs with arbitrary DR. The Unlimited Sensing Framework (USF) addresses this challenge by injecting modulo non-linearity in hardware, resulting in a new digital sensing technology. In this paper, we introduce a novel 1-Bit sampling architecture that extends both conventional 1-Bit SDQ and USF. Our contributions are twofold: (1) We generalize the concept of noise shaping beyond the Fourier domain, allowing the inclusion of non-bandlimited signals in the Fourier domain but bandlimited in alternative transform domains. (2) Building on this generalization, we develop a new transform-domain recovery method for 1-Bit USF. When applied to the Fourier domain, our method demonstrates superior performance compared to existing time-domain techniques, offering reduced oversampling requirements and improved robustness. Extensive numerical experiments validate our findings, laying the groundwork for a broader generalization of 1-Bit sampling systems.",
+    "arxiv_url": "https://arxiv.org/abs/2508.19408v2",
+    "arxiv_checked": true
+  },
+  "2in1adualpurposeapproachforeosarshipdetectionwithsourcefreedomainadaptation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "2025urgentspeechenhancementchallengemultilingualp808listeningtestsapproachandresults": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "2iinstructgenerativejointempathydetectionandempathyintentclassificationviaintertaskandinterinstanceinteractions": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dmeshgridroomimpulseresponsesmeasuredwithalinearmicrophonearrayandsuppressionofframereflections": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dmeshsteganographyalgorithmbasedonnonadditivedistortionminimization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dmotionsynthesisfromsparsetrackingwithautoregressivetemporalwindows": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dsceneflowreconstructionfordynamicdeblurringwithbokehrendering": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dawaresemanticalignmentjointglobalandlocalmodelingfor3dfewshotanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3dawareshadowgenerationforcompositeimage": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3ddopamindiffusionoptimizedprojectionalgorithmfor3dmulticoilmrireconstruction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3diffusiondetdiffusionmodelfor3dobjectdetectionwithrobustlidarcamerafusion": {
+    "abstract": "Good 3D object detection performance from LiDAR-Camera sensors demands seamless feature alignment and fusion strategies. We propose the 3DifFusionDet framework in this paper, which structures 3D object detection as a denoising diffusion process from noisy 3D boxes to target boxes. In this framework, ground truth boxes diffuse in a random distribution for training, and the model learns to reverse the noising process. During inference, the model gradually refines a set of boxes that were generated at random to the outcomes. Under the feature align strategy, the progressive refinement method could make a significant contribution to robust LiDAR-Camera fusion. The iterative refinement process could also demonstrate great adaptability by applying the framework to various detecting circumstances where varying levels of accuracy and speed are required. Extensive experiments on KITTI, a benchmark for real-world traffic object identification, revealed that 3DifFusionDet is able to perform favorably in comparison to earlier, well-respected detectors.",
+    "arxiv_url": "https://arxiv.org/abs/2311.03742v1",
+    "arxiv_checked": true
+  },
+  "3dpcnetposecanonicalizationforrobustviewpointinvariant3dkinematicanalysisfrommonocularrgbcameras": {
+    "abstract": "Monocular 3D pose estimators produce camera-centered skeletons, creating view-dependent kinematic signals that complicate comparative analysis in applications such as health and sports science. We present 3DPCNet, a compact, estimator-agnostic module that operates directly on 3D joint coordinates to rectify any input pose into a consistent, body-centered canonical frame. Its hybrid encoder fuses local skeletal features from a graph convolutional network with global context from a transformer via a gated cross-attention mechanism. From this representation, the model predicts a continuous 6D rotation that is mapped to an $SO(3)$ matrix to align the pose. We train the model in a self-supervised manner on the MM-Fi dataset using synthetically rotated poses, guided by a composite loss ensuring both accurate rotation and pose reconstruction. On the MM-Fi benchmark, 3DPCNet reduces the mean rotation error from over 20$^{\\circ}$ to 3.4$^{\\circ}$ and the Mean Per Joint Position Error from ~64 mm to 47 mm compared to a geometric baseline. Qualitative evaluations on the TotalCapture dataset further demonstrate that our method produces acceleration signals from video that show strong visual correspondence to ground-truth IMU sensor data, confirming that our module removes viewpoint variability to enable physically plausible motion analysis.",
+    "arxiv_url": "https://arxiv.org/abs/2509.23455v1",
+    "arxiv_checked": true
+  },
+  "3gempoolingdirectionawareandcompactglobaldescriptorsforvisualplacerecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "3keyinputexploringthetheoreticalminimumkeysfortextentry": {
+    "abstract": "How far can we reduce the number of physical keys if we endow an ambiguous keyboard with modern language models? Fewer keys increase hardware design freedom in constrained settings such as assistive devices and mobile form factors. This paper systematically evaluates text entry systems using 2-5 physical keys combined with language-model-based disambiguation. On a 300-sentence English corpus (100 sentences each for Business / Conversational / Technical), we compare key counts (2-5), letter-to-key mappings (layout-based / frequency-based / intentionally worst-case), and decoders (Trie-only, GPT-2 beam search, GPT-4o selection). We find that 3 keys + GPT-4o achieves character error rate (CER) 9.46% and word error rate (WER) 12.20%, reducing CER by 59% relative to 2 keys (CER 23.3%). At 3 keys, the key-stream entropy is 1.54 bits/char; while increasing to 5 keys improves accuracy (CER 5.4%), the marginal gains diminish. Mapping choice has a small impact under standard designs (\u0394CER < 0.5 pp), and even an intentionally worst mapping degrades CER by only +0.5 pp, whereas Technical sentences yield roughly twice the error rate of Business. These results suggest that, in our evaluated offline setting under a strong LM prior, 3 keys are a practical minimum for general English.",
+    "arxiv_url": "https://arxiv.org/abs/2606.11642v1",
+    "arxiv_checked": true
+  },
+  "abayesianapproachtosingingskillevaluationusingsemitonepitchhistogramandmcmcbasedgeneratedquantities": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abenchmarkdatasetandbaselineframeworkforactionrecognitioninpowerconstructionsafety": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abenchmarkforjointdialoguesatisfactionemotionrecognitionandemotionstatetransitionprediction": {
+    "abstract": "User satisfaction is closely related to enterprises, as it not only directly reflects users' subjective evaluation of service quality or products, but also affects customer loyalty and long-term business revenue. Monitoring and understanding user emotions during interactions helps predict and improve satisfaction. However, relevant Chinese datasets are limited, and user emotions are dynamic; relying on single-turn dialogue cannot fully track emotional changes across multiple turns, which may affect satisfaction prediction. To address this, we constructed a multi-task, multi-label Chinese dialogue dataset that supports satisfaction recognition, as well as emotion recognition and emotional state transition prediction, providing new resources for studying emotion and satisfaction in dialogue systems.",
+    "arxiv_url": "https://arxiv.org/abs/2603.03327v1",
+    "arxiv_checked": true
+  },
+  "abimodalapproachfordetectingfatigueusingspeechandpersonalassessmentsincollegestudents": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abroadbandunitcirclemvdrbeamformerwithspatialadaptivecanceller": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aclassoffinitelylmirepresentableworstcasesinrmaximizationproblemsofrobustadaptivebeamformingforgeneralranksignalmodels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aclearstartingpointareproducibleexperimentalframeworkfortheicassp2026hyperobjectchallenge": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aclosedloopanddatadrivendecodingalgorithmforopticalpulsepositionmodulateduplinksinneuralimplants": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acocktailpartybenchmarkmultimodaldatasetandcomparativeevaluationresults": {
+    "abstract": "We introduce the task of Multi-Modal Context-Aware Recognition (MCoRec) in the ninth CHiME Challenge, which addresses the cocktail-party problem of overlapping conversations in a single-room setting using audio, visual, and contextual cues. MCoRec captures natural multi-party conversations where the recordings focus on unscripted, casual group chats, leading to extreme speech overlap of up to 100% and highly fragmented conversational turns. The task requires systems to answer the question \"Who speaks when, what, and with whom?\" by jointly transcribing each speaker's speech and clustering them into their respective conversations from audio-visual recordings. Audio-only baselines exceed 100% word error rate, whereas incorporating visual cues yields substantial 50% improvements, highlighting the importance of multi-modality. In this manuscript, we present the motivation behind the task, outline the data collection process, and report the baseline systems developed for the MCoRec.",
+    "arxiv_url": "https://arxiv.org/abs/2510.23276v2",
+    "arxiv_checked": true
+  },
+  "acomparativestudyonhowdatanormalizationaffectszeroshotgeneralizationintimeseriesfoundationmodels": {
+    "abstract": "We investigate input normalization methods for Time-Series Foundation Models (TSFMs). While normalization is well-studied in dataset-specific time-series models, it remains overlooked in TSFMs where generalization is critical. Time-series data, unlike text or images, exhibits significant scale variation across domains and channels, coupled with non-stationarity, can undermine TSFM performance regardless of architectural complexity. Through systematic evaluation across four architecturally diverse TSFMs, we empirically establish REVIN as the most efficient approach, reducing zero-shot MASE by 89\\% relative to an un-normalized baseline and by 44\\% versus other normalization methods, while matching the best in-domain accuracy (0.84 MASE) without any dataset-level preprocessing -- yielding the highest accuracy-efficiency trade-off. Yet its effect utilization depends on architectural design choices and optimization objective, particularly with respect to training loss scale sensitivity and model type (probabilistic, point-forecast, or LLM-based models).",
+    "arxiv_url": "https://arxiv.org/abs/2512.02833v2",
+    "arxiv_checked": true
+  },
+  "acomplexdomaincoilslicesensitivecssnoisesimulationformrienablingstronggeneralizationinrealdenoisingscenarios": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acomprehensivebenchmarkforevaluatingvideocolorizationandcolorpropagationmethods": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acomprehensiveecosystemforopendomaincustomizedvideogeneration": {
+    "abstract": "Recent progress in video generation has shown impressive visual synthesis capabilities. However, open-domain customized video generation remains limited by the lack of large-scale, annotated datasets capturing diverse identity-specific attributes. To address this, we introduce PexelsCustom-1M, the first publicly available million-scale dataset for identity-preserving video generation, containing one million curated <identity, text, video> triplets across 8,000+ categories. Leveraging this, we propose CustoMDiT, a parameter-efficient framework that adapts a pretrained multimodal Diffusion Transformer into a customized video generator with only 8% additional learnable parameters. Our method surpasses prior state-of-the-art. However, benchmarks such as DreamBooth cover only 100 classes, which is insufficient for real-world applications. To overcome this, we construct OpenCustom, a new benchmark with 1,000+ categories, created via cross-dataset knowledge fusion from ImageNet and MS-COCO. Extensive experiments confirm the advantages of both our dataset and model. We will open-source the entire ecosystem--including dataset, pipeline, benchmark, and implementations--to support further research.",
+    "arxiv_url": "https://arxiv.org/abs/2606.11783v1",
+    "arxiv_checked": true
+  },
+  "acomprehensiveguidetomultisetcanonicalcorrelationanalysisanditsapplicationtojointblindsourceseparation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aconflictfreespdmmacceleratorforgcninferenceonfpga": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aconsistentlearningdepressiondetectionframeworkintegratingmultiviewattention": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aconversationalentitylinkingmethodbasedonsentencelevelandtokenleveldualevaluation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aconvexdemixingapproachforhybridfieldchannelestimationofxlmimosystemsviaatomicnormminimization": {
+    "abstract": "Channel estimation is a critical task in extremely large-scale multiple-input multiple-output (XL-MIMO) systems for 6G wireless communications. A hybrid-field channel model effectively characterizes the mixed far-field and near-field scattering components in practical XL-MIMO systems. In this paper, we propose a convex demixing approach for hybrid-field channel estimation within the atomic norm minimization (ANM) framework. By promoting sparsity of the far-field and near-field components directly in the continuous parameter domain, a demixing scheme that minimizes a weighted sum of two atomic norms is proposed. We show that the resulting ANM is equivalent to a computationally feasible semi-definite programming (SDP). Numerical experiments on simulated data demonstrate that our method outperforms existing approaches for hybrid-field channel estimation.",
+    "arxiv_url": "https://arxiv.org/abs/2509.18752v1",
+    "arxiv_checked": true
+  },
+  "adatadrivendesignforoptimalsampledsynchronizationofchaoticsystems": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adatacentricframeworkforscientificnaturallanguageinferenceviallmdriveninformationtheoreticaugmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adatadrivenframeworkforpersonalsoundzonecontroladdressingloudspeakernonlinearities": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adatainformedadaptiveconvolutionkernellearningmethodforimagefusion": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adatasetofrobotpatientanddoctorpatientmedicaldialoguesforspokenlanguageprocessingtasks": {
+    "abstract": "Large Language Models (LLMs) have brought huge improvements to Artificial Intelligence (AI), which can be applied to general-purpose tasks. However, their application to textual or spoken medical consultations is still an open research problem. This paper proposes MeDial-Speech, a novel speech dataset for training and evaluating Med-AIs that can carry out consultations with patients. It was collected in realistic environments from robot-patient and doctor-patient dialogues, contains 111+ hours of speech data (without data augmentation), and covers four health conditions: Lewy body dementia, heart failure, shoulder pain, and angina. In addition, we propose a dialogue benchmark via sentence selection (with 20 options) to evaluate three state-of-the-art LLMs: GPT-5 mini, DeepSeek-V3, and Claude Sonnet 4. Experimental results reveal that Claude Sonnet 4 is the best in sentence selection, with 71.1% accuracy using manual transcriptions and 74.7% using automatic transcriptions, and that all LLMs are highly overconfident in their probabilistic predictions, regardless of selecting correct or incorrect sentences in medical dialogues. This dataset is free of charge for non-commercial purposes at: https://huggingface.co/datasets/hcuayahu/MeDial-Speech",
+    "arxiv_url": "https://arxiv.org/abs/2605.26747v1",
+    "arxiv_checked": true
+  },
+  "adecompositionbasedstatespacemodelformultivariatetimeseriesforecasting": {
+    "abstract": "Multivariate time series (MTS) forecasting is crucial for decision-making in domains such as weather, energy, and finance. It remains challenging because real-world sequences intertwine slow trends, multi-rate seasonalities, and irregular residuals. Existing methods often rely on rigid, hand-crafted decompositions or generic end-to-end architectures that entangle components and underuse structure shared across variables. To address these limitations, we propose DecompSSM, an end-to-end decomposition framework using three parallel deep state space model branches to capture trend, seasonal, and residual components. The model features adaptive temporal scales via an input-dependent predictor, a refinement module for shared cross-variable context, and an auxiliary loss that enforces reconstruction and orthogonality. Across standard benchmarks (ECL, Weather, ETTm2, and PEMS04), DecompSSM outperformed strong baselines, indicating the effectiveness of combining component-wise deep state space models and global context refinement.",
+    "arxiv_url": "https://arxiv.org/abs/2602.05389v1",
+    "arxiv_checked": true
+  },
+  "adeepgenerativemodelforfiveclasssleepstagingwitharbitrarysensorinput": {
+    "abstract": "Gold-standard sleep scoring is based on epoch-based assignment of sleep stages based on a combination of EEG, EOG and EMG signals. However, a polysomnographic recording consists of many other signals that could be used for sleep staging, including cardio-respiratory modalities. Leveraging this signal variety would offer important advantages, for example increasing reliability, resilience to signal loss, and application to long-term non-obtrusive recordings. We developed a deep generative model for automatic sleep staging from a plurality of sensors and any -- arbitrary -- combination thereof. We trained a score-based diffusion model using a dataset of 1947 expert-labelled overnight recordings with 36 different signals, and achieved zero-shot inference on any sensor set by leveraging a novel Bayesian factorization of the score function across the sensors. On single-channel EEG, the model reaches the performance limit in terms of polysomnography inter-rater agreement (5-class accuracy 85.6%, Cohen's kappa 0.791). Moreover, the method offers full flexibility to use any sensor set, for example finger photoplethysmography, nasal flow and thoracic respiratory movements, (5-class accuracy 79.0%, Cohen's kappa of 0.697), or even derivations very unconventional for sleep staging, such as tibialis and sternocleidomastoid EMG (5-class accuracy 71.0%, kappa 0.575). Additionally, we propose a novel interpretability metric in terms of information gain per sensor and show this is linearly correlated with classification performance. Finally, our model allows for post-hoc addition of entirely new sensor modalities by merely training a score estimator on the novel input instead of having to retrain from scratch on all inputs.",
+    "arxiv_url": "https://arxiv.org/abs/2408.15253v2",
+    "arxiv_checked": true
+  },
+  "adeeplearningbasedapproachtotrafficaccidentevidenceextraction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adifferentialdenoisingtransformerforpolypsegmentationincolonoscopy": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adiscretewavelettransformbasedlightweighttransformermodelforintelligentfaultdiagnosis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adisentanglementdrivendynamicgraphlearningframeworkforinterpretablemultimodalbrainnetworkanalysis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adistributionmatchingapproachtoneuralpianotranscriptionwithoptimaltransport": {
+    "abstract": "This paper describes a novel paradigm that formalizes automatic piano transcription (APT) as an optimal transport (OT) problem, not as a frame-level multi-label binary classification problem. Our method learns to minimize the cost of transporting a predicted distribution of note events to the ground-truth distribution over time and frequency. The OT loss can thus accommodate temporal misalignment, leading to perceptually relevant optimization. We also propose a convolutional recurrent neural network (CRNN) with a harmonics-aware attention mechanism to capture the spectro-temporal dependencies inherent in music.Our experiments using the MAESTRO dataset showed that our method attained a state-of-the-art performance in onset detection. We confirmed the versatility of the OT loss in application to existing models.",
+    "arxiv_url": "https://arxiv.org/abs/2605.17405v1",
+    "arxiv_checked": true
+  },
+  "adualadaptivegraphconvolutionnetworkforsleepstageclassification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualcrossattentiongraphtransformerformcisubtypesclassificationondensebrainnetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualbranchframeworkforsemanticchangedetectionwithboundaryandtemporalawareness": {
+    "abstract": "Semantic Change Detection (SCD) aims to detect and categorize land-cover changes from bi-temporal remote sensing images. Existing methods often suffer from blurred boundaries and inadequate temporal modeling, limiting segmentation accuracy. To address these issues, we propose a Dual-Branch Framework for Semantic Change Detection with Boundary and Temporal Awareness, termed DBTANet. Specifically, we utilize a dual-branch Siamese encoder where a frozen SAM branch captures global semantic context and boundary priors, while a ResNet34 branch provides local spatial details, ensuring complementary feature representations. On this basis, we design a Bidirectional Temporal Awareness Module (BTAM) to aggregate multi-scale features and capture temporal dependencies in a symmetric manner. Furthermore, a Gaussian-smoothed Projection Module (GSPM) refines shallow SAM features, suppressing noise while enhancing edge information for boundary-aware constraints. Extensive experiments on two public benchmarks demonstrate that DBTANet effectively integrates global semantics, local details, temporal reasoning, and boundary awareness, achieving state-of-the-art performance.",
+    "arxiv_url": "https://arxiv.org/abs/2602.11466v1",
+    "arxiv_checked": true
+  },
+  "adualchannelasrllmarchitecturewithaprogressivetrainingstrategyforlowresourcespeechrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualcontextfusionmodelformultimodalemotionrecognitioninconversations": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualmodulationframeworkforrgbtcrowdcountingviaspatiallymodulatedattentionandadaptivefusion": {
+    "abstract": "Accurate RGB-Thermal (RGB-T) crowd counting is crucial for public safety in challenging conditions. While recent Transformer-based methods excel at capturing global context, their inherent lack of spatial inductive bias causes attention to spread to irrelevant background regions, compromising crowd localization precision. Furthermore, effectively bridging the gap between these distinct modalities remains a major hurdle. To tackle this, we propose the Dual Modulation Framework, comprising two modules: Spatially Modulated Attention (SMA), which improves crowd localization by using a learnable Spatial Decay Mask to penalize attention between distant tokens and prevent focus from spreading to the background; and Adaptive Fusion Modulation (AFM), which implements a dynamic gating mechanism to prioritize the most reliable modality for adaptive cross-modal fusion. Extensive experiments on RGB-T crowd counting datasets demonstrate the superior performance of our method compared to previous works. Code available at https://github.com/Cht2924/RGBT-Crowd-Counting.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17079v1",
+    "arxiv_checked": true
+  },
+  "adualpathapproachtooptimizingllmsentropyconstraintforexploitationandneuralperturbationforexploration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualpathmambawithfixedandvariablepatchesfortimeseriesforecasting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adualstreamcognitiveenhancementdialoguesystemfortheicassp2026humdialchallenge": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adylunetframeworkbasedondynamiclearningfortemporallyconsistentechocardiographicsegmentation": {
+    "abstract": "Accurate segmentation of cardiac anatomy in echocardiography is essential for cardiovascular diagnosis and treatment. Yet echocardiography is prone to deformation and speckle noise, causing frame-to-frame segmentation jitter. Even with high accuracy in single-frame segmentation, temporal instability can weaken functional estimates and impair clinical interpretability. To address these issues, we propose DyL-UNet, a dynamic learning-based temporal consistency U-Net segmentation architecture designed to achieve temporally stable and precise echocardiographic segmentation. The framework constructs an Echo-Dynamics Graph (EDG) through dynamic learning to extract dynamic information from videos. DyL-UNet incorporates multiple Swin-Transformer-based encoder-decoder branches for processing single-frame images. It further introduces Cardiac Phase-Dynamics Attention (CPDA) at the skip connections, which uses EDG-encoded dynamic features and cardiac-phase cues to enforce temporal consistency during segmentation. Extensive experiments on the CAMUS and EchoNet-Dynamic datasets demonstrate that DyL-UNet maintains segmentation accuracy comparable to existing methods while achieving superior temporal consistency, providing a reliable solution for automated clinical echocardiography.",
+    "arxiv_url": "https://arxiv.org/abs/2509.19052v1",
+    "arxiv_checked": true
+  },
+  "adynamicdualbackbonemodelforadaptivevehiclepedestriandetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "adynamicgatedcrossattentionframeworkforaudiotextapparentpersonalityanalysis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "afastalgorithmforcomputationofgeneralintegerorderhankeltransforms": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "afinegrainedmaskguidedmultimodalframeworkforweaklysupervisedinstancesegmentationofrockmicrographs": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "afinegrainedmodalityalignmentmodelformultimodalemotionrecognitioninconversations": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aframeworkforbipartitegraphstructurelearningthrougheigenvectorpartitioning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aframeworkforcontrolledmultispeakeraudiosynthesisforrobustnessevaluationofspeakerdiarisationsystems": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aframeworkfortexttosemanticsegmentationmapgeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "agametheoreticapproachfordistributedmecenabledcollaborativeinferenceinaigcnetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ageneralizationstrategyforspeechqualitypredictionfromdomainspecifictounifieddatasets": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "agenerativemodelforcontrollablefeatureheterophilyingraphs": {
+    "abstract": "We introduce a principled generative framework for graph signals that enables explicit control of feature heterophily, a key property underlying the effectiveness of graph learning methods. Our model combines a Lipschitz graphon-based random graph generator with Gaussian node features filtered through a smooth spectral function of the rescaled Laplacian. We establish new theoretical guarantees: (i) a concentration result for the empirical heterophily score; and (ii) almost-sure convergence of the feature heterophily measure to a deterministic functional of the graphon degree profile, based on a graphon-limit law for polynomial averages of Laplacian eigenvalues. These results elucidate how the interplay between the graphon and the filter governs the limiting level of feature heterophily, providing a tunable mechanism for data modeling and generation. We validate the theory through experiments demonstrating precise control of homophily across graph families and spectral filters.",
+    "arxiv_url": "https://arxiv.org/abs/2509.23230v1",
+    "arxiv_checked": true
+  },
+  "agenerativefirstneuralaudioautoencoder": {
+    "abstract": "Neural autoencoders underpin generative models. Practical, large-scale use of neural autoencoders for generative modeling necessitates fast encoding, low latent rates, and a single model across representations. Existing approaches are reconstruction-first: they incur high latent rates, slow encoding, and separate architectures for discrete vs. continuous latents and for different audio channel formats, hindering workflows from preprocessing to inference conditioning. We introduce a generative-first architecture for audio autoencoding that increases temporal downsampling from 2048x to 3360x and supports continuous and discrete representations and common audio channel formats in one model. By balancing compression, quality, and speed, it delivers 10x faster encoding, 1.6x lower rates, and eliminates channel-format-specific variants while maintaining competitive reconstruction quality. This enables applications previously constrained by processing costs: a 60-second mono signal compresses to 788 tokens, making generative modeling more tractable.",
+    "arxiv_url": "https://arxiv.org/abs/2602.15749v2",
+    "arxiv_checked": true
+  },
+  "agraphbasedframeworkfordetectingsmallnoisytargetstheoryandanalysis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "agraphdrivenhybridcnngnnapproachforvesselclassificationinadaptiveopticsimages": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ahierarchicalcoarsetofinewhisperadaptationframeworkforalsdysarthriaseverityestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ahighperformancehardwareacceleratorforfullyhomomorphicencryptionandapplicationtoneuralnetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ahybridconvolutionmambanetworkwithtoneoctavecontrastivelearningforstratifiedsemisupervisedsingingmelodyextraction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ahybriddiscriminativeandgenerativesystemforuniversalspeechenhancement": {
+    "abstract": "Universal speech enhancement aims at handling inputs with various speech distortions and recording conditions. In this work, we propose a novel hybrid architecture that synergizes the signal fidelity of discriminative modeling with the reconstruction capabilities of generative modeling. Our system utilizes the discriminative TF-GridNet model with the Sampling-Frequency-Independent strategy to handle variable sampling rates universally. In parallel, an autoregressive model combined with spectral mapping modeling generates detail-rich speech while effectively suppressing generative artifacts. Finally, a fusion network learns adaptive weights of the two outputs under the optimization of signal-level losses and the comprehensive Speech Quality Assessment (SQA) loss. Our proposed system is evaluated in the ICASSP 2026 URGENT Challenge (Track 1) and ranks the third place.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19113v1",
+    "arxiv_checked": true
+  },
+  "ahybridgridbasedmethodforvideorepresentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ajointspatialtimefrequencyattentionforleakagedetectioninwaterdistributionnetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "akeywordquerysystemfornonpublicdatabaseschemasbasedonsemanticenhancedinvertedindexing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alearningbasedautomotivesoundfieldreproductionmethodusingplanewavedecompositionandmultipositionconstraint": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alightweightdeeplearningmodelforshorttermatrialfibrillationpredictionfromsingleleadecgsignalsinhealthcare40": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alightweightfourierbasednetworkforbinauralspeechenhancementwithspatialcuepreservation": {
+    "abstract": "Binaural speech enhancement faces a severe trade-off challenge, where state-of-the-art performance is achieved by computationally intensive architectures, while lightweight solutions often come at the cost of significant performance degradation. To bridge this gap, we propose the Global Adaptive Fourier Network (GAF-Net), a lightweight deep complex network that aims to establish a balance between performance and computational efficiency. The GAF-Net architecture consists of three components. First, a dual-feature encoder combining short-time Fourier transform and gammatone features enhances the robustness of acoustic representation. Second, a channel-independent globally adaptive Fourier modulator efficiently captures long-term temporal dependencies while preserving the spatial cues. Finally, a dynamic gating mechanism is implemented to reduce processing artifacts. Experimental results show that GAF-Net achieves competitive performance, particularly in terms of binaural cues (ILD and IPD error) and objective intelligibility (MBSTOI), with fewer parameters and computational cost. These results confirm that GAF-Net provides a feasible way to achieve high-fidelity binaural processing on resource-constrained devices.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14076v2",
+    "arxiv_checked": true
+  },
+  "alightweightnetworkwithadaptivecontextandfrequencyspatialsynergyforhumanposeestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alightweightprnubasedcameradeviceauthenticationbasedondevicespecificimagedownsampling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alightweightsemanticsegmentationsystemfor3dmedicalimage": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alikelihoodapproachforthepredictionofbrainstatesduringmultistableperception": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "allmdrivenacousticsemanticenrichedframeworkforunderwateracoustictargetrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alongformsinglespeakerrealtimemrispeechdatasetandbenchmark": {
+    "abstract": "We release the USC Long Single-Speaker (LSS) dataset containing real-time MRI video of the vocal tract dynamics and simultaneous audio obtained during speech production. This unique dataset contains roughly one hour of video and audio data from a single native speaker of American English, making it one of the longer publicly available single-speaker datasets of real-time MRI speech data. Along with the articulatory and acoustic raw data, we release derived representations of the data that are suitable for a range of downstream tasks. This includes video cropped to the vocal tract region, sentence-level splits of the data, restored and denoised audio, and regions-of-interest timeseries. We also benchmark this dataset on articulatory synthesis and phoneme recognition tasks, providing baseline performance for these tasks on this dataset which future research can aim to improve upon.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14479v1",
+    "arxiv_checked": true
+  },
+  "alowcomplexityequalizerdesignforotfsmodulationindoublydispersivechannels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alowrankangulardomainsamplingsvdapproximationformassivemimosignalprocessing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amaliciouspolicydetectionapproachenhancedbythreatknowledgeinllmbasedembodiedrobots": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amaritimesmalltargetdetectionmethodusingrandomforestwithkmdfeatureenhancementandcostsensitivelearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amedicalmultimodaldiagnosticframeworkintegratingvisionlanguagemodelsandlogictreereasoning": {
+    "abstract": "With the rapid growth of large language models (LLMs) and vision-language models (VLMs) in medicine, simply integrating clinical text and medical imaging does not guarantee reliable reasoning. Existing multimodal models often produce hallucinations or inconsistent chains of thought, limiting clinical trust. We propose a diagnostic framework built upon LLaVA that combines vision-language alignment with logic-regularized reasoning. The system includes an input encoder for text and images, a projection module for cross-modal alignment, a reasoning controller that decomposes diagnostic tasks into steps, and a logic tree generator that assembles stepwise premises into verifiable conclusions. Evaluations on MedXpertQA and other benchmarks show that our method improves diagnostic accuracy and yields more interpretable reasoning traces on multimodal tasks, while remaining competitive on text-only settings. These results suggest a promising step toward trustworthy multimodal medical AI.",
+    "arxiv_url": "https://arxiv.org/abs/2512.21583v1",
+    "arxiv_checked": true
+  },
+  "amemoryaugmenteddualstreamframeworktoachievelonghorizongeneralizationinroboticmanipulation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ametriclearningapproachtoheartmurmurdetectionfromphonocardiogramrecordings": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amixedprecisionfftwithapplicationsinmri": {
+    "abstract": "A mixed precision Fast Fourier transform (FFT) implementation is presented. The procedure uses per-block microscaling (MX), a global power-of-two prescale, and prequantized low bit twiddles. We evaluate forward and round-trip FFT fidelity on two public MRI datasets and compare the effect of various low precision formats, image sizes, and MX block sizes on image quality. Results show that mantissa precision is the primary limiter under MX scaling while ablations suggest weak dependence on image size but a clear block-size trade-off with larger block sizes resulting in better numerical performance.",
+    "arxiv_url": "https://arxiv.org/abs/2512.04317v2",
+    "arxiv_checked": true
+  },
+  "amodelheterogeneousfederatedunlearningmethodvianegativeknowledgedistillation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amodifiedconceftframeworkwithoptimalmultitaperweightsforrobustsynchrosqueezing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amodifiedyolowithdualbranchattentionforhighaccuracydetectionofcornseedlingsinuavimages": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amousedynamicsauthenticationsystemwitharecurrenceplotimagerepresentationandavisiontransformerframework": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultiagentsystemforzeroshotcontrollableimagecaptioning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultidimensionalfeaturefusionandmultileveldomainadaptationnetworkforcrosssubjecteegemotionrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultifrequencycontinuoussharetradingalgorithmwithgarchanddeepreinforcementlearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultimodaldepthawaremethodforembodiedreferenceunderstanding": {
+    "abstract": "Embodied Reference Understanding requires identifying a target object in a visual scene based on both language instructions and pointing cues. While prior works have shown progress in open-vocabulary object detection, they often fail in ambiguous scenarios where multiple candidate objects exist in the scene. To address these challenges, we propose a novel ERU framework that jointly leverages LLM-based data augmentation, depth-map modality, and a depth-aware decision module. This design enables robust integration of linguistic and embodied cues, improving disambiguation in complex or cluttered environments. Experimental results on two datasets demonstrate that our approach significantly outperforms existing baselines, achieving more accurate and reliable referent detection.",
+    "arxiv_url": "https://arxiv.org/abs/2510.08278v3",
+    "arxiv_checked": true
+  },
+  "amultiprototypesgraphbasedclusteringalgorithmwithentropyregularization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultiroundinferencebasedmachinereadingcomprehensionmodelforemotioncausepairextraction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultiscalespatiallycollaborativefrequencyguidednetworkforimagederaining": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultitaskapproachtowardsrobustvietnameseaudiobasedtoxicspandetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "amultiviewfusionframeworkforaudiovisualmultispeakertracking": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aneuralboostingframeworkforcontemporarytrackerlessfreehand3dultrasoundreconstructionestimators": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aneuraloperatorforspatiotemporalsignificantwaveheightpredictionbasedonspectralresidualregionpartitioning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anewtucker2modelwithenhancedcoretensorsparsityfordecomposingcomplexvaluedmultisubjectfmridata": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anewweighttyingarchitectureofnonnegativeneuralnetworkconvergentplugandplayimagerestorationbymonotonelipschitzgradientdenoiser": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anoniterativephaseretrievalconsideringthezerosofstftmagnitude": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anonoverlappinghawkesmodelingfortestinggrangercausality": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anonparametricvariableforgettingfactorrecursiveleastsquaresalgorithm": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anoreferencescreencontentimagequalityassessmentmethodbasedonregionaldistortionperception": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovalmontecarlogradientmethodbasedonmetalearningforeffectivestepsizeselectioninactivenoisecontrol": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovel3dcnntransformerhybridmodelbasedondynamicfunctionalconnectivityforfnirsisometricgripforceclassification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelarbitraryrecoverablemultiimagehidingalgorithmbasedonpolarizationtheory": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelarraydesignwithincreaseddegreesoffreedombyemployingtheverticalmotionofuniformcirculararray": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelautomaticframeworkforspeakerdriftdetectioninsynthesizedspeech": {
+    "abstract": "Recent diffusion-based text-to-speech (TTS) models achieve high naturalness and expressiveness, yet often suffer from speaker drift, a subtle, gradual shift in perceived speaker identity within a single utterance. This underexplored phenomenon undermines the coherence of synthetic speech, especially in long-form or interactive settings. We introduce the first automatic framework for detecting speaker drift by formulating it as a binary classification task over utterance-level speaker consistency. Our method computes cosine similarity across overlapping segments of synthesized speech and prompts large language models (LLMs) with structured representations to assess drift. We provide theoretical guarantees for cosine-based drift detection and demonstrate that speaker embeddings exhibit meaningful geometric clustering on the unit sphere. To support evaluation, we construct a high-quality synthetic benchmark with human-validated speaker drift annotations. Experiments with multiple state-of-the-art LLMs confirm the viability of this embedding-to-reasoning pipeline. Our work establishes speaker drift as a standalone research problem and bridges geometric signal analysis with LLM-based perceptual reasoning in modern TTS.",
+    "arxiv_url": "https://arxiv.org/abs/2604.06327v1",
+    "arxiv_checked": true
+  },
+  "anovelbayesianemlikealgorithmforfastcomptoncameraimaging": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelintrinsiccramrraoboundforexactgaussiandistributiononliegroups": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anoveliterativeotfsdetectorbasedonlocallmmseandglobalmessagepassing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelmethodforsleepstageclassificationbasedoncrossattentionwithdissimilarity": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelmultibeamtimedivisionisacapproachwithaccuratesensing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelmultiscalefeaturefusionmethodforrealtimedangerousdrivingbehaviordetectioninrealworlddrivingscenarios": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelmultiscaleorderfrequencyspectralcorrelationestimatorforangletimecyclostationarysignals": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelselfcorrectingdirectpositiondeterminationinasynchronoussensornetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anovelunderwaterintegratedcommunicationandpositioningalgorithmbasedonoamofdm": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "anumericallystablehouseholderbasedexrlsalgorithm": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aparameterefficientmultiscaleconvolutionaladapterforsyntheticspeechdetection": {
+    "abstract": "Recent synthetic speech detection models typically adapt a pre-trained SSL model via finetuning, which is computationally demanding. Parameter-Efficient Fine-Tuning (PEFT) offers an alternative. However, existing methods lack the specific inductive biases required to model the multi-scale temporal artifacts characteristic of spoofed audio. This paper introduces the Multi-Scale Convolutional Adapter (MultiConvAdapter), a parameter-efficient architecture designed to address this limitation. MultiConvAdapter integrates parallel convolutional modules within the SSL encoder, facilitating the simultaneous learning of discriminative features across multiple temporal resolutions, capturing both short-term artifacts and long-term distortions. With only $3.17$M trainable parameters ($1\\%$ of the SSL backbone), MultiConvAdapter substantially reduces the computational burden of adaptation. Evaluations on five public datasets, demonstrate that MultiConvAdapter achieves superior performance compared to full fine-tuning and established PEFT methods.",
+    "arxiv_url": "https://arxiv.org/abs/2510.24852v1",
+    "arxiv_checked": true
+  },
+  "aparametricpowermodelofuppermidbandfr3basestationsfor6g": {
+    "abstract": "Increasing attention is given to the upper mid-band or Frequency Range 3 (FR3), from 7 to 24 GHz, in the research towards sixth-generation (6G) networks. Promises of offering large data rates at favorable propagation conditions are leading to novel FR3 base station (BS) architectures, with up to thousands of antenna elements and radio-frequency (RF) chains. This work investigates the power consumption of prospective FR3 BSs and its relation to the delivered data rates. We model the power consumed by digital and analog signal processing, power amplifiers (PAs), and supply and cooling during four phases (data, signaling, micro-sleep, and idle) in downlink and uplink. Hybrid partially-connected beamforming is compared to fully-digital one. Results show that, for BS arrays with $1024$ antennas at $30\\%$ of load, the PA consumes most of the power when $64$ or less RF chains are utilized, while the digital and analog processing consumption takes over when the number of RF chains is $512$ or more. The digital plus analog processing consumes $2\\times$ to $4\\times$ more than the PA for fully-digital beamforming. Hybrid beamforming achieves $1.3$ Gbit/s/user in downlink while improving the energy efficiency by $1.4\\times$ compared to fully-digital beamforming.",
+    "arxiv_url": "https://arxiv.org/abs/2510.10647v1",
+    "arxiv_checked": true
+  },
+  "apersonalizedrealtimeproactivevoicememoryassistant": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "apointprocessmodelofskinconductanceresponsesinastrooptaskforpredictingdepressionandsuicidalideation": {
+    "abstract": "Accurate identification of mental health biomarkers can enable earlier detection and objective assessment of compromised mental well-being. In this study, we analyze electrodermal activity recorded during an Emotional Stroop task to capture sympathetic arousal dynamics associated with depression and suicidal ideation. We model the timing of skin conductance responses as a point process whose conditional intensity is modulated by task-based covariates, including stimulus valence, reaction time, and response accuracy. The resulting subject-specific parameter vector serves as input to a machine learning classifier for distinguishing individuals with and without depression. Our results show that the model parameters encode meaningful physiological differences associated with depressive symptomatology and yield superior classification performance compared to conventional feature extraction methods.",
+    "arxiv_url": "https://arxiv.org/abs/2510.00422v1",
+    "arxiv_checked": true
+  },
+  "apseudoinversebasedmomentumfistaforsparsesignalrecovery": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aquerybasedendtoendtransformerforthirdpersonhumangazeanalysisviajointfinetuningstrategy": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aqueueingmodelformemorycontrollerschedulersubjecttodramcolumnaccesstimingconstraints": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "arandommatrixperspectiveofechostatenetworksfromprecisebiasvariancecharacterizationtooptimalregularization": {
+    "abstract": "We present a rigorous asymptotic analysis of Echo State Networks (ESNs) in a teacher student setting with a linear teacher with oracle weights. Leveraging random matrix theory, we derive closed form expressions for the asymptotic bias, variance, and mean-squared error (MSE) as functions of the input statistics, the oracle vector, and the ridge regularization parameter. The analysis reveals two key departures from classical ridge regression: (i) ESNs do not exhibit double descent, and (ii) ESNs attain lower MSE when both the number of training samples and the teacher memory length are limited. We further provide an explicit formula for the optimal regularization in the identity input covariance case, and propose an efficient numerical scheme to compute the optimum in the general case. Together, these results offer interpretable theory and practical guidelines for tuning ESNs, helping reconcile recent empirical observations with provable performance guarantees",
+    "arxiv_url": "https://arxiv.org/abs/2509.22011v1",
+    "arxiv_checked": true
+  },
+  "arobustknnapproachformulticlasslaryngealdiseasedetectionusingmfccfeatures": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "arobustmethodforgearfailuredetectionandseverityestimationbasedonmultisensorphysicalfeaturefusionanddomainadaptation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "arobustmultiscaleframeworkwithtesttimeadaptationforseegbasedspeechdecoding": {
+    "abstract": "Decoding speech from stereo-electroencephalography (sEEG) signals has emerged as a promising direction for brain-computer interfaces (BCIs). Its clinical applicability, however, is limited by the inherent non-stationarity of neural signals, which causes domain shifts between training and testing, undermining decoding reliability. To address this challenge, a two-stage framework is proposed for enhanced robustness. First, a multi-scale decomposable mixing (MDM) module is introduced to model the hierarchical temporal dynamics of speech production, learning stable multi-timescale representations from sEEG signals. Second, a source-free online test-time adaptation (TTA) method performs entropy minimization to adapt the model to distribution shifts during inference. Evaluations on the public DU-IN spoken word decoding benchmark show that the approach outperforms state-of-the-art models, particularly in challenging cases. This study demonstrates that combining invariant feature learning with online adaptation is a principled strategy for developing reliable BCI systems. Our code is available at https://github.com/lyyi599/MDM-TENT.",
+    "arxiv_url": "https://arxiv.org/abs/2509.24700v1",
+    "arxiv_checked": true
+  },
+  "ascaledpoissonbayesianmodelforviralepidemicmonitoring": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "asimilarityguidedaggregationnetworkforsoundeventlocalizationanddetectionwithsourcedistanceestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aspectralguidedlatentphysicssolverforpdeproblems": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aspeechdrivenparadigmforphysicsinformedmodelingofcoupledmicrospeakers": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "astabilizedhybridactivenoisecontrolalgorithmofgfancandfxnlmswithonlineclustering": {
+    "abstract": "The Filtered-x Normalized Least Mean Square (FxNLMS) algorithm suffers from slow convergence and a risk of divergence, although it can achieve low steady-state errors after sufficient adaptation. In contrast, the Generative Fixed-Filter Active Noise Control (GFANC) method offers fast response speed, but its lack of adaptability may lead to large steady-state errors. This paper proposes a hybrid GFANC-FxNLMS algorithm to leverage the complementary advantages of both approaches. In the hybrid GFANC-FxNLMS algorithm, GFANC provides a frame-level control filter as an initialization for FxNLMS, while FxNLMS performs continuous adaptation at the sampling rate. Small variations in the GFANC-generated filter may repeatedly reinitialize FxNLMS, interrupting its adaptation process and destabilizing the system. An online clustering module is introduced to avoid unnecessary re-initializations and improve system stability. Simulation results show that the proposed algorithm achieves fast response, very low steady-state error, and high stability, requiring only one pre-trained broadband filter.",
+    "arxiv_url": "https://arxiv.org/abs/2601.15889v1",
+    "arxiv_checked": true
+  },
+  "astagewiselearningstrategywithfixedanchorsforrobustspeakerverification": {
+    "abstract": "Learning robust speaker representations under noisy conditions presents significant challenges, which requires careful handling of both discriminative and noise-invariant properties. In this work, we proposed an anchor-based stage-wise learning strategy for robust speaker representation learning. Specifically, our approach begins by training a base model to establish discriminative speaker boundaries, and then extract anchor embeddings from this model as stable references. Finally, a copy of the base model is fine-tuned on noisy inputs, regularized by enforcing proximity to their corresponding fixed anchor embeddings to preserve speaker identity under distortion. Experimental results suggest that this strategy offers advantages over conventional joint optimization, particularly in maintaining discrimination while improving noise robustness. The proposed method demonstrates consistent improvements across various noise conditions, potentially due to its ability to handle boundary stabilization and variation suppression separately.",
+    "arxiv_url": "https://arxiv.org/abs/2510.18530v2",
+    "arxiv_checked": true
+  },
+  "astatedependentmarkovdiffusionprocessforgenerativespeechenhancement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "astudyofdataselectionstrategiesforpretrainingselfsupervisedspeechmodels": {
+    "abstract": "Self-supervised learning (SSL) has transformed speech processing, yet its reliance on massive pre-training datasets remains a bottleneck. While robustness is often attributed to scale and diversity, the role of the data distribution is less understood. We systematically examine how curated subsets of pre-training data influence Automatic Speech Recognition (ASR) performance. Surprisingly, optimizing for acoustic, speaker, or linguistic diversity yields no clear improvements over random sampling. Instead, we find that prioritizing the longest utterances achieves superior ASR results while using only half the original dataset, reducing pre-training time by 24% on a large corpora. These findings suggest that for pre-training speech SSL models, data length is a more critical factor than either data diversity or overall data quantity for performance and efficiency, offering a new perspective for data selection strategies in SSL speech processing.",
+    "arxiv_url": "https://arxiv.org/abs/2601.20896v2",
+    "arxiv_checked": true
+  },
+  "asuperbstylebenchmarkofselfsupervisedspeechmodelsforaudiodeepfakedetection": {
+    "abstract": "Self-supervised learning (SSL) has transformed speech processing, with benchmarks such as SUPERB establishing fair comparisons across diverse downstream tasks. Despite it's security-critical importance, Audio deepfake detection has remained outside these efforts. In this work, we introduce Spoof-SUPERB, a benchmark for audio deepfake detection that systematically evaluates 20 SSL models spanning generative, discriminative, and spectrogram-based architectures. We evaluated these models on multiple in-domain and out-of-domain datasets. Our results reveal that large-scale discriminative models such as XLS-R, UniSpeech-SAT, and WavLM Large consistently outperform other models, benefiting from multilingual pretraining, speaker-aware objectives, and model scale. We further analyze the robustness of these models under acoustic degradations, showing that generative approaches degrade sharply, while discriminative models remain resilient. This benchmark establishes a reproducible baseline and provides practical insights into which SSL representations are most reliable for securing speech systems against audio deepfakes.",
+    "arxiv_url": "https://arxiv.org/abs/2603.01482v1",
+    "arxiv_checked": true
+  },
+  "asupportvectorapproachinsegmentedregressionformapassistednoncooperativesourcelocalization": {
+    "abstract": "This paper presents a non-cooperative source localization approach based on received signal strength (RSS) and 2D environment map, considering both line-of-sight (LOS) and non-line-of-sight (NLOS) conditions. Conventional localization methods, e.g., weighted centroid localization (WCL), may perform bad. This paper proposes a segmented regression approach using 2D maps to estimate source location and propagation environment jointly. By leveraging topological information from the 2D maps, a support vector-assisted algorithm is developed to solve the segmented regression problem, separate the LOS and NLOS measurements, and estimate the location of source. The proposed method demonstrates a good localization performance with an improvement of over 30% in localization rooted mean squared error (RMSE) compared to the baseline methods.",
+    "arxiv_url": "https://arxiv.org/abs/2501.04237v2",
+    "arxiv_checked": true
+  },
+  "ataskawareduallevelselfsupervisedlearningmethodforeffectivesoundeventdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "atextimagefusionmethodwithdataaugmentationcapabilitiesforreferringmedicalimagesegmentation": {
+    "abstract": "Deep learning relies heavily on data augmentation to mitigate limited data, especially in medical imaging. Recent multimodal learning integrates text and images for segmentation, known as referring or text-guided image segmentation. However, common augmentations like rotation and flipping disrupt spatial alignment between image and text, weakening performance. To address this, we propose an early fusion framework that combines text and visual features before augmentation, preserving spatial consistency. We also design a lightweight generator that projects text embeddings into visual space, bridging semantic gaps. Visualization of generated pseudo-images shows accurate region localization. Our method is evaluated on three medical imaging tasks and four segmentation frameworks, achieving state-of-the-art results. Code is publicly available on GitHub: https://github.com/11yxk/MedSeg_EarlyFusion.",
+    "arxiv_url": "https://arxiv.org/abs/2510.12482v1",
+    "arxiv_checked": true
+  },
+  "atexttotextalignmentalgorithmforbetterevaluationofmodernspeechrecognitionsystems": {
+    "abstract": "Modern neural networks have greatly improved performance across speech recognition benchmarks. However, gains are often driven by frequent words with limited semantic weight, which can obscure meaningful differences in word error rate, the primary evaluation metric. Errors in rare terms, named entities, and domain-specific vocabulary are more consequential, but remain hidden by aggregate metrics. This highlights the need for finer-grained error analysis, which depends on accurate alignment between reference and model transcripts. However, conventional alignment methods are not designed for such precision. We propose a novel alignment algorithm that couples dynamic programming with beam search scoring. Compared to traditional text alignment methods, our approach provides more accurate alignment of individual errors, enabling reliable error analysis. The algorithm is made available via PyPI.",
+    "arxiv_url": "https://arxiv.org/abs/2509.24478v2",
+    "arxiv_checked": true
+  },
+  "atrainingfreeframeworkforhighfidelityappearancetransferviadiffusiontransformers": {
+    "abstract": "Diffusion Transformers (DiTs) excel at generation, but their global self-attention makes controllable, reference-image-based editing a distinct challenge. Unlike U-Nets, naively injecting local appearance into a DiT can disrupt its holistic scene structure. We address this by proposing the first training-free framework specifically designed to tame DiTs for high-fidelity appearance transfer. Our core is a synergistic system that disentangles structure and appearance. We leverage high-fidelity inversion to establish a rich content prior for the source image, capturing its lighting and micro-textures. A novel attention-sharing mechanism then dynamically fuses purified appearance features from a reference, guided by geometric priors. Our unified approach operates at 1024px and outperforms specialized methods on tasks ranging from semantic attribute transfer to fine-grained material application. Extensive experiments confirm our state-of-the-art performance in both structural preservation and appearance fidelity.",
+    "arxiv_url": "https://arxiv.org/abs/2603.26767v1",
+    "arxiv_checked": true
+  },
+  "atwophasehybridtaskschedulingalgorithmwithrouteplanning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "atwostagegloballydiverseadversarialattackforvisionlanguagepretrainingmodels": {
+    "abstract": "Vision-language pre-training (VLP) models are vulnerable to adversarial examples, particularly in black-box scenarios. Existing multimodal attacks often suffer from limited perturbation diversity and unstable multi-stage pipelines. To address these challenges, we propose 2S-GDA, a two-stage globally-diverse attack framework. The proposed method first introduces textual perturbations through a globally-diverse strategy by combining candidate text expansion with globally-aware replacement. To enhance visual diversity, image-level perturbations are generated using multi-scale resizing and block-shuffle rotation. Extensive experiments on VLP models demonstrate that 2S-GDA consistently improves attack success rates over state-of-the-art methods, with gains of up to 11.17\\% in black-box settings. Our framework is modular and can be easily combined with existing methods to further enhance adversarial transferability.",
+    "arxiv_url": "https://arxiv.org/abs/2601.12304v1",
+    "arxiv_checked": true
+  },
+  "aunifiedfourstagedynamiccycleforrobustfederatedfinetuningoflargelanguagemodels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aunifiedhardwareacceleratorforprivacypreservingllmsclientsidebasedonckkshomomorphicencryption": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aunifiedmultiencoderframeworkformusiclyricintelligibilityassessmentbridginginvasiveandnoninvasiveparadigms": {
+    "abstract": "Lyric intelligibility significantly impacts music engagement and comprehension, especially for hearing-impaired individuals. Existing speech intelligibility metrics perform poorly in musical contexts due to differences in prosody, timing, and spectral dynamics. We propose a unified multi-encoder framework that supports both invasive and non-invasive modeling for robust lyric intelligibility prediction. By capturing complementary local acoustic-semantic alignments, global musical semantics, and ASR-derived textual cues, our method achieves superior performance over baselines on the ICASSP 2026 Cadenza dataset, with the best model achieving 26.61 RMSE, a $9.2$\\% improvement over the baseline, demonstrating its flexibility and robustness.",
+    "arxiv_url": "https://arxiv.org/abs/2611.07485v1",
+    "arxiv_checked": true
+  },
+  "aunifiedratecontrolmethodforspinningandnonspinninglidarpointcloudcompression": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aunifiedspokenlanguagemodelwithinjectedemotionalattributionthinkingforhumanlikeinteraction": {
+    "abstract": "This paper presents a unified spoken language model for emotional intelligence, enhanced by a novel data construction strategy termed Injected Emotional-Attribution Thinking (IEAT). IEAT incorporates user emotional states and their underlying causes into the model's internal reasoning process, enabling emotion-aware reasoning to be internalized rather than treated as explicit supervision. The model is trained with a two-stage progressive strategy. The first stage performs speech-text alignment and emotional attribute modeling via self-distillation, while the second stage conducts end-to-end cross-modal joint optimization to ensure consistency between textual and spoken emotional expressions. Experiments on the Human-like Spoken Dialogue Systems Challenge (HumDial) Emotional Intelligence benchmark demonstrate that the proposed approach achieves top-ranked performance across emotional trajectory modeling, emotional reasoning, and empathetic response generation under both LLM-based and human evaluations.",
+    "arxiv_url": "https://arxiv.org/abs/2601.04960v1",
+    "arxiv_checked": true
+  },
+  "aunifiedsvdmodalsolutionforsparsesoundfieldreconstructionwithhybridsphericallinearmicrophonearrays": {
+    "abstract": "We propose a data-driven sparse recovery framework for hybrid spherical linear microphone arrays using singular value decomposition (SVD) of the transfer operator. The SVD yields orthogonal microphone and field modes, reducing to spherical harmonics (SH) in the SMA-only case, while incorporating LMAs introduces complementary modes beyond SH. Modal analysis reveals consistent divergence from SH across frequency, confirming the improved spatial selectivity. Experiments in reverberant conditions show reduced energy-map mismatch and angular error across frequency, distance, and source count, outperforming SMA-only and direct concatenation. The results demonstrate that SVD-modal processing provides a principled and unified treatment of hybrid arrays for robust sparse sound-field reconstruction.",
+    "arxiv_url": "https://arxiv.org/abs/2602.03398v1",
+    "arxiv_checked": true
+  },
+  "aunitaryquantumprocesstomographymethodbasedonadensitymatrixdiagonalization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auniversalframeworkfordisentanglingsubjectspecificsignaturesineegsignals": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aunsuperviseddomainadaptationframeworkforsemisupervisedmelodyextractionusingconfidencematrixreplaceandnearestneighboursupervision": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auseritemawareencodingframeworkforshortvideo": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "avideoperspectiveonelectrocardiogramsattentionbasedspatiotemporalmodeling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "avisionandradiotransformerfortheicassp2026multimodallearningfor6gwirelesscommunicationschallenge": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "awaveletbasedgraphdynamicalconfidenceinformationbottlenecknetworkforclassimbalancednodeclassification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "awaveletbasednetworkwithmultiscalefeaturecomplementarityenhancementforsalientobjectdetectioninopticalremotesensingimages": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "awaveletquaternionneuralmoduleforuniversalvisualbackbones": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "a3dadvancedadversarialattackasdetectionframeworkforedgedevices": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abcevalbenchmarkinglargelanguagemodelsonsymbolicmusicunderstandingandinstructionfollowing": {
+    "abstract": "As large language models continue to develop, the feasibility and significance of text-based symbolic music tasks have become increasingly prominent. While symbolic music has been widely used in generation tasks, LLM capabilities in understanding and reasoning about symbolic music remain largely underexplored. To address this gap, we propose ABC-Eval, the first open-source benchmark dedicated to the understanding and instruction-following capabilities in text-based ABC notation scores. It comprises 1,086 test samples spanning 10 sub-tasks, covering scenarios from basic musical syntax comprehension to complex sequence-level reasoning. Such a diverse scope poses substantial challenges to models' ability to handle symbolic music tasks. We evaluated seven state-of-the-art LLMs on ABC-Eval, and the results reveal notable limitations in existing models' symbolic music processing capabilities. Furthermore, the consistent performance of individual baselines across different sub-tasks supports the reliability of our benchmark.",
+    "arxiv_url": "https://arxiv.org/abs/2509.23350v1",
+    "arxiv_checked": true
+  },
+  "abnormalityawareknowledgegraphandhierarchicalcrossattentioninllmforradiologyreportgeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abpsamasambasedmethodwithautobboxprompterformedicalimagesegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "abracaddbratouchguidedobjectadditionbydecouplingplacementandeditingsubtasks": {
+    "abstract": "Instruction-based object addition is often hindered by the ambiguity of text-only prompts or the tedious nature of mask-based inputs. To address this usability gap, we introduce AbracADDbra, a user-friendly framework that leverages intuitive touch priors to spatially ground succinct instructions for precise placement. Our efficient, decoupled architecture uses a vision-language transformer for touch-guided placement, followed by a diffusion model that jointly generates the object and an instance mask for high-fidelity blending. To facilitate standardized evaluation, we contribute the Touch2Add benchmark for this interactive task. Our extensive evaluations, where our placement model significantly outperforms both random placement and general-purpose VLM baselines, confirm the framework's ability to produce high-fidelity edits. Furthermore, our analysis reveals a strong correlation between initial placement accuracy and final edit quality, validating our decoupled approach. This work thus paves the way for more accessible and efficient creative tools.",
+    "arxiv_url": "https://arxiv.org/abs/2602.14237v1",
+    "arxiv_checked": true
+  },
+  "abshunetanultralightweightspeechenhancementmodelwithadaptivebandsplitandhalfunetdesign": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acavcapsenablinglargescaletrainingforfinegrainedanddiverseaudiounderstanding": {
+    "abstract": "General audio understanding is a fundamental goal for large audio-language models, with audio captioning serving as a cornerstone task for their development. However, progress in this domain is hindered by existing datasets, which lack the scale and descriptive granularity required to train truly versatile models. To address this gap, we introduce ACAVCaps, a new large-scale, fine-grained, and multi-faceted audio captioning dataset. Derived from the ACAV100M collection, ACAVCaps is constructed using a multi-expert pipeline that analyzes audio from diverse perspectives-including speech, music, and acoustic properties-which are then synthesized into rich, detailed descriptions by a large language model. Experimental results demonstrate that models pre-trained on ACAVCaps exhibit substantially stronger generalization capabilities on various downstream tasks compared to those trained on other leading captioning datasets. The dataset is available at https://github.com/xiaomi-research/acavcaps.",
+    "arxiv_url": "https://arxiv.org/abs/2603.24038v1",
+    "arxiv_checked": true
+  },
+  "acceleratedapproximatemessagepassing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acceleratedsinkhornalgorithmsforpartialoptimaltransport": {
+    "abstract": "Partial Optimal Transport (POT) addresses the problem of transporting only a fraction of the total mass between two distributions, making it suitable when marginals have unequal size or contain outliers. While Sinkhorn-based methods are widely used, their complexity bounds for POT remain suboptimal and can limit scalability. We introduce Accelerated Sinkhorn for POT (ASPOT), which integrates alternating minimization with Nesterov-style acceleration in the POT setting, yielding a complexity of $\\mathcal{O}(n^{7/3}\\varepsilon^{-5/3})$. We also show that an informed choice of the entropic parameter $\u03b3$ improves rates for the classical Sinkhorn method. Experiments on real-world applications validate our theories and demonstrate the favorable performance of our proposed methods.",
+    "arxiv_url": "https://arxiv.org/abs/2601.17196v4",
+    "arxiv_checked": true
+  },
+  "acceleratedtrainingofgaussianprocessesusingbandedsquareexponentialcovariances": {
+    "abstract": "We propose a novel approach to computationally efficient GP training based on the observation that square-exponential (SE) covariance matrices contain several off-diagonal entries extremely close to zero. We construct a principled procedure to eliminate those entries to produce a \\emph{banded}-matrix approximation to the original covariance, whose inverse and determinant can be computed at a reduced computational cost, thus contributing to an efficient approximation to the likelihood function. We provide a theoretical analysis of the proposed method to preserve the structure of the original covariance in the 1D setting with SE kernel, and validate its computational efficiency against the variational free energy approach to sparse GPs.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19007v1",
+    "arxiv_checked": true
+  },
+  "accelerating3dgaussiansplattingviawaveletguidedscheduling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acceleratingfederatedlearningthroughdropoutofrenewableneuronparameters": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acceleratingkbqavialogicalquestionbidirectionalreranking": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acceleratingvehicularfederatedlearningviaconvergenceawarehierarchicalscheduling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "accelgsanaccelerationframeworkforlargescale3dgaussiansplattingtraining": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "accentinvariantautomaticspeechrecognitionviasaliencydrivenspectrogrammasking": {
+    "abstract": "Pre-trained transformer-based models have significantly advanced automatic speech recognition (ASR), yet they remain sensitive to accent and dialectal variations, resulting in elevated word error rates (WER) in linguistically diverse languages such as English and Persian. To address this challenge, we propose an accent-invariant ASR framework that integrates accent and dialect classification into the recognition pipeline. Our approach involves training a spectrogram-based classifier to capture accent-specific cues, masking the regions most influential to its predictions, and using the masked spectrograms for data augmentation. This enhances the robustness of ASR models against accent variability. We evaluate the method using both English and Persian speech. For Persian, we introduce a newly collected dataset spanning multiple regional accents, establishing the first systematic benchmark for accent variation in Persian ASR that fills a critical gap in multilingual speech research and provides a foundation for future studies on low-resource, linguistically diverse languages. Experimental results with the Whisper model demonstrate that our masking and augmentation strategy yields substantial WER reductions in both English and Persian settings, confirming the effectiveness of the approach. This research advances the development of multilingual ASR systems that are resilient to accent and dialect diversity. Code and dataset are publicly available at: https://github.com/MH-Sameti/Accent_invariant_ASR",
+    "arxiv_url": "https://arxiv.org/abs/2510.09528v1",
+    "arxiv_checked": true
+  },
+  "acceptanceguidedadaptivespeculativedecodingforefficientlargelanguagemodelinference": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acclidaccentawarelanguageidentificationforrobustmultilingualspeechrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acdclipdecouplingrepresentationanddynamicfusionforzeroshotanomalydetection": {
+    "abstract": "Pre-trained Vision-Language Models (VLMs) struggle with Zero-Shot Anomaly Detection (ZSAD) due to a critical adaptation gap: they lack the local inductive biases required for dense prediction and employ inflexible feature fusion paradigms. We address these limitations through an Architectural Co-Design framework that jointly refines feature representation and cross-modal fusion. Our method proposes a parameter-efficient Convolutional Low-Rank Adaptation (Conv-LoRA) adapter to inject local inductive biases for fine-grained representation, and introduces a Dynamic Fusion Gateway (DFG) that leverages visual context to adaptively modulate text prompts, enabling a powerful bidirectional fusion. Extensive experiments on diverse industrial and medical benchmarks demonstrate superior accuracy and robustness, validating that this synergistic co-design is critical for robustly adapting foundation models to dense perception tasks. The source code is available at https://github.com/cockmake/ACD-CLIP.",
+    "arxiv_url": "https://arxiv.org/abs/2508.07819v6",
+    "arxiv_checked": true
+  },
+  "achievinglinearspeedupfordistributedinexactadmm": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "achievingparetooptimalityingamesviasinglebitfeedback": {
+    "abstract": "Efficient coordination in multi-agent systems often incurs high communication overhead or slow convergence rates, making scalable welfare optimization difficult. We propose Single-Bit Coordination Dynamics for Pareto-Efficient Outcomes (SBC-PE), a decentralized learning algorithm requiring only a single-bit satisfaction signal per agent each round. Despite this extreme efficiency, SBC-PE guarantees convergence to the exact optimal solution in arbitrary finite games. We establish explicit regret bounds, showing expected regret grows only logarithmically with the horizon, i.e., O(log T). Compared with prior payoff-based or bandit-style rules, SBC-PE uniquely combines minimal signaling, general applicability, and finite-time guarantees. These results show scalable welfare optimization is achievable under minimal communication constraints.",
+    "arxiv_url": "https://arxiv.org/abs/2509.25921v3",
+    "arxiv_checked": true
+  },
+  "acirmacleffectivemultimodalsentimentanalysisviaattentionbasedcausalinterventionregularizationandmultiaspectcontrastivelearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acmmultipleattributescontrastivemechanismforvaluedecompositioninmultiagentreinforcementlearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acnetrobustmedicalimagesegmentationusingasymmetricconvolutionandcrosssparseattention": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acousticandfacialmarkersofperceivedconversationalsuccessinspontaneousspeech": {
+    "abstract": "Individuals often align their speaking patterns with their interlocutors, a phenomenon linked to engagement and rapport. While well documented in task-oriented dialogues, less is known about entrainment in naturalistic, non-task and virtual settings. In this study, we analyze a large corpus of spontaneous dyadic Zoom conversations to examine how conversational dynamics relate to perceived interaction quality. We extract multimodal features encompassing turn-taking, pauses, facial movements, and acoustic measures such as pitch and intensity. Perceived conversational success was quantified via factor analysis of post-conversation ratings. Results demonstrate that entrainment reliably detected in spontaneous speech and correlates with higher perceived success. These findings identify key interactional markers of conversational quality and highlight opportunities for targeted interventions to foster more effective and engaging communication.",
+    "arxiv_url": "https://arxiv.org/abs/2604.15322v1",
+    "arxiv_checked": true
+  },
+  "acousticfeedbackcancellationinhearingaidsexploitinganinertialsensor": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "acousticnonstationarityobjectiveassessmentwithhardlabelcriteriaforsupervisedlearningmodels": {
+    "abstract": "Objective non-stationarity measures are resource intensive and impose critical limitations for real-time processing solutions. In this paper, a novel Hard Label Criteria (HLC) algorithm is proposed to generate a global non-stationarity label for acoustic signals, enabling supervised learning strategies to be trained as stationarity estimators. The HLC is first evaluated on state-of-the-art general-purpose acoustic models, demonstrating that these models capture stationarity information. Furthermore, the first-of-its-kind HLC-based Network for Acoustic Non-Stationarity Assessment (NANSA) is proposed. NANSA models outperform competing approaches, achieving up to 99% classification accuracy, while solving the computational infeasibility of traditional objective measures.",
+    "arxiv_url": "https://arxiv.org/abs/2508.06405v2",
+    "arxiv_checked": true
+  },
+  "acousticprompttuningempoweringlargelanguagemodelswithauditioncapabilities": {
+    "abstract": "The auditory system plays a substantial role in shaping the overall human perceptual experience. While prevailing large language models (LLMs) and visual language models (VLMs) have shown their promise in solving a wide variety of language and vision understanding tasks, only a few of them can be generalised to the audio domain without compromising their domain-specific capability. In this work, we introduce Acoustic Prompt Tuning (APT), a new adapter extending LLMs and VLMs to the audio domain by injecting audio embeddings to the input of LLMs, namely soft prompting. Specifically, APT applies an instruction-aware audio aligner to generate soft prompts, conditioned on both input text and sounds, as the inputs to the language model. To mitigate data scarcity in the audio domain, a curriculum learning strategy is proposed by formulating diverse audio tasks in a sequential manner. Moreover, we improve the audio language model by using interleaved audio-text embeddings as the input sequence. In this improved model, zero constraints are imposed on the input format, thus it is capable of tackling diverse modelling tasks, such as few-shot audio classification and audio comparison. To further evaluate the advanced ability of the audio networks, we introduce natural language audio reasoning (NLAR), a new task that analyses two audio clips by comparison and summarisation. Experiments show that APT-enhanced LLMs (namely APT-LLMs) achieve competitive results compared to the expert models (i.e., the networks trained on the target datasets) across various tasks. We finally demonstrate APT's ability in extending frozen VLMs to the audio domain without fine-tuning, achieving promising results in audio-visual question and answering. Our code and model weights will be released at https://github.com/JinhuaLiang/APT",
+    "arxiv_url": "https://arxiv.org/abs/2312.00249v2",
+    "arxiv_checked": true
+  },
+  "acousticteleportationviadisentangledneuralaudiocodecrepresentations": {
+    "abstract": "This paper presents an approach for acoustic teleportation by disentangling speech content from acoustic environment characteristics in neural audio codec representations. Acoustic teleportation transfers room characteristics between speech recordings while preserving content and speaker identity. We build upon previous work using the EnCodec architecture, achieving substantial objective quality improvements with non-intrusive ScoreQ scores of 3.03, compared to 2.44 for prior methods. Our training strategy incorporates five tasks: clean reconstruction, reverberated reconstruction, dereverberation, and two variants of acoustic teleportation. We demonstrate that temporal downsampling of the acoustic embedding significantly degrades performance, with even 2x downsampling resulting in a statistically significant reduction in quality. The learned acoustic embeddings exhibit strong correlations with RT60. Effective disentanglement is demonstrated using t-SNE clustering analysis, where acoustic embeddings cluster by room while speech embeddings cluster by speaker.",
+    "arxiv_url": "https://arxiv.org/abs/2510.13221v1",
+    "arxiv_checked": true
+  },
+  "actionawarequeryselectionandambiguoussnippetdisambiguationforweaklysupervisedtemporalactionlocalization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "actionhsmrsequencebased3dhumanposeandmeshestimationwithtemporalconsistency": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "activeinferenceframeworkforclosedloopsensingcommunicationandcontrolinuavsystems": {
+    "abstract": "Integrated sensing and communication (ISAC) is a core technology for 6G, and its application to closed-loop sensing, communication, and control (SCC) enables various services. Existing SCC solutions often treat sensing and control separately, leading to suboptimal performance and resource usage. In this work, we introduce the active inference framework (AIF) into SCC-enabled unmanned aerial vehicle (UAV) systems for joint state estimation, control, and sensing resource allocation. By formulating a unified generative model, the problem reduces to minimizing variational free energy for inference and expected free energy for action planning. Simulation results show that both control cost and sensing cost are reduced relative to baselines.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14201v1",
+    "arxiv_checked": true
+  },
+  "activejammerlocalizationviaacquisitionawarepathplanning": {
+    "abstract": "We propose an active jammer localization framework that combines Bayesian optimization with acquisition-aware path planning. Unlike passive crowdsourced methods, our approach adaptively guides a mobile agent to collect high-utility Received Signal Strength measurements while accounting for urban obstacles and mobility constraints. For this, we modified the A* algorithm, A-UCB*, by incorporating acquisition values into trajectory costs, leading to high-acquisition planned paths. Simulations on realistic urban scenarios show that the proposed method achieves accurate localization with fewer measurements compared to uninformed baselines, demonstrating consistent performance under different environments.",
+    "arxiv_url": "https://arxiv.org/abs/2510.14790v1",
+    "arxiv_checked": true
+  },
+  "activesensingbasedbeamalignmentforbackscattercommunication": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "activesequentialhypothesistestingwithnonhomogeneouscosts": {
+    "abstract": "We study the Non-Homogeneous Sequential Hypothesis Testing (NHSHT), where a single active Decision-Maker (DM) selects actions with heterogeneous positive costs to identify the true hypothesis under an average error constraint \\(\u03b4\\), while minimizing expected total cost paid. Under standard arguments, we show that the objective decomposes into the product of the mean number of samples and the mean per-action cost induced by the policy. This leads to a key design principle: one should optimize the ratio of expectations (expected information gain per expected cost) rather than the expectation of per-step information-per-cost (\"bit-per-buck\"), which can be suboptimal. We adapt the Chernoff scheme to NHSHT, preserving its classical \\(\\log 1/\u03b4\\) scaling. In simulations, the adapted scheme reduces mean cost by up to 50\\% relative to the classic Chernoff policy and by up to 90\\% relative to the naive bit-per-buck heuristic.",
+    "arxiv_url": "https://arxiv.org/abs/2509.11632v3",
+    "arxiv_checked": true
+  }
+}
