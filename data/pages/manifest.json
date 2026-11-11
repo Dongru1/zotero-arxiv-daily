@@ -26,5 +26,12 @@
     "run_date": "2026-11-11",
     "venue": null,
     "conference_year": null
+  },
+  {
+    "file": "ICASSP-2026-digest.html",
+    "kind": "daily",
+    "run_date": "",
+    "venue": null,
+    "conference_year": null
   }
 ]
