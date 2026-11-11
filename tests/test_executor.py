@@ -362,9 +362,9 @@ def test_run_sends_conference_digest_separately(config, monkeypatch):
         return "".join(chunks)
 
     subjects = [subject_of(body) for _, _, body in sent]
-    assert any(subject.startswith("Daily arXiv") for subject in subjects)
-    assert any(subject.startswith("ICLR 2026 精选") for subject in subjects)
-    digest = next(body for _, _, body in sent if subject_of(body).startswith("ICLR 2026 精选"))
+    assert any(subject.startswith("每日 arXiv") for subject in subjects)
+    assert any(subject.startswith("会议精选 ICLR 2026 精选") for subject in subjects)
+    digest = next(body for _, _, body in sent if subject_of(body).startswith("会议精选 ICLR 2026 精选"))
     html = message_from_string(digest).get_payload(decode=True).decode()
     assert "4 papers ranked by relevance" in html
     assert "first 4" in html

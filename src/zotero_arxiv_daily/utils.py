@@ -154,7 +154,7 @@ def send_email(config:DictConfig, html:str, subject:str | None = None):
     msg['To'] = _format_addr('You <%s>' % receiver)
     today = datetime.datetime.now().strftime('%Y/%m/%d')
     if subject is None:
-        subject = f'Daily arXiv {today}'
+        subject = f'每日 arXiv {today}'
     msg['Subject'] = Header(subject, 'utf-8').encode()
 
     try:

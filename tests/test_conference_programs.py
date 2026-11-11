@@ -68,6 +68,20 @@ def test_dblp_parser_reads_title_and_link():
     assert papers[0].year == "2024"
 
 
+def test_program_list_can_limit_itself_to_one_venue(monkeypatch):
+    calls = []
+
+    def fake_get(url, **kwargs):
+        calls.append(url)
+        return _Response(404)
+
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.requests.get", fake_get)
+    monkeypatch.setattr("zotero_arxiv_daily.conference_programs.time.sleep", lambda delay: None)
+    assert load_conference_programs(2026, only_venue="ICASSP") == []
+    assert calls
+    assert all("ICASSP" in url for url in calls)
+
+
 def test_slt_checks_only_even_years():
     assert biennial_years(2026) == [2026, 2024]
     assert biennial_years(2025) == [2026, 2024]

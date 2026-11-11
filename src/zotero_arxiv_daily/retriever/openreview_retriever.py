@@ -1,3 +1,4 @@
+import os
 from datetime import date, datetime, timedelta, timezone
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ from loguru import logger
 
 from .base import BaseRetriever, register_retriever
 from ..conference_programs import ListedPaper, load_conference_programs
+from ..deadline import TimeBudgetExceeded, expired, remaining
 from ..openreview_state import OpenReviewState, project_root
 from ..protocol import Paper
 
@@ -58,6 +60,14 @@ _INACTIVE_VENUE_SUFFIXES = (
 _YEAR_IN_ID = re.compile(r"(?:19|20)\d{2}")
 _RATING_NUMBER = re.compile(r"(\d+(?:\.\d+)?)")
 _RATING_FIELDS = ("rating", "overall_recommendation", "recommendation")
+
+
+def _selected_venues(venues: list[str]) -> list[str]:
+    """Limit one Action to a single conference when CONFERENCE_VENUE is set."""
+    selected = os.environ.get("CONFERENCE_VENUE", "").strip().lower()
+    if not selected or selected == "all":
+        return venues
+    return [selected]
 HOURLY_REQUEST_BUDGET = 450
 CHECKPOINT_PATH = Path("data") / "openreview_checkpoint.json"
 
@@ -91,7 +101,7 @@ class OpenReviewRetriever(BaseRetriever):
                 "venues must be specified for openreview. "
                 f"Known names: {', '.join(sorted(VENUE_PATTERNS))}."
             )
-        self.venues = [str(venue) for venue in venues]
+        self.venues = _selected_venues([str(venue) for venue in venues])
         self.username = self.retriever_config.get("username")
         self.password = self.retriever_config.get("password")
         if not self.username or not self.password:
@@ -140,6 +150,8 @@ class OpenReviewRetriever(BaseRetriever):
         delay_time = 5
         url = f"{self.api_base}{path}"
         for attempt in range(retry_num):
+            if expired():
+                raise TimeBudgetExceeded(path)
             self._wait_for_request_budget()
             headers = self._headers()
             if not authenticated:
@@ -246,6 +258,9 @@ class OpenReviewRetriever(BaseRetriever):
         else:
             delay = 60
         delay = min(delay, 4200)
+        left = remaining()
+        if left is not None and delay > left:
+            raise TimeBudgetExceeded("OpenReview hourly budget")
         logger.warning(f"OpenReview hourly budget reached. Waiting {int(delay)}s before the next request.")
         sleep(delay)
         self._requests_used = 0
@@ -440,7 +455,9 @@ class OpenReviewRetriever(BaseRetriever):
             logger.info(f"Retrieved {kept} notes for {group_id}")
 
         try:
-            for paper in load_conference_programs(now.year):
+            selected = os.environ.get("CONFERENCE_VENUE", "").strip().lower()
+            only_venue = VENUE_LABELS.get(selected) if selected and selected != "all" else None
+            for paper in load_conference_programs(now.year, only_venue=only_venue):
                 notes.append(_program_note(paper))
         except Exception as exc:
             logger.warning(f"Skipping official conference lists: {exc}")
@@ -541,6 +558,9 @@ def pages_for_count(count: int, page_size: int) -> int:
 
 
 def _checkpoint_file() -> Path:
+    venue = os.environ.get("CONFERENCE_VENUE", "").strip().lower()
+    if venue and venue != "all":
+        return project_root() / "data" / "openreview_checkpoint" / f"{venue}.json"
     return project_root() / CHECKPOINT_PATH
 
 

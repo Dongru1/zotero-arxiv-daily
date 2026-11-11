@@ -1,23 +1,55 @@
-name: Conference digests
+name: 会议精选
 on:
   workflow_dispatch:
+    inputs:
+      venue:
+        description: Conference to update
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - iclr
+          - neurips
+          - icml
+          - emnlp
+          - acl
+          - slt
+          - icassp
+          - interspeech
   schedule:
-    - cron: '0 4 * * *'
+    # Monday 12:00 Beijing time. Conference lists do not need a daily run.
+    - cron: '0 4 * * 1'
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
-concurrency:
-  group: conference-digest
-  cancel-in-progress: false
-
 jobs:
-  calculate-and-send:
+  venues:
     runs-on: ubuntu-latest
     outputs:
-      publish: ${{ steps.publish.outputs.enabled }}
+      list: ${{ steps.set.outputs.list }}
+    steps:
+      - id: set
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.venue }}" != "all" ]; then
+            echo 'list=["${{ inputs.venue }}"]' >> "$GITHUB_OUTPUT"
+          else
+            echo 'list=["iclr","neurips","icml","emnlp","acl","slt","icassp","interspeech"]' >> "$GITHUB_OUTPUT"
+          fi
+
+  calculate-and-send:
+    needs: venues
+    runs-on: ubuntu-latest
+    concurrency:
+      group: conference-${{ matrix.venue }}
+      cancel-in-progress: false
+    strategy:
+      fail-fast: false
+      matrix:
+        venue: ${{ fromJson(needs.venues.outputs.list) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -42,6 +74,7 @@ jobs:
           OPENREVIEW_PASSWORD: ${{ secrets.OPENREVIEW_PASSWORD }}
           PERSIST_OPENREVIEW_STATE: "true"
           RUN_SCOPE: conference
+          CONFERENCE_VENUE: ${{ matrix.venue }}
           CUSTOM_CONFIG: ${{ vars.CUSTOM_CONFIG }}
         run: |
           printf "%b\n" "$CUSTOM_CONFIG" > config/custom.yaml
@@ -53,17 +86,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f data/openreview_state.json ]; then
-            git add data/openreview_state.json
+          venue="${{ matrix.venue }}"
+          if [ -f "data/openreview_state/${venue}.json" ]; then
+            git add "data/openreview_state/${venue}.json"
           fi
           if [ -d data/embeddings ]; then
             git add data/embeddings
           fi
-          if [ -f data/openreview_checkpoint.json ]; then
-            git add data/openreview_checkpoint.json
+          if [ -f "data/openreview_checkpoint/${venue}.json" ]; then
+            git add "data/openreview_checkpoint/${venue}.json"
           fi
-          if [ -f data/paper_cache.json ]; then
-            git add data/paper_cache.json
+          if [ -f "data/paper_cache/${venue}.json" ]; then
+            git add "data/paper_cache/${venue}.json"
           fi
           if compgen -G "data/pages/*.html" > /dev/null; then
             git add data/pages/*.html
@@ -72,40 +106,51 @@ jobs:
           if git diff --staged --quiet; then
             echo "No conference state changes"
           else
-            git commit -m "chore: record conference state [skip ci]"
+            git commit -m "chore: record ${venue} conference state [skip ci]"
           fi
           git checkout -- config/custom.yaml 2>/dev/null || true
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
-          git add data/pages/manifest.json
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: refresh pages index [skip ci]"
-          fi
-          git push
-
-      - name: Check published site
-        id: publish
-        run: |
-          if [ -f site/index.html ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Upload GitHub Pages artifact
-        if: steps.publish.outputs.enabled == 'true'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+          for attempt in 1 2 3 4 5 6 7 8; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}"; then
+              uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
+              git add data/pages/manifest.json
+              if ! git diff --staged --quiet; then
+                git commit -m "chore: refresh pages index [skip ci]"
+              fi
+              if git push; then
+                exit 0
+              fi
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 15))
+          done
+          exit 1
 
   deploy:
     needs: calculate-and-send
-    if: needs.calculate-and-send.outputs.publish == 'true'
+    if: always() && needs.calculate-and-send.result != 'cancelled'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ vars.REPOSITORY }}
+          ref: ${{ vars.REF }}
+          fetch-depth: 0
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Rebuild site from saved pages
+        run: uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

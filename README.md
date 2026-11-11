@@ -201,11 +201,11 @@ That's all! Now you can test the workflow by manually triggering it:
 
 Then check the log and the receiver email after it finishes.
 
-By default, the daily workflow runs at 02:00 UTC (10:00 Beijing time), after arXiv posts its announcement. It only sends the arXiv email. The conference workflow runs at 04:00 UTC (12:00 Beijing time), reads OpenReview and the official program lists, and sends the curated conference mail. Change either time in `.github/workflows/main.yml` or `.github/workflows/conference.yml`.
+每日 arXiv runs at 02:00 UTC (10:00 Beijing time), after arXiv posts its announcement, and the mail subject starts with 每日 arXiv. 会议精选 runs once a week, Monday at 04:00 UTC (12:00 Beijing time). Each conference is a separate job, and its mail subject starts with 会议精选. Change the times in `.github/workflows/main.yml` or `.github/workflows/conference.yml`.
 
 The conference workflow records processed OpenReview note ids in `data/openreview_state.json`. Titles already matched against arXiv are cached in `data/paper_cache.json` and are not requested again. A conference email is skipped when its top papers are unchanged, after any unfinished title lookups from the previous run have continued. The Test workflow does not write this state file.
 
-If one venue has at least `digest_min_papers` new papers, those papers leave the daily mail and are sent as a separate curated email, for example `ICLR 精选 2026/11/09`. The message says how many papers were public and how many were kept (`digest_paper_num`). Several venues releasing on the same day produce one email each. Smaller updates stay in the daily mail and compete for `max_paper_num`.
+If one venue has at least `digest_min_papers` new papers, those papers leave the daily mail and are sent as a separate curated email, for example `会议精选 ICLR 2026 精选 2026/11/09`. The message says how many papers were public and how many were kept (`digest_paper_num`). Several venues releasing on the same day produce one email each. Smaller updates stay in the daily mail and compete for `max_paper_num`.
 
 The same daily run publishes the rendered pages with GitHub Pages. In the repository settings, open Pages and set the source to GitHub Actions. The site is then `https://<username>.github.io/zotero-arxiv-daily/`. A public repository makes this site public. It contains paper titles, relevance scores, and TLDR text, not secrets.
 

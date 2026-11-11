@@ -1,4 +1,4 @@
-name: Send emails daily
+name: 每日 arXiv
 on:
   workflow_dispatch:
   schedule:

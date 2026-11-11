@@ -1,6 +1,7 @@
 """Fill missing abstracts and arXiv links, remembering results across runs."""
 
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -10,6 +11,7 @@ import requests
 from loguru import logger
 
 from .conference_programs import parse_abstract
+from .deadline import TimeBudgetExceeded, expired
 from .openreview_state import project_root
 from .protocol import Paper
 
@@ -34,21 +36,44 @@ def titles_match(left: str, right: str) -> bool:
     return bool(normalized) and normalized == normalize_title(right)
 
 
+def _conference_venue() -> str:
+    venue = os.environ.get("CONFERENCE_VENUE", "").strip().lower()
+    if not venue or venue == "all":
+        return ""
+    return venue
+
+
 def _cache_file(root: Path | None = None) -> Path:
-    return (root or project_root()) / CACHE_PATH
+    root = root or project_root()
+    venue = _conference_venue()
+    if venue:
+        return root / "data" / "paper_cache" / f"{venue}.json"
+    return root / CACHE_PATH
 
 
 def load_cache(root: Path | None = None) -> dict:
-    path = _cache_file(root)
-    if not path.is_file():
-        return {}
-    return json.loads(path.read_text())
+    root = root or project_root()
+    merged: dict = {}
+    legacy = root / CACHE_PATH
+    if legacy.is_file():
+        merged.update(json.loads(legacy.read_text()))
+    folder = root / "data" / "paper_cache"
+    if folder.is_dir():
+        for path in sorted(folder.glob("*.json")):
+            merged.update(json.loads(path.read_text()))
+    return merged
 
 
-def save_cache(cache: dict, root: Path | None = None) -> None:
+def save_cache(cache: dict, root: Path | None = None, keys: list[str] | None = None) -> None:
     path = _cache_file(root)
+    payload = cache
+    if _conference_venue():
+        payload = json.loads(path.read_text()) if path.is_file() else {}
+        for key in keys or []:
+            if key in cache:
+                payload[key] = cache[key]
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(cache, indent=2) + "\n")
+    path.write_text(json.dumps(payload, indent=2) + "\n")
 
 
 def _retry_delay(response: requests.Response) -> int:
@@ -111,7 +136,7 @@ def _apply_cached(paper: Paper, cached: dict) -> None:
 
 def _remember(cache: dict, key: str, abstract: str, arxiv_url: str, root: Path | None, arxiv_checked: bool) -> None:
     cache[key] = {"abstract": abstract, "arxiv_url": arxiv_url, "arxiv_checked": arxiv_checked}
-    save_cache(cache, root)
+    save_cache(cache, root, keys=[key])
 
 
 def enrich_papers(
@@ -141,6 +166,9 @@ def enrich_papers(
         if cached is not None:
             _apply_cached(paper, cached)
             continue
+        if expired():
+            logger.warning("Stopping enrichment because the conference time budget is over. Remaining papers continue next run.")
+            break
         abstract = paper.abstract or _detail_abstract(paper.url)
         arxiv_url = paper.arxiv_url or ""
         if "arxiv.org/abs/" in (paper.url or "") and not arxiv_url:

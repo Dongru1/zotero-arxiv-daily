@@ -11,6 +11,7 @@ from .reranker import get_reranker_cls
 import re
 from collections import Counter
 from .construct_email import render_email
+from .deadline import clear_budget, start_budget
 from .openreview_state import OpenReviewState, persist_enabled, project_root
 from .paper_enrich import attach_arxiv_links, enrich_papers
 from .publish import PageRecord, publish_results, render_site_page
@@ -197,6 +198,16 @@ class Executor:
 
     def run(self):
         scope = self._run_scope()
+        if scope == "conference":
+            start_budget()
+            logger.info("Conference run will publish the pages it has within 4 hours.")
+        try:
+            self._run(scope)
+        finally:
+            if scope == "conference":
+                clear_budget()
+
+    def _run(self, scope: str):
         corpus = self.fetch_zotero_corpus()
         corpus = self.filter_corpus(corpus)
         if len(corpus) == 0:
@@ -318,7 +329,7 @@ class Executor:
             return
         self._write_email(
             top,
-            subject=f"{title} {today}",
+            subject=f"会议精选 {title} {today}",
             intro=f"{len(ranked)} papers ranked by relevance. This email includes the first {len(top)}.",
             with_ratings=True,
         )

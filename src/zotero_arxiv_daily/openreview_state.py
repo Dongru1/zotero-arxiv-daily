@@ -1,4 +1,5 @@
 import json
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -26,11 +27,7 @@ class OpenReviewState:
     indexed_urls: set[str] = field(default_factory=set)
 
     @classmethod
-    def load(cls, root: Path | None = None) -> "OpenReviewState":
-        path = (root or project_root()) / STATE_PATH
-        if not path.is_file():
-            return cls()
-        payload = json.loads(path.read_text())
+    def _from_payload(cls, payload: dict) -> "OpenReviewState":
         venues = payload.get("venues") or {}
         bootstrapped = {
             name
@@ -45,8 +42,33 @@ class OpenReviewState:
             indexed_urls={str(url) for url in payload.get("indexed_urls") or []},
         )
 
+    def merge(self, other: "OpenReviewState") -> None:
+        self.seen_ids.update(other.seen_ids)
+        self.bootstrapped.update(other.bootstrapped)
+        self.mailed.update(other.mailed)
+        self.indexed_titles.update(other.indexed_titles)
+        self.indexed_urls.update(other.indexed_urls)
+
+    @classmethod
+    def load(cls, root: Path | None = None) -> "OpenReviewState":
+        root = root or project_root()
+        state = cls()
+        path = root / STATE_PATH
+        if path.is_file():
+            state.merge(cls._from_payload(json.loads(path.read_text())))
+        folder = root / "data" / "openreview_state"
+        if folder.is_dir():
+            for shard in sorted(folder.glob("*.json")):
+                state.merge(cls._from_payload(json.loads(shard.read_text())))
+        return state
+
     def save(self, root: Path | None = None) -> Path:
-        path = (root or project_root()) / STATE_PATH
+        root = root or project_root()
+        venue = os.environ.get("CONFERENCE_VENUE", "").strip().lower()
+        if venue and venue != "all":
+            path = root / "data" / "openreview_state" / f"{venue}.json"
+        else:
+            path = root / STATE_PATH
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "venues": {

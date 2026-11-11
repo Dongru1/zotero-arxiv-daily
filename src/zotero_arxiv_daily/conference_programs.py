@@ -9,6 +9,8 @@ from typing import Callable
 import requests
 from loguru import logger
 
+from .deadline import TimeBudgetExceeded, expired
+
 _TAG = re.compile(r"<[^>]+>")
 _ANTHOLOGY_PAPER = re.compile(
     r'href="(/(?P<id>20\d{2}\.[a-z0-9-]+\.\d+)/)"[^>]*>\s*(?P<title>[^<]+)',
@@ -203,6 +205,8 @@ def _retry_delay(response: requests.Response) -> float:
 
 
 def _get(url: str) -> str:
+    if expired():
+        raise TimeBudgetExceeded(url)
     for attempt in range(3):
         response = requests.get(
             url,
@@ -241,7 +245,7 @@ def papers_for_venue_year(venue: str, kind: str, url: str, year: int) -> list[Li
     return []
 
 
-def load_conference_programs(now_year: int) -> list[ListedPaper]:
+def load_conference_programs(now_year: int, only_venue: str | None = None) -> list[ListedPaper]:
     """Use the newest year in the automatic window that actually lists papers."""
     found: list[ListedPaper] = []
     seen: set[tuple[str, str]] = set()
@@ -255,6 +259,8 @@ def load_conference_programs(now_year: int) -> list[ListedPaper]:
         ("SLT", "dblp", "https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt{year}.bht:&h=1000&format=json"),
     )
     for venue, kind, template in templates:
+        if only_venue and venue.lower() != only_venue.lower():
+            continue
         years = biennial_years(now_year) if venue == "SLT" else candidate_years(now_year)
         for year in years:
             if kind == "dblp":
