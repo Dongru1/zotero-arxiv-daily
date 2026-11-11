@@ -1,8 +1,9 @@
+import math
 import os
 from loguru import logger
 from pyzotero import zotero
 from omegaconf import DictConfig, ListConfig
-from .utils import glob_match
+from .utils import glob_match, _tokenize
 from .retriever import get_retriever_cls
 from .protocol import CorpusPaper, Paper
 import random
@@ -18,6 +19,10 @@ from .publish import PageRecord, publish_results, render_site_page
 from .utils import send_email
 from openai import OpenAI
 from tqdm import tqdm
+
+
+UNDER_REVIEW_KEEP = 100
+_MIN_TOKEN_LEN = 3
 
 
 def _normalized_title(title: str) -> str:
@@ -260,7 +265,8 @@ class Executor:
             for (venue, year), papers in accepted.items():
                 self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "digest", "精选", limit)
             for (venue, year), papers in reviewing.items():
-                self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "under_review", "Under Review", limit)
+                shortlisted = self._shortlist_under_review(papers, corpus, UNDER_REVIEW_KEEP)
+                self._publish_group(published, self._rank(shortlisted, corpus), venue, year, day, today, "under_review", "Under Review", limit)
         self._save_openreview_progress(all_papers, published)
 
     @staticmethod
@@ -291,6 +297,66 @@ class Executor:
             else:
                 daily.append(paper)
         return daily, accepted, reviewing
+
+    @staticmethod
+    def _library_idf(corpus: list[CorpusPaper]) -> dict[str, float]:
+        """Weight a word by how specific it is inside the Zotero library.
+
+        A word that appears in nearly every saved paper, such as "model" or
+        "learning", gets almost no weight. A word that appears in only a few
+        papers keeps a high weight. The same weights apply to every conference.
+        """
+        documents = []
+        for item in corpus:
+            tokens = {
+                token for token in _tokenize(f"{item.title} {(item.abstract or '')[:2000]}")
+                if len(token) >= _MIN_TOKEN_LEN
+            }
+            documents.append(tokens)
+        total = len(documents)
+        counts: Counter[str] = Counter()
+        for tokens in documents:
+            counts.update(tokens)
+        return {
+            token: math.log((total - count + 0.5) / (count + 0.5) + 1)
+            for token, count in counts.items()
+        }
+
+    @staticmethod
+    def _shortlist_under_review(papers: list[Paper], corpus: list[CorpusPaper], limit: int) -> list[Paper]:
+        """Keep the submissions that use the library's distinctive words.
+
+        Embedding every under-review submission takes many hours. Any venue
+        uses this same reduction, then the embedding model orders only the
+        papers that remain.
+        """
+        if len(papers) <= limit:
+            return papers
+        logger.info(f"Selecting {limit} of {len(papers)} under-review papers before embedding.")
+        idf = Executor._library_idf(corpus)
+        if not idf:
+            return papers[:limit]
+        lengths = []
+        token_counts = []
+        for paper in papers:
+            tokens = [
+                token for token in _tokenize(f"{paper.title} {(paper.abstract or '')[:2000]}")
+                if len(token) >= _MIN_TOKEN_LEN
+            ]
+            lengths.append(len(tokens))
+            token_counts.append(Counter(tokens))
+        average_length = sum(lengths) / max(len(lengths), 1)
+        ranked = []
+        for paper, tokens, length in zip(papers, token_counts, lengths):
+            score = 0.0
+            for token, freq in tokens.items():
+                weight = idf.get(token)
+                if not weight:
+                    continue
+                score += weight * (freq * 2.5) / (freq + 1.5 * (0.25 + 0.75 * length / max(average_length, 1)))
+            ranked.append((score, paper))
+        ranked.sort(key=lambda item: item[0], reverse=True)
+        return [paper for _, paper in ranked[:limit]]
 
     def _rank(self, papers: list[Paper], corpus: list[CorpusPaper]) -> list[Paper]:
         if not papers:

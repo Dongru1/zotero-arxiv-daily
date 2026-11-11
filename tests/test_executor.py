@@ -290,6 +290,53 @@ def _paper(title: str, source: str = "arxiv", venue: str | None = None) -> Paper
     return make_sample_paper(title=title, source=source, venue=venue)
 
 
+def test_under_review_shortlist_prefers_distinctive_library_words():
+    corpus = [
+        CorpusPaper(title=f"General paper {i}", abstract="deep learning model", added_date=datetime(2026, 1, 1), paths=[])
+        for i in range(8)
+    ]
+    corpus.append(CorpusPaper(
+        title="Duplex dialogue",
+        abstract="full duplex spoken dialogue",
+        added_date=datetime(2026, 1, 2),
+        paths=[],
+    ))
+    common = _paper("Another learning model", source="openreview", venue="ICLR")
+    common.abstract = "a deep learning model for images"
+    common.status = "under_review"
+    specific = _paper("Duplex speech", source="openreview", venue="ICLR")
+    specific.abstract = "full duplex spoken dialogue"
+    specific.status = "under_review"
+    fillers = []
+    for index in range(110):
+        paper = _paper(f"Filler {index}", source="openreview", venue="ICLR")
+        paper.abstract = "pixels and graphics"
+        paper.status = "under_review"
+        fillers.append(paper)
+    chosen = Executor._shortlist_under_review([common, *fillers, specific], corpus, 100)
+    assert len(chosen) == 100
+    assert chosen[0].title == "Duplex speech"
+
+
+def test_under_review_shortlist_keeps_the_closest_papers():
+    corpus = [
+        CorpusPaper(title="Speech dialogue", abstract="full duplex spoken dialogue", added_date=datetime(2026, 1, 1), paths=[]),
+    ]
+    papers = []
+    for index in range(120):
+        paper = _paper(f"Unrelated vision paper {index}", source="openreview", venue="ICLR")
+        paper.abstract = "image classification benchmark"
+        paper.status = "under_review"
+        papers.append(paper)
+    match = _paper("Full duplex dialogue", source="openreview", venue="ICLR")
+    match.abstract = "a benchmark for full duplex spoken dialogue models"
+    match.status = "under_review"
+    papers.append(match)
+    chosen = Executor._shortlist_under_review(papers, corpus, 100)
+    assert len(chosen) == 100
+    assert chosen[0].title == "Full duplex dialogue"
+
+
 def test_partition_openreview_digests_splits_a_large_release():
     papers = [
         _paper("arXiv paper"),
