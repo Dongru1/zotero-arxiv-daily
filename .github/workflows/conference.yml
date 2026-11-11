@@ -23,8 +23,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   venues:
@@ -44,8 +42,6 @@ jobs:
     needs: venues
     runs-on: ubuntu-latest
     timeout-minutes: 300
-    environment:
-      name: github-pages
     concurrency:
       group: conference-${{ matrix.venue }}
       cancel-in-progress: false
@@ -109,39 +105,14 @@ jobs:
           if git diff --staged --quiet; then
             echo "No conference state changes"
           else
-            git commit -m "chore: record ${venue} conference state [skip ci]"
+            git commit -m "chore: record ${venue} conference state"
           fi
           git checkout -- config/custom.yaml 2>/dev/null || true
           for attempt in 1 2 3 4 5 6 7 8; do
-            if git pull --rebase origin "${GITHUB_REF_NAME}"; then
-              uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
-              git add data/pages/manifest.json
-              if ! git diff --staged --quiet; then
-                git commit -m "chore: refresh pages index [skip ci]"
-              fi
-              if git push; then
-                exit 0
-              fi
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push; then
+              exit 0
             fi
             git rebase --abort 2>/dev/null || true
             sleep $((attempt * 15))
           done
           exit 1
-
-      - name: Rebuild the site from every saved conference
-        if: success()
-        run: |
-          git fetch origin "${GITHUB_REF_NAME}"
-          git reset --hard "origin/${GITHUB_REF_NAME}"
-          uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
-
-      - name: Upload GitHub Pages artifact
-        if: success()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-      - name: Deploy to GitHub Pages
-        if: success()
-        id: deployment
-        uses: actions/deploy-pages@v4

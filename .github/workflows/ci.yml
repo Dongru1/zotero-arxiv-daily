@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "data/**"
+      - ".github/keep-alive.txt"
 
   pull_request:
     branches:

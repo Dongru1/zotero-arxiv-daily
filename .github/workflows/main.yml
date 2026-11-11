@@ -6,8 +6,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: daily-email
@@ -16,8 +14,6 @@ concurrency:
 jobs:
   calculate-and-send:
     runs-on: ubuntu-latest
-    outputs:
-      publish: ${{ steps.publish.outputs.enabled }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -72,40 +68,14 @@ jobs:
           if git diff --staged --quiet; then
             echo "No daily page changes"
           else
-            git commit -m "chore: record daily pages [skip ci]"
+            git commit -m "chore: record daily pages"
           fi
           git checkout -- config/custom.yaml 2>/dev/null || true
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          uv run python -c "from zotero_arxiv_daily.publish import publish_results; publish_results([])"
-          git add data/pages/manifest.json
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: refresh pages index [skip ci]"
-          fi
-          git push
-
-      - name: Check published site
-        id: publish
-        run: |
-          if [ -f site/index.html ]; then
-            echo "enabled=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "enabled=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Upload GitHub Pages artifact
-        if: steps.publish.outputs.enabled == 'true'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-  deploy:
-    needs: calculate-and-send
-    if: needs.calculate-and-send.outputs.publish == 'true'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          for attempt in 1 2 3 4 5 6 7 8; do
+            if git pull --rebase origin "${GITHUB_REF_NAME}" && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 15))
+          done
+          exit 1
