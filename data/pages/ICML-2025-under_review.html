@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ICML 2025 Under Review</title>
+  <style>
+body { margin: 0; background: #f4f5f7; color: #1f2430; font-family: Georgia, "Iowan Old Style", Palatino, serif; }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 72px; }
+a { color: #16325c; }
+h1 { font-size: 1.9rem; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
+.lead { color: #5c6570; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.card { background: #fff; border: 1px solid #e4e6eb; border-radius: 14px; padding: 20px 22px; margin: 16px 0; }
+.card h2 { font-size: 1.15rem; line-height: 1.35; margin: 0 0 8px; }
+.card h2 a { text-decoration: none; }
+.card h2 a:hover { text-decoration: underline; }
+.meta, .index, .actions { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.meta { color: #5c6570; font-size: 0.92rem; line-height: 1.5; }
+.tldr, .abstract { margin: 12px 0; line-height: 1.55; }
+.abstract { color: #333; }
+.rating { display: inline-block; background: #e8f6ec; color: #17693a; border-radius: 999px; padding: 2px 8px; font-weight: 650; }
+.actions { display: flex; gap: 8px; margin-top: 14px; }
+.btn { display: inline-block; text-decoration: none; font-size: 0.88rem; font-weight: 650; padding: 8px 14px; border-radius: 999px; }
+.btn.primary { background: #16325c; color: #fff; }
+.btn.secondary { background: #fff; color: #16325c; border: 1px solid #c9d0da; }
+.year { margin: 22px 0 4px; }
+.venue { margin: 10px 0 4px; }
+.index ul { margin-top: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ICML 2025 Under Review</h1>
+  <p class="lead">3 papers, ranked by relevance to the Zotero library.</p>
+  <article class="card">
+  <h2><a href="https://openreview.net/forum?id=23iGt7BBtl">Understanding Bias Reinforcement in LLM Agents Debate</a></h2>
+  <p class="meta">Jihwan Oh, Minchan Jeong, Jongwoo Ko, Se-Young Yun · Relevance 4.0</p>
+  <p class="abstract">Large Language Models (LLMs) solve complex problems using training-free methods like prompt engineering and in-context learning, yet ensuring reasoning correctness remains challenging. While self-correction methods such as self-consistency and self-refinement aim to improve reliability, they often reinforce biases due to the lack of effective feedback mechanisms. Multi-Agent Debate (MAD) has emerged as an alternative, but we identify two key limitations: bias reinforcement, where debate amplifies model biases instead of correcting them, and lack of perspective diversity, as all agents share the same model and reasoning patterns, limiting true debate effectiveness. To systematically evaluate these issues, we introduce $\textit{MetaNIM Arena}$, a benchmark designed to assess LLMs in adversarial strategic decision-making, where dynamic interactions influence optimal decisions. To overcome MAD’s limitations, we propose $\texttt{\textbf{DReaMAD}}$ ($\textbf{D}$iverse $\textbf{Rea}$soning via $\textbf{M}$ulti-$\textbf{A}$gent $\textbf{D}$ebate with Refined Prompt), a novel framework that (1) refines LLMs’ strategic prior knowledge to improve reasoning quality and (2) promotes diverse viewpoints within a single model by systematically modifying prompts, reducing bias. Empirical results show that $\texttt{\textbf{DReaMAD}}$ significantly improves decision accuracy, reasoning diversity, and bias mitigation across multiple strategic tasks, establishing it as a more effective approach for LLM-based decision-making.</p>
+  
+  <div class="actions"><a class="btn primary" href="https://openreview.net/forum?id=23iGt7BBtl">OpenReview</a><a class="btn secondary" href="https://openreview.net/pdf?id=23iGt7BBtl">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://openreview.net/forum?id=TyArXyYnvz">GL-LowPopArt: A Nearly Instance-Wise Minimax-Optimal Estimator for Generalized Low-Rank Trace Regression</a></h2>
+  <p class="meta">Junghyun Lee, Kyoungseok Jang, Kwang-Sung Jun, Milan Vojnovic, Se-Young Yun · Relevance 2.0</p>
+  <p class="abstract">We present `GL-LowPopArt`, a novel Catoni-style estimator for generalized low-rank trace regression. Building on `LowPopArt` (Jang et al., 2024), it employs a two-stage approach: nuclear norm regularization followed by matrix Catoni estimation. We establish state-of-the-art estimation error bounds, surpassing existing guarantees (Fan et al., 2019; Kang et al., 2022), and reveal a novel experimental design objective, $\mathrm{GL}(\pi)$. The key technical challenge is controlling bias from the nonlinear inverse link function, which we address by our two-stage approach. We prove a *local* minimax lower bound, showing that our `GL-LowPopArt` enjoys instance-wise optimality up to the condition number of the ground-truth Hessian. Applications include generalized linear matrix completion, where `GL-LowPopArt` achieves a state-of-the-art Frobenius error guarantee, and **bilinear dueling bandits**, a novel setting inspired by general preference learning (Zhang et al., 2024). Our analysis of a `GL-LowPopArt`-based explore-then-commit algorithm reveals a new, potentially interesting problem-dependent quantity, along with improved Borda regret bound than vectorization (Wu et al., 2024).</p>
+  
+  <div class="actions"><a class="btn primary" href="https://openreview.net/forum?id=TyArXyYnvz">OpenReview</a><a class="btn primary" href="https://arxiv.org/abs/2506.03074v5">arXiv</a><a class="btn secondary" href="https://openreview.net/pdf?id=TyArXyYnvz">PDF</a></div>
+</article>
+<article class="card">
+  <h2><a href="https://openreview.net/forum?id=WISfJyOA6M">PhySpec: Physically Consistent Spectral Reconstruction via Orthogonal Subspace Decomposition and Self-Supervised Meta-Auxiliary Learning</a></h2>
+  <p class="meta">Xingxing Yang, Jie Chen, Zaifeng Yang · Relevance 1.6</p>
+  <p class="abstract">This paper presents a novel approach to hyperspectral image (HSI) reconstruction from RGB images, addressing fundamental limitations in existing learning-based methods from a physical perspective. We discuss and aim to address the ``colorimetric dilemma&quot;: failure to consistently reproduce ground-truth RGB from predicted HSI, thereby compromising physical integrity and reliability in practical applications. To tackle this issue, we propose PhySpec, a physically consistent framework for robust HSI reconstruction. Our approach fundamentally exploits the intrinsic physical relationship between HSIs and corresponding RGBs by employing orthogonal subspace decomposition, which enables explicit estimation of camera spectral sensitivity (CSS). This ensures that our reconstructed spectra align with well-established physical principles, enhancing their reliability and fidelity. Moreover, to efficiently use internal information from test samples, we propose a self-supervised meta-auxiliary learning (MAXL) strategy that rapidly adapts the trained parameters to unseen samples using only a few gradient descent steps at test time, while simultaneously constraining the generated HSIs to accurately recover ground-truth RGB values. Thus, MAXL reinforces the physical integrity of the reconstruction process. Extensive qualitative and quantitative evaluations validate the efficacy of our proposed framework, showing superior performance compared to SOTA methods.</p>
+  
+  <div class="actions"><a class="btn primary" href="https://openreview.net/forum?id=WISfJyOA6M">OpenReview</a><a class="btn secondary" href="https://openreview.net/pdf?id=WISfJyOA6M">PDF</a></div>
+</article>
+
+  <p class="meta"><a href="index.html">All results</a></p>
+</main>
+</body>
+</html>
