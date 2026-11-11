@@ -40,5 +40,26 @@
     "run_date": "",
     "venue": null,
     "conference_year": null
+  },
+  {
+    "file": "ICML-2025-digest.html",
+    "kind": "daily",
+    "run_date": "",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "ICML-2025-under_review.html",
+    "kind": "daily",
+    "run_date": "",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "ICML-2026-digest.html",
+    "kind": "daily",
+    "run_date": "",
+    "venue": null,
+    "conference_year": null
   }
 ]
