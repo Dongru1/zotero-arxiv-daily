@@ -7,7 +7,7 @@ from .utils import glob_match, _tokenize
 from .retriever import get_retriever_cls
 from .protocol import CorpusPaper, Paper
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 from .reranker import get_reranker_cls
 import re
 from collections import Counter
@@ -15,7 +15,7 @@ from .construct_email import render_email
 from .deadline import clear_budget, start_budget
 from .openreview_state import OpenReviewState, persist_enabled, project_root
 from .paper_enrich import attach_arxiv_links, enrich_papers
-from .publish import PageRecord, publish_results, render_site_page
+from .publish import PageRecord, load_month_archive, publish_results, render_site_page, save_daily_archive
 from .utils import send_email
 from openai import OpenAI
 from tqdm import tqdm
@@ -255,6 +255,8 @@ class Executor:
                     kind="daily",
                     run_date=day,
                 ))
+                save_daily_archive(day, ranked, project_root())
+                self._publish_previous_month(published, corpus, limit)
             elif not accepted and not reviewing and self.config.executor.send_empty:
                 self._write_email([], subject=None, intro=None, with_ratings=False)
                 published.append(PageRecord(
@@ -369,6 +371,25 @@ class Executor:
             return []
         logger.info(f"Reranking {len(papers)} papers...")
         return self.reranker.rerank(papers, corpus)
+
+    def _publish_previous_month(self, published: list[PageRecord], corpus: list[CorpusPaper], limit: int) -> None:
+        """On the first day of a month, rank last month's papers again."""
+        today = datetime.now()
+        if today.day != 1:
+            return
+        previous = (today.replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
+        collected = load_month_archive(previous, project_root())
+        if not collected:
+            return
+        logger.info(f"Reranking {len(collected)} papers collected in {previous}.")
+        ranked = self._rank(collected, corpus)[:limit]
+        published.append(PageRecord(
+            filename=f"{previous}-monthly.html",
+            html=render_site_page(f"{previous} 月度精选", ranked, intro=f"Papers collected in {previous}, ranked again."),
+            kind="monthly",
+            run_date=previous,
+        ))
+        self._write_email(ranked, subject=f"每日 arXiv {previous} 月度", intro=None, with_ratings=False)
 
     def _write_email(self, papers: list[Paper], subject: str | None, intro: str | None, with_ratings: bool) -> None:
         for paper in papers:

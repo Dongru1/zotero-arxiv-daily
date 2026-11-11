@@ -28,9 +28,12 @@ def test_publish_results_keeps_older_pages(tmp_path):
     assert (site / "2026-11-01-daily.html").read_text() == "<p>first</p>"
     assert (site / "2026-11-09-ICLR.html").read_text() == "<p>iclr</p>"
     index = (site / "index.html").read_text()
-    assert index.index("精选") < index.index("每日")
-    assert "2026-11-09 精选" in index
-    assert "2026-11-01 Daily" in index
+    assert index.index('href="daily.html"') < index.index('href="digest.html"') < index.index('href="under-review.html"')
+    assert ">会议精选</strong>" in index
+    digest = (site / "digest.html").read_text()
+    daily = (site / "daily.html").read_text()
+    assert ">ICLR</strong>" in digest
+    assert ">2026-11-01</strong>" in daily
 
 
 def test_publish_groups_digests_by_conference_year(tmp_path):
@@ -39,9 +42,11 @@ def test_publish_groups_digests_by_conference_year(tmp_path):
         PageRecord("2026-01-02-ICLR.html", "<p>old</p>", "digest", "2026-01-02", "ICLR", "2025"),
         PageRecord("2026-11-09-daily.html", "<p>daily</p>", "daily", "2026-11-09"),
     ], tmp_path)
-    index = (tmp_path / "site" / "index.html").read_text()
-    assert index.index(">2026<") < index.index(">2025<")
-    assert index.index("2026-11-09 精选") < index.index(">2025<")
+    digest = (tmp_path / "site" / "digest.html").read_text()
+    assert '<details open><summary>2026</summary>' in digest
+    assert "<details><summary>2025</summary>" in digest
+    assert digest.index(">2026<") < digest.index(">2025<")
+    assert ">ICLR</strong>" in digest
 
 
 def test_publish_infers_year_for_old_digest_files(tmp_path):
@@ -49,10 +54,10 @@ def test_publish_infers_year_for_old_digest_files(tmp_path):
     archive.mkdir(parents=True)
     (archive / "2025-05-01-ACL.html").write_text("<p>old acl</p>")
     publish_results([], tmp_path)
-    index = (tmp_path / "site" / "index.html").read_text()
-    assert ">2025<" in index
-    assert "ACL" in index
-    assert "2025-05-01 精选" in index
+    digest = (tmp_path / "site" / "digest.html").read_text()
+    assert "<details open><summary>2025</summary>" in digest
+    assert ">ACL</strong>" in digest
+    assert "2025-05-01" in digest
 
 
 def test_publish_puts_accepted_conference_pages_under_digest(tmp_path):
@@ -70,12 +75,42 @@ def test_publish_puts_accepted_conference_pages_under_digest(tmp_path):
     }]))
     publish_results([], tmp_path)
     index = (tmp_path / "site" / "index.html").read_text()
-    assert "ICML-2026-digest.html Daily" not in index
-    assert ">ICML<" in index
-    assert ">2026<" in index
-    assert ">2025<" in index
-    assert index.index("精选") < index.index("Under Review") < index.index("每日")
-    assert "2026-11-11 Daily" in index
+    digest = (tmp_path / "site" / "digest.html").read_text()
+    review = (tmp_path / "site" / "under-review.html").read_text()
+    daily = (tmp_path / "site" / "daily.html").read_text()
+    assert "ICML-2026-digest.html" not in index
+    assert ">每日</strong>" in index
+    assert ">会议精选</strong>" in index
+    assert ">Under Review</strong>" in index
+    assert ">ICML</strong>" in digest
+    assert "<details open><summary>2026</summary>" in digest
+    assert "<details open><summary>2025</summary>" in review
+    assert ">2026-11-11</strong>" in daily
+
+
+def test_daily_page_collapses_older_months(tmp_path):
+    archive = tmp_path / "data" / "pages"
+    archive.mkdir(parents=True)
+    (archive / "2026-11-11-daily.html").write_text("<p>new</p>")
+    (archive / "2026-10-02-daily.html").write_text("<p>old</p>")
+    (archive / "2026-10-monthly.html").write_text("<p>month</p>")
+    publish_results([], tmp_path)
+    daily = (tmp_path / "site" / "daily.html").read_text()
+    assert '<details open><summary>2026-11</summary>' in daily
+    assert "<details><summary>2026-10</summary>" in daily
+    assert "2026-10 月度精选" in daily
+
+
+def test_month_archive_dedupes_titles(tmp_path):
+    from zotero_arxiv_daily.publish import load_month_archive, save_daily_archive
+
+    first = Paper(source="arxiv", title="Same", authors=["A"], abstract="one", url="https://arxiv.org/abs/1")
+    second = Paper(source="arxiv", title="Same", authors=["A"], abstract="one", url="https://arxiv.org/abs/1")
+    other = Paper(source="arxiv", title="Other", authors=["B"], abstract="two", url="https://arxiv.org/abs/2")
+    save_daily_archive("2026-10-01", [first], tmp_path)
+    save_daily_archive("2026-10-02", [second, other], tmp_path)
+    loaded = load_month_archive("2026-10", tmp_path)
+    assert [paper.title for paper in loaded] == ["Same", "Other"]
 
 
 def test_site_page_shows_source_links_and_rating():

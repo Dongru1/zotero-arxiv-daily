@@ -9,7 +9,9 @@ from .openreview_state import PAGES_DIR, SITE_DIR, project_root
 from .protocol import Paper
 
 _DATED_PAGE = re.compile(r"^(?P<date>\d{4}-\d{2}-\d{2})-(?P<kind>.+)\.html$")
+_MONTHLY_PAGE = re.compile(r"^(?P<month>\d{4}-\d{2})-monthly\.html$")
 _VENUE_PAGE = re.compile(r"^(?P<venue>.+)-(?P<year>\d{4})-(?P<kind>digest|under_review)\.html$")
+DAILY_ARCHIVE = Path("data") / "daily_archive"
 
 _PAGE_STYLE = """
 body { margin: 0; background: #f4f5f7; color: #1f2430; font-family: Georgia, "Iowan Old Style", Palatino, serif; }
@@ -30,9 +32,15 @@ h1 { font-size: 1.9rem; letter-spacing: -0.03em; margin-bottom: 0.3rem; }
 .btn { display: inline-block; text-decoration: none; font-size: 0.88rem; font-weight: 650; padding: 8px 14px; border-radius: 999px; }
 .btn.primary { background: #16325c; color: #fff; }
 .btn.secondary { background: #fff; color: #16325c; border: 1px solid #c9d0da; }
-.year { margin: 22px 0 4px; }
-.venue { margin: 10px 0 4px; }
-.index ul { margin-top: 6px; }
+.nav { display: flex; gap: 18px; margin: 8px 0 28px; }
+.nav a { font-weight: 650; text-decoration: none; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 12px 0 8px; }
+.cards.home { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+a.entry { display: block; background: #fff; border: 1px solid #e4e6eb; border-radius: 14px; padding: 18px 20px; color: inherit; text-decoration: none; }
+a.entry strong { display: block; font-size: 1.15rem; }
+a.entry span { display: block; margin-top: 6px; color: #5c6570; font-size: 0.88rem; }
+details { margin: 8px 0 16px; }
+summary { cursor: pointer; font-weight: 650; }
 """
 
 
@@ -112,7 +120,58 @@ def _source_link(paper: Paper) -> tuple[str, str]:
     return ("Paper", url) if url else ("", "")
 
 
+def save_daily_archive(day: str, papers: list[Paper], root: Path | None = None) -> None:
+    """Remember one day's mailed papers so the next month can rank them again."""
+    path = (root or project_root()) / DAILY_ARCHIVE / f"{day}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = [
+        {
+            "title": paper.title,
+            "authors": paper.authors,
+            "abstract": paper.abstract,
+            "url": paper.url,
+            "pdf_url": paper.pdf_url,
+            "arxiv_url": paper.arxiv_url,
+        }
+        for paper in papers
+    ]
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+
+
+def load_month_archive(month: str, root: Path | None = None) -> list[Paper]:
+    folder = (root or project_root()) / DAILY_ARCHIVE
+    if not folder.is_dir():
+        return []
+    papers = []
+    seen = set()
+    for path in sorted(folder.glob(f"{month}-*.json")):
+        for item in json.loads(path.read_text()):
+            key = item.get("url") or item.get("title")
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            papers.append(Paper(
+                source="arxiv",
+                title=item.get("title") or "",
+                authors=list(item.get("authors") or []),
+                abstract=item.get("abstract") or "",
+                url=item.get("url") or "",
+                pdf_url=item.get("pdf_url"),
+                arxiv_url=item.get("arxiv_url"),
+            ))
+    return papers
+
+
 def _infer_record(filename: str) -> dict:
+    monthly = _MONTHLY_PAGE.match(filename)
+    if monthly:
+        return {
+            "file": filename,
+            "kind": "monthly",
+            "run_date": monthly.group("month"),
+            "venue": None,
+            "conference_year": None,
+        }
     venue_page = _VENUE_PAGE.match(filename)
     if venue_page:
         kind = venue_page.group("kind")
@@ -162,50 +221,80 @@ def _load_manifest(path: Path) -> dict[str, dict]:
     return {item["file"]: item for item in payload if item.get("file")}
 
 
-def _index_html(entries: list[dict]) -> str:
-    sections = [
-        ("精选", "digest", "精选"),
-        ("Under Review", "under_review", "Under Review"),
-        ("每日", "daily", "Daily"),
-    ]
-    body = []
-    for heading, kind, suffix in sections:
-        items = [item for item in entries if item.get("kind") == kind or (kind == "daily" and item.get("kind") not in {"digest", "under_review"})]
-        if kind != "daily":
-            items = [item for item in entries if item.get("kind") == kind]
-        html_block = _grouped_index(items, suffix) if kind != "daily" else _daily_index(items)
-        body.append(f"<h2>{heading}</h2>{html_block}")
+def _shell(title: str, body: str) -> str:
     return f"""<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zotero arXiv Daily</title>
+  <title>{html.escape(title)}</title>
   <style>{_PAGE_STYLE}</style>
 </head>
 <body>
 <main class="index">
-  <h1>Zotero arXiv Daily</h1>
-  {''.join(body)}
+  {body}
 </main>
 </body>
 </html>
 """
 
 
-def _link_label(item: dict, suffix: str) -> str:
-    run_date = item.get("run_date") or ""
-    if run_date:
-        return f"{run_date} {suffix}"
-    return suffix
+def _index_html(entries: list[dict]) -> str:
+    counts = {
+        "daily": sum(1 for item in entries if item.get("kind") == "daily"),
+        "digest": sum(1 for item in entries if item.get("kind") == "digest"),
+        "under_review": sum(1 for item in entries if item.get("kind") == "under_review"),
+    }
+    cards = [
+        ("daily.html", "每日", f"{counts['daily']} 天"),
+        ("digest.html", "会议精选", f"{counts['digest']} 个会议"),
+        ("under-review.html", "Under Review", f"{counts['under_review']} 个会议"),
+    ]
+    body = '<div class="cards home">' + "".join(
+        f'<a class="entry" href="{href}"><strong>{html.escape(title)}</strong><span>{html.escape(meta)}</span></a>'
+        for href, title, meta in cards
+    ) + "</div>"
+    return _shell("Zotero arXiv Daily", f"<h1>Zotero arXiv Daily</h1>{body}")
 
 
-def _daily_index(entries: list[dict]) -> str:
-    daily_items = []
-    for item in sorted(entries, key=lambda entry: entry.get("run_date") or "", reverse=True):
-        label = _link_label(item, "Daily")
-        daily_items.append(f'<li><a href="{html.escape(item["file"])}">{html.escape(label)}</a></li>')
-    return "<ul>" + "".join(daily_items) + "</ul>" if daily_items else "<p class=\"lead\">No daily results yet.</p>"
+def _section_page(title: str, body: str) -> str:
+    return _shell(title, f"<h1>{html.escape(title)}</h1>{body}<p class=\"meta\"><a href=\"index.html\">首页</a></p>")
+
+
+def _entry_card(item: dict, title: str) -> str:
+    date = item.get("run_date") or ""
+    meta = f"<span>{html.escape(date)}</span>" if date and date != title else ""
+    return (
+        f'<a class="entry" href="{html.escape(item["file"])}">'
+        f"<strong>{html.escape(title)}</strong>{meta}</a>"
+    )
+
+
+def _daily_index(entries: list[dict], monthly: list[dict] | None = None) -> str:
+    if not entries and not monthly:
+        return "<p class=\"lead\">No daily results yet.</p>"
+    by_month: dict[str, list[dict]] = {}
+    for item in entries:
+        month = (item.get("run_date") or "")[:7] or "Unknown"
+        by_month.setdefault(month, []).append(item)
+    monthly_by_month = {(item.get("run_date") or ""): item for item in monthly or []}
+    months = sorted(set(by_month) | set(monthly_by_month), reverse=True)
+    parts = []
+    for index, month in enumerate(months):
+        cards = []
+        highlight = monthly_by_month.get(month)
+        if highlight:
+            cards.append(_entry_card({**highlight, "run_date": ""}, f"{month} 月度精选"))
+        cards.extend(
+            _entry_card(item, item.get("run_date") or "Daily")
+            for item in sorted(by_month.get(month, []), key=lambda entry: entry.get("run_date") or "", reverse=True)
+        )
+        opened = " open" if index == 0 else ""
+        parts.append(
+            f"<details{opened}><summary>{html.escape(month)}</summary>"
+            f'<div class="cards">{"".join(cards)}</div></details>'
+        )
+    return "".join(parts)
 
 
 def _grouped_index(entries: list[dict], suffix: str) -> str:
@@ -216,17 +305,19 @@ def _grouped_index(entries: list[dict], suffix: str) -> str:
         year = item.get("conference_year") or "Unknown"
         venue = item.get("venue") or suffix
         grouped.setdefault(year, {}).setdefault(venue, []).append(item)
+    years = sorted(grouped, reverse=True)
     parts = []
-    for year in sorted(grouped, reverse=True):
-        parts.append(f'<h3 class="year">{html.escape(year)}</h3>')
+    for index, year in enumerate(years):
+        cards = []
         for venue in sorted(grouped[year]):
-            parts.append(f'<h4 class="venue">{html.escape(venue)}</h4><ul>')
             papers = sorted(grouped[year][venue], key=lambda entry: entry.get("run_date") or "", reverse=True)
             for item in papers:
-                parts.append(
-                    f'<li><a href="{html.escape(item["file"])}">{html.escape(_link_label(item, suffix))}</a></li>'
-                )
-            parts.append("</ul>")
+                cards.append(_entry_card(item, venue))
+        opened = " open" if index == 0 else ""
+        parts.append(
+            f"<details{opened}><summary>{html.escape(year)}</summary>"
+            f'<div class="cards">{"".join(cards)}</div></details>'
+        )
     return "".join(parts)
 
 
@@ -261,5 +352,13 @@ def publish_results(pages: list[PageRecord], root: Path | None = None) -> Path:
         source = archive / item["file"]
         if source.is_file():
             shutil.copyfile(source, site / item["file"])
-    (site / "index.html").write_text(_index_html(list(by_file.values())))
+    values = list(by_file.values())
+    (site / "index.html").write_text(_index_html(values))
+    daily = [item for item in values if item.get("kind") == "daily"]
+    monthly = [item for item in values if item.get("kind") == "monthly"]
+    digest = [item for item in values if item.get("kind") == "digest"]
+    reviewing = [item for item in values if item.get("kind") == "under_review"]
+    (site / "daily.html").write_text(_section_page("每日", _daily_index(daily, monthly)))
+    (site / "digest.html").write_text(_section_page("会议精选", _grouped_index(digest, "精选")))
+    (site / "under-review.html").write_text(_section_page("Under Review", _grouped_index(reviewing, "Under Review")))
     return site
