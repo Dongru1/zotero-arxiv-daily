@@ -8,7 +8,8 @@ from pathlib import Path
 from .openreview_state import PAGES_DIR, SITE_DIR, project_root
 from .protocol import Paper
 
-_FILENAME = re.compile(r"^(?P<date>\d{4}-\d{2}-\d{2})-(?P<kind>.+)\.html$")
+_DATED_PAGE = re.compile(r"^(?P<date>\d{4}-\d{2}-\d{2})-(?P<kind>.+)\.html$")
+_VENUE_PAGE = re.compile(r"^(?P<venue>.+)-(?P<year>\d{4})-(?P<kind>digest|under_review)\.html$")
 
 _PAGE_STYLE = """
 body { margin: 0; background: #f4f5f7; color: #1f2430; font-family: Georgia, "Iowan Old Style", Palatino, serif; }
@@ -112,7 +113,17 @@ def _source_link(paper: Paper) -> tuple[str, str]:
 
 
 def _infer_record(filename: str) -> dict:
-    match = _FILENAME.match(filename)
+    venue_page = _VENUE_PAGE.match(filename)
+    if venue_page:
+        kind = venue_page.group("kind")
+        return {
+            "file": filename,
+            "kind": "under_review" if kind == "under_review" else "digest",
+            "run_date": "",
+            "venue": venue_page.group("venue"),
+            "conference_year": venue_page.group("year"),
+        }
+    match = _DATED_PAGE.match(filename)
     if not match:
         return {"file": filename, "kind": "daily", "run_date": "", "venue": None, "conference_year": None}
     run_date = match.group("date")
@@ -182,11 +193,18 @@ def _index_html(entries: list[dict]) -> str:
 """
 
 
+def _link_label(item: dict, suffix: str) -> str:
+    run_date = item.get("run_date") or ""
+    if run_date:
+        return f"{run_date} {suffix}"
+    return suffix
+
+
 def _daily_index(entries: list[dict]) -> str:
     daily_items = []
     for item in sorted(entries, key=lambda entry: entry.get("run_date") or "", reverse=True):
-        label = item.get("run_date") or item["file"]
-        daily_items.append(f'<li><a href="{html.escape(item["file"])}">{html.escape(label)} Daily</a></li>')
+        label = _link_label(item, "Daily")
+        daily_items.append(f'<li><a href="{html.escape(item["file"])}">{html.escape(label)}</a></li>')
     return "<ul>" + "".join(daily_items) + "</ul>" if daily_items else "<p class=\"lead\">No daily results yet.</p>"
 
 
@@ -205,8 +223,9 @@ def _grouped_index(entries: list[dict], suffix: str) -> str:
             parts.append(f'<h4 class="venue">{html.escape(venue)}</h4><ul>')
             papers = sorted(grouped[year][venue], key=lambda entry: entry.get("run_date") or "", reverse=True)
             for item in papers:
-                label = f'{item.get("run_date") or item["file"]} {suffix}'
-                parts.append(f'<li><a href="{html.escape(item["file"])}">{html.escape(label)}</a></li>')
+                parts.append(
+                    f'<li><a href="{html.escape(item["file"])}">{html.escape(_link_label(item, suffix))}</a></li>'
+                )
             parts.append("</ul>")
     return "".join(parts)
 
@@ -226,7 +245,12 @@ def publish_results(pages: list[PageRecord], root: Path | None = None) -> Path:
         (archive / page.filename).write_text(page.html)
         by_file[page.filename] = _record_payload(page)
     for archived_page in archive.glob("*.html"):
-        by_file.setdefault(archived_page.name, _infer_record(archived_page.name))
+        inferred = _infer_record(archived_page.name)
+        current = by_file.get(archived_page.name)
+        if current is None or (
+            inferred["kind"] in {"digest", "under_review"} and current.get("kind") == "daily"
+        ):
+            by_file[archived_page.name] = inferred
     manifest_path.write_text(json.dumps(list(by_file.values()), indent=2) + "\n")
 
     site = root / SITE_DIR

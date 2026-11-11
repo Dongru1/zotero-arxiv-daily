@@ -55,6 +55,29 @@ def test_publish_infers_year_for_old_digest_files(tmp_path):
     assert "2025-05-01 精选" in index
 
 
+def test_publish_puts_accepted_conference_pages_under_digest(tmp_path):
+    archive = tmp_path / "data" / "pages"
+    archive.mkdir(parents=True)
+    (archive / "ICML-2026-digest.html").write_text("<p>accepted</p>")
+    (archive / "ICML-2025-under_review.html").write_text("<p>review</p>")
+    (archive / "2026-11-11-daily.html").write_text("<p>daily</p>")
+    (archive / "manifest.json").write_text(json.dumps([{
+        "file": "ICML-2026-digest.html",
+        "kind": "daily",
+        "run_date": "",
+        "venue": None,
+        "conference_year": None,
+    }]))
+    publish_results([], tmp_path)
+    index = (tmp_path / "site" / "index.html").read_text()
+    assert "ICML-2026-digest.html Daily" not in index
+    assert ">ICML<" in index
+    assert ">2026<" in index
+    assert ">2025<" in index
+    assert index.index("精选") < index.index("Under Review") < index.index("每日")
+    assert "2026-11-11 Daily" in index
+
+
 def test_site_page_shows_source_links_and_rating():
     html = render_site_page("ICLR 精选", [
         Paper(
