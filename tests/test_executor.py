@@ -290,6 +290,28 @@ def _paper(title: str, source: str = "arxiv", venue: str | None = None) -> Paper
     return make_sample_paper(title=title, source=source, venue=venue)
 
 
+def test_one_failed_conference_group_does_not_stop_the_next(monkeypatch):
+    executor = Executor.__new__(Executor)
+    calls = []
+
+    def rank(self, papers, corpus):
+        if papers[0].title == "bad":
+            raise RuntimeError("boom")
+        return papers
+
+    def publish(self, published, ranked, venue, year, day, today, kind, label, limit):
+        calls.append(venue)
+        published.append(venue)
+
+    monkeypatch.setattr(Executor, "_rank", rank)
+    monkeypatch.setattr(Executor, "_publish_group", publish)
+    published = []
+    executor._publish_group_safely(published, [_paper("bad")], [], "ICLR", "2026", "2026-11-11", "2026/11/11", "digest", "精选", 20)
+    executor._publish_group_safely(published, [_paper("ok")], [], "NeurIPS", "2026", "2026-11-11", "2026/11/11", "digest", "精选", 20)
+    assert calls == ["NeurIPS"]
+    assert published == ["NeurIPS"]
+
+
 def test_under_review_shortlist_prefers_distinctive_library_words():
     corpus = [
         CorpusPaper(title=f"General paper {i}", abstract="deep learning model", added_date=datetime(2026, 1, 1), paths=[])

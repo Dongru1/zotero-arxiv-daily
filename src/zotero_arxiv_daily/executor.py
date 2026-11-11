@@ -222,7 +222,13 @@ class Executor:
         for source in self._sources_for_scope():
             retriever = self.retrievers[source]
             logger.info(f"Retrieving {source} papers...")
-            papers = retriever.retrieve_papers()
+            try:
+                papers = retriever.retrieve_papers()
+            except Exception as exc:
+                if scope != "conference":
+                    raise
+                logger.exception(f"Skipping {source} retrieval after an error: {exc}")
+                continue
             if len(papers) == 0:
                 logger.info(f"No {source} papers found")
                 continue
@@ -263,10 +269,10 @@ class Executor:
                 return
         if scope != "daily":
             for (venue, year), papers in accepted.items():
-                self._publish_group(published, self._rank(papers, corpus), venue, year, day, today, "digest", "精选", limit)
+                self._publish_group_safely(published, papers, corpus, venue, year, day, today, "digest", "精选", limit)
             for (venue, year), papers in reviewing.items():
                 shortlisted = self._shortlist_under_review(papers, corpus, UNDER_REVIEW_KEEP)
-                self._publish_group(published, self._rank(shortlisted, corpus), venue, year, day, today, "under_review", "Under Review", limit)
+                self._publish_group_safely(published, shortlisted, corpus, venue, year, day, today, "under_review", "Under Review", limit)
         self._save_openreview_progress(all_papers, published)
 
     @staticmethod
@@ -371,6 +377,14 @@ class Executor:
         if with_ratings:
             self._attach_openreview_ratings(papers)
         send_email(self.config, render_email(papers, intro=intro), subject=subject)
+
+    def _publish_group_safely(self, published, papers, corpus, venue, year, day, today, kind, label, email_limit) -> None:
+        """One failed venue-year still leaves the other pages to be saved."""
+        try:
+            ranked = self._rank(papers, corpus)
+            self._publish_group(published, ranked, venue, year, day, today, kind, label, email_limit)
+        except Exception as exc:
+            logger.exception(f"Skipping {venue} {year} {label} after an error: {exc}")
 
     def _publish_group(self, published, ranked, venue, year, day, today, kind, label, email_limit) -> None:
         filename = f"{venue}-{year}-{kind}.html"
