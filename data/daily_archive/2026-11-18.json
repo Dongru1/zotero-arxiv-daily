@@ -1,0 +1,817 @@
+[
+  {
+    "title": "Factorized Self-Supervised Speech Tokenization",
+    "authors": [
+      "Benjamin Van Niekerk",
+      "Jean-Philippe Letendre",
+      "Nicol Visser",
+      "Hugo Seute",
+      "Herman Kamper",
+      "Mirco Ravanelli"
+    ],
+    "abstract": "Speech tokenizers convert audio into discrete units, enabling language models to process and generate speech. The goal is to learn compact, text-like representations while preserving enough detail to reconstruct a speaker's voice and delivery. We propose Facto: a factorized tokenizer that disentangles time-varying information (content and prosody) from static components (speaker identity and recording conditions). We build on a recent linear factorization method for self-supervised features, extending it to handle unseen speakers. Then, we cluster the factorized space and train a lightweight decoder to reconstruct audio from the resulting tokens. By removing the static components before clustering, our tokens are more robust to small noise perturbations. We validate this by testing token stability under various noise conditions. Next, we theoretically analyze Facto's convergence and scaling properties, quantifying how the factorization improves with the number of training speakers. Finally, we evaluate Facto on a range of downstream tasks. We show that greater token stability translates into improved text-to-speech performance and competitive results in voice conversion and spoken language modeling. Code and checkpoints at https://github.com/ubisoft/ubisoft-laforge-facto/ and demo page at https://ubisoft-laforge.github.io/speech/facto/.",
+    "url": "https://arxiv.org/abs/2611.18898",
+    "pdf_url": "https://arxiv.org/pdf/2611.18898v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "OmniTag-LLM: Multilingual Multitask Speech Tagging",
+    "authors": [
+      "Aref Farhadipour",
+      "Francesco Verdini",
+      "Antonis Asonitis",
+      "Pierre-Edouard Honnet",
+      "Marzieh Razavi",
+      "Vijeta Avijeet",
+      "Juan Pablo Zuluaga Gomez"
+    ],
+    "abstract": "Multimodal LLMs promise to replace the traditional cascade of specialist speech models with a single system that, from one audio clip, jointly transcribes and labels emotion, gender, language, and named entities. Yet most benchmarks still score these tasks in isolation, and largely in English. We introduce OmniTag-Bench, a five-language benchmark (en/de/es/fr/it) and training recipe for joint understanding: one audio clip in, one JSON object out (transcript, emotion, gender, LID, token-level NER). We evaluate ten open multimodal LLMs and a LoRA fine-tuned Qwen3-Omni on a unified prompt and scorer. Beyond aggregate scores, OmniTag-Bench reveals a systematic failure mode: several strong models often transcribe or translate non-English speech into English, inflating multilingual WER. Fine-tuning improves the base model on NER, emotion, and WER while nearly doubling accuracy on independent human-labeled emotion corpora, suggesting transferable gains beyond pseudo-label imitation. The fine-tuned model also generalizes to unseen but related languages, transferring to held-out Dutch. We release prompts, the scorer, and the labeling pipeline.",
+    "url": "https://arxiv.org/abs/2611.18589",
+    "pdf_url": "https://arxiv.org/pdf/2611.18589v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "DuoFlow: Towards Synchronized Speech and Motion Generation with Fine-Grained Control",
+    "authors": [
+      "Jun Dong",
+      "Ronghui Li",
+      "Zhongyuan Hu",
+      "Yunqi Zhao",
+      "Lijie Guo",
+      "Ruizhang Xu",
+      "Di Kang",
+      "Linchao Bao",
+      "Xiu Li"
+    ],
+    "abstract": "An embodied speaker's expressiveness depends not only on what is said, but also on how the voice sounds and how the body moves. However, existing joint speech-motion generation models are largely driven implicitly by transcript semantics or intermediate speech representations, offering little explicit control over motion hierarchy, body parts, or vocal style. To bridge this gap, we construct MotionSpeech, a structured benchmark for controllable joint speech-motion generation that includes transcripts, voice-style descriptions, and motion conditions at two hierarchical levels. Building on this benchmark, we propose DuoFlow, a dual-stream latent flow transformer that jointly denoises speech and motion under a shared noise level and a unified second-based temporal coordinate. Modality-specific residual connectors inject structured conditions into the corresponding streams, layer-wise bidirectional cross-modal attention coordinates their generation, and a monotonic phoneme pathway combines normalized progress anchors with CTC supervision to strengthen speech temporal modeling. DuoFlow provides a unified interface for fine-grained motion and vocal-style control and demonstrates the ability to synthesize high-quality, synchronized, and instruction-consistent speech-motion sequences.",
+    "url": "https://arxiv.org/abs/2611.21530",
+    "pdf_url": "https://arxiv.org/pdf/2611.21530v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Controllability: Speaker Diversity in Instruction-Guided Text-to-Speech",
+    "authors": [
+      "Yi-Cheng Lin",
+      "Jia-Kai Dong",
+      "Kuan-Yu Chen",
+      "Szu-Chi Chen",
+      "Jian-Jiun Ding",
+      "Sung-Feng Huang",
+      "Yusuke Hirota",
+      "Hung-yi Lee"
+    ],
+    "abstract": "Instruction-guided text-to-speech (ITTS) lets users specify voice properties in natural language. Applications from conversational AI character voices to synthetic training data for downstream speech models depend on the system producing many distinct voices when the same broad category is requested repeatedly. No prior work audits whether ITTS outputs are in fact diverse, either compared to real speech or across attribute values. We evaluate seven open-source ITTS systems using speaker embeddings whose representational capacity we independently validate. Every system produces speaker distributions markedly narrower than real speech. Furthermore, female prompts produce less diverse voice pools than male prompts across most systems. In contrast, accent and emotion prompts barely alter speaker diversity in most systems, but reveal a strong controllability bias toward North American English and neutral speech. These results show that diversity and controllability capture complementary weaknesses, neither of which alone is sufficient to evaluate ITTS. Our code and data are available at https://github.com/dlion168/ITTS-Speaker-Diversity.",
+    "url": "https://arxiv.org/abs/2611.19030",
+    "pdf_url": "https://arxiv.org/pdf/2611.19030v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Low-Latency LLM-Based Streaming Multi-Talker ASR with Verifiable Rewards",
+    "authors": [
+      "Jing Pan",
+      "Ruizhi Li",
+      "Ju Lin",
+      "Jing Zheng",
+      "Florian Metze"
+    ],
+    "abstract": "LLM-based architectures offer strong generalization and instruction-following capabilities for streaming automatic speech recognition (ASR), but multi-talker use introduces coupled transcription, attribution, and latency challenges. Our wearable setting requires real-time transcription of a conversation between a near-field device wearer and a far-field partner. Because partial hypotheses are rendered on persistent sides of a dialogue UI, speaker roles cannot be permuted and each speaker tag must precede its turn. These sparse tags are weakly optimized by supervised fine-tuning (SFT), while committing to a leading tag can delay the text that follows. We therefore post-train a streaming LLM-based ASR model with reinforcement learning with verifiable rewards (RLVR), combining a fixed-role Speaker-Attributed WER (SA-WER) grader with a turn-level onset-delay reward. On an eight-direction multi-talker cohort, SA-WER RL reduces SA-WER from $20.51\\%$ for SFT to $13.14\\%$. Adding the delay objective reduces onset $p50$ by $65\\%$ (from $0.918\\,\\text{s}$ to $0.320\\,\\text{s}$) and $p90$ by $44\\%$ (from $1.389\\,\\text{s}$ to $0.780\\,\\text{s}$) relative to SA-WER-only RL, while achieving $12.70\\%$ SA-WER. These results demonstrate that fixed-role recognition quality and streaming responsiveness can be improved jointly.",
+    "url": "https://arxiv.org/abs/2611.19136",
+    "pdf_url": "https://arxiv.org/pdf/2611.19136v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Decode Early, Verify Late: Streaming Offline Speech Recognizers Without Accuracy Loss",
+    "authors": [
+      "Doyeob Kim"
+    ],
+    "abstract": "Voice agents need accurate transcripts soon after a user stops speaking. We propose Decode Early, Verify Late (DEVL), a training-free framework for streaming inference with offline ASR models. The server keeps partial transcripts as drafts and verifies the latest against the complete audio in one forward pass at turn end. Under stated input and decoding conditions, the final equals the model's greedy offline output in exact arithmetic. We adapt DEVL to four model families. In our five-recognizer comparison, 95-100% of final transcripts are byte-identical to the offline transcripts, WER stays within 0.13 points of offline, and single-stream time to final falls 1.5-7.3x. Serving Qwen3-ASR-1.7B on one A100, DEVL returns finals a median 22-26 ms after turn end at up to 64 streams, 2.7-3.9x sooner than the official streaming mode. It is the only system we tested that meets a 100 ms p99 target, up to 80 streams on Pipecat-STT and 64 on WildASR.",
+    "url": "https://arxiv.org/abs/2611.20064",
+    "pdf_url": "https://arxiv.org/pdf/2611.20064v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Layer-wise Linear Probing of an Encoder-free Audio-capable Language Model",
+    "authors": [
+      "Laishram Rahul",
+      "Shruthi B. S.",
+      "Parismita Gogoi",
+      "Sishir Kalita",
+      "Deepak KT",
+      "S R Mahadeva Prasanna"
+    ],
+    "abstract": "Encoder-free audio-capable multimodal language models pro- vide a unique setting for studying how speech representations emerge inside a language-model decoder. In Gemma-4-12B, short waveform frames are projected directly into the shared embedding space, and all subsequent contextual processing is performed by the decoder layers. We use this architecture to examine where acoustic, phonetic, segmental, and paralinguis- tic information becomes linearly accessible across depth. Us- ing the TIMIT corpus, we extract all 49 representations from the frozen model, including the embedding output and the out- puts of its 48 decoder layers. We train linear probes for log- F0, log-energy, voicing, phone identity, word-onset structure, speaker identity, recorded speaker gender, and dialect-region labels. The results show a broad progression in linear acces- sibility. Acoustic properties are most strongly decodable in the early layers, paralinguistic attributes are most accessible in the early-to-middle layers, and phone identity and boundary- sensitive information reach their highest performance around layer 11. Several properties remain strongly decodable across broad near-peak regions rather than at a single uniquely optimal layer. In deeper layers, phone identity and closed-set speaker identity decline sharply, while voicing, log-F0, and gender re- main more accessible. These findings provide an initial map of how speech information develops when the decoder is the first contextual stage to process audio.",
+    "url": "https://arxiv.org/abs/2611.20954",
+    "pdf_url": "https://arxiv.org/pdf/2611.20954v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Rethinking Post-Training for Expressive Zero-Shot Text-to-Speech",
+    "authors": [
+      "Jingbin Hu",
+      "Xinfa Zhu",
+      "Hao Wang",
+      "Wenjie Tian",
+      "Kangxiang Xia",
+      "Hangrui Hu",
+      "Kexin Huang",
+      "Jin Xu",
+      "Liumeng Xue",
+      "Lei Xie"
+    ],
+    "abstract": "Zero-shot voice cloning typically emphasizes preserving the timbre and prosodic characteristics of a reference speaker. However, in real-world use, speech should adapt its delivery to the target text rather than remain tied to a fixed speaking style. In this work, we formulate this problem as text-adaptive prosody synthesis for zero-shot voice cloning and study how post-training can endow a cloning model with this capability. We develop a three-stage framework. First, Direct Preference Optimization (DPO) provides a cold start by aligning the model with text-appropriate expressive speech. Second, Group Sequence Policy Optimization (GSPO) jointly optimizes prosodic expressiveness, acoustic quality, intelligibility, and speaker similarity. Finally, context-conditioned On-Policy Self-Distillation (OPSD) enables self-improvement by transferring expressive behavior from strong-reference to weak-reference conditions. On Qwen3-TTS, our framework improves Emotion from 18.5 to 81.2 and Paralinguistics from 38.4 to 73.9. Extensive ablations validate the role of each stage.",
+    "url": "https://arxiv.org/abs/2611.19787",
+    "pdf_url": "https://arxiv.org/pdf/2611.19787v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "VoxMel TTS Technical Report",
+    "authors": [
+      "Wenhao Guan",
+      "Jiaxin Ye",
+      "Haitao Li",
+      "Yifan Duan",
+      "Junxi Liu",
+      "Wangjin Zhou",
+      "Lin Li",
+      "Qingyang Hong",
+      "Xie Chen"
+    ],
+    "abstract": "Continuous autoregressive TTS relies on an acoustic target that enables stable next-latent modeling while preserving fine-grained acoustic details. While existing approaches employ learned compressed representations (e.g., continuous VAE latents) to render prediction tractable, they rely on complex neural encoders that often cap generation fidelity. Conversely, training-free targets like mel-spectrograms eliminate encoder overhead, yet their potential for autoregressive generation remains largely underexplored. In this work, we propose VoxMel, a tokenizer-free framework for autoregressive TTS that makes stable mel modeling tractable through a fixed, exactly invertible two-axis Haar transform. The transform first decomposes each mel spectrogram along frequency into local averages and a frequency residual, then splits the averaged component along time into Coarse-Mel and a temporal residual. A language-model backbone with a flow-matching head autoregressively generates Coarse-Mel. Non-autoregressive residual tiers then predict the temporal residual from Coarse-Mel, followed by the frequency residual conditioned on the reconstructed Frequency-Averaged Mel. Neither residual is fed back into the autoregressive history. Trained on 100K hours of Emilia, the supervised 0.6B model obtains 1.51\\% WER and 0.738 speaker similarity (SIM) on test-en, and 1.29\\% CER and 0.755 SIM on test-zh. GRPO improves these results to 1.15\\% WER / 0.753 SIM and 1.17\\% CER / 0.776 SIM, respectively. We also distill the guided flow head into two- and four-step students, requiring 2 or 4 head evaluations per coarse frame. The four-step student retains competitive SIM and nearly matches the supervised model in WER/CER.",
+    "url": "https://arxiv.org/abs/2611.20254",
+    "pdf_url": "https://arxiv.org/pdf/2611.20254v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "MOUSSE: Multilingual Overlapped Speech Separation with Predictive Uncertainty Estimation",
+    "authors": [
+      "Su Yeon Shim",
+      "Yejin Jeon",
+      "David Ifeoluwa Adelani",
+      "Young-Joo Suh"
+    ],
+    "abstract": "Recent generative speech separation methods have shown promising performance, yet mixtures of overlapping speech in different languages remain underexplored. To this end, we first curate MuSSeD, an English-Korean benchmark comprising two- to four- speaker mixtures across varying overlap ratios. We further propose MOUSSE, a flow matching framework that incorporates boundary-aware training and frame-wise predictive uncertainty through a permutation-invariant Gaussian negative log-likelihood. The predicted scale is further used to adapt classifier-free guidance during sampling. MOUSSE achieves 13.18 dB SI-SDRi and 0.175 ESTOIi, outperforming discriminative and flow matching-based separation baselines, with a 1.58 dB SI-SDRi improvement over the strongest model.",
+    "url": "https://arxiv.org/abs/2611.19706",
+    "pdf_url": "https://arxiv.org/pdf/2611.19706v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "A Speech-LLM Framework for Enrollment-Free Wake-Word-Guided Target-Speaker Recognition in Complex Noisy Scenarios for Seamless Human-Machine Interaction",
+    "authors": [
+      "Yuxiang Mei",
+      "Dongxing Xu",
+      "Yanhua Long"
+    ],
+    "abstract": "Target-speaker automatic speech recognition (TS-ASR) is essential for reliable human-machine interaction in complex acoustic environments, where overlapping speech and background noise make it difficult to identify and recognize the intended speaker. Existing approaches typically rely on speaker enrollment or cascaded processing pipelines, limiting their flexibility in practical applications. To address these limitations, we propose an enrollment-free Speech-LLM framework that leverages wake-word text as a lexical cue to guide target-speaker recognition. Specifically, a text-cue encoder extracts lexical representations from the wake word, which are integrated into a pretrained speech encoder through cross-attention to establish an implicit association between the wake-word occurrence and the target speaker. This enables the model to selectively recognize subsequent commands from the target speaker without requiring enrollment speech or explicit wake-word boundaries. Furthermore, a large language model (LLM) unifies command transcription and non-target speaker rejection within a single autoregressive framework. To improve robustness against complex acoustic interference, we develop a large-scale speech synthesis and simulation pipeline with a progressive four-stage training strategy. Experimental results demonstrate that the proposed framework achieves a command character error rate of 16.15% and a non-target speaker rejection rate of 91.56%, yielding a unified score of 87.70%, compared with 71.70% for the strongest enrollment-free baseline. These results demonstrate the effectiveness of wake-word-guided speaker selection and highlight the potential of integrating target-speaker recognition and rejection within a unified Speech-LLM framework for robust human-machine interaction.",
+    "url": "https://arxiv.org/abs/2611.19844",
+    "pdf_url": "https://arxiv.org/pdf/2611.19844v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Latency, Speech Recognition and Turn-Taking in Voice Agents for Spanish Phone Negotiation: An Externally Measured Comparison of Pipecat, LiveKit and GPT-Live",
+    "authors": [
+      "Jovan Popoca Moran",
+      "Eduardo de Avila-Armenta",
+      "Ra\\'ul Alejandro Aquino-Ibarra",
+      "Jorge Octavio Nicol\\'as-D\\'iaz",
+      "Umberto Leon-Dominguez"
+    ],
+    "abstract": "A voice agent that negotiates by phone must answer quickly, understand spoken amounts and cope with a caller who talks over it. We compared three architectures for such an agent, negotiating freight rates in Spanish: two cascades (speech recognition, language model and speech synthesis) orchestrated by Pipecat and by LiveKit Agents, and GPT-Live, an OpenAI speech model that listens and speaks without separate stages. A program played the carrier with the same 47 recordings of one speaker for all agents, without the telephone network, in 77 calls per architecture over five negotiation scenarios, and measured latency on the listener's side with a validated instrument. Median latency to the content response was 2,616.0 ms (Pipecat), 3,090.0 ms (LiveKit) and 2,444.8 ms (GPT-Live); the confidence interval of GPT-Live's 171.2 ms advantage over Pipecat includes zero. According to its own timestamps, GPT-Live began to answer 800 ms after the end of the line, close to the 0.8 s published by OpenAI; most of the remaining wait, about 1,367 ms and nearly constant, is the audio's round trip through OpenAI's service. A tool call added 0.9-1.1 s in every architecture, more than any difference between them, and the frameworks' self-reported latency fell short of the listener's wait by 9% (Pipecat) and 22% (LiveKit). Word error rates were low (6.03, 4.93 and 1.47%), but the error on amounts was 13.01% and 12.61% in the cascades, against 2.86% in GPT-Live. With default settings, Pipecat and LiveKit stopped at almost every backchannel and often took it as the carrier's answer: an \"ok\" spoken over the agent ended in a registered agreement in 3 of 15 Pipecat calls, 2 of 15 LiveKit calls and no GPT-Live call (descriptive counts, not tested). Latency should therefore be measured on the listener's side, and a cascade needs safeguards for spoken amounts and backchannels.",
+    "url": "https://arxiv.org/abs/2611.19118",
+    "pdf_url": "https://arxiv.org/pdf/2611.19118v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Nemotron 3.5 Bolt E4B 4GB: An Open and Efficient Small Language Model for Fast Conversational Agents",
+    "authors": [
+      "NVIDIA",
+      ":",
+      "Adi Margolin",
+      "Aditya Malte",
+      "Aishwarya Chhabra",
+      "Alex Hodson",
+      "Ameya Sunil Mahabaleshwarkar",
+      "Ambrish Dantrey",
+      "Amy Shen",
+      "Andrii Skliar",
+      "Annamalai Chockalingam",
+      "Anusha Pant",
+      "Ashwath Aithal",
+      "Ashwin Kumar",
+      "Besmira Nushi",
+      "Bhavesh Pawar",
+      "Bryan Catanzaro",
+      "Bryan Yu",
+      "Chantal Hwang",
+      "Chenhan Yu",
+      "Chris Alexiuk",
+      "Conner Currie",
+      "Cynthia Gao",
+      "David Mosallanezhad",
+      "Dina Yared",
+      "Ehsan Hosseini Asl",
+      "Eileen Long",
+      "Erick Galinkin",
+      "Felix Friedmann",
+      "Giedrius Burachas",
+      "Gorkem Batmaz",
+      "Grzegorz Chlebus",
+      "Guillermo Siman",
+      "Haifeng Qian",
+      "Hao Guo",
+      "Hayley Ross",
+      "Hrishith Thadicherla",
+      "Hui Wang",
+      "Huiying Li",
+      "Ike Nnoli",
+      "Irina Filatova",
+      "Iris Liu",
+      "Ji-Eun Lee",
+      "Jian Leong",
+      "Jian Zhang",
+      "Jiaqi Zeng",
+      "Joey Conway",
+      "Jonathan Cohen",
+      "Jose Vergara",
+      "Julien Veron Vialard",
+      "Kari Briski",
+      "Katherine Luna",
+      "Kedar Pandurang Potdar",
+      "Kevin Ning",
+      "Khalil Ben Khaled",
+      "Krzysztof Pawelec",
+      "Laura Dykes",
+      "Leili Tavabi",
+      "Lily Lee",
+      "Linda Liu",
+      "Liwei Ding",
+      "Maka Dong",
+      "Manoj Kilaru",
+      "Maria Bagdasarova",
+      "Matthew Lee",
+      "Meredith Price",
+      "Micah Schaffer",
+      "Michael Boone",
+      "Michael Fukuyama",
+      "Michael Hasper",
+      "Nancy Agarwal",
+      "Negar Habibi",
+      "Oleksii Kuchaiev",
+      "Oluwatobi Olabiyi",
+      "Pablo Ribalta",
+      "Payal Motwani",
+      "Pinky Xu",
+      "Prasoon Varshney",
+      "Pritam Biswas",
+      "Puhui Meng",
+      "Rameshwar Shivbhakta",
+      "Ran Zilberstein",
+      "Reka Kovacs",
+      "Richard Mazzarese",
+      "Rishabh Garg",
+      "Rita Fernandes Neves",
+      "Rochelle Woods",
+      "Ruby Ye",
+      "Ruvaid Virk",
+      "Ryan Hill",
+      "Saeid Motiian",
+      "Seph Mard",
+      "Shai Ben Nun",
+      "Shaona Ghosh",
+      "Sharad Yadav",
+      "Sudeep Sabnis",
+      "Suhas Hariharapura Sheshadri",
+      "Terry Kong",
+      "Thanh Do",
+      "Thinh Le",
+      "Udi Karpas",
+      "Viet Anh Trinh",
+      "Vinay Raman",
+      "Vinita Sharma",
+      "Warren Drones",
+      "Wenwen Gao",
+      "Whei Hsueh",
+      "Will Efstratis",
+      "Yoshi Suhara",
+      "Yunsheng Liu",
+      "Zhenming Wang",
+      "Zijia Chen",
+      "Zuhair Ahmed"
+    ],
+    "abstract": "We introduce Nemotron 3.5 Bolt E4B 4GB, an open and efficient small language model further post-trained from Gemma-4-E4B-it and optimized for speed and intelligence per GB of memory used for fast conversational agents. The model carries forward Gemma's strong conversational capabilities and further improves multi-turn tool use, instruction following, and input grounding for fast, local voice/device assistants, interactive personas, and embedded/Edge interfaces. The model combines natural conversation with multi-turn agentic capabilities to power voice/device assistants, interactive characters and robotic/IoT interfaces running on GeForce RTX, Jetson, and RTX/DGX Spark. Experiments on 21 benchmarks show that Nemotron 3.5 Bolt E4B 4GB achieves the highest average accuracy while generating the fewest output tokens in both reasoning and non-reasoning modes, compared with Gemma-4-E4B-it and Qwen3.5-4B. The model is released with a DFlash drafter. With DFlash, Bolt E4B achieves $2.74\\times$ the per-user decode speed of inference without speculative decoding at concurrency~1, and $1.21\\times$ the generation throughput of Gemma-4-E4B-it with MTP at batch size 1.",
+    "url": "https://arxiv.org/abs/2611.20771",
+    "pdf_url": "https://arxiv.org/pdf/2611.20771v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "No-Shot Text-to-Speech: Limitations of Zero-Shot TTS and its Evaluation Methods in Representing Queer and Transgender Voices",
+    "authors": [
+      "Juliana Francis",
+      "Robin Netzorg",
+      "Joakim Gustafson",
+      "\\'Eva Sz\\'ekely"
+    ],
+    "abstract": "Gender expansive voices remain underrepresented in speech datasets, which could cause challenges with generalizability in zero-shot Text-To-Speech (TTS) systems. We evaluate six zero-shot TTS models on two datasets: one containing non gender expansive voices (N-GE) and one with gender expansive (GE) voices from self-identified speakers. Human ratings found that 2 of the 6 models synthesize less similar GE voices compared to N-GE voices, and 3 have improved performance for GE voices. Automated evaluations yield conflicting results, with speaker similarity and automated mean opinion score predictors rating performance of GE voices inconsistently between models and human ratings. This highlights a potential blind spot in evaluation pipelines, emphasizing a need for more representative data and metrics that better capture human perceptual judgments. Our findings stress the need to include transgender, queer, and minority communities in creation of better datasets and model training.",
+    "url": "https://arxiv.org/abs/2611.20822",
+    "pdf_url": "https://arxiv.org/pdf/2611.20822v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Grounding Language Models in Speech Does Not Fix \"AI Flavor\": Calibrated LLM Judges, Goodhart Traps, and a Preference-Tuning Fix",
+    "authors": [
+      "Dongwu Qian"
+    ],
+    "abstract": "Chinese outputs of large language models carry a perceptible \"AI flavor\": formulaic sentence frames, stacked written-register connectives, repetition loops, and layout leakage. A popular hypothesis blames text-only training for the missing inner-speech layer of human writing; injecting speech or prosody signals should therefore reduce it. We test it with controlled interventions on a 0.6B model; all three fail: (i) phoneme-interleaved continued pretraining yields no spokenness gain under text-matched controls while raising repetition (+0.13 [+0.03, +0.23]); (ii) prosody-plan conditional generation reaches an adherence of only 0.257 against a pre-registered 0.50 gate; (iii) a rule-based reward built on TTS prosody-feature distance is imperceptible in double-blind evaluation by both humans (8/16) and a calibrated LLM judge (9/16). A root cause is evaluation: single-rater blind evaluation at n~20 only detects extreme (>=85%) preferences. We therefore build a calibrated LLM-judge protocol: the judge passes catch trials on known-answer pairs (16/16; single-text 22/24, same-topic pairs 24/24, versus 0.75 for the human rater), then annotates with two independent judges under A/B swapping, counting disagreement as a tie. Using the judge's agree labels directly as DPO pairs (no reward model), we obtain the first positive result: held-out blind win rate 0.833 [0.699, 0.972], repetition 0.114 to 0.000, unchanged MMLU. We further identify a Goodhart channel: the judge's length preference transduces into output-length collapse via pairwise DPO (median 75 chars vs a 300-char prompt); an SFT-anchor repairs it (w is a style knob: w=0.1 preserves gains, w=0.3 does not). Scaling preference data from 89 to 240 pairs yields no additional judge-visible gain. We release RA-Eval v0.1: a three-layer Chinese AI-flavor evaluation framework with 382 judge-annotated preference pairs.",
+    "url": "https://arxiv.org/abs/2611.19840",
+    "pdf_url": "https://arxiv.org/pdf/2611.19840v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Auditory-Feedback-Conditioned Flow TTS for Implicit Lombard Adaptation",
+    "authors": [
+      "Yunya Wang",
+      "Satoshi Nakamura"
+    ],
+    "abstract": "Conventional text-to-speech (TTS) systems can lose intelligibility in noise environments because they cannot adapt to environmental changes. However, humans tend to increase their vocal efforts in noisy environments, a phenomenon known as the Lombard effect. Building on an auditory-feedback Lombard TTS, we investigate whether a pretrained Flow-based TTS can learn acoustic adaptation directly from auditory feedback without explicit prosodic control. Signal-to-noise ratio (SNR) feedback and automatic speech recognition (ASR) feedback are extracted from the noise-corrupted waveforms and injected into the Flow-matching condition for utterance refinement and causal block-level updates. We assess feedback benefits across prompting and noise conditions using plain/Lombard prompting, prompt-switching controls, and paired-finetuning. Experiments show that while finetuning provides strong robustness under in-domain conditions, auditory feedback yields additional cue-dependent benefits that generalize to unseen noise. Moreover, stronger power/F0 tracking alone does not guarantee better speech intelligibility or quality.",
+    "url": "https://arxiv.org/abs/2611.19260",
+    "pdf_url": "https://arxiv.org/pdf/2611.19260v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ProTTS: End-to-End Prominence-aware Natural and Controllable Text-to-Speech via Automatic Word Stress Discovery",
+    "authors": [
+      "Sai Harshitha Aluru",
+      "Chiranjeevi Yarra"
+    ],
+    "abstract": "Natural speech conveys meaning not only through words, but also through the prominence on a few words. Yet most text-to-speech (TTS) systems remain prominence-unaware, existing prominence-aware TTS require external stress annotations, while unsupervised stress detectors operate in isolation, disconnected from synthesis. This creates a fundamental gap no existing system can automatically discover where stress should be placed, realize it as natural-sounding prosody, and offer user control over emphasis placement, all within a single model. To circumvent this, we propose ProTTS, a unified framework where stress detection emerges from the TTS model itself and, in turn, guides it to synthesize more natural and controllable speech. We incorporate a clustering head into the variance adaptor of FastSpeech_2 that discovers word stress directly from aggregated prosodic features. The discovered stress then drives emphasis variance predictors that modify pitch, energy, and duration for stressed words. The framework is trained end-to-end: TTS reconstruction and clustering losses jointly shape a stress-discriminative feature space without requiring stress labels at any stage. At inference, the same architecture also supports user-controllable emphasis by accepting a custom stress mask. We evaluate ProTTS on ISLE (non-native), LibriTTS, VCTK (native training), and three evaluation benchmarks (Tatoeba, TinyStress-15k, EmphAssess). Listeners prefer ProTTS over the baseline with a MOS of 3.96 vs. 3.12 and 83.5% preference rate. For stress detection, ProTTS achieves 0.839/0.861 F1 on ISLE (German/Italian L2), outperforming unsupervised (0.70) and supervised (0.82) baselines, and 0.933 F1 in zero-shot transfer to Tatoeba.",
+    "url": "https://arxiv.org/abs/2611.19832",
+    "pdf_url": "https://arxiv.org/pdf/2611.19832v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Speaking-Clock Mamba: Phoneme-Conditioned State-Space Modeling for Visual Forced Alignment",
+    "authors": [
+      "Nan Lu",
+      "Qifan Liang"
+    ],
+    "abstract": "Visual forced alignment (VFA) locates phoneme and word boundaries in a silent talking-face video given its transcript. Existing methods mainly enforce transcript order at the decoding stage, leaving the encoder without an explicit mechanism to anchor its temporally evolving representation to transcript progress. As a result, phoneme-specific evidence is blurred and alignment drift accumulates over long sequences. In this paper, we propose Speaking-Clock Mamba, which makes transcript progress part of the temporal recurrence. A selective state-space (Mamba) backbone is inserted between the visual frontend and the Conformer cross-attention encoder, and a Phoneme-Conditioned Selective Scan (PCSS) conditions its input-dependent step size on a supervised, structurally monotone speaking clock that estimates progress through the transcript. Since causal and bidirectional variants of this backbone make complementary errors, a training-free selector picks the more confident alignment per utterance. Experiments on LRS2 and LRS3 show consistent gains over protocol-matched baselines, and the supervised clock provides an explicit estimate of alignment progress.",
+    "url": "https://arxiv.org/abs/2611.18667",
+    "pdf_url": "https://arxiv.org/pdf/2611.18667v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Words Speak Louder? Exploring the Language Shortcut of LLM-Driven Incomplete Multimodal Learning",
+    "authors": [
+      "Wenhao Li",
+      "Chong Xiao",
+      "Xiaokun Bai",
+      "Rundong He",
+      "Zhuang Qi",
+      "Xusheng Liang",
+      "Zhibin Wu",
+      "Qiangchang Wang"
+    ],
+    "abstract": "Is a face or a voice still heard once the words are known? Incomplete multimodal learning increasingly uses large language models (LLMs) as fusion engines: modality features enter as token blocks and missing modalities become placeholders. We find that LLM-driven fusion can override non-verbal evidence it can read. Contrasting its full-input prediction with counterfactual views, the same model shown one modality or no content, we identify language shortcuts. We build MR-Bench: MR-Bench-A types every test sample of four sentiment benchmarks; MR-Bench-H contains 900 human-validated clips (620 language-shortcut, LS; 280 non-verbal-shortcut, NS) from seven sources, and every model is scored on all of them. Zero-shot MLLMs solve at most 32.7% of the LS clips; adding the transcript to the muted video lowers vision-language accuracy by 46.1-53.1 points. Yet inverting a text-only model's answers solves 94.4%, so LS accuracy alone cannot establish use of non-verbal evidence. Inside the fusion LLM, fused states align increasingly with the text view late in the decoder. Counterfactual-View Reliability learning (CoVeR) trains views as unimodal judges and withholds fused supervision where they disagree. It achieves state-of-the-art results on five benchmarks without extra inference cost in accuracy mode. On MR-Bench-H, it reaches 61.7% LS and 93.6% NS accuracy; robust mode raises LS accuracy to 63.0% while lowering NS accuracy to 84.8%. Among LS clips solved without text, adding text causes errors on 30.1% with CoVeR versus 32.2% with LLM-Fusion. Project page: https://peacelwh.github.io/CoVeR/.",
+    "url": "https://arxiv.org/abs/2611.20349",
+    "pdf_url": "https://arxiv.org/pdf/2611.20349v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "CausalGloss: Multi-Evidence Action Control for a Simultaneous Mandarin Speech-to-ASL Gloss Cascade",
+    "authors": [
+      "Mingze Li",
+      "Satoshi Nakamura"
+    ],
+    "abstract": "Simultaneous Mandarin speech-to-American Sign Language (ASL) gloss translation requires deciding when an evolving utterance supports committing each gloss. Fixed Wait-k cannot adapt to source-gloss reordering, while training only on reference histories causes exposure bias. We present CausalGloss, an English-prefix-to-ASL-gloss action policy for a Mandarin-speech cascade. It combines lexical and semantic evidence, bounded delay, negation constraints, burst WRITE actions, and incomplete-history recovery. On a frozen 500-example How2Sign-derived benchmark with weak LLM-generated references, CausalGloss improves the fixed Wait-k frontier and nearly matches a three-seed TransLLaMA-style learned adaptive baseline at k = 5 in Token F1 (0.7047 versus 0.7067), with 54.4% lower LAAL. Against CLERC Epee human-gloss references, it achieves 0.649 Token F1 and Pareto-dominates three-seed TransLLaMA-style k = 5 and fixed k = 5, 7, reducing LAAL by 58.2-69.9%. Ablations separate timing from retention. A synthetic Mandarin-speech cascade preserves a smaller computation-aware latency gain, although outputs remain over-long. We also construct ChineseSpeech-ASLGloss-v1, a 19,924-utterance, 36.54-h controlled evaluation corpus.",
+    "url": "https://arxiv.org/abs/2611.19375",
+    "pdf_url": "https://arxiv.org/pdf/2611.19375v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "D\\'ecoupage: Directorial Audio-Visual Control for Long Multi-Shot Video Generation",
+    "authors": [
+      "Yifan Wang",
+      "Hao Ouyang",
+      "Qiuyu Wang",
+      "Yihao Meng",
+      "Wen Wang",
+      "Zeyue Tian",
+      "Yichong Lu",
+      "Hanlin Wang",
+      "Qingyan Bai",
+      "Zichen Liu",
+      "Yujun Shen",
+      "Qifeng Chen"
+    ],
+    "abstract": "In cinematic storytelling, sound and visual transitions do not always coincide in lockstep: dialogue frequently bridges across cuts to reveal reactions or introduces new scenes via J- and L-cuts, while deliberate silences pace the scene. Existing audio-visual generative frameworks, however, lack explicit mechanisms to coordinate independent visual and acoustic timing over extended horizons. As narrative duration and shot complexity scale, these systems struggle to maintain long-range dialogue pacing, often hallucinating speech during intended silences or erroneously driving mouth movements on silent listeners. To enable fine-grained cinematic control, we present DECOUPAGE, a screenplay-driven framework for long-form, multi-shot, and multi-character joint audio-video generation. Rather than coupling modality boundaries by default, DECOUPAGE uncouples generation into independently bounded visual and acoustic tracks governed by persistent character identities. DECOUPAGE builds on a joint audio-video diffusion model with dual-schedule temporal cross-attention, incorporating a directorial Lip-sync mechanism that selectively decouples speech conditioning from visual facial dynamics during off-screen dialogue. On multi-shot conversational benchmarks, DECOUPAGE achieves precise control over shot transitions, audio timing, and visibility-aware lip synchronization, directing 15- to 60-second screenplay-driven audio-video generation with multimodal coherence.",
+    "url": "https://arxiv.org/abs/2611.18866",
+    "pdf_url": "https://arxiv.org/pdf/2611.18866v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "A Systematic Study of Cross-Token Transfer for Data-Efficient Non-Verbal Text-to-Speech",
+    "authors": [
+      "Jing Pan",
+      "Haibin Wu",
+      "Minxue Niu",
+      "Florian Metze",
+      "Yuzong Liu"
+    ],
+    "abstract": "Non-verbal vocalizations (NVs), such as laughter and breath, carry affective cues that words alone do not convey. Yet NV data remains scarce because speech annotation pipelines often omit or normalize these events. Existing work has improved NV text-to-speech through model design and data curation, but whether one NV token can help a model learn another has received little systematic study. We investigate this cross-token transferability in a controlled CosyVoice 2 setup. We first trace a laughter-only scaling curve, then hold laughter at 200 or 1,600 examples while adding breath, sigh, cough, lip-smack, or neutral speech. With only 200 laughter examples, adding 3,200 cough examples raises end-to-end laughter F1 from 0.170 to 0.529, surpassing the 0.495 obtained from 1,600 laughter examples alone. At the 1,600-example anchor, cough reaches 0.695, nearly matching 6,400 laughter examples (0.697). Waveform-level Whisper-D scoring and a semantic-token transcriber show consistent trends. Cross-token transfer therefore offers a complementary route to low-resource NV generation.",
+    "url": "https://arxiv.org/abs/2611.19145",
+    "pdf_url": "https://arxiv.org/pdf/2611.19145v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Machine interpreting competitiveness: a discourse-sensitive comparison of meaning and target-language quality in English-Chinese simultaneous interpreting",
+    "authors": [
+      "Yuanyuan Ding"
+    ],
+    "abstract": "Machine interpreting (MI), or AI-enabled speech translation, is increasingly visible in professional and public-facing communication, yet its performance relative to human simultaneous interpreters remains insufficiently understood. Existing studies are often limited by a single discourse mode and evaluation frameworks that are not well aligned with interpreting as a discourse-level communicative activity. The present study compares five commercial MI systems with 26 human interpreters (14 professionals, 12 advanced students) on English-to-Chinese simultaneous interpreting across planned and unplanned discourse, focusing on meaning and target-language quality. In these materials, MI performance differed sharply between the two discourse modes. In the planned formal speech, the strongest system became highly competitive on meaning, entering the upper human range, and a second system also performed strongly. In the extemporaneous interview, however, no MI system approached the stronger human tiers. Code-level analysis further shows that similar overall scores often masked different error profiles. Human interpreters were more likely to preserve the broader communicative trajectory through selective omission, restructuring, and contextual inference, whereas even the best MI systems were more vulnerable to semantic distortion, discourse-tracking failures, and context-insensitive interpretation. On target-language quality, the human advantage proved more stable than on meaning. Unintelligible or nonsensical output and disfluency carryover emerge as particularly salient weaknesses in machine performance, especially in spontaneous discourse. Overall, the findings are consistent with a discourse-sensitive account of where MI appears competitive, where it remains limited, and why these distinctions matter for interpreting practice, interpreter education, and future MI development.",
+    "url": "https://arxiv.org/abs/2611.19802",
+    "pdf_url": "https://arxiv.org/pdf/2611.19802v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Why Do Low-Activity Speakers Disappear in Speaker Diarization? Decomposing Lost Speakers and What Training-Free Fixes Can Recover",
+    "authors": [
+      "Fumiaki Yamaguchi"
+    ],
+    "abstract": "Speaker diarization can drop people who speak only a little from its output entirely, and such losses barely affect the diarization error rate (DER), which measures the fraction of misattributed time. We examine Nemotron-3, an end-to-end diarization model with eight output slots, on 990 recordings from four corpora, and count lost speakers by how they were lost (overlap, merge, miss). Nine in ten lost speakers are low-activity speakers with less than 10 s of total speech, and the cause splits by the number of speakers in the recording. In recordings with nine or more speakers, merges and misses caused by running out of slots dominate; re-running the model on short windows only for recordings that fill all eight slots, without any training, reduces these losses from 228 to 101 speakers, while extra output speakers grow from 5 to 50. In recordings with up to eight speakers, 60% of the losses are speakers hidden under someone else's speech, and none of the training-free methods we tried reduced them.",
+    "url": "https://arxiv.org/abs/2611.19160",
+    "pdf_url": "https://arxiv.org/pdf/2611.19160v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Learning from Distribution: Rethinking One-Hot Supervision for ASR and QA in Speech Language Models",
+    "authors": [
+      "Yujie Guo",
+      "Hongjie Chen",
+      "Jiaming Zhou",
+      "Jian Kang",
+      "Jie Li",
+      "Yongxiang Li",
+      "Yong Qin"
+    ],
+    "abstract": "Speech language models (SLMs) exhibit strong capabilities in automatic speech recognition (ASR) and general-purpose speech understanding, yet ASR-specific training often degrades spoken question answering (QA) performance. We revisit this conflict from the perspective of task-specific input--output mappings and one-hot supervision. Our findings reveal pronounced task-asymmetric effects: ASR-only training severely limits QA capability, whereas QA-only training retains reasonable ASR performance. We hypothesize that the relatively deterministic mapping of ASR, combined with single-reference supervision, biases models toward transcription-specific behavior. Motivated by this perspective, we advocate broadening ASR learning objectives while preserving recognition accuracy. We propose Learning from Distribution (LFD), which aligns speech-conditioned predictions with the conditional output distributions of a pretrained text LLM. Extensive experiments demonstrate that LFD improves both ASR and QA performance, exhibits superior data efficiency, and remains effective under full-parameter fine-tuning. CoT-ASR further supports the broader applicability of our proposed supervision principle.",
+    "url": "https://arxiv.org/abs/2611.20436",
+    "pdf_url": "https://arxiv.org/pdf/2611.20436v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "The Vocabulary Tax: Safely Trimming Unused Tokens from LLMs for On-Device Use",
+    "authors": [
+      "Sattaya Singkul"
+    ],
+    "abstract": "Open large language models (LLMs) and speech models ship vocabularies of up to 262k tokens, and every user downloads the tables those tokens index (the input embedding, an untied output head and, in recent on-device models, per-layer embeddings), whatever languages they need. We call the bytes in rows a deployment never uses the vocabulary tax and measure it, without downloading weights, for 1,244 generative and speech-recognition models on the Hugging Face Hub. For a Thai and English deployment it is a median 4.4% of model bytes below 0.5B parameters and 2.1% above 8B, and 1.93 GB in Gemma 4 E2B: it falls hardest on the small models that edge devices run. Keeping only the rows of the deployment's writing systems is exact. Keeping the tokens seen in the user's own text removes much more, a median 29.0% below 0.5B, but the usual way of doing it breaks BPE tokenizers: it drops the intermediate tokens that merges build on, so new text is split differently 1.9 times as often as the standard check reports. We repair this with merge closure, at a cost of 5.9% more rows, and add a trim certificate: a Good-Turing estimate, from the trimming text alone, of how much new text the trimmed tokenizer will split differently (correlation 0.996 over 300 settings in 22 languages) and of how much more text a target needs. Without test data our method never exceeds a 2% target, while prior keep rules checked on test data exceed it in 9-13 of 44 settings. On six models of 270M to 3B parameters in 11 languages, trimmed models keep their predictions: where the certificate passes, a median 89.7% of rows is removed and bits per character rise by at most 2.0%. The census, the trimming and the certificate are released as an open Python package, and the per-model tax for 41 languages as an open dataset.",
+    "url": "https://arxiv.org/abs/2611.19913",
+    "pdf_url": "https://arxiv.org/pdf/2611.19913v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Winning the Leaderboard, Losing the Distribution: Diagnosing and Mitigating Acoustic Narrowing in Low-Resource ASR",
+    "authors": [
+      "Kadir Goksel Gunduz"
+    ],
+    "abstract": "For a low-resource language, one public leaderboard is often the only shared measure of progress, so optimizing toward it means optimizing toward a test distribution. Our low-rank fine-tune of whisper-large-v3-turbo ranked first on MediaSpeech, Common Voice 17 and a five-set Turkish community board, at 9.02% word error on MediaSpeech against 11.93% for the best baseline. On its private split it lost to unmodified whisper-large-v3. We treat that split as an alarm, not evidence; the main finding does not depend on it. On a twenty-condition FLEURS-TR benchmark built independently of our model selection, the unmodified base beats every fine-tune in every condition, and all five deficits clear zero under paired bootstrap. We call this acoustic narrowing: fine-tuning contracts the acoustic range a model serves well. The central finding is methodological: our in-house proxy for detecting narrowing concealed it instead, ranking the narrowed fine-tune above the sturdier base. Model selection needs a proxy from an independently produced distribution; more of the same source will not do. A rebuilt pipeline reduces the narrowing: a larger mixture with disclosed provenance, a higher-capacity base, and base-referenced selection with trajectory averaging. It wins three same-provenance axes and draws level on FLEURS-TR, 8.16% against 8.26%, interval spanning zero. Parity holds under a second inference stack and a full epoch, decoder fixed. The recovery is one trajectory, a demonstration rather than a validated recipe. In Kazakh the inversion reappears on corpora we did not build. With matched trainable-parameter shares, fine-tuning raised out-of-pool error by 2.23 points for an attention encoder-decoder and lowered it by 3.46 for a CTC encoder-only model, across three seeds each. Narrowing thus depends on the system adapted. We release TurkSpeak Bench, a robustness-first Turkish ASR leaderboard.",
+    "url": "https://arxiv.org/abs/2611.18653",
+    "pdf_url": "https://arxiv.org/pdf/2611.18653v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Sada-ASR: A Production Multidialectal Arabic Speech Recognition System",
+    "authors": [
+      "Mahmoud Khaled",
+      "Mohammed Abd-Elnaser",
+      "Mahmoud Mohsen",
+      "Hazem Ahmed",
+      "Abdelrahman Hafez"
+    ],
+    "abstract": "Callers to Arabic customer-service lines speak their own dialect, while speech recognizers are built and evaluated mainly on Modern Standard Arabic (MSA). A recognizer that mishears the dialect breaks the call before anything else can help. We present Sada-ASR, the speech recognizer of EchoNova's production Arabic voice agent. On a 120-hour test set of MSA and eight dialects, it has the lowest word and character error rates of twelve systems, against eleven from Microsoft, ElevenLabs, Google, OpenAI, Speechmatics, IFM, Cohere, NVIDIA and Audar: 11.69% word error rate against 13.51% for the strongest, Microsoft's MAI-Transcribe-2 (a lead of 0.74 points on clips unaffected by that system's fixed number and script conventions), and 15.52% against 16.96% averaged over varieties. Its largest margins are on Omani (4.30 points), Egyptian (3.78) and Saudi (2.19) speech; it is level on Syrian and loses on Lebanese (24.96% against 23.05%), mostly because it writes Lebanese words in MSA forms and is less verbatim. On six public test sets its average word error rate under the leaderboard's current scoring is 17.17%, below every published figure we found, among them Falcon-ASR (20.92%), Jais-ASR (22.85%) and Audar-ASR-V1-Turbo (23.17%), though none of these states that it used that scoring, so the comparison is indicative. We describe the data pipeline and methodology behind Sada-ASR and release a 20-hour subset of the test set with our scoring code.",
+    "url": "https://arxiv.org/abs/2611.19512",
+    "pdf_url": "https://arxiv.org/pdf/2611.19512v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Towards Microphone-Invariant Speech Representations for Transformer-Based Voice Disorder Detection",
+    "authors": [
+      "Iva Ewert",
+      "Felix Putze",
+      "Marvin Borsdorf",
+      "Tanja Schultz"
+    ],
+    "abstract": "Automatic voice disorder detection from speech offers strong potential for early diagnosis and continuous disease monitoring. While models based on pre-trained transformers have improved detection performance, their robustness to microphone variation remains underexplored, particularly for consumer-grade devices. To the best of our knowledge, we present the first study of microphone mismatch in transformer-based binary voice disorder detection across 20 smartphone microphones. While most mismatched microphone conditions cause moderate performance degradation, the worst-case condition reduces unweighted average recall by up to 12.53 percentage points. To address this, we introduce a Barlow Twins-inspired module to learn microphone-invariant representations. Our approach reduces the performance gap between matched and mismatched conditions by up to 62%, while maintaining comparable matched-condition performance. Qualitative analysis of the embedding space demonstrates more compact, distinct speaker clusters across microphones. Importantly, results indicate generalisation to unseen microphones across manufacturers, smartphone generations, and release periods, without requiring any inference-time adaptation.",
+    "url": "https://arxiv.org/abs/2611.21140",
+    "pdf_url": "https://arxiv.org/pdf/2611.21140v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Does the Voice Matter? Evaluating Frustration Detection on Deployed Clinical Voice-Agent Calls",
+    "authors": [
+      "Annika Michael",
+      "Zachary Ellis",
+      "Yuxiang Zhou",
+      "Samuel Thio",
+      "Yajie Vera He",
+      "Spencer Hazel",
+      "Jared Joselowitz"
+    ],
+    "abstract": "Autonomous voice agents now conduct routine clinical follow-up calls, so some automated triage is unavoidable. A patient becoming frustrated is one thing that triage should catch. These systems typically read only the transcript the speech-to-text stage produces, not the voice, and whether that is enough is largely untested on real clinical speech. We study per-turn frustration detection on real patient calls from a deployed clinical voice agent: 150 turns from six calls labelled by three annotators, with a length-matched acted corpus as a control, and 714 turns from 30 calls. Patient turns are overwhelmingly short: across the deployed calls, roughly 59% are one or two words, against 13% in the full acted corpus, and a corpus accuracy gap remains even after the acted set is length-matched. On one-word turns, transcript-only detection does not exclude chance. Across five audio-capable language models, the transcript flags 3 or 4 of the 39 frustrated one-word turns in the 30 calls, and a classifier given only the word count reaches 57.3%. Whether audio helps depends on the model and on the instruction. Asked to attend to delivery, two Gemini 2.5 models gain 3.0 pp over the transcript across 30 calls (-1.0 to 7.5 pp). Of the turns they confidently clear, 6.9% were in fact frustrated for audio against 13.0% for the transcript, a difference of 6.1 pp (2.2 to 10.4 pp). Across the 30 calls, given one prompt identical for both inputs, no model's audio-text interval excludes zero. Under the input-specific prompts, a newer Gemini model and two smaller open models do worse with audio than with the transcript (-3.5, -8.6 and -10.6 pp). A WavLM probe trained on the clinical calls matches the best prompted model overall (71.6%) but misses every frustrated one-word turn in the 24 added calls. When a patient's turn is short, the transcript alone is not enough to rule out frustration.",
+    "url": "https://arxiv.org/abs/2611.21001",
+    "pdf_url": "https://arxiv.org/pdf/2611.21001v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Syntactic Complexity Convergence in Dialogue: Analysis of the Phenomenon and Application to LLM Detection",
+    "authors": [
+      "Yu Wang",
+      "Yanran Chen",
+      "Yifan Wang",
+      "Steffen Eger",
+      "Hendrik Buschmeier"
+    ],
+    "abstract": "We revisit the under-explored phenomenon of syntactic complexity convergence in dialogue. Extending prior topic-level analyses to full conversations, we examine five human-human datasets and a set of human-LLM dialogues. We integrate and evaluate a multidimensional set of syntactic complexity metrics to quantify structural variation in dialogue. Our analyses reveal robust syntactic complexity convergence across human-human datasets, especially in task-oriented interactions, and statistical tests confirm that these effects are not due to chance. In contrast, human-LLM dialogues show no significant convergence under individual metrics; however, linear-CKA uncovers a distinct cross-metric convergence pattern. Motivated by these differences, we use syntactic complexity as a feature for detecting LLM-involved dialogue, achieving 96\\% accuracy. Our classification results demonstrate its potential without relying on likelihood-based signals such as surprisal, which require a language model as the estimator.",
+    "url": "https://arxiv.org/abs/2611.18606",
+    "pdf_url": "https://arxiv.org/pdf/2611.18606v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "LongCat-Video-Avatar 1.6 Technical Report",
+    "authors": [
+      "Meituan LongCat Team",
+      "Xunliang Cai",
+      "Yiqi Chen",
+      "Feng Gao",
+      "Xiaoyu Kong",
+      "Le Li",
+      "Hongyu Liu",
+      "Xiaoming Wei",
+      "Tianyu Yang",
+      "Yong Zhang",
+      "Sijie Zhao"
+    ],
+    "abstract": "Recent advances in audio-driven avatar video generation have enabled increasingly realistic synthesis, yet achieving precise lip-audio synchronization, natural, human-like motion, and visual consistency over long sequences remains challenging. We present LongCat-Video-Avatar 1.6, which builds on LongCat-Video-Avatar 1.5 to improve expressive naturalness and reduce error accumulation during extended generation, e.g., exaggerated lip movements and overly red, temporally unstable lip coloration, enhance the naturalness of facial expressions and coordinated head and body movements. These improvements are driven by a refined post-training pipeline that integrates reinforcement learning, improved classifier-free guidance strategies for DMD-based few-step distillation, long-video rollouts, and on-policy distillation. Together, these refinements improve expressive realism and enable the generation of videos exceeding 10 minutes while maintaining visual quality and temporal consistency. Arena evaluations show that LongCat-Video-Avatar 1.6 outperforms its predecessor and competing commercial audio-driven avatar models, demonstrating the effectiveness of the improved post-training pipeline.",
+    "url": "https://arxiv.org/abs/2611.18822",
+    "pdf_url": "https://arxiv.org/pdf/2611.18822v2",
+    "arxiv_url": null
+  },
+  {
+    "title": "Dependable Voice Command for Multi-UAV Swarms Using Small Language Models",
+    "authors": [
+      "Afshin Ameri",
+      "Luiz Giacomossi",
+      "H{\\aa}kan Forsberg",
+      "Ivan Tomasic",
+      "Baran C\\\"ur\\\"ukl\\\"u"
+    ],
+    "abstract": "Supervisory control of multiple autonomous unmanned aerial vehicles (UAVs) imposes high visual and cognitive demands on human operators, particularly when communicating mission objectives and system constraints. Voice command provides a natural interaction modality that can reduce operator workload; however, its reliability is affected by environmental noise, speech variability, and recognition errors. This paper presents a dependable voice command framework for multi-UAV swarm supervision using Small Language Models (SLMs). The proposed architecture integrates an Automatic Speech Recognition (ASR) module with an SLM-based semantic processing layer to transform spoken operator commands into structured task definitions for downstream multi-UAV planning and execution. To evaluate robustness, an end-to-end assessment pipeline is developed using a Probabilistic Context-Free Grammar (PCFG) to generate synthetic supervisory commands, which are converted into audio samples with varying operator accents and environmental signal-to-noise ratios (SNR). The resulting speech signals are processed by the ASR module, and the SLM performs contextual interpretation and phonetic correction of transcriptions when required. The evaluation isolates the resilience of the voice command pipeline under acoustic degradation and speech variation, demonstrating reliable task generation for multi-UAV supervision in challenging operational conditions.",
+    "url": "https://arxiv.org/abs/2611.18924",
+    "pdf_url": "https://arxiv.org/pdf/2611.18924v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Progressive Layer-wise Supervision: Deep-to-Shallow Supervision Annealing for Efficient and Robust Speech Deepfake Detection",
+    "authors": [
+      "Hoan My Tran",
+      "Xin Wang",
+      "Xuechen Liu"
+    ],
+    "abstract": "Speech foundation models pretrained via self-supervised learning provide powerful representations for deepfake detection, yet we find that standard fine-tuning exploits only the deepest transformer layers-leaving the majority of the network's capacity discriminatively inert. Layer-wise probing of XLS-R-128 reveals that the top two-thirds of the transformer stack contribute negligibly to anti-spoofing performance after standard fine-tuning, a phenomenon we term shallow-layer dormancy. We connect this observation to the representational redundancy of pretrained transformers: adjacent layers encode highly similar information, and fine-tuning without explicit intermediate supervision reinforces rather than breaks this redundancy. To address this, we propose Progressive Layer-wise Supervision (PLS), a training framework that attaches a shared linear classifier to every transformer layer and schedules layer-wise loss contributions via an exponentially annealed power weighting. Early training concentrates supervision on deep layers to preserve the pretrained representational hierarchy; later training progressively redistributes supervision to shallower layers, converting dormant earlier representations into discriminative ones. Competitive detection (<9.25% average EER) is achievable on XLS-R-128 at layer 7, which reduces the parameter count from 315M to 101M and exemplifies an early exit mechanism. Experiments across twelve benchmarks spanning in-domain, and out-of-domain deepfake scenarios show PLS achieves a new state-of-the-art with 239M parameters, outperforming prior methods with larger and more complex architectures.",
+    "url": "https://arxiv.org/abs/2611.20630",
+    "pdf_url": "https://arxiv.org/pdf/2611.20630v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "RAMP: Rethinking Multimodal Evaluation through Answer Readout Protocols",
+    "authors": [
+      "Jianye Zeng",
+      "Qiao Yikang",
+      "Duan Huang",
+      "Ziying Song"
+    ],
+    "abstract": "Multimodal large language models (MLLMs) are often evaluated by converting model outputs into discrete answers. The conversion protocol determines which scores become predictions and can strongly influence the reported results. We introduce RAMP (Readout Aware Multimodal Protocol), a systematic framework that compares direct yes/no token logits, surface-form scores, and typed or reversed A/B interfaces under fixed model checkpoints and paired visual questions. On 500 POPE adversarial questions, typed versus bare readout changes accuracy by $-20.2$ percentage points for SmolVLM-256M, $-16.4$ for TinyLLaVA-1.1B, and $+1.8$ for Qwen2.5-VL-3B. Paired transitions reveal extensive prediction changes even when the net accuracy difference is small: 79 of 104 binary ChartQA items change correctness for SmolVLM-500M, despite a $+1.0$-point net difference. We further analyze prompt wording, candidate forms, option position, cross-task effects, and calibration. An independent offline replay reproduces 16,140 first-token decisions from saved raw scores with exact agreement. Our findings establish answer readout as a measurable component of multimodal evaluation and provide a reproducible protocol for analyzing model comparisons.",
+    "url": "https://arxiv.org/abs/2611.20653",
+    "pdf_url": "https://arxiv.org/pdf/2611.20653v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Benchmarking Large Language Models for Linguistic Annotation",
+    "authors": [
+      "Ond\\v{r}ej Tich\\'y (Faculty of Arts",
+      "Charles University)",
+      "Anna Marklov\\'a (Faculty of Arts",
+      "Charles University)",
+      "Barbora Bulantov\\'a (Faculty of Arts",
+      "Charles University)",
+      "Magdalena Titlbachov\\'a (Faculty of Arts",
+      "Charles University)",
+      "Ji\\v{r}\\'i Mili\\v{c}ka (Faculty of Arts",
+      "Charles University)"
+    ],
+    "abstract": "Assessing large language models for linguistic annotation requires task-specific evaluation under documented conditions. We present dhAIBench, a Python benchmarking and annotation tool with a web interface for exploring and sharing results. It records prompts, configurations and predictions, enabling comparisons of annotation quality, confidence calibration, repeatability and estimated cost. We demonstrate the framework and the associated methodology through 293 runs of 48 models on nine linguistic annotation tasks spanning morphology, syntax, semantics, discourse-pragmatics, spelling normalization and learner-language correction. Models achieve high agreement with reference annotations on several tasks, including those on non-standardized, historical varieties as well as requiring contextual interpretation. The results support evaluating models against specific linguistic tasks, rather than relying on general rankings. To this end, we make the current and future benchmarks publicly available at dhaibench.silent3.ff.cuni.cz.",
+    "url": "https://arxiv.org/abs/2611.21291",
+    "pdf_url": "https://arxiv.org/pdf/2611.21291v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Surprise-Gated Memory for Live Speaker Diarization",
+    "authors": [
+      "Louis Mouchon",
+      "Alexis Lainault"
+    ],
+    "abstract": "We transpose the Surprise-Gated Memory recipe, a frozen encoder plus a calibrated novelty signal that gates a one-shot episodic store consolidated by periodic replay, from continual visual learning to live speaker diarization. The moment-to-moment question a streaming diarizer must answer, whether an arriving voice belongs to an already-heard speaker or a new one, is a known-versus-novel decision, exactly the decision the surprise gate is built for. On a frozen fine-tuned DiariZen backbone, our online system SGM-Diar recovers 4.8 of the 9.2 diarization-error points separating a naive online baseline from the offline oracle on AMI-SDM (52%) and 1.9 of 2.3 points on VoxConverse (82%), in the end-of-meeting revisable mode, with calibration frozen on development data and transferred cross-domain without adjustment. These are single-seed runs on three AMI meetings and five VoxConverse sessions, so the ordering of conditions rather than the absolute rates is the result. Beyond error rate, we measure the gate's behaviour directly and find a coherent memory-like profile: one-shot speaker recall at 0.857, a novelty response that habituates as speakers become familiar, re-identification that is invariant to the length of intervening silence, and a false-novelty rate of 0.001. Two ablations reproduce, now on audio, the central prediction of the visual SGM work: a sliding replay window is worse than no replay at all. The memory is strictly intra-meeting and is wiped at the end, and no gradient touches the run-time system. We report SGM-Diar as a proof-of-concept and state its limitations explicitly.",
+    "url": "https://arxiv.org/abs/2611.20819",
+    "pdf_url": "https://arxiv.org/pdf/2611.20819v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "NYUAD at ImageEval Shared Tasks: A Multimodal LLM for Audio-Visual Question Answering and Hallucination Detection in English and Modern Standard Arabic",
+    "authors": [
+      "Nouar AlDahoul",
+      "Yasir Zaki"
+    ],
+    "abstract": "The increasing adoption of multimodal large language models (MLLMs) has enabled more natural interaction with visual and spoken information, creating new opportunities for intelligent audio-visual question answering (AVQA) and hallucination detection systems. AVQA extends traditional visual question answering by requiring models to jointly understand an input image and a spoken question to generate accurate, context-aware responses. Despite recent advances, AVQA and hallucination detection tasks remain challenging for modern standard Arabic (MSA) due to the limited availability of multimodal datasets and the need to reason across Arabic speech and text modalities alongside visual inputs. In this paper, we present an MLLM-based framework for AVQA that takes an image and a spoken question as input and generates answers. In addition, we utilized this framework to detect hallucination in text-image pairs. The proposed approach is evaluated on the ImageEval 2026 Task (Ayn-VQA) benchmark, which focuses on culturally grounded Arabic AVQA. Experimental results demonstrate that the proposed framework effectively understands spoken queries, grounds their responses in the visual content, and produces accurate answers. The results underscore the capacity and limitations of different LLM architectures for both English and MSA and under various conditions.",
+    "url": "https://arxiv.org/abs/2611.18610",
+    "pdf_url": "https://arxiv.org/pdf/2611.18610v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Learning Spatially Aware Audio-Visual Features from Videos with Mono Audio",
+    "authors": [
+      "Mengyu Yang",
+      "You Zhang",
+      "Vishnu Raj",
+      "Olha Townsend",
+      "James Hays",
+      "Andrea Fanelli",
+      "Gautam Bhattacharya"
+    ],
+    "abstract": "Comprehensive audio-visual perception requires both semantic and spatial reasoning. Existing spatial models suffer from poor generalization due to data scarcity, while semantic-only models fail to capture spatial characteristics completely. We introduce a model capable of jointly reasoning over binaural audio and vision on semantic and spatial tasks with improved generalization. To overcome the shortage in real-world data, we develop an automatic pipeline that localizes the sound source in a video, estimates its relative 3D trajectory, and renders binaural audio. We then use this to spatialize VGGSound, allowing us to train at a much larger scale. We demonstrate improved performance and generalization on spatial reasoning tasks while still remaining competitive on semantic tasks compared to semantic-only models.",
+    "url": "https://arxiv.org/abs/2611.19593",
+    "pdf_url": "https://arxiv.org/pdf/2611.19593v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "High-Throughput Serving of Nemotron 3.5 Transcribe with Regime-Aware Megakernels and Kernel Fusion",
+    "authors": [
+      "Aditya Chatterjee",
+      "Sanjay Singh Chauhan",
+      "Mayank Jain",
+      "Arushi Dhingra",
+      "Sahin Chowdhury",
+      "Rahul Mittal"
+    ],
+    "abstract": "Nemotron 3.5 Transcribe ranks first among open-weight models on the Hugging Face Open ASR leaderboards. Serving it efficiently takes more than fast operators: continuous batching changes the amount and mix of work at every iteration, and the best fusion granularity changes with it. We present a serving engine that, for every pass, chooses between persistent megakernels and chains of fused kernels at crossovers measured offline. On an H100 SXM GPU, throughput of our accuracy-preserving serving peaks at 4,345x real time, 1.39x the peak of tuned vLLM, and is up to 4.39x faster at low concurrency; on B200 it peaks at 6,367x, 1.64x vLLM at the highest concurrency we measured. Word error rate (WER) is 1.91 to 1.93% against 1.88 to 1.93% for vLLM. Within a 400 ms budget for p95 end-to-end completion time, it serves 8x as many concurrent requests. Choosing per pass beats either level alone: 23% higher throughput than always using megakernels at 128 concurrent requests, and 9% higher than always using fused kernels at 8. Opt-in switches, including greedy MoE layer skipping, add 13 to 16% throughput on B200 for offline jobs that can accept higher WER.",
+    "url": "https://arxiv.org/abs/2611.20095",
+    "pdf_url": "https://arxiv.org/pdf/2611.20095v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Validating Acoustic-to-Articulatory Inversion with Real-Time MRI: From Vocal-Tract Fidelity to Phonetic Consequences",
+    "authors": [
+      "Tharinda Piyadasa",
+      "Michael Proctor",
+      "Amelia Gully",
+      "Tuende Szalay",
+      "Emily Kiff",
+      "Kirrie Ballard",
+      "Craig Jin"
+    ],
+    "abstract": "Acoustic-to-articulatory inversion provides a promising way to estimate vocal-tract behaviour directly from speech, but inferred articulatory variables need to be validated against independent physical measurements before they can be interpreted as faithful estimates of articulation. We investigate this using paired real-time MRI (rtMRI) and speech. A WavLM-based inversion model is trained to predict eight vocal tract variables (TVs) extracted from rtMRI, achieving a mean correlation of 0.643 on held-out speakers. Prediction accuracy is substantially higher for constriction degree than for constriction location, and the inferred trajectories systematically underestimate the dynamic range of rtMRI-derived articulation. We then use articulatory-to-acoustic synthesis as a functional probe of these errors, comparing speech generated from inversion-derived and rtMRI-derived TVs while holding the source features fixed. The discrepancy is small for vowels, approximants, stops, and nasals, but increases markedly for fricatives and affricates, where speech production depends on maintaining a narrow critical constriction and small geometric errors can strongly affect the acoustics. These results show that current acoustic-to-articulatory models recover broad vocal-tract behaviour well, but further work is required before inferred TVs can be regarded as faithful measurements of fine articulatory geometry.",
+    "url": "https://arxiv.org/abs/2611.20432",
+    "pdf_url": "https://arxiv.org/pdf/2611.20432v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Seeing Isn't Resolving: Visual and Linguistic Disambiguation with Conversational Grounding",
+    "authors": [
+      "Edoardo Cecchinato",
+      "Shun Inadumi",
+      "Angel Garc\\'ia Contreras",
+      "Giuseppe Riccardi",
+      "Koichiro Yoshino"
+    ],
+    "abstract": "Visual grounding benchmarks usually do not consider the contextual uncertainty of real-world scenarios. In this study, we construct a novel benchmark, the Japanese evaluation for Ambiguous visual Grounding with Dialogue (JAG-D) dataset. It consists of human-robot conversational multimodal interactions covering different types of ambiguity, arising from visual and linguistic categories. We evaluate the capabilities of different state-of-the-art Visual Language Models (VLMs) for ambiguity recognition and resolution. We compare dialogue context grounding performance for visual and linguistic ambiguity resolution. Our experiments show that VLMs can substantially improve the resolution of linguistic ambiguity, especially Japanese zero anaphora, by using dialogue context. We further conduct a comparative analysis to understand whether grounding improvements arise from the semantic content of the dialogue or from its conversational structure.",
+    "url": "https://arxiv.org/abs/2611.21183",
+    "pdf_url": "https://arxiv.org/pdf/2611.21183v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ProSing: Zero-Shot Fine-Grained Singing Technique Conversion",
+    "authors": [
+      "Xinhao Guan",
+      "Jingyue Huang",
+      "Kangrui Chen",
+      "Julian McAuley",
+      "Zhong-Qiu Wang"
+    ],
+    "abstract": "We study zero-shot fine-grained singing technique conversion (STC), which applies specified techniques to selected regions of an existing singing recording while preserving lyrics, melody, timing, and singer identity. Existing singing conversion and synthesis methods offer complementary strengths in source preservation and explicit technique control, but combining both in an audio-to-audio setting remains underexplored, especially with limited technique-annotated data. We propose ProSing, a zero-shot fine-grained STC framework that adapts a pretrained flow-matching acoustic model with frame-level technique conditioning. To mitigate conditioning shortcuts during adaptation, we introduce a paired training strategy to learn generalizable technique representations. We further incorporate continuous pitch trajectories for explicit and expressive control of pitch-related techniques. Subjective and objective evaluations on unseen singers and source recordings show that ProSing achieves accurate technique control while preserving singing naturalness and singer similarity.",
+    "url": "https://arxiv.org/abs/2611.19223",
+    "pdf_url": "https://arxiv.org/pdf/2611.19223v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Read, Route, Patch: Robust Test-Time Evolution for LLM Agents",
+    "authors": [
+      "Kaijie Chen",
+      "Liang Yan",
+      "Yilan Wei",
+      "Jiachen Luo",
+      "Zhihao Dou",
+      "Jiashu Qu",
+      "Haoran Liu",
+      "Junli Wang"
+    ],
+    "abstract": "Large Language Model (LLM)-based agents can improve long- horizon interactive decision-making through test-time evolu- tion, yet existing methods face three information bottlenecks: memory retrieval overemphasizes textual similarity, candi- date harnesses are often behaviorally redundant, and whole- harness rewriting may overwrite useful evidence or introduce cross-component inconsistency. We introduce Trident, which improves experience utilization, behavioral exploration, and harness evolution through boundary-aware memory reading, diversity-aware candidate routing, and order-aware insertion- based updating, respectively. We evaluate Trident on five benchmarks spanning text games, web interaction, and cod- ing tasks. Across qwen-32B, mistral-small-3.2-24B, and gpt- oss-20B, Trident achieves the best average performance and consistently outperforms non-learning, memory-based, reflection-based, and automated prompt optimization base- lines. Compared with the strongest baseline, APEX, Trident yields relative average gains of 30.7%, 30.8%, and 38.3% on the three backbones, respectively. Ablation and sensitivity stud- ies further show that the three designs provide complementary gains and remain robust to parameter variations.",
+    "url": "https://arxiv.org/abs/2611.18585",
+    "pdf_url": "https://arxiv.org/pdf/2611.18585v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Dual-Stage Channel-Posterior Integration for MLM-Aided Token Communications",
+    "authors": [
+      "Hyelin Nam",
+      "Jihoon Lee",
+      "Seung-Woo Ko",
+      "Jinho Choi",
+      "Seong-Lyun Kim"
+    ],
+    "abstract": "Token transmission over conventional digital modulation is vulnerable to channel impairments, leading to bit errors that cause received tokens to become contextually inconsistent. This paper proposes a receiver-side dual-stage channel-posterior integration framework for masked language model (MLM)-aided token reconstruction. In the proposed framework, the receiver detects unreliable token positions from channel reliability and constructs a vocabulary-level channel-posterior. In particular, within the receiver, Posterior-Weighted Input Embedding (PWE) injects this posterior into the MLM input, while Adaptive Output Logit Fusion (AOF) reuses it at the output with a channel-adaptive weight. Consequently, multiple unreliable tokens can be reconstructed in a single bidirectional MLM inference without retransmission, transmitter-side encoding, or additional MLM training. Experiments over noisy channels show up to a $67.2$\\% improvement in cosine similarity over context-only MLM reconstruction, with consistent gains across different MLM architectures and existing language-model-aided methods.",
+    "url": "https://arxiv.org/abs/2611.18958",
+    "pdf_url": "https://arxiv.org/pdf/2611.18958v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Bilingual: Studying Quadrilingual Code-Switching with Conversational AI",
+    "authors": [
+      "Annika Bush",
+      "Melika Minnaar",
+      "Salys Sultan",
+      "Tasnimul Hasan Tashin",
+      "Ankur Bhatt",
+      "Meltem Aksoy"
+    ],
+    "abstract": "Multilingual speakers choose languages by topic and conversation partner. Large language models (LLMs) support these languages unequally. Research on code-switching with conversational AI has mostly examined bilingual pairs of well-resourced languages. In Cura\\c{c}ao and Aruba, many people use Dutch, English, Spanish, and the low-resource Creole Papiamentu/o. In a preregistered study, 42 university students held two five-minute chatbot conversations, one about university life and one about local food and culture. Surveys assessed language background, AI use, and switching comfort. 20 international students in Cura\\c{c}ao formed a comparison sample. Participants switched between turns and rarely mixed languages within a message. English dominated both conversations. Participants switched more often in the cultural conversation, where Papiamentu/o and Spanish rose from 15% to 24% of messages. Self-reports showed no lower comfort switching with the chatbot than with a person. Conversational agents must follow turn-by-turn language changes and handle local low-resource languages well.",
+    "url": "https://arxiv.org/abs/2611.21394",
+    "pdf_url": "https://arxiv.org/pdf/2611.21394v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "The Silent Cost of Conversation History in LLM Reasoning",
+    "authors": [
+      "Ali \\c{S}enol"
+    ],
+    "abstract": "Large language models (LLMs) in multi-turn information systems accumulate their own earlier replies and a growing task state. We asked whether this conversation history lowers accuracy, and whether process-level quality metrics warn before it does. Each analysis was fixed before its outcomes were computed. In Study 1, on 48 sharded math tasks, retaining its replies lowered final success by 0.21 for GPT-4o-mini and 0.29 for Mistral-7B (Holm-adjusted p = 0.026 and 0.004); Llama-4 Scout showed the same direction, not significant. Study 2 introduces CDR-Stream, 100-turn state-tracking dialogues with an exact answer per turn and per-model difficulty calibration. With the full history, accuracy fell from about 0.6 to 0.1 within twenty turns at matched difficulty, whereas a solver-verified state summary kept it 0.52-0.59 higher (Holm-adjusted p less than 0.001). Consistency and logical coherence fell far less than accuracy, and stability rose. None of these metrics, a paired readiness measure or calibrated single-stream drift detectors gave robust, model-general early warning, although in Study 2 the repeat-based metrics were complete only for GPT-4o-mini. In the monitors we tested, a single 100-turn stream had power only for very large drops. Systems built on LLMs should keep task state outside the transcript and monitor across sessions.",
+    "url": "https://arxiv.org/abs/2611.20071",
+    "pdf_url": "https://arxiv.org/pdf/2611.20071v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Token Stacking: Multi-scale Visual Modulation and Adaptive Fused-feature Calibration for MLLMs",
+    "authors": [
+      "Ye Xiao",
+      "Shesheng Song",
+      "Yi Ren",
+      "Shasha Li",
+      "Bin Ji",
+      "Xiaodong Liu",
+      "Jun Ma",
+      "Jie Yu"
+    ],
+    "abstract": "Current Multimodal Large Language Models (MLLMs) have advanced rapidly and follow two main paradigms: one involves concatenating visual and textual tokens for input into Large Language Model (LLM), while the other injects visual knowledge into Feed-Forward Networks (FFNs) of the LLM. However, the former introduces a large number of redundant visual tokens, substantially increasing computational overhead. The latter reduces sequence length but removes images from the input stage entirely, which may hinder the activation of image-related knowledge. Moreover, naively injecting visual knowledge into the FFNs could induce activation distribution shifts due to cross-modal semantic discrepancies. To address these challenges, we develop Beyond Token Stacking (BTS), a novel visual enhancement framework for MLLMs. Specifically, we propose a Multi-scale Visual Modulation (MVM) mechanism that injects multi-scale visual information at the input stage via modulation without increasing the token sequence length. Furthermore, we develop an Adaptive Fused-feature Calibration (AFC) module that performs per-channel affine calibration to decouple visual injection from distribution alignment in the FFN layers, improving multimodal fusion stability while preserving language priors. Experiments show that our approach achieves state-of-the-art performance.",
+    "url": "https://arxiv.org/abs/2611.21168",
+    "pdf_url": "https://arxiv.org/pdf/2611.21168v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Empowering Masked Diffusion Models to Self-Correct with Leave-One-Out Transformers",
+    "authors": [
+      "Sofian Zalouk",
+      "Vincent Counathe",
+      "Paul J\\\"unger",
+      "Daniel Cao",
+      "Daniel Zlotnick",
+      "Kilian Q. Weinberger",
+      "Christopher De Sa"
+    ],
+    "abstract": "Masked diffusion models (MDMs) have emerged as a promising paradigm for language modeling, enabling parallel token generation with competitive performance. Yet standard MDMs suffer from two fundamental limitations: (1) inability to revise tokens, and (2) sparse training signal. We revisit hollow transformers, which address both limitations by predicting each token from its surrounding context, independently of the input at that position. We introduce the Leave-One-Out Transformer (LOOT), a more efficient and expressive architecture that advances hollow transformers through two complementary advances. First, we redesign the merging mechanism to enable frequent interaction between left and right contexts, substantially improving predictive performance over prior hollow transformers. Second, we derive a lower-variance estimator of the MDM NELBO that supervises all tokens and improves validation perplexity. Together, these advances yield a competitive standalone diffusion language model capable of effective self-correction during inference. On LM1B, LOOT matches the strongest dense-supervision MDM baseline in validation perplexity. On OpenWebText, LOOT achieves higher MAUVE and better generation quality-diversity tradeoffs than prior remasking methods, using $8\\times$ fewer forward evaluations and $3.5\\times$ fewer inference FLOPs.",
+    "url": "https://arxiv.org/abs/2611.19127",
+    "pdf_url": "https://arxiv.org/pdf/2611.19127v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "An Interpretable Acoustic Coordinate System for Japanese Consonant Morae in Dysarthric Speech",
+    "authors": [
+      "Yuma Enomoto",
+      "Misa Yamaguchi",
+      "Hiroki Nishikawa",
+      "Ittetsu Taniguchi",
+      "Kazuhide Matsunaga",
+      "Narikazu Uzawa",
+      "Takao Onoye"
+    ],
+    "abstract": "Dysarthria reduces speech intelligibility, requiring self-directed rehabilitation based on fine-grained feedback to capture gradual articulatory changes. For Japanese speakers, such feedback is naturally provided in mora units due to its distinct moraic timing and consonant-vowel structure. While recent visualization methods have explored distance-based feedback, most are limited to vowels. Extending them to consonants is challenging, as generative embeddings often smooth transient spectral structures. We propose a visualization system for Japanese consonant morae that maps articulatory deviations onto a two-dimensional space defined by temporal and spectral distances from healthy reference speech. Experiments show consistent geometric separation of consonant categories, with Silhouette Coefficients exceeding 0.5 and origin-based ROC-AUC scores above 0.86. Furthermore, evaluations using real dysarthric speech achieved a high ROC-AUC of 0.897 in screening for unclear pronunciations. Perturbation tests confirm orthogonal temporal and spectral shifts, yielding a physically interpretable mapping for rehabilitation.",
+    "url": "https://arxiv.org/abs/2611.19714",
+    "pdf_url": "https://arxiv.org/pdf/2611.19714v1",
+    "arxiv_url": null
+  }
+]
