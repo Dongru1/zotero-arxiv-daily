@@ -2228,5 +2228,820 @@
     "abstract": "",
     "arxiv_url": "",
     "arxiv_checked": true
+  },
+  "align3dprogressivediffusionadaptationwithgeometryawarepropagationforconsistent3dsceneediting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "alignclipminingandaligningmultiscalevisionlanguagefeaturesforzeroshotsemanticsegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auditgptamultiagentframeworkforenhancingstaticanalysis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auditoryillusionbenchmarkforlargeaudiolanguagemodels": {
+    "abstract": "Perceptual illusions have long served as crucial probes into human cognition, revealing biases and limitations of perception. In the auditory domain, such illusions provide a unique lens for testing whether Large Audio Language Models (LALMs) replicate human perceptual tendencies. Despite their importance, most benchmarks focus on visual illusions or general audio tasks, leaving auditory illusions underexplored. To this end, we present AIB, the first auditory illusion benchmark for LALMs, covering ten representative illusions across music, sound, and speech, each annotated for the presence of knowledge-based priors. Our methodology pairs model evaluation with controlled human listening studies, enabling direct comparison of responses. Results show systematic differences: while most LALMs remain signal-faithful on low-level acoustic illusions, several exhibit more human-like responses when linguistic or musical priors are involved, although no model matches the human perceptual profile. These findings highlight the current limitations of LALMs as cognitive models. By establishing auditory illusions as a rigorous testbed, our work offers a new perspective for probing neural black-box models and advancing understanding of auditory cognition. AIB is publicly available at https://github.com/gillosae/aib.",
+    "arxiv_url": "https://arxiv.org/abs/2609.02277v1",
+    "arxiv_checked": true
+  },
+  "auditorybenchcanlanguagemodelsunderstandauditoryknowledgewithouthearing": {
+    "abstract": "Even without directly hearing sounds, humans can effortlessly reason about auditory properties, such as pitch, loudness, or sound-source associations, drawing on auditory commonsense. In contrast, language models often lack this capability, limiting their effectiveness in multimodal interactions. As an initial step to address this gap, we present AuditoryBench++, a comprehensive benchmark for evaluating auditory knowledge and reasoning in text-only settings. The benchmark encompasses tasks that range from basic auditory comparisons to contextually grounded reasoning, enabling fine-grained analysis of how models process and integrate auditory concepts. In addition, we introduce AIR-CoT, a novel auditory imagination reasoning method that generates and integrates auditory information during inference through span detection with special tokens and knowledge injection. Extensive experiments with recent LLMs and Multimodal LLMs demonstrate that AIR-CoT generally outperforms both the off-the-shelf models and those augmented with auditory knowledge. The project page is available at https://auditorybenchpp.github.io.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17641v2",
+    "arxiv_checked": true
+  },
+  "auditoryinspiredtransformerforbinauralspeechenhancementandspatialcuepreservation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "augmentandregularizetowardreliablesemisuperviseddomaingeneralization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "augmentedlagrangiancontrollerdesigninmodelbasedreinforcementlearningforisacresourceallocation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "augmentingimagellmsfordiversevideogroundingtaskswithouttraining": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auraastegaformerbasedscalabledeepaudiowatermarkwithextremerobustness": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auraycbcrbaseduniversalrawreconstructionforinverseisp": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "aurorapreciseandlightweightmultimodalfusionforefficientreferringremotesensingimagesegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "autoaccllmdrivenirregularoperatoroptimizationforinferenceaccelerationonriscvedgedevices": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "autoleadxaunifiedframeworkforarbitraryreducedleadtostandard12leadecgreconstruction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "automatchcutanaudiovisualretrievalframeworkforseamlessmatchcutting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "automateddysphagiascreeningusingnoninvasiveneckacousticsensing": {
+    "abstract": "Pharyngeal health plays a vital role in essential human functions such as breathing, swallowing, and vocalization. Early detection of swallowing abnormalities, also known as dysphagia, is crucial for timely intervention. However, current diagnostic methods often rely on radiographic imaging or invasive procedures. In this study, we propose an automated framework for detecting dysphagia using portable and noninvasive acoustic sensing coupled with applied machine learning. By capturing subtle acoustic signals from the neck during swallowing tasks, we aim to identify patterns associated with abnormal physiological conditions. Our approach achieves promising test-time abnormality detection performance, with an AUC-ROC of 0.904 under 5 independent train-test splits. This work demonstrates the feasibility of using noninvasive acoustic sensing as a practical and scalable tool for pharyngeal health monitoring.",
+    "arxiv_url": "https://arxiv.org/abs/2602.02725v1",
+    "arxiv_checked": true
+  },
+  "automaticestimationofspeakerdiarizationerrorratebasedonfeaturesofaudioqualityandspeakerdiscriminability": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "automaticidentificationofretinopathyfromopticalcoherencetomographyimagesviaasimilaritymatchingapproach": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "automaticinteranimalalignmentofrecordedkinematictrajectories": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "automaticmusicmixingusingagenerativemodelofeffectembeddings": {
+    "abstract": "Music mixing involves combining individual tracks into a cohesive mixture, a task characterized by subjectivity where multiple valid solutions exist for the same input. Existing automatic mixing systems treat this task as a deterministic regression problem, thus ignoring this multiplicity of solutions. Here we introduce MEGAMI (Multitrack Embedding Generative Auto MIxing), a generative framework that models the conditional distribution of professional mixes given unprocessed tracks. MEGAMI uses a track-agnostic effects processor conditioned on per-track generated embeddings, handles arbitrary unlabeled tracks through a permutation-equivariant architecture, and enables training on both dry and wet recordings via domain adaptation. Our objective evaluation using distributional metrics shows consistent improvements over existing methods, while listening tests indicate performances approaching human-level quality across diverse musical genres.",
+    "arxiv_url": "https://arxiv.org/abs/2511.08040v1",
+    "arxiv_checked": true
+  },
+  "automaticmusicsampleidentificationwithmultitrackcontrastivelearning": {
+    "abstract": "Sampling, the technique of reusing pieces of existing audio tracks to create new music content, is a very common practice in modern music production. In this paper, we tackle the challenging task of automatic sample identification, that is, detecting such sampled content and retrieving the material from which it originates. To do so, we adopt a self-supervised learning approach that leverages a multi-track dataset to create positive pairs of artificial mixes, and design a novel contrastive learning objective. We show that such method significantly outperforms previous state-of-the-art baselines, that is robust to various genres, and that scales well when increasing the number of noise songs in the reference database. In addition, we extensively analyze the contribution of the different components of our training pipeline and highlight, in particular, the need for high-quality separated stems for this task.",
+    "arxiv_url": "https://arxiv.org/abs/2510.11507v2",
+    "arxiv_checked": true
+  },
+  "autop2canllmbasedagentframeworkforcoderepositorygenerationfrommultimodalcontentinmachinelearningpapers": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "autoregressivegaussianmixturemodelsefficientgenerativemodelingofwsssignals": {
+    "abstract": "This work addresses the challenge of making generative models suitable for resource-constrained environments like mobile wireless communication systems. We propose a generative model that integrates Autoregressive (AR) parameterization into a Gaussian Mixture Model (GMM) for modeling Wide-Sense Stationary (WSS) processes. By exploiting model-based insights allowing for structural constraints, the approach significantly reduces parameters while maintaining high modeling accuracy. Channel estimation experiments show that the model can outperform standard GMMs and variants using Toeplitz or circulant covariances, particularly with small sample sizes. For larger datasets, it matches the performance of conventional methods while improving computational efficiency and reducing the memory requirements.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17953v2",
+    "arxiv_checked": true
+  },
+  "autovqagselfimprovingagenticframeworkforautomatedvisualquestionansweringandgroundingannotation": {
+    "abstract": "Manual annotation of high-quality visual question answering with grounding (VQA-G) datasets, which pair visual questions with evidential grounding, is crucial for advancing vision-language models (VLMs), but remains unscalable. Existing automated methods are often hindered by two key issues: (1) inconsistent data fidelity due to model hallucinations; (2) brittle verification mechanisms based on simple heuristics. To address these limitations, we introduce AutoVQA-G, a self-improving agentic framework for automated VQA-G annotation. AutoVQA-G employs an iterative refinement loop where a Consistency Evaluation module uses Chain-of-Thought (CoT) reasoning for fine-grained visual verification. Based on this feedback, a memory-augmented Prompt Optimization agent analyzes critiques from failed samples to progressively refine generation prompts. Our experiments show that AutoVQA-G generates VQA-G datasets with superior visual grounding accuracy compared to leading multimodal LLMs, offering a promising approach for creating high-fidelity data to facilitate more robust VLM training and evaluation. Code: https://github.com/rohnson1999/AutoVQA-G",
+    "arxiv_url": "https://arxiv.org/abs/2604.17488v1",
+    "arxiv_checked": true
+  },
+  "auvteachingaudiouniversalvectorquantizationwithsinglenestedcodebook": {
+    "abstract": "We propose AUV, a unified neural audio codec with a single codebook, which enables a favourable reconstruction of speech and further extends to general audio, including vocal, music, and sound. AUV is capable of tackling any 16 kHz mixed-domain audio segment at bit rates around 700 bps. To accomplish this, we guide the matryoshka codebook with nested domain-specific partitions, assigned with corresponding teacher models to perform distillation, all in a single-stage training. A conformer-style encoder-decoder architecture with STFT features as audio representation is employed, yielding better audio quality. Comprehensive evaluations demonstrate that AUV exhibits comparable audio reconstruction ability to state-of-the-art domain-specific single-layer quantizer codecs, showcasing the potential of audio universal vector quantization with a single codebook. The pre-trained model and demo samples are available at https://swivid.github.io/AUV/.",
+    "arxiv_url": "https://arxiv.org/abs/2509.21968v1",
+    "arxiv_checked": true
+  },
+  "auxiliarymultilabeltrainingforimprovingtherobustnessofaudiodeepfakedetectiononaiprocesseddata": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "auxiliarytasksbenefitskinlesionsegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "avataraudiovisualadaptivefusionviatrainedagentreinforcementformultimodaldeepfakedetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "averagingisnotenoughpreservingclientspecificknowledgeinfederatedpeftwithoneroundaggregation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "avo65alargescalehierarchicalaudiovisualobjectdataset": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "awdiffanatrouswaveletdiffusionmodelforlungultrasoundimagesynthesis": {
+    "abstract": "Lung ultrasound (LUS) is a safe and portable imaging modality, but the scarcity of data limits the development of machine learning methods for image interpretation and disease monitoring. Existing generative augmentation methods, such as Generative Adversarial Networks (GANs) and diffusion models, often lose subtle diagnostic cues due to resolution reduction, particularly B-lines and pleural irregularities. We propose A trous Wavelet Diffusion (AWDiff), a diffusion based augmentation framework that integrates the a trous wavelet transform to preserve fine-scale structures while avoiding destructive downsampling. In addition, semantic conditioning with BioMedCLIP, a vision language foundation model trained on large scale biomedical corpora, enforces alignment with clinically meaningful labels. On a LUS dataset, AWDiff achieved lower distortion and higher perceptual quality compared to existing methods, demonstrating both structural fidelity and clinical diversity.",
+    "arxiv_url": "https://arxiv.org/abs/2603.03125v2",
+    "arxiv_checked": true
+  },
+  "awgformeradaptivewaveletguidedtransformerformultiresolutiontimeseriesforecasting": {
+    "abstract": "Time series forecasting requires capturing patterns across multiple temporal scales while maintaining computational efficiency. This paper introduces AWGformer, a novel architecture that integrates adaptive wavelet decomposition with cross-scale attention mechanisms for enhanced multi-variate time series prediction. Our approach comprises: (1) an Adaptive Wavelet Decomposition Module (AWDM) that dynamically selects optimal wavelet bases and decomposition levels based on signal characteristics; (2) a Cross-Scale Feature Fusion (CSFF) mechanism that captures interactions between different frequency bands through learnable coupling matrices; (3) a Frequency-Aware Multi-Head Attention (FAMA) module that weights attention heads according to their frequency selectivity; (4) a Hierarchical Prediction Network (HPN) that generates forecasts at multiple resolutions before reconstruction. Extensive experiments on benchmark datasets demonstrate that AWGformer achieves significant average improvements over state-of-the-art methods, with particular effectiveness on multi-scale and non-stationary time series. Theoretical analysis provides convergence guarantees and establishes the connection between our wavelet-guided attention and classical signal processing principles.",
+    "arxiv_url": "https://arxiv.org/abs/2601.20409v1",
+    "arxiv_checked": true
+  },
+  "b2camoleveragingbackgroundcuesforparameterefficientfinetuninginopenvocabularycamouflagedobjectsegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "babiblacklistedaccretionforbackdoorinversionininstructionfinetunedllms": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bachiboundaryawaresymbolicchordrecognitionthroughmaskediterativedecodingonpopandclassicalmusic": {
+    "abstract": "Automatic chord recognition (ACR) via deep learning models has gradually achieved promising recognition accuracy, yet two key challenges remain. First, prior work has primarily focused on audio-domain ACR, while symbolic music (e.g., score) ACR has received limited attention due to data scarcity. Second, existing methods still overlook strategies that are aligned with human music analytical practices. To address these challenges, we make two contributions: (1) we introduce POP909-CL, an enhanced version of POP909 dataset with tempo-aligned content and human-corrected labels of chords, beats, keys, and time signatures; and (2) We propose BACHI, a symbolic chord recognition model that decomposes the task into different decision steps, namely boundary detection and iterative ranking of chord root, quality, and bass (inversion). This mechanism mirrors the human ear-training practices. Experiments demonstrate that BACHI achieves state-of-the-art chord recognition performance on both classical and pop music benchmarks, with ablation studies validating the effectiveness of each module.",
+    "arxiv_url": "https://arxiv.org/abs/2510.06528v2",
+    "arxiv_checked": true
+  },
+  "backgrounddisambiguationcontrastivelossforrobustbinarysegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "backwarddesignstftlaboratoryforstemeducationaccessibleresourceefficientandimprovedlearningoutcomes": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "badllmtgabackdoordefenderpoweredbyllmtriggergenerator": {
+    "abstract": "Backdoor attacks compromise model reliability by using triggers to manipulate outputs. Trigger inversion can accurately locate these triggers via a generator and is therefore critical for backdoor defense. However, the discrete nature of text prevents existing noise-based trigger generator from being applied to nature language processing (NLP). To overcome the limitations, we employ the rich knowledge embedded in large language models (LLMs) and propose a Backdoor defender powered by LLM Trigger Generator, termed BadLLM-TG. It is optimized through prompt-driven reinforcement learning, using the victim model's feedback loss as the reward signal. The generated triggers are then employed to mitigate the backdoor via adversarial training. Experiments show that our method reduces the attack success rate by 76.2\\% on average, outperforming the second-best defender by 13.7.",
+    "arxiv_url": "https://arxiv.org/abs/2603.15692v1",
+    "arxiv_checked": true
+  },
+  "badreasonerplantingtunableoverthinkingbackdoorsintolargereasoningmodelsforfunorprofit": {
+    "abstract": "Large reasoning models (LRMs) have emerged as a significant advancement in artificial intelligence, representing a specialized class of large language models (LLMs) designed to tackle complex reasoning tasks. The defining characteristic of LRMs lies in their extensive chain-of-thought (CoT) reasoning capabilities. In this paper, we identify a previously unexplored attack vector against LRMs, which we term \"overthinking backdoors\". We advance this concept by proposing a novel tunable backdoor, which moves beyond simple on/off attacks to one where an attacker can precisely control the extent of the model's reasoning verbosity. Our attack is implemented through a novel data poisoning methodology. It pairs a tunable trigger-where the number of repetitions signals the desired intensity-with a correspondingly verbose CoT response. These responses are programmatically generated by instructing a teacher LLM to inject a controlled number of redundant refinement steps into a correct reasoning process. The approach preserves output correctness, which ensures stealth and establishes the attack as a pure resource-consumption vector. Extensive empirical results on various LRMs demonstrate that our method can reliably trigger a controllable, multi-fold increase in the length of the reasoning process, without degrading the final answer's correctness. Our source code is available at https://github.com/FZaKK/BadReasoner.",
+    "arxiv_url": "https://arxiv.org/abs/2507.18305v1",
+    "arxiv_checked": true
+  },
+  "badtailexploitingrationaletailsforstealthymultimodalbackdoorattacks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "badvimbackdoorattackagainstvisionmamba": {
+    "abstract": "Vision State Space Models (SSMs), particularly architectures like Vision Mamba (ViM), have emerged as promising alternatives to Vision Transformers (ViTs). However, the security implications of this novel architecture, especially their vulnerability to backdoor attacks, remain critically underexplored. Backdoor attacks aim to embed hidden triggers into victim models, causing the model to misclassify inputs containing these triggers while maintaining normal behavior on clean inputs. This paper investigates the susceptibility of ViM to backdoor attacks by introducing BadViM, a novel backdoor attack framework specifically designed for Vision Mamba. The proposed BadViM leverages a Resonant Frequency Trigger (RFT) that exploits the frequency sensitivity patterns of the victim model to create stealthy, distributed triggers. To maximize attack efficacy, we propose a Hidden State Alignment loss that strategically manipulates the internal representations of model by aligning the hidden states of backdoor images with those of target classes. Extensive experimental results demonstrate that BadViM achieves superior attack success rates while maintaining clean data accuracy. Meanwhile, BadViM exhibits remarkable resilience against common defensive measures, including PatchDrop, PatchShuffle and JPEG compression, which typically neutralize normal backdoor attacks.",
+    "arxiv_url": "https://arxiv.org/abs/2507.00577v1",
+    "arxiv_checked": true
+  },
+  "bahopsimilaritybasedbasinhoppingforafasthyperparametersearchinwsiclassification": {
+    "abstract": "Pre-processing whole slide images (WSIs) can impact classification performance. Our study shows that using fixed hyper-parameters for pre-processing out-of-domain WSIs can significantly degrade performance. Therefore, it is critical to search domain-specific hyper-parameters during inference. However, searching for an optimal parameter set is time-consuming. To overcome this, we propose BAHOP, a novel Similarity-based Basin Hopping optimization for fast parameter tuning to enhance inference performance on out-of-domain data. The proposed BAHOP achieves 5\\% to 30\\% improvement in accuracy with $\\times5$ times faster on average.",
+    "arxiv_url": "https://arxiv.org/abs/2404.11161v3",
+    "arxiv_checked": true
+  },
+  "balancingaccuracyanddiversityevolvinganchormatchingforvideotemporalgrounding": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "balancingefficiencyandfidelityinimagesuperresolutionviaattentionenhanceddistillation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "balancingrewardsintextsummarizationmultiobjectivereinforcementlearningviahypervolumeoptimization": {
+    "abstract": "Text summarization is a crucial task that requires the simultaneous optimization of multiple objectives, including consistency, coherence, relevance, and fluency, which presents considerable challenges. Although large language models (LLMs) have demonstrated remarkable performance, enhanced by reinforcement learning (RL), few studies have focused on optimizing the multi-objective problem of summarization through RL based on LLMs. In this paper, we introduce hypervolume optimization (HVO), a novel optimization strategy that dynamically adjusts the scores between groups during the reward process in RL by using the hypervolume method. This method guides the model's optimization to progressively approximate the pareto front, thereby generating balanced summaries across multiple objectives. Experimental results on several representative summarization datasets demonstrate that our method outperforms group relative policy optimization (GRPO) in overall scores and shows more balanced performance across different dimensions. Moreover, a 7B foundation model enhanced by HVO performs comparably to GPT-4 in the summarization task, while maintaining a shorter generation length. Our code is publicly available at https://github.com/ai4business-LiAuto/HVO.git",
+    "arxiv_url": "https://arxiv.org/abs/2510.19325v1",
+    "arxiv_checked": true
+  },
+  "baldwhisperfasterwhisperwithheadshearingandlayermerging": {
+    "abstract": "Pruning large pre-trained transformers in a data-scarce scenario is challenging, as it often requires massive retraining data to recover performance. For instance, Distill-Whisper prunes Whisper by 40 and retrains on 21,000 hours of speech, far beyond what is available for most languages. Can Whisper be made lighter and faster for edge devices in data-scarce settings? Focusing on Bambara with only 32h of speech-to-text data, we propose a new pruning recipe. Instead of vocabulary pruning, which is unsuitable due to frequent code-switching by Bambara speakers, we compress the embeddings with low-rank decomposition and feature distillation. Rather than removing layers, we merge them to limit performance loss. The final model preserves 90 of the original performance while being 48 smaller and 2.15x faster on a MacBook Air M1.",
+    "arxiv_url": "https://arxiv.org/abs/2510.08599v2",
+    "arxiv_checked": true
+  },
+  "bamoebiattentionsynergywithexpertroutingfortimeseriesanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bayesianchannelestimationwithdiffusionprobabilisticpriors": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bayesianlowrankfactorizationforrobustmodeladaptation": {
+    "abstract": "Large speech foundation models achieve strong performance across many domains, but they often require adaptation to handle local needs such as code-switching, where speakers mix languages within the same utterance. Direct fine-tuning of these models risks overfitting to the target domain and overwriting the broad capabilities of the base model. To address this challenge, we explore Bayesian factorized adapters for speech foundation models, which place priors near zero to achieve sparser adaptation matrices and thereby retain general performance while adapting to specific domains. We apply our approach to the Whisper model and evaluate on different multilingual code-switching scenarios. Our results show only minimal adaptation loss while significantly reducing catastrophic forgetting of the base model. Compared to LoRA, our method achieves a backward gain of 54% with only a 4% drop on the new domain. These findings highlight the effectiveness of Bayesian adaptation for fine-tuning speech foundation models without sacrificing generalization.",
+    "arxiv_url": "https://arxiv.org/abs/2510.18723v1",
+    "arxiv_checked": true
+  },
+  "bayesianmatrixcompletionundergeometricconstraints": {
+    "abstract": "The completion of a Euclidean distance matrix (EDM) from sparse and noisy observations is a fundamental challenge in signal processing, with applications in sensor network localization, acoustic room reconstruction, molecular conformation, and manifold learning. Traditional approaches, such as rank-constrained optimization and semidefinite programming, enforce geometric constraints but often struggle under sparse or noisy conditions. This paper introduces a hierarchical Bayesian framework that places structured priors directly on the latent point set generating the EDM, naturally embedding geometric constraints. By incorporating a hierarchical prior on latent point set, the model enables automatic regularization and robust noise handling. Posterior inference is performed using a Metropolis-Hastings within Gibbs sampler to handle coupled latent point posterior. Experiments on synthetic data demonstrate improved reconstruction accuracy compared to deterministic baselines in sparse regimes.",
+    "arxiv_url": "https://arxiv.org/abs/2601.22765v1",
+    "arxiv_checked": true
+  },
+  "bayesianmodellingforenhanceduncertaintyconsistencyandcalibrationinmultidiseasechestxraydiagnosis": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bayesianmultimodallstmwithdynamicuncertaintymodelingfornetfluidremovalprediction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bayesiansignalseparationviaplugandplaydiffusionwithingibbssampling": {
+    "abstract": "We propose a posterior sampling algorithm for the problem of estimating multiple independent source signals from their noisy superposition. The proposed algorithm is a combination of Gibbs sampling method and plug-and-play (PnP) diffusion priors. Unlike most existing diffusion-model-based approaches for signal separation, our method allows source priors to be learned separately and flexibly combined without retraining. Moreover, under the assumption of perfect diffusion model training, the proposed method provably produces samples from the posterior distribution. Experiments on the task of heartbeat extraction from mixtures with synthetic motion artifacts demonstrate the superior performance of our method over existing approaches.",
+    "arxiv_url": "https://arxiv.org/abs/2509.12857v1",
+    "arxiv_checked": true
+  },
+  "bayesianuncertaintyawaremrireconstruction": {
+    "abstract": "We propose a novel framework for joint magnetic resonance image reconstruction and uncertainty quantification using under-sampled k-space measurements. The problem is formulated as a Bayesian linear inverse problem, where prior distributions are assigned to the unknown model parameters. Specifically, we assume the target image is sparse in its spatial gradient and impose a total variation prior model. A Markov chain Monte Carlo (MCMC) method, based on a split-and-augmented Gibbs sampler, is then used to sample from the resulting joint posterior distribution of the unknown parameters. Experiments conducted using single- and multi-coil datasets demonstrate the superior performance of the proposed framework over optimisation-based compressed sensing algorithms. Additionally, our framework effectively quantifies uncertainty, showing strong correlation with error maps computed from reconstructed and ground-truth images.",
+    "arxiv_url": "https://arxiv.org/abs/2603.13439v1",
+    "arxiv_checked": true
+  },
+  "bbpe16utf16basedbytelevelbytepairencodingforimprovedmultilingualspeechrecognition": {
+    "abstract": "Multilingual automatic speech recognition (ASR) requires tokenization that efficiently covers many writing systems. Byte-level BPE (BBPE) using UTF-8 is widely adopted for its language-agnostic design and full Unicode coverage, but its variable-length encoding inflates token sequences for non-Latin scripts, such as Chinese, Japanese, and Korean (CJK). Longer sequences increase computational load and memory use. We propose BBPE16, a UTF-16-based BBPE tokenizer that represents most modern scripts with a uniform 2-byte code unit. BBPE16 preserves BBPE's language-agnostic properties while substantially improving cross-lingual token sharing. Across monolingual, bilingual, and trilingual ASR, and in a multilingual continual-learning setup, BBPE16 attains comparable or better accuracy; for Chinese, it reduces token counts by up to 10.4% and lowers decoding iterations by up to 10.3%. These reductions speed up fine-tuning and inference and decrease memory usage, making BBPE16 a practical tokenization choice for multilingual ASR.",
+    "arxiv_url": "https://arxiv.org/abs/2602.01717v1",
+    "arxiv_checked": true
+  },
+  "bdbrtowardsresistantbackdoordefenseviaboundaryreconstruction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bdiobiasawaredenoisinginertialodometryforaccuratedronetrajectoryestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bdrnetbidirectionaldecomposedandrecalibratedlightweightnetworkforhumanposeestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beamclipmultimodalalignmentandmmwavebeampatternrepresentationlearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beamfocusingcapabilitiesofauniformlinearantennaarrayintheholographicregime": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beamformerdesignsforswarmofrepeateraidedmassivemimoisac": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beamformingusingvirtualmicrophonesforhearingaidapplications": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beamspacemodelandbeamalignmentmethodforreconfigurableholographicsurfaceantennasystems": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beatanddownbeatdetectionareformulatedapproach": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beat2aasistmodelwithlayerfusionforesdd2026challenge": {
+    "abstract": "Recent advances in audio generation have increased the risk of realistic environmental sound manipulation, motivating the ESDD 2026 Challenge as the first large-scale benchmark for Environmental Sound Deepfake Detection (ESDD). We propose BEAT2AASIST which extends BEATs-AASIST by splitting BEATs-derived representations along frequency or channel dimension and processing them with dual AASIST branches. To enrich feature representations, we incorporate top-k transformer layer fusion using concatenation, CNN-gated, and SE-gated strategies. In addition, vocoder-based data augmentation is applied to improve robustness against unseen spoofing methods. Experimental results on the official test sets demonstrate that the proposed approach achieves competitive performance across the challenge tracks.",
+    "arxiv_url": "https://arxiv.org/abs/2512.15180v1",
+    "arxiv_checked": true
+  },
+  "beatmambabidirectionalselectivestatespacemodelingforefficientbeattracking": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beepbeepleveragingstructuralattenuationforrobustdevicetodeviceauthentication": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "behindthescenesmechanisticinterpretabilityofloraadaptedwhisperforspeechemotionrecognition": {
+    "abstract": "Large pre-trained speech models such as Whisper offer strong generalization but pose significant challenges for resource-efficient adaptation. Low-Rank Adaptation (LoRA) has become a popular parameter-efficient fine-tuning method, yet its underlying mechanisms in speech tasks remain poorly understood. In this work, we conduct the first systematic mechanistic interpretability study of LoRA within the Whisper encoder for speech emotion recognition (SER). Using a suite of analytical tools, including layer contribution probing, logit-lens inspection, and representational similarity via singular value decomposition (SVD) and centered kernel alignment (CKA), we reveal two key mechanisms: a delayed specialization process that preserves general features in early layers before consolidating task-specific information, and a forward alignment, backward differentiation dynamic between LoRA's matrices. Our findings clarify how LoRA reshapes encoder hierarchies, providing both empirical insights and a deeper mechanistic understanding for designing efficient and interpretable adaptation strategies in large speech models. Our code is available at https://github.com/harryporry77/Behind-the-Scenes.",
+    "arxiv_url": "https://arxiv.org/abs/2509.08454v3",
+    "arxiv_checked": true
+  },
+  "beliefpropagationviastochastictransportmapping": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bemvsnetboundaryandedgeawareconstrainedmultiviewstereo": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "benchmarkingemotionalaccuracyandidentityconsistencyinfacialimagetovideogeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "benchmarkinggaslightingattacksagainstspeechlargelanguagemodels": {
+    "abstract": "As Speech Large Language Models (Speech LLMs) become increasingly integrated into voice-based applications, ensuring their robustness against manipulative or adversarial input becomes critical. Although prior work has studied adversarial attacks in text-based LLMs and vision-language models, the unique cognitive and perceptual challenges of speech-based interaction remain underexplored. In contrast, speech presents inherent ambiguity, continuity, and perceptual diversity, which make adversarial attacks more difficult to detect. In this paper, we introduce gaslighting attacks, strategically crafted prompts designed to mislead, override, or distort model reasoning as a means to evaluate the vulnerability of Speech LLMs. Specifically, we construct five manipulation strategies: Anger, Cognitive Disruption, Sarcasm, Implicit, and Professional Negation, designed to test model robustness across varied tasks. It is worth noting that our framework captures both performance degradation and behavioral responses, including unsolicited apologies and refusals, to diagnose different dimensions of susceptibility. Moreover, acoustic perturbation experiments are conducted to assess multi-modal robustness. To quantify model vulnerability, comprehensive evaluation across 5 Speech and multi-modal LLMs on over 10,000 test samples from 5 diverse datasets reveals an average accuracy drop of 24.3% under the five gaslighting attacks, indicating significant behavioral vulnerability. These findings highlight the need for more resilient and trustworthy speech-based AI systems.",
+    "arxiv_url": "https://arxiv.org/abs/2509.19858v2",
+    "arxiv_checked": true
+  },
+  "benchmarkinghumansandmachinesoncomplexmultilingualspeechunderstandingtasks": {
+    "abstract": "Auditory attention and selective phase-locking are central to human speech understanding in complex acoustic scenes and cocktail party settings, yet these capabilities in multilingual subjects remain poorly understood. While machine understanding of natural speech has advanced in recent years, questions persist about comprehension of overlapped and mixed-channel speech. We propose a systematic paradigm for studying humans and machines in speech question-answering tasks in multilingual settings with clean and mixed-channel speech. For human listeners, selective attention to a target speaker was significantly better in their native language (L1) than in their second language (L2). For machine listening, speech-based large language models (LLMs) match or exceed human performance in clean, single-speaker conditions but often struggle to selectively attend in two-speaker settings. These results reveal a key divergence: humans rely on attentional cues that are more streamlined in their native language, whereas LLMs default to parallel information extraction which exceed human skills.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17965v2",
+    "arxiv_checked": true
+  },
+  "benchmarkingmultimodallargelanguagemodelsforfacerecognition": {
+    "abstract": "Multimodal large language models (MLLMs) have achieved remarkable performance across diverse vision-and-language tasks. However, their potential in face recognition remains underexplored. In particular, the performance of open-source MLLMs needs to be evaluated and compared with existing face recognition models on standard benchmarks with similar protocol. In this work, we present a systematic benchmark of state-of-the-art MLLMs for face recognition on several face recognition datasets, including LFW, CALFW, CPLFW, CFP, AgeDB and RFW. Experimental results reveal that while MLLMs capture rich semantic cues useful for face-related tasks, they lag behind specialized models in high-precision recognition scenarios in zero-shot applications. This benchmark provides a foundation for advancing MLLM-based face recognition, offering insights for the design of next-generation models with higher accuracy and generalization. The source code of our benchmark is publicly available in the project page.",
+    "arxiv_url": "https://arxiv.org/abs/2510.14866v1",
+    "arxiv_checked": true
+  },
+  "benchmarkingmusicautotaggingwithmgphotexpertannotationsvsgenerictagdatasets": {
+    "abstract": "Music autotagging aims to automatically assign descriptive tags, such as genre, mood, or instrumentation, to audio recordings. Due to its challenges, diversity of semantic descriptions, and practical value in various applications, it has become a common downstream task for evaluating the performance of general-purpose music representations learned from audio data. We introduce a new benchmarking dataset based on the recently published MGPHot dataset, which includes expert musicological annotations, allowing for additional insights and comparisons with results obtained on common generic tag datasets. While MGPHot annotations have been shown to be useful for computational musicology, the original dataset neither includes audio nor provides evaluation setups for its use as a standardized autotagging benchmark. To address this, we provide a curated set of YouTube URLs with retrievable audio, and propose a train/val/test split for standardized evaluation, and precomputed representations for seven state-of-the-art models. Using these resources, we evaluated these models in MGPHot and standard reference tag datasets, highlighting key differences between expert and generic tag annotations. Altogether, our contributions provide a more advanced benchmarking framework for future research in music understanding.",
+    "arxiv_url": "https://arxiv.org/abs/2509.06936v1",
+    "arxiv_checked": true
+  },
+  "berpablindestimatorofroomparametersforsinglechannelnoisyspeechsignals": {
+    "abstract": "Room acoustical parameters (RAPs), room geometrical parameters (RGPs) and instantaneous occupancy level are essential metrics for parameterizing the room acoustical characteristics (RACs) of a sound field around a listener's local environment, offering comprehensive indications for various applications. Current blind estimation methods either fail to cover a broad range of real-world acoustic environments in the context of real background noise or estimate only a few RAPs and RGPs from noisy single-channel speech signals. In addition, they are limited in their ability to estimate the instantaneous occupancy level. In this paper, we propose a new universal blind estimation framework called the blind estimator of room parameters (BERP) to estimate RAPs, RGPs and occupancy level via a unified methodology. It consists of two modules: a unified room feature encoder that combines attention mechanisms with convolutional layers to learn common features across room parameters, and multiple separate parametric predictors for continuous estimation of each parameter in parallel. The combination of attention and convolutions enables the model to capture acoustic features locally and globally from speech, yielding more robust and multitask generalizable common features. Separate predictors allow the model to independently optimize for each room parameter to reduce task learning conflict and improve per-task performance. This estimation framework enables universal and efficient estimation of room parameters while maintaining satisfactory performance. To evaluate the effectiveness of the proposed framework, we compile a task-specific dataset from several publicly available datasets, including synthetic and real reverberant recordings. The results reveal that BERP achieves state-of-the-art (SOTA) performance and excellent adaptability to real-world scenarios. The code and weights are available on GitHub.",
+    "arxiv_url": "https://arxiv.org/abs/2405.04476v7",
+    "arxiv_checked": true
+  },
+  "bestrqbasedselfsupervisedlearningforwhisperdomainadaptation": {
+    "abstract": "Automatic Speech Recognition (ASR) systems, despite large multilingual training, struggle in low-resource scenarios where labeled data is scarce. We propose BEARD (BEST-RQ Encoder Adaptation with Re-training and Distillation), a novel framework designed to adapt Whisper's encoder with unlabeled data. Unlike traditional self-supervised learning methods, BEARD uniquely combines a BEST-RQ objective with knowledge distillation from a frozen teacher encoder, ensuring the encoder's complementarity with the pre-trained decoder. Our experiments focus on the ATCO2 corpus from the challenging Air Traffic Control (ATC) communications domain, characterized by non-native speech, noise, and specialized phraseology. Using about 5,000 hours of untranscribed speech for BEARD and 2 hours of transcribed speech for fine-tuning, the proposed approach significantly outperforms previous baseline and fine-tuned model, achieving a relative improvement of 12% compared to the fine-tuned model. To the best of our knowledge, this is the first work to use a self-supervised learning objective for domain adaptation of Whisper.",
+    "arxiv_url": "https://arxiv.org/abs/2510.24570v2",
+    "arxiv_checked": true
+  },
+  "beststd20balancedandefficientspeechtokenizerforspokentermdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bettertogetheruncalibratedphotometricstereowithshadingandspecularities": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bevidadepthguidedbevperceptionmethodcombiningfeatureindexingwithdepthestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondactionsegmentationanimubasedfitnesstrackingsystemwithcyclelevelgranularity": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondamplitudechannelstateinformationphaseawaredeepfusionforroboticactivityrecognition": {
+    "abstract": "Wi-Fi Channel State Information (CSI) has emerged as a promising non-line-of-sight sensing modality for human and robotic activity recognition. However, prior work has predominantly relied on CSI amplitude while underutilizing phase information, particularly in robotic arm activity recognition. In this paper, we present GateFusion-Bidirectional Long Short-Term Memory network (GF-BiLSTM) for WiFi sensing in robotic activity recognition. GF-BiLSTM is a two-stream gated fusion network that encodes amplitude and phase separately and adaptively integrates per-time features through a learned gating mechanism. We systematically evaluate state-of-the-art deep learning models under a Leave-One-Velocity-Out (LOVO) protocol across four input configurations: amplitude only, phase only, amplitude + unwrapped phase, and amplitude + sanitized phase. Experimental results demonstrate that incorporating phase alongside amplitude consistently improves recognition accuracy and cross-speed robustness, with GF-BiLSTM achieving the best performance. To the best of our knowledge, this work provides the first systematic exploration of CSI phase for robotic activity recognition, establishing its critical role in Wi-Fi-based sensing.",
+    "arxiv_url": "https://arxiv.org/abs/2603.09047v1",
+    "arxiv_checked": true
+  },
+  "beyondanswerstrajectorysemanticentropyforreliableuncertaintyquantificationinllms": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondattentionadaptingsegmentanythingwithfrequencyandstructuralpriors": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondaveragingallroundercapabilityevaluationforradiologyreportgeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondblurrinessandartifactsasynergisticdeterministicprobabilisticapproachforradarreconstruction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondcleandatanoiserobustdatasetpruningwithflipsensitivityfiltering": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyonddiffusionrethinkingbrainmritranslationwithshortflowsbidirectionalarbitrarysteptransport": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondfaceswappingadiffusionbaseddigitalhumanbenchmarkformultimodaldeepfakedetection": {
+    "abstract": "In recent years, the explosive advancement of deepfake technology has posed a critical and escalating threat to public security: diffusion-based digital human generation. Unlike traditional face manipulation methods, such models can generate highly realistic videos with consistency via multimodal control signals. Their flexibility and covertness pose severe challenges to existing detection strategies. To bridge this gap, we introduce DigiFakeAV, the new large-scale multimodal digital human forgery dataset based on diffusion models. Leveraging five of the latest digital human generation methods and a voice cloning method, we systematically construct a dataset comprising 60,000 videos (8.4 million frames), covering multiple nationalities, skin tones, genders, and real-world scenarios, significantly enhancing data diversity and realism. User studies demonstrate that the misrecognition rate by participants for DigiFakeAV reaches as high as 68%. Moreover, the substantial performance degradation of existing detection models on our dataset further highlights its challenges. To address this problem, we propose DigiShield, an effective detection baseline based on spatiotemporal and cross-modal fusion. By jointly modeling the 3D spatiotemporal features of videos and the semantic-acoustic features of audio, DigiShield achieves state-of-the-art (SOTA) performance on the DigiFakeAV and shows strong generalization on other datasets.",
+    "arxiv_url": "https://arxiv.org/abs/2505.16512v5",
+    "arxiv_checked": true
+  },
+  "beyondglobalemotionfinegrainedemotionalspeechsynthesiswithdynamicwordlevelmodulation": {
+    "abstract": "Emotional text-to-speech (E-TTS) is central to creating natural and trustworthy human-computer interaction. Existing systems typically rely on sentence-level control through predefined labels, reference audio, or natural language prompts. While effective for global emotion expression, these approaches fail to capture dynamic shifts within a sentence. To address this limitation, we introduce Emo-FiLM, a fine-grained emotion modeling framework for LLM-based TTS. Emo-FiLM aligns frame-level features from emotion2vec to words to obtain word-level emotion annotations, and maps them through a Feature-wise Linear Modulation (FiLM) layer, enabling word-level emotion control by directly modulating text embeddings. To support evaluation, we construct the Fine-grained Emotion Dynamics Dataset (FEDD) with detailed annotations of emotional transitions. Experiments show that Emo-FiLM outperforms existing approaches on both global and fine-grained tasks, demonstrating its effectiveness and generality for expressive speech synthesis.",
+    "arxiv_url": "https://arxiv.org/abs/2509.20378v1",
+    "arxiv_checked": true
+  },
+  "beyondhistoryactivepromptingwithdynamiccontemporaneousfactsfortemporalknowledgegraphforecasting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondhumanskeletonspromptguidedgraphmatchingformultilimbedposeestimationinartisticimagery": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondlipsintegratinggestureandlipcuesforrobustaudiovisualspeakerextraction": {
+    "abstract": "Most audio-visual speaker extraction methods rely on synchronized lip recording to isolate the speech of a target speaker from a multi-talker mixture. However, in natural human communication, co-speech gestures are also temporally aligned with speech, often emphasizing specific words or syllables. These gestures provide complementary visual cues that can be especially valuable when facial or lip regions are occluded or distant. In this work, we move beyond lip-centric approaches and propose SeLG, a model that integrates both lip and upper-body gesture information for robust speaker extraction. SeLG features a cross-attention-based fusion mechanism that enables each visual modality to query and selectively attend to relevant speech features in the mixture. To improve the alignment of gesture representations with speech dynamics, SeLG also employs a contrastive InfoNCE loss that encourages gesture embeddings to align more closely with corresponding lip embeddings, which are more strongly correlated with speech. Experimental results on the YGD dataset, containing TED talks, demonstrate that the proposed contrastive learning strategy significantly improves gesture-based speaker extraction, and that our proposed SeLG model, by effectively fusing lip and gesture cues with an attention mechanism and InfoNCE loss, achieves superior performance compared to baselines, across both complete and partial (i.e., missing-modality) conditions.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19130v1",
+    "arxiv_checked": true
+  },
+  "beyondmappingdomaininvariantrepresentationsviaspectralembeddingofoptimaltransportplans": {
+    "abstract": "Distributional shifts between training and inference time data remain a central challenge in machine learning, often leading to poor performance. It motivated the study of principled approaches for domain alignment, such as optimal transport based unsupervised domain adaptation, that relies on approximating Monge map using transport plans, which is sensitive to the transport problem regularization strategy and hyperparameters, and might yield biased domains alignment. In this work, we propose to interpret smoothed transport plans as adjacency matrices of bipartite graphs connecting source to target domain and derive domain-invariant samples' representations through spectral embedding. We evaluate our approach on acoustic adaptation benchmarks for music genre recognition, music-speech discrimination, as well as electrical cable defect detection and classification tasks using time domain reflection in different diagnosis settings, achieving overall strong performances.",
+    "arxiv_url": "https://arxiv.org/abs/2601.13350v2",
+    "arxiv_checked": true
+  },
+  "beyondomnidirectionalneuralambisonicsencodingforarbitrarymicrophonedirectivitypatternsusingcrossattention": {
+    "abstract": "We present a deep neural network approach for encoding microphone array signals into Ambisonics that generalizes to arbitrary microphone array configurations with fixed microphone count but varying locations and frequency-dependent directional characteristics. Unlike previous methods that rely only on array geometry as metadata, our approach uses directional array transfer functions, enabling accurate characterization of real-world arrays. The proposed architecture employs separate encoders for audio and directional responses, combining them through cross-attention mechanisms to generate array-independent spatial audio representations. We evaluate the method on simulated data in two settings: a mobile phone with complex body scattering, and a free-field condition, both with varying numbers of sound sources in reverberant environments. Evaluations demonstrate that our approach outperforms both conventional digital signal processing-based methods and existing deep neural network solutions. Furthermore, using array transfer functions instead of geometry as metadata input improves accuracy on realistic arrays.",
+    "arxiv_url": "https://arxiv.org/abs/2601.23196v1",
+    "arxiv_checked": true
+  },
+  "beyondpixelprophecyhierarchicalknowledgestructuresfortrainingfreevideoanomalyprediction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondpixelsavectortographframeworkforreliableschematicauditing": {
+    "abstract": "Multimodal Large Language Models (MLLMs) have shown remarkable progress in visual understanding, yet they suffer from a critical limitation: structural blindness. Even state-of-the-art models fail to capture topology and symbolic logic in engineering schematics, as their pixel-driven paradigm discards the explicit vector-defined relations needed for reasoning. To overcome this, we propose a Vector-to-Graph (V2G) pipeline that converts CAD diagrams into property graphs where nodes represent components and edges encode connectivity, making structural dependencies explicit and machine-auditable. On a diagnostic benchmark of electrical compliance checks, V2G yields large accuracy gains across all error categories, while leading MLLMs remain near chance level. These results highlight the systemic inadequacy of pixel-based methods and demonstrate that structure-aware representations provide a reliable path toward practical deployment of multimodal AI in engineering domains. To facilitate further research, we release our benchmark and implementation at https://github.com/gm-embodied/V2G-Audit.",
+    "arxiv_url": "https://arxiv.org/abs/2602.11678v2",
+    "arxiv_checked": true
+  },
+  "beyondsamplingclasswiselossoptimizationforimbalanceddeeplearningrecommendationsystems": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondshadowsalargescalebenchmarkandmultistageframeworkforhighfidelityfacialshadowremoval": {
+    "abstract": "Facial shadows often degrade image quality and the performance of vision algorithms. Existing methods struggle to remove shadows while preserving texture, especially under complex lighting conditions, and they lack real-world paired datasets for training. We present the Augmented Shadow Face in the Wild (ASFW) dataset, the first large-scale real-world dataset for facial shadow removal, containing 1,081 paired shadow and shadow-free images created via a professional Photoshop workflow. ASFW offers photorealistic shadow variations and accurate ground truths, bridging the gap between synthetic and real domains. Deep models trained on ASFW demonstrate improved shadow removal in real-world conditions. We also introduce the Face Shadow Eraser (FSE) method to showcase the effectiveness of the dataset. Experiments demonstrate that ASFW enhances the performance of facial shadow removal models, setting new standards for this task.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19309v1",
+    "arxiv_checked": true
+  },
+  "beyondsinglevideoboundariesunifiedunsupervisedvideoobjectsegmentationwithhistoricalfutureandcrossvideoreasoning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondspectralpeaksinterpretingthecuesbehindsyntheticimagedetection": {
+    "abstract": "Over the years, the forensics community has proposed several deep learning-based detectors to mitigate the risks of generative AI. Recently, frequency-domain artifacts (particularly periodic peaks in the magnitude spectrum), have received significant attention, as they have been often considered a strong indicator of synthetic image generation. However, state-of-the-art detectors are typically used as black-boxes, and it still remains unclear whether they truly rely on these peaks. This limits their interpretability and trust. In this work, we conduct a systematic study to address this question. We propose a strategy to remove spectral peaks from images and analyze the impact of this operation on several detectors. In addition, we introduce a simple linear detector that relies exclusively on frequency peaks, providing a fully interpretable baseline free from the confounding influence of deep learning. Our findings reveal that most detectors are not fundamentally dependent on spectral peaks, challenging a widespread assumption in the field and paving the way for more transparent and reliable forensic tools.",
+    "arxiv_url": "https://arxiv.org/abs/2510.05633v1",
+    "arxiv_checked": true
+  },
+  "beyondthewindowregionbasedanomalylocalizationnetworkfortimeseriesanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "beyondvideotosfxvideotoaudiosynthesiswithenvironmentallyawarespeech": {
+    "abstract": "The generation of realistic, context-aware audio is important in real-world applications such as video game development. While existing video-to-audio (V2A) methods mainly focus on Foley sound generation, they struggle to produce intelligible speech. Meanwhile, current environmental speech synthesis approaches remain text-driven and fail to temporally align with dynamic video content. In this paper, we propose Beyond Video-to-SFX (BVS), a method to generate synchronized audio with environmentally aware intelligible speech for given videos. We introduce a two-stage modeling method: (1) stage one is a video-guided audio semantic (V2AS) model to predict unified audio semantic tokens conditioned on phonetic cues; (2) stage two is a video-conditioned semantic-to-acoustic (VS2A) model that refines semantic tokens into detailed acoustic tokens. Experiments demonstrate the effectiveness of BVS in scenarios such as video-to-context-aware speech synthesis and immersive audio background conversion, with ablation studies further validating our design. Our demonstration is available at~\\href{https://xinleiniu.github.io/BVS-demo/}{BVS-Demo}.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15492v1",
+    "arxiv_checked": true
+  },
+  "beyondvisualrealismtowardreliablefinancialtimeseriesgeneration": {
+    "abstract": "Generative models for financial time series often create data that look realistic and even reproduce stylized facts such as fat tails or volatility clustering. However, these apparent successes break down under trading backtests: models like GANs or WGAN-GP frequently collapse, yielding extreme and unrealistic results that make the synthetic data unusable in practice. We identify the root cause in the neglect of financial asymmetry and rare tail events, which strongly affect market risk but are often overlooked by objectives focusing on distribution matching. To address this, we introduce the Stylized Facts Alignment GAN (SFAG), which converts key stylized facts into differentiable structural constraints and jointly optimizes them with adversarial loss. This multi-constraint design ensures that generated series remain aligned with market dynamics not only in plots but also in backtesting. Experiments on the Shanghai Composite Index (2004--2024) show that while baseline GANs produce unstable and implausible trading outcomes, SFAG generates synthetic data that preserve stylized facts and support robust momentum strategy performance. Our results highlight that structure-preserving objectives are essential to bridge the gap between superficial realism and practical usability in financial generative modeling.",
+    "arxiv_url": "https://arxiv.org/abs/2601.12990v1",
+    "arxiv_checked": true
+  },
+  "bgrpounsupervisedspeechemotionrecognitionbasedonbatchedgrouprelativepolicyoptimization": {
+    "abstract": "Unsupervised speech emotion recognition (SER) focuses on addressing the problem of data sparsity and annotation bias of emotional speech. Reinforcement learning (RL) is a promising method which enhances the performance through rule-based or model-based verification functions rather than human annotations. We treat the sample selection during the learning process as a long-term procedure and whether to select a sample as the action to make policy, thus achieving the application of RL to measure sample quality in SER. We propose a modified Group Relative Policy Optimization (GRPO) to adapt it to classification problems, which takes the samples in a batch as a group and uses the average reward of these samples as the baseline to calculate the advantage. And rather than using a verifiable reward function as in GRPO, we put forward self-reward functions and teacher-reward functions to encourage the model to produce high-confidence outputs. Experiments indicate that the proposed method improves the performance of baseline without RL by 19.8%.",
+    "arxiv_url": "https://arxiv.org/abs/2602.06290v1",
+    "arxiv_checked": true
+  },
+  "bhsflowlowlatencyflowestimationwithblockwisehuberlossandsimplifiedstructure": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bicgddidualviewlearningofsmilessequencesandmoleculargraphsformulticlasspharmacodynamicdrugdruginteractionprediction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalattentionfordualbranchgeneratorforchannelextrapolationandhighresolutionsensing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalclasstextandvisioninteractionnetworkforcamouflagedobjectdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalcontinuoustimevideosuperresolutionvianeuralordinarydifferentialequationsandmultiorderspatialinteractions": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalenhancementnetworkforcolorectalpolypsegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalsemanticenhancementnetworkforvideomomentretrieval": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bidirectionalvariationallearningwithmodalscaleexpertsadvancingfewshot1p19qcodeletionpredictioningliomamri": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bifrostanadaptivedecisionframeworkforregulatingdepthofthoughtinllmagents": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bigabidirectionalgenerativeverificationframeworkformultimodalrumordetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bilateralgraphfilteringframeworkwithalternatingoptimizationforrobustmultiviewoutlierdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "voxtreamfullstreamtexttospeechwithextremelylowlatency": {
+    "abstract": "We present VoXtream, a fully autoregressive, zero-shot streaming text-to-speech (TTS) system for real-time use that begins speaking from the first word. VoXtream directly maps incoming phonemes to audio tokens using a monotonic alignment scheme and a limited look-ahead that does not delay onset. Built around an incremental phoneme transformer, a temporal transformer predicting semantic and duration tokens, and a depth transformer producing acoustic tokens, VoXtream achieves, to our knowledge, the lowest initial delay among publicly available streaming TTS: 102 ms on GPU. Despite being trained on a mid-scale 9k-hour corpus, it matches or surpasses larger baselines on several metrics, while delivering competitive quality in both output- and full-streaming settings. Demo and code are available at https://herimor.github.io/voxtream.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15969v2",
+    "arxiv_checked": true
+  },
+  "slmttaaframeworkfortesttimeadaptationofgenerativespokenlanguagemodels": {
+    "abstract": "Spoken Language Models (SLMs) are increasingly central to modern speech-driven applications, but performance degrades under acoustic shift - real-world noise, reverberation, and microphone variation. Prior solutions rely on offline domain adaptation, which is post-hoc, data-intensive, and slow. We introduce the first test-time adaptation (TTA) framework for generative SLMs that process interleaved audio-text prompts. Our method updates a small, targeted subset of parameters during inference using only the incoming utterance, requiring no source data or labels. This stabilizes token distributions and improves robustness to acoustic variability without degrading core task accuracy. Evaluated on automatic speech recognition, speech translation, and 19 audio understanding tasks from AIR-Bench, our approach yields consistent gains under diverse corruptions. Because adaptation touches only a small fraction of weights, it is both compute- and memory-efficient, supporting deployment on resource-constrained platforms. This work enhances the robustness and adaptability of generative SLMs for real-world speech-driven applications.",
+    "arxiv_url": "https://arxiv.org/abs/2512.24739v1",
+    "arxiv_checked": true
+  },
+  "vividvoiceaunifiedframeworkforsceneawarevisuallydrivenspeechsynthesis": {
+    "abstract": "We introduce and define a novel task-Scene-Aware Visually-Driven Speech Synthesis, aimed at addressing the limitations of existing speech generation models in creating immersive auditory experiences that align with the real physical world. To tackle the two core challenges of data scarcity and modality decoupling, we propose VividVoice, a unified generative framework. First, we constructed a large-scale, high-quality hybrid multimodal dataset, Vivid-210K, which, through an innovative programmatic pipeline, establishes a strong correlation between visual scenes, speaker identity, and audio for the first time. Second, we designed a core alignment module, D-MSVA, which leverages a decoupled memory bank architecture and a cross-modal hybrid supervision strategy to achieve fine-grained alignment from visual scenes to timbre and environmental acoustic features. Both subjective and objective experimental results provide strong evidence that VividVoice significantly outperforms existing baseline models in terms of audio fidelity, content clarity, and multimodal consistency. Our demo is available at https://chengyuann.github.io/VividVoice/.",
+    "arxiv_url": "https://arxiv.org/abs/2602.02591v1",
+    "arxiv_checked": true
+  },
+  "unidiffttsalignerfreediffusionspeechsynthesiswithdurationguidance": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "leveragingaudiovisualdatatoreducethemultilingualgapinselfsupervisedspeechmodels": {
+    "abstract": "Self-supervised learning (SSL) has made significant advances in speech representation learning. Models like wav2vec 2.0 and HuBERT have achieved state-of-the-art results in tasks such as speech recognition, particularly in monolingual settings. However, multilingual SSL models tend to underperform their monolingual counterparts on each individual language, especially in multilingual scenarios with few languages such as the bilingual setting. In this work, we investigate a novel approach to reduce this performance gap by introducing limited visual grounding into bilingual speech SSL models. Our results show that visual grounding benefits both monolingual and bilingual models, with especially pronounced gains for the latter, reducing the multilingual performance gap on zero-shot phonetic discrimination from 31.5% for audio-only models to 8.04% with grounding.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17523v1",
+    "arxiv_checked": true
+  },
+  "canlargeaudiolanguagemodelsunderstandaudiowellspeechsceneandeventsunderstandingbenchmarkforlalms": {
+    "abstract": "Recently, Large Audio Language Models (LALMs) have progressed rapidly, demonstrating their strong efficacy in universal audio understanding through cross-modal integration. To evaluate LALMs' audio understanding performance, researchers have proposed different benchmarks. However, key aspects for real-world interactions are underexplored in existing benchmarks, i.e., audio signals typically contain both speech and non-speech components, and energy levels of these components can vary significantly across different scenarios. Moreover, most benchmarks do not consider the joint understanding of speech, scene, and events within the same audio clip. In this work, we introduce SSEU-Bench, the first versatile audio understanding benchmark that explicitly accounts for energy differences between speech and non-speech audio, with both independent and joint understanding settings for speech, scene, and events. Furthermore, we demonstrate that some LALMs tend to underperform on certain tasks in a joint understanding setting. To address this issue, we introduce Chain-of-Thought, which effectively improves LALMs' joint audio understanding performance by decomposing complex tasks into simpler reasoning steps.",
+    "arxiv_url": "https://arxiv.org/abs/2509.13148v3",
+    "arxiv_checked": true
+  },
+  "msbenchcanspeechlanguagemodelsgeneratemultispeakerdialoguesinonepass": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "continuoustokendiffusionforspeakerreferencedttsinmultimodalllms": {
+    "abstract": "Unified architectures in multimodal large language models (MLLM) have shown promise in handling diverse tasks within a single framework. In the text-to-speech (TTS) task, current MLLM-based approaches rely on discrete token representations, which disregard the inherently continuous nature of speech and can lead to loss of fine-grained acoustic information. In this work, we investigate the TTS within the MLLM paradigm using continuous speech representations. We design a dual-head architecture and implement two complementary training strategies for a robust model. (1) A diffusion head generating continuous speech representations is added on the MLLM, which is on frame-level and strictly autoregressive. (2) The original language model head is retained to preserve multitask capability and to control the start and end of speech synthesis. (3) Masked training is employed to address exposure bias in autoregressive decoding. (4) To stabilize optimization, we propose a two-stage scheme where the LM is frozen in the second stage, ensuring the diffusion head learns from a fixed input distribution. Evaluations on LibriSpeech(PC) test-clean show that our approach achieves state-of-the-art autoregressive performance, with a WER of 1.95%, speaker similarity of 0.54, and UTMOS of 4.00. The two-stage training yields a 46% relative WER reduction over the one-stage training baseline. These results highlight the effectiveness of combining autoregressive modeling with continuous-token diffusion, supported by a two-stage training procedure.",
+    "arxiv_url": "https://arxiv.org/abs/2510.12995v2",
+    "arxiv_checked": true
+  },
+  "exploringfinetuningoflargeaudiolanguagemodelsforspokenlanguageunderstandingunderlimitedspeechdata": {
+    "abstract": "Large Audio Language Models (LALMs) have emerged as powerful tools for speech-related tasks but remain underexplored for fine-tuning, especially with limited speech data. To bridge this gap, we systematically examine how different fine-tuning schemes including text-only, direct mixing, and curriculum learning affect spoken language understanding (SLU), focusing on scenarios where text-label pairs are abundant while paired speech-label data are limited. Results show that LALMs already achieve competitive performance with text-only fine-tuning, highlighting their strong generalization ability. Adding even small amounts of speech data (2-5%) yields substantial further gains, with curriculum learning particularly effective under scarce data. In cross-lingual SLU, combining source-language speech data with target-language text and minimal target-language speech data enables effective adaptation. Overall, this study provides practical insights into the LALM fine-tuning under realistic data constraints.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15389v2",
+    "arxiv_checked": true
+  },
+  "harmonifuseacomponentselectiveandpromptadaptiveframeworkformultitaskspeechlanguagemodeling": {
+    "abstract": "Recent advances in large language models have facilitated the development of unified speech language models (SLMs) capable of supporting multiple speech tasks within a shared architecture. However, tasks such as automatic speech recognition (ASR) and speech emotion recognition (SER) rely on distinct types of information: ASR primarily depends on linguistic content, whereas SER requires the integration of both linguistic and paralinguistic cues. Existing multitask SLMs typically adopt naive parameter sharing or prompt-based conditioning without explicitly modeling the differences in information composition required by each task. Such designs risk task interference and performance degradation, especially under limited data conditions. To address these limitations, we propose HarmoniFuse, a component-selective and prompt-adaptive framework for multi-task speech language modeling. HarmoniFuse is designed to harmonize heterogeneous task demands by selecting and fusing task-relevant components of speech representations. Specifically, it integrates a gated speech encoder to extract task-specific acoustic features and a prompt-adaptive dynamic fusion module to aggregate transformer layers based on task characteristics. In addition, a batch-interleaved training strategy enables leveraging separate ASR and SER datasets without requiring joint annotation. Experimental results demonstrate that HarmoniFuse improves both ASR and SER performance, offering a scalable and robust solution for multitask speech understanding under realistic data constraints.",
+    "arxiv_url": "https://arxiv.org/abs/2509.18570v1",
+    "arxiv_checked": true
+  },
+  "syncspeechefficientandlowlatencytexttospeechbasedontemporalmaskedtransformer": {
+    "abstract": "Current text-to-speech (TTS) models face a persistent limitation: autoregressive (AR) models suffer from low generation efficiency, while modern non-autoregressive (NAR) models experience high latency due to their unordered temporal nature. To bridge this divide, we introduce SyncSpeech, an efficient and low-latency TTS model based on the proposed Temporal Mask Transformer (TMT) paradigm. TMT synergistically unifies the temporally ordered generation of AR models with the parallel decoding efficiency of NAR models. TMT is realized through a meticulously designed sequence construction rule, a corresponding training objective, and a specialized hybrid attention mask. Furthermore, with the primary aim of enhancing training efficiency, a high-probability masking strategy is introduced, which also leads to a significant improvement in overall model performance. During inference, SyncSpeech achieves high efficiency by decoding all speech tokens corresponding to each newly arrived text token in a single step, and low latency by beginning to generate speech immediately upon receiving the second text token from the streaming input. Evaluations show that SyncSpeech maintains speech quality comparable to the modern AR TTS model, while achieving a 5.8-fold reduction in first-packet latency and an 8.8-fold improvement in real-time factor. Speech samples are available at https://SyncSpeech.github.io/}{https://SyncSpeech.github.io/.",
+    "arxiv_url": "https://arxiv.org/abs/2502.11094v2",
+    "arxiv_checked": true
+  },
+  "slmssspeechlanguagemodelforgenerativespeechseparation": {
+    "abstract": "Speech separation (SS) has advanced significantly with neural network-based methods, showing improved performance on signal-level metrics. However, these methods often struggle to maintain speech intelligibility in the separated signals, which can negatively affect the performance of downstream tasks such as speech recognition. In this work, we propose SLM-SS, a novel approach that applies speech language models to SS, aiming to enhance the intelligibility and coherence of the separated signals. We frame SS as discrete multi-codebook sequence generation, using Encoder-Decoder models to map quantized speech mixtures to target tokens. In addition to the autoregressive modeling strategy, we introduce a non-autoregressive model to improve decoding efficiency for residual tokens. Experimental results on the LibriMix dataset demonstrate that our approach shows significantly better preservation of speech intelligibility, leading to improved linguistic consistency in a variety of downstream tasks compared to existing approaches.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19533v1",
+    "arxiv_checked": true
+  },
+  "daienttsdisentangledaudioinfillingforenvironmentawaretexttospeechsynthesis": {
+    "abstract": "This paper presents DAIEN-TTS, a zero-shot text-to-speech (TTS) framework that enables ENvironment-aware synthesis through Disentangled Audio Infilling. By leveraging separate speaker and environment prompts, DAIEN-TTS allows independent control over the timbre and the background environment of the synthesized speech. Built upon F5-TTS, the proposed DAIEN-TTS first incorporates a pretrained speech-environment separation (SES) module to disentangle the environmental speech into mel-spectrograms of clean speech and environment audio. Two random span masks of varying lengths are then applied to both mel-spectrograms, which, together with the text embedding, serve as conditions for infilling the masked environmental mel-spectrogram, enabling the simultaneous continuation of personalized speech and time-varying environmental audio. To further enhance controllability during inference, we adopt dual classifier-free guidance (DCFG) for the speech and environment components and introduce a signal-to-noise ratio (SNR) adaptation strategy to align the synthesized speech with the environment prompt. Experimental results demonstrate that DAIEN-TTS generates environmental personalized speech with high naturalness, strong speaker similarity, and high environmental fidelity.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14684v2",
+    "arxiv_checked": true
+  },
+  "lipsodyliptospeechsynthesiswithenhancedprosodyconsistency": {
+    "abstract": "Lip-to-speech synthesis aims to generate speech audio directly from silent facial video by reconstructing linguistic content from lip movements, providing valuable applications in situations where audio signals are unavailable or degraded. While recent diffusion-based models such as LipVoicer have demonstrated impressive performance in reconstructing linguistic content, they often lack prosodic consistency. In this work, we propose LipSody, a lip-to-speech framework enhanced for prosody consistency. LipSody introduces a prosody-guiding strategy that leverages three complementary cues: speaker identity extracted from facial images, linguistic content derived from lip movements, and emotional context inferred from face video. Experimental results demonstrate that LipSody substantially improves prosody-related metrics, including global and local pitch deviations, energy consistency, and speaker similarity, compared to prior approaches.",
+    "arxiv_url": "https://arxiv.org/abs/2602.01908v1",
+    "arxiv_checked": true
+  },
+  "streamingspeechrecognitionwithdecoderonlylargelanguagemodelsandlatencyoptimization": {
+    "abstract": "Recent advances have demonstrated the potential of decoderonly large language models (LLMs) for automatic speech recognition (ASR). However, enabling streaming recognition within this framework remains a challenge. In this work, we propose a novel streaming ASR approach that integrates a read/write policy network with monotonic chunkwise attention (MoChA) to dynamically segment speech embeddings. These segments are interleaved with label sequences during training, enabling seamless integration with the LLM. During inference, the audio stream is buffered until the MoChA module triggers a read signal, at which point the buffered segment together with the previous token is fed into the LLM for the next token prediction. We also introduce a minimal-latency training objective to guide the policy network toward accurate segmentation boundaries. Furthermore, we adopt a joint training strategy in which a non-streaming LLM-ASR model and our streaming model share parameters. Experiments on the AISHELL-1 and AISHELL-2 Mandarin benchmarks demonstrate that our method consistently outperforms recent streaming ASR baselines, achieving character error rates of 5.1% and 5.5%, respectively. The latency optimization results in a 62.5% reduction in average token generation delay with negligible impact on recognition accuracy",
+    "arxiv_url": "https://arxiv.org/abs/2601.22779v1",
+    "arxiv_checked": true
+  },
+  "vocalnetm2advancinglowlatencyspokenlanguagemodelingviaintegratedmulticodebooktokenizationandmultitokenprediction": {
+    "abstract": "Current end-to-end spoken language models (SLMs) have made notable progress, yet they still encounter considerable response latency. This delay primarily arises from the autoregressive generation of speech tokens and the reliance on complex flow-matching models for speech synthesis. To overcome this, we introduce VocalNet-M2, a novel low-latency SLM that integrates a multi-codebook tokenizer and a multi-token prediction (MTP) strategy. Our model directly generates multi-codebook speech tokens, thus eliminating the need for a latency-inducing flow-matching model. Furthermore, our MTP strategy enhances generation efficiency and improves overall performance. Extensive experiments demonstrate that VocalNet-M2 achieves a substantial reduction in first chunk latency (from approximately 725ms to 350ms) while maintaining competitive performance across mainstream SLMs. This work also provides a comprehensive comparison of single-codebook and multi-codebook strategies, offering valuable insights for developing efficient and high-performance SLMs for real-time interactive applications.",
+    "arxiv_url": "https://arxiv.org/abs/2511.10232v1",
+    "arxiv_checked": true
+  },
+  "f5ettsenhancingspeechsynthesisbyaligningtextwithrichsemanticrepresentations": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "fullduplexbenchv15evaluatingoverlaphandlingforfullduplexspeechmodels": {
+    "abstract": "Full-duplex spoken dialogue systems promise to transform human-machine interaction from a rigid, turn-based protocol into a fluid, natural conversation. However, the central challenge to realizing this vision, managing overlapping speech, remains critically under-evaluated. We introduce Full-Duplex-Bench v1.5, the first fully automated benchmark designed to systematically probe how models behave during speech overlap. The benchmark simulates four representative overlap scenarios: user interruption, user backchannel, talking to others, and background speech. Our framework, compatible with open-source and commercial API-based models, provides a comprehensive suite of metrics analyzing categorical dialogue behaviors, stop and response latency, and prosodic adaptation. Benchmarking five state-of-the-art agents reveals two divergent strategies: a responsive approach prioritizing rapid response to user input, and a floor-holding approach that preserves conversational flow by filtering overlapping events. Our open-source framework enables practitioners to accelerate the development of robust full-duplex systems by providing the tools for reproducible evaluation.",
+    "arxiv_url": "https://arxiv.org/abs/2507.23159v4",
+    "arxiv_checked": true
+  },
+  "jointautoregressivemodelingofmultitalkeroverlappedspeechrecognitionandtranslation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "marcovoiceaunifiedframeworkforexpressivespeechsynthesiswithvoicecloning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "sfmttslightweightandrapidspeechsynthesiswithflexibleshortcutflowmatching": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "intmeanflowfewstepspeechgenerationwithintegralvelocitydistillation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "taskvectorinttstowardemotionallyexpressivedialectalspeechsynthesis": {
+    "abstract": "Recent advances in text-to-speech (TTS) have yielded remarkable improvements in naturalness and intelligibility. Building on these achievements, research has increasingly shifted toward enhancing the expressiveness of generated speech, such as dialectal and emotional TTS. However, cross-style synthesis combining both dialect and emotion remains challenging and largely unexplored, mainly due to the scarcity of dialectal data with emotional labels. To address this, we propose Hierarchical Expressive Vector (HE-Vector), a two-stage method for Emotional Dialectal TTS. In the first stage, we construct different task vectors to model dialectal and emotional styles independently, and then enhance single-style synthesis by adjusting their weights, a method we refer to as Expressive Vector (E-Vector). For the second stage, we hierarchically integrate these vectors to achieve controllable emotionally expressive dialect synthesis without requiring jointly labeled data, corresponding to Hierarchical Expressive Vector (HE-Vector). Experimental results demonstrate that HE-Vectors achieve superior performance in dialect synthesis, and promising results in synthesizing emotionally expressive dialectal speech in a zero-shot setting.",
+    "arxiv_url": "https://arxiv.org/abs/2512.18699v1",
+    "arxiv_checked": true
+  },
+  "directsimultaneoustranslationactivationforlargeaudiolanguagemodels": {
+    "abstract": "Simultaneous speech-to-text translation (Simul-S2TT) aims to translate speech into target text in real time, outputting translations while receiving source speech input, rather than waiting for the entire utterance to be spoken. Simul-S2TT research often modifies model architectures to implement read-write strategies. However, with the rise of large audio-language models (LALMs), a key challenge is how to directly activate Simul-S2TT capabilities in base models without additional architectural changes. In this paper, we introduce {\\bf Simul}taneous {\\bf S}elf-{\\bf A}ugmentation ({\\bf SimulSA}), a strategy that utilizes LALMs' inherent capabilities to obtain simultaneous data by randomly truncating speech and constructing partially aligned translation. By incorporating them into offline SFT data, SimulSA effectively bridges the distribution gap between offline translation during pretraining and simultaneous translation during inference. Experimental results demonstrate that augmenting only about {\\bf 1\\%} of the simultaneous data, compared to the full offline SFT data, can significantly activate LALMs' Simul-S2TT capabilities without modifications to model architecture or decoding strategy.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15692v2",
+    "arxiv_checked": true
+  },
+  "calmjointcontextualacousticlinguisticmodelingforpersonalizationofmultispeakerasr": {
+    "abstract": "We present CALM, a joint Contextual Acoustic-Linguistic Modeling framework for multi-speaker automatic speech recognition (ASR). In personalized AI scenarios, the joint availability of acoustic and linguistic cues naturally motivates the integration of target-speaker conditioning with contextual biasing in overlapping conversations. CALM implements this integration in an end-to-end framework through speaker embedding-driven target-speaker extraction and dynamic vocabulary-based contextual biasing. We evaluate CALM on simulated English (LibriSpeechMix) and Japanese (Corpus of Spontaneous Japanese mixtures, CSJMix). On two-speaker mixtures, CALM reduces biased word error rate (B-WER) from 12.7 to 4.7 on LibriSpeech2Mix and biased character error rate (B-CER) from 16.6 to 8.4 on CSJMix2 (eval3), demonstrating the effectiveness of joint acoustic-linguistic modeling across languages. We additionally report results on the AMI corpus (IHM-mix condition) to validate performance on standardized speech mixtures.",
+    "arxiv_url": "https://arxiv.org/abs/2601.22792v2",
+    "arxiv_checked": true
+  },
+  "streamvoiceanonenhancingutilityofrealtimespeakeranonymizationvianeuralaudiocodecandlanguagemodels": {
+    "abstract": "Protecting speaker identity is crucial for online voice applications, yet streaming speaker anonymization (SA) remains underexplored. Recent research has demonstrated that neural audio codec (NAC) provides superior speaker feature disentanglement and linguistic fidelity. NAC can also be used with causal language models (LM) to enhance linguistic fidelity and prompt control for streaming tasks. However, existing NAC-based online LM systems are designed for voice conversion (VC) rather than anonymization, lacking the techniques required for privacy protection. Building on these advances, we present Stream-Voice-Anon, which adapts modern causal LM-based NAC architectures specifically for streaming SA by integrating anonymization techniques. Our anonymization approach incorporates pseudo-speaker representation sampling, a speaker embedding mixing and diverse prompt selection strategies for LM conditioning that leverage the disentanglement properties of quantized content codes to prevent speaker information leakage. Additionally, we compare dynamic and fixed delay configurations to explore latency-privacy trade-offs in real-time scenarios. Under the VoicePrivacy 2024 Challenge protocol, Stream-Voice-Anon achieves substantial improvements in intelligibility (up to 46% relative WER reduction) and emotion preservation (up to 28% UAR relative) compared to the previous state-of-the-art streaming method DarkStream while maintaining comparable latency (180ms vs 200ms) and privacy protection against lazy-informed attackers, though showing 15% relative degradation against semi-informed attackers.",
+    "arxiv_url": "https://arxiv.org/abs/2601.13948v3",
+    "arxiv_checked": true
+  },
+  "discretediffusionforgenerativemodelingoftextalignedspeechtokens": {
+    "abstract": "This paper introduces a discrete diffusion model (DDM) framework for text-aligned speech tokenization and reconstruction. By replacing the auto-regressive speech decoder with a discrete diffusion counterpart, our model achieves significantly better reconstruction quality, stronger ASR performance, and faster inference. We provide a comprehensive analysis of applying DDMs to speech reconstruction, examining sampler choices, inference steps, and robustness to length-scale estimation errors. Furthermore, we improve the original TASTE by systematically comparing vector quantization modules, showing that FSQ yields up to a 35% relative WER reduction and +0.14 UT-MOS improvement over RVQ for AR models, while also enhancing DDM performance. Our model generates speech in just 10 denoising steps and even supports single-step generation with only minor quality degradation.",
+    "arxiv_url": "https://arxiv.org/abs/2509.20060v1",
+    "arxiv_checked": true
+  },
+  "synparaspeechautomatedsynthesisofparalinguisticdatasetsforspeechgenerationandunderstanding": {
+    "abstract": "Paralinguistic sounds, like laughter and sighs, are crucial for synthesizing more realistic and engaging speech. However, existing methods typically depend on proprietary datasets, while publicly available resources often suffer from incomplete speech, inaccurate or missing timestamps, and limited real-world relevance. To address these problems, we propose an automated framework for generating large-scale paralinguistic data and apply it to construct the SynParaSpeech dataset. The dataset comprises 6 paralinguistic categories with 118.75 hours of data and precise timestamps, all derived from natural conversational speech. Our contributions lie in introducing the first automated method for constructing large-scale paralinguistic datasets and releasing the SynParaSpeech corpus, which advances speech generation through more natural paralinguistic synthesis and enhances speech understanding by improving paralinguistic event detection. The dataset and audio samples are available at https://github.com/ShawnPi233/SynParaSpeech.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14946v3",
+    "arxiv_checked": true
+  },
+  "personaplexvoiceandrolecontrolforfullduplexconversationalspeechmodels": {
+    "abstract": "Recent advances in duplex speech models have enabled natural, low-latency speech-to-speech interactions. However, existing models are restricted to a fixed role and voice, limiting their ability to support structured, role-driven real-world applications and personalized interactions. In this work, we introduce PersonaPlex, a duplex conversational speech model that incorporates hybrid system prompts, combining role conditioning with text prompts and voice cloning with speech samples. PersonaPlex is trained on a large-scale synthetic dataset of paired prompts and user-agent conversations, generated with open-source large language models (LLM) and text-to-speech (TTS) models. To evaluate role conditioning in real-world settings, we extend the Full-Duplex-Bench benchmark beyond a single assistant role to multi-role customer service scenarios. Experiments show that PersonaPlex achieves strong role-conditioned behavior, voice-conditioned speech, and natural conversational responsiveness, surpassing state-of-the-art duplex speech models and hybrid large language model-based speech systems in role adherence, speaker similarity, latency, and naturalness.",
+    "arxiv_url": "https://arxiv.org/abs/2602.06053v1",
+    "arxiv_checked": true
+  },
+  "scalingspokenlanguagemodelswithsyllabicspeechtokenization": {
+    "abstract": "Spoken language models (SLMs) typically discretize speech into high-frame-rate tokens extracted from SSL speech models. As the most successful LMs are based on the Transformer architecture, processing these long token streams with self-attention is expensive, as attention scales quadratically with sequence length. A recent SSL work introduces acoustic tokenization of speech at the syllable level, which is more interpretable and potentially more scalable with significant compression in token lengths (4-5 Hz). Yet, their value for spoken language modeling is not yet fully explored. We present the first systematic study of syllabic tokenization for spoken language modeling, evaluating models on a suite of SLU benchmarks while varying training data scale. Syllabic tokens can match or surpass the previous high-frame rate tokens while significantly cutting training and inference costs, achieving more than a 2x reduction in training time and a 5x reduction in FLOPs. Our findings highlight syllable-level language modeling as a promising path to efficient long-context spoken language models.",
+    "arxiv_url": "https://arxiv.org/abs/2509.26634v2",
+    "arxiv_checked": true
+  },
+  "wildspoofadvancinginthewilddataintexttospeechgenerationandspoofingawareautomaticspeakerverification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "speechftmergingpretrainedandfinetunedspeechrepresentationmodelsforcrosstaskgeneralization": {
+    "abstract": "Fine-tuning speech representation models can enhance performance on specific tasks but often compromises their cross-task generalization ability. This degradation is often caused by excessive changes in the representations, making it difficult to retain information learned during pre-training. Existing approaches, such as regularizing weight changes during fine-tuning, may fail to maintain sufficiently high feature similarity with the pre-trained model, and thus could possibly lose cross-task generalization. To address this issue, we propose Speech-FT, a novel two-stage fine-tuning framework designed to maintain cross-task generalization while benefiting from fine-tuning. Speech-FT first applies fine-tuning specifically designed to reduce representational drift, followed by weight-space interpolation with the pre-trained model to restore cross-task generalization. Extensive experiments on HuBERT, wav2vec 2.0, DeCoAR 2.0, and WavLM Base+ demonstrate that Speech-FT consistently improves performance across a wide range of supervised, unsupervised, and multitask fine-tuning scenarios. Moreover, Speech-FT achieves superior cross-task generalization compared to fine-tuning baselines that explicitly constrain weight changes, such as weight-space regularization and LoRA fine-tuning. Our analysis reveals that Speech-FT maintains higher feature similarity to the pre-trained model compared to alternative strategies, despite allowing larger weight-space updates. Notably, Speech-FT achieves significant improvements on the SUPERB benchmark. For example, when fine-tuning HuBERT on automatic speech recognition, Speech-FT is able to reduce phone error rate from 5.17% to 3.94%, lower word error rate from 6.38% to 5.75%, and increase speaker identification accuracy from 81.86% to 84.11%. Speech-FT provides a simple yet powerful solution for further refining speech representation models after pre-training.",
+    "arxiv_url": "https://arxiv.org/abs/2502.12672v4",
+    "arxiv_checked": true
+  },
+  "insyncadaptationofspeechawarelargelanguagemodelsforasrwithwordleveltimestamppredictions": {
+    "abstract": "Recent advances in speech-aware language models have coupled strong acoustic encoders with large language models, enabling systems that move beyond transcription to produce richer outputs. Among these, word-level timestamp prediction is critical for applications such as captioning, media search, and multimodal synchronization, yet it is often handled by external alignment tools. In this work, we extend an existing speech-aware language model to predict timestamps directly alongside transcripts. We introduce a set of novel lightweight training strategies that improve alignment robustness while preserving recognition quality. Experiments across multiple datasets show that these strategies not only enhance timestamp accuracy, but also yield gains in overall ASR performance. Together, they demonstrate an efficient and unified approach to speech recognition with precise timestamp prediction.",
+    "arxiv_url": "https://arxiv.org/abs/2604.22817v1",
+    "arxiv_checked": true
+  },
+  "ipacuettsintegratingprosodyandarticulatorycuesinconditionalflowmatchingformultilingualzeroshottts": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "hierarchicaldiscreteflowmatchingformulticodebookcodecbasedtexttospeech": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "optimizingspeechlanguagemodelsforacousticconsistency": {
+    "abstract": "We study speech language models that incorporate semantic initialization and planning losses to achieve robust and consistent generation. Our approach initializes speech tokens with self-supervised features, applies a light alignment loss, and trains with thinning and auxiliary objectives that target robustness and content planning. We train three models: a 0.7B speech-only model, a 1.0B speech-only model, and a 1.0B interleaved model with both text and speech. Acoustic studies show that the speech-only models achieve the highest consistency across speaker, gender, sentiment, room, and background factors, surpassing larger systems. Interleaving improves lexical and syntactic probes and semantic--acoustic alignment but reduces consistency. Linear probes show that our initialization biases the model toward content structure while trading off prosody detail. These results show that LM-side design and training mix control the balance between acoustic stability and semantic grounding without changes to the tokenizer or runtime architecture. A demo and model weights are available for exploration.",
+    "arxiv_url": "https://arxiv.org/abs/2509.26276v1",
+    "arxiv_checked": true
+  },
+  "speechqualitybasedlocalizationoflowqualityspeechandtexttospeechsynthesisartefacts": {
+    "abstract": "A large number of works view the automatic assessment of speech from an utterance- or system-level perspective. While such approaches are good in judging overall quality, they cannot adequately explain why a certain score was assigned to an utterance. frame-level scores can provide better interpretability, but models predicting them are harder to tune and regularize since no strong targets are available during training. In this work, we show that utterance-level speech quality predictors can be regularized with a segment-based consistency constraint which notably reduces frame-level stochasticity. We then demonstrate two applications involving frame-level scores: The partial spoof scenario and the detection of synthesis artefacts in two state-of-the-art text-to-speech systems. For the latter, we perform listening tests and confirm that listeners rate segments to be of poor quality more often in the set defined by low frame-level scores than in a random control set.",
+    "arxiv_url": "https://arxiv.org/abs/2601.21886v1",
+    "arxiv_checked": true
+  },
+  "scalesemanticchunkingandlabeldelayengineforstreamingspeechllm": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ovinstructttstowardsopenvocabularyinstructtexttospeech": {
+    "abstract": "Instruct Text-to-Speech (InstructTTS) leverages natural language descriptions as style prompts to guide speech synthesis. However, existing InstructTTS methods mainly rely on a direct combination of audio-related labels or their diverse rephrasings, making it difficult to handle flexible, high-level instructions. Such rigid control is insufficient for users such as content creators who wish to steer generation with descriptive instructions. To address these constraints, we introduce OV-InstructTTS, a new paradigm for open-vocabulary InstructTTS. We propose a comprehensive solution comprising a newly curated dataset, OV-Speech, and a novel reasoning-driven framework. The OV-Speech dataset pairs speech with open-vocabulary instructions, each augmented with a reasoning process that connects high-level instructions to acoustic features. The reasoning-driven framework infers emotional, acoustic, and paralinguistic information from open-vocabulary instructions before synthesizing speech. Evaluations show that this reasoning-driven approach significantly improves instruction-following fidelity and speech expressiveness. We believe this work can inspire the next user-friendly InstructTTS systems with stronger generalization and real-world applicability. The dataset and demos are publicly available on our project page.",
+    "arxiv_url": "https://arxiv.org/abs/2601.01459v1",
+    "arxiv_checked": true
+  },
+  "omniavsrtowardsunifiedmultimodalspeechrecognitionwithlargelanguagemodels": {
+    "abstract": "Large language models (LLMs) have recently achieved impressive results in speech recognition across multiple modalities, including Auditory Speech Recognition (ASR), Visual Speech Recognition (VSR), and Audio-Visual Speech Recognition (AVSR). Despite this progress, current LLM-based approaches typically address each task independently, training separate models that raise computational and deployment resource use while missing potential cross-task synergies. They also rely on fixed-rate token compression, which restricts flexibility in balancing accuracy with efficiency. These limitations highlight the need for a unified framework that can support ASR, VSR, and AVSR while enabling elastic inference. To this end, we present Omni-AVSR, a unified audio-visual LLM that combines efficient multi-granularity training with parameter-efficient adaptation. Specifically, we adapt the matryoshka representation learning paradigm to efficiently train across multiple audio and visual granularities, reducing its inherent training resource use. Furthermore, we explore three LoRA-based strategies for adapting the backbone LLM, balancing shared and task-specific specialization. Experiments on LRS2 and LRS3 show that Omni-AVSR achieves comparable or superior accuracy to state-of-the-art baselines while training a single model at substantially lower training and deployment resource use. The model also remains robust under acoustic noise, and we analyze its scaling behavior as LLM size increases, providing insights into the trade-off between performance and efficiency.",
+    "arxiv_url": "https://arxiv.org/abs/2511.07253v3",
+    "arxiv_checked": true
+  },
+  "synaspotalightweightstreamingmultimodalframeworkforkeywordspottingwithaudiotextsynergy": {
+    "abstract": "Open-vocabulary keyword spotting (KWS) in continuous speech streams holds significant practical value across a wide range of real-world applications. While increasing attention has been paid to the role of different modalities in KWS, their effectiveness has been acknowledged. However, the increased parameter cost from multimodal integration and the constraints of end-to-end deployment have limited the practical applicability of such models. To address these challenges, we propose a lightweight, streaming multi-modal framework. First, we focus on multimodal enrollment features and reduce speaker-specific (voiceprint) information in the speech enrollment to extract speaker-irrelevant characteristics. Second, we effectively fuse speech and text features. Finally, we introduce a streaming decoding framework that only requires the encoder to extract features, which are then mathematically decoded with our three modal representations. Experiments on LibriPhase and WenetPrase demonstrate the performance of our model. Compared to existing streaming approaches, our method achieves better performance with significantly fewer parameters.",
+    "arxiv_url": "https://arxiv.org/abs/2512.15124v2",
+    "arxiv_checked": true
+  },
+  "bridgingthegapacomparativeexplorationofspeechllmandendtoendarchitectureformultilingualconversationalasr": {
+    "abstract": "The INTERSPEECH 2025 Challenge on Multilingual Conversational Speech Language Models (MLC-SLM) promotes multilingual conversational ASR with large language models (LLMs). Our previous SHNU-mASR system adopted a competitive parallel-speech-encoder architecture that integrated Whisper and mHuBERT with an LLM. However, it faced two challenges: simple feature concatenation may not fully exploit complementary information, and the performance gap between LLM-based ASR and end-to-end(E2E) encoder-decoder ASR remained unexplored. In this work, we present an enhanced LLM-based ASR framework that combines fine-tuned Whisper and mHuBERT encoders with an LLM to enrich speech representations. We first evaluate E2E Whisper models with LoRA and full fine-tuning on the MLC-SLM ASR task, and then propose cross-attention-based fusion mechanisms for the parallel-speech-encoder. On the official evaluation set of the MLC-SLM Challenge, our system achieves a CER/WER of 10.69%, ranking on par with the top-ranked Track 1 systems, even though it uses only 1,500 hours of baseline training data compared with their large-scale training sets. Nonetheless, we find that our final LLM-based ASR still does not match the performance of a fine-tuned E2E Whisper model, providing valuable empirical guidance for future Speech-LLM design. Our code is publicly available at https://github.com/1535176727/MLC-SLM.",
+    "arxiv_url": "https://arxiv.org/abs/2601.01461v3",
+    "arxiv_checked": true
+  },
+  "melattsjointtransformerdiffusionmodelwithrepresentationalignmentforspeechsynthesis": {
+    "abstract": "This work introduces MELA-TTS, a novel joint transformer-diffusion framework for end-to-end text-to-speech synthesis. By autoregressively generating continuous mel-spectrogram frames from linguistic and speaker conditions, our architecture eliminates the need for speech tokenization and multi-stage processing pipelines. To address the inherent difficulties of modeling continuous features, we propose a representation alignment module that aligns output representations of the transformer decoder with semantic embeddings from a pretrained ASR encoder during training. This mechanism not only speeds up training convergence, but also enhances cross-modal coherence between the textual and acoustic domains. Comprehensive experiments demonstrate that MELA-TTS achieves state-of-the-art performance across multiple evaluation metrics while maintaining robust zero-shot voice cloning capabilities, in both offline and streaming synthesis modes. Our results establish a new benchmark for continuous feature generation approaches in TTS, offering a compelling alternative to discrete-token-based paradigms.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14784v2",
+    "arxiv_checked": true
+  },
+  "crosslingualf5ttstowardslanguageagnosticvoicecloningandspeechsynthesis": {
+    "abstract": "Flow-matching-based text-to-speech (TTS) models have shown high-quality speech synthesis. However, most current flow-matching-based TTS models still rely on reference transcripts corresponding to the audio prompt for synthesis. This dependency prevents cross-lingual voice cloning when audio prompt transcripts are unavailable, particularly for unseen languages. The key challenges for flow-matching-based TTS models to remove audio prompt transcripts are identifying word boundaries during training and determining appropriate duration during inference. In this paper, we introduce Cross-Lingual F5-TTS, a framework that enables cross-lingual voice cloning without audio prompt transcripts. Our method preprocesses audio prompts by forced alignment to obtain word boundaries, enabling direct synthesis from audio prompts while excluding transcripts during training. To address the duration modeling challenge, we train speaking rate predictors at different linguistic granularities to derive duration from speaker pace. Experiments show that our approach matches the performance of F5-TTS while enabling cross-lingual voice cloning.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14579v4",
+    "arxiv_checked": true
+  },
+  "trainshortinferlongspeechllmenableszeroshotstreamablejointasranddiarizationonlongaudio": {
+    "abstract": "Joint automatic speech recognition (ASR) and speaker diarization aim to answer the question \"who spoke what\" in multi-speaker scenarios. In this paper, we present an end-to-end speech large language model (Speech-LLM) for Joint strEamable DIarization and aSr (JEDIS-LLM). The model is trained only on short audio under 20s but is capable of streamable inference on long-form audio without additional training. This is achieved by introducing a Speaker Prompt Cache (SPC) with an on-the-fly update mechanism during chunk-wise streaming inference, inspired by the autoregressive nature of LLMs. The SPC also allows the seamless use of pre-enrolled speaker profiles which is common in many scenarios like meeting transcription. To further enhance diarization capability, we incorporate word-level speaker supervision into the speech encoder during training. Experimental results demonstrate that our system outperforms strong baselines, including Sortformer and Meta-Cat in the local setting on audio up to 20s, and DiarizationLM on long-form audio, despite being fully end-to-end and streamable while DiarizationLM follows a cascaded offline pipeline. To the best of our knowledge, this is the first work enabling zero-shot streamable joint ASR and diarization on long audio using a Speech-LLM trained only on short audio, achieving state-of-the-art performance.",
+    "arxiv_url": "https://arxiv.org/abs/2511.16046v1",
+    "arxiv_checked": true
+  },
+  "latticeguidedconsistencyregularizationofdualmodetransducersforautomaticspeechrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "mtps2utenhancingspeechtospeechtranslationqualitywithmultitokenprediction": {
+    "abstract": "Current direct speech-to-speech translation methods predominantly employ speech tokens as intermediate representations. However, a single speech token is not dense in semantics, so we generally need multiple tokens to express a complete semantic unit. To address this limitation, we introduce multi-token prediction (MTP) loss into speech-to-unit translation (S2UT) models, enabling models to predict multiple subsequent tokens at each position, thereby capturing more complete semantics and enhancing information density per position. Initial MTP implementations apply the loss at the final layer, which improves output representation but initiates information enrichment too late. We hypothesize that advancing the information enrichment process to intermediate layers can achieve earlier and more effective enhancement of hidden representation. Consequently, we propose MTP-S2UT loss, applying MTP loss to hidden representation where CTC loss is computed. Experiments demonstrate that all MTP loss variants consistently improve the quality of S2UT translation, with MTP-S2UT achieving the best performance.",
+    "arxiv_url": "https://arxiv.org/abs/2510.10003v1",
+    "arxiv_checked": true
   }
 }
