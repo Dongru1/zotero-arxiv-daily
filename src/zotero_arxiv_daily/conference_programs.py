@@ -12,23 +12,45 @@ from loguru import logger
 from .deadline import TimeBudgetExceeded, expired
 
 _TAG = re.compile(r"<[^>]+>")
-_ANTHOLOGY_PAPER = re.compile(
-    r'href="(/(?P<id>20\d{2}\.[a-z0-9-]+\.\d+)/)"[^>]*>\s*(?P<title>[^<]+)',
-    re.I,
+_ANTHOLOGY_ANCHOR = re.compile(r"<a\b(?P<attrs>[^>]*)>(?P<body>.*?)</a>", re.I | re.S)
+_ANTHOLOGY_HREF = re.compile(r"""href=(?:"(?P<quoted>[^"]+)"|(?P<bare>[^\s>]+))""", re.I)
+_ANTHOLOGY_ID = re.compile(r"(?:^|/)(?P<id>20\d{2}\.[a-z0-9-]+\.\d+)/?$", re.I)
+_ANTHOLOGY_ABSTRACT = re.compile(
+    r"""id=(?:"(?P<qid>abstract-[^"]+)"|(?P<bid>abstract-[^\s">]+))[^>]*>\s*(?:<div\b[^>]*>)?(?P<body>.*?)</div>""",
+    re.I | re.S,
 )
 _ABSTRACT = re.compile(
     r'class="[^"]*abstract[^"]*"[^>]*>(?P<body>.*?)</(?:div|span|p)>',
     re.I | re.S,
 )
-_ISCA_PAPER = re.compile(
-    r'href="(?P<href>[^"]*interspeech[^"]*)"[^>]*>\s*(?P<title>.*?)</a>(?:\s*<br\s*/?>\s*(?P<authors>[^<]*))?',
+_ISCA_ANCHOR = re.compile(
+    r'<a\b[^>]*href="(?P<href>[^"]+)"[^>]*>(?P<body>.*?)</a>(?:\s*<br\s*/?>\s*(?P<outside>[^<]*))?',
+    re.I | re.S,
+)
+_ISCA_FILE = re.compile(r"(?P<file>[A-Za-z0-9]+\d{2}_interspeech\.html)$", re.I)
+_ISCA_AUTHORS = re.compile(
+    r'class="[^"]*w3-text-theme[^"]*"[^>]*>(?P<names>.*?)</span>',
     re.I | re.S,
 )
 _ICASSP_ROW = re.compile(
     r"<tr>\s*<td[^>]*>\s*(?P<number>\d+)\s*</td>\s*<td[^>]*>\s*(?P<title>.*?)\s*</td>",
     re.I | re.S,
 )
+_SLT_ROW = re.compile(
+    r"<tr>\s*<td[^>]*>\s*#(?P<number>\d+)\s*</td>\s*<td[^>]*>\s*(?P<title>.*?)\s*</td>",
+    re.I | re.S,
+)
 _KEYNOTE = re.compile(r"keynote|invited talk|welcome|opening ceremony|chair:", re.I)
+_PROGRAM_TEMPLATES = (
+    ("EMNLP", "anthology", "https://aclanthology.org/volumes/{year}.emnlp-main/"),
+    ("EMNLP", "anthology", "https://aclanthology.org/volumes/{year}.findings-emnlp/"),
+    ("ACL", "anthology", "https://aclanthology.org/volumes/{year}.acl-long/"),
+    ("ACL", "anthology", "https://aclanthology.org/volumes/{year}.acl-short/"),
+    ("ACL", "anthology", "https://aclanthology.org/volumes/{year}.findings-acl/"),
+    ("ICASSP", "icassp", "https://cmsworkshops.com/ICASSP{year}/papers/accepted_papers.php"),
+    ("Interspeech", "isca", "https://www.isca-archive.org/interspeech_{year}/index.html"),
+    ("SLT", "slt", "https://attend.ieee.org/slt-{year}/program/"),
+)
 
 
 @dataclass
@@ -45,17 +67,41 @@ class ListedPaper:
 def _clean(text: str | None) -> str:
     if not text:
         return ""
-    return re.sub(r"\s+", " ", _TAG.sub(" ", text)).strip()
+    # Drop tags without inserting spaces so Anthology case spans stay glued,
+    # for example <span class=acl-fixed-case>BIP</span>ro -> BIPro.
+    return re.sub(r"\s+", " ", _TAG.sub("", text)).strip()
+
+
+def _anthology_href(attrs: str) -> str:
+    match = _ANTHOLOGY_HREF.search(attrs)
+    if not match:
+        return ""
+    return match.group("quoted") or match.group("bare") or ""
+
+
+def _anthology_abstracts(html: str) -> dict[str, str]:
+    found = {}
+    for match in _ANTHOLOGY_ABSTRACT.finditer(html):
+        key = match.group("qid") or match.group("bid") or ""
+        abstract = _clean(match.group("body"))
+        if key and abstract:
+            found[key] = abstract
+    return found
 
 
 def parse_anthology_volume(html: str, venue: str, year: str, volume_id: str) -> list[ListedPaper]:
     papers = []
     seen = set()
-    for match in _ANTHOLOGY_PAPER.finditer(html):
-        paper_id = match.group("id")
-        if paper_id in seen or paper_id == volume_id:
+    abstracts = _anthology_abstracts(html)
+    for match in _ANTHOLOGY_ANCHOR.finditer(html):
+        href = _anthology_href(match.group("attrs"))
+        paper_match = _ANTHOLOGY_ID.search(href.split("?", 1)[0].split("#", 1)[0])
+        if not paper_match:
             continue
-        title = _clean(match.group("title"))
+        paper_id = paper_match.group("id")
+        if paper_id in seen or paper_id == volume_id or paper_id.endswith(".0"):
+            continue
+        title = _clean(match.group("body"))
         if not title or title.lower() in {"pdf", "bib", "abs"}:
             continue
         seen.add(paper_id)
@@ -66,6 +112,7 @@ def parse_anthology_volume(html: str, venue: str, year: str, volume_id: str) -> 
             venue=venue,
             url=f"https://aclanthology.org/{paper_id}/",
             external_id=paper_id,
+            abstract=abstracts.get("abstract-" + paper_id.replace(".", "--"), ""),
         ))
     return papers
 
@@ -77,8 +124,21 @@ def parse_abstract(html: str) -> str:
     return _clean(match.group("body"))
 
 
+def _isca_title_and_authors(body: str, outside: str | None) -> tuple[str, list[str]]:
+    parts = re.split(r"<br\s*/?>", body, maxsplit=1, flags=re.I)
+    title = _clean(parts[0])
+    author_html = parts[1] if len(parts) > 1 else ""
+    author_match = _ISCA_AUTHORS.search(author_html)
+    raw_authors = _clean(author_match.group("names") if author_match else "")
+    if not raw_authors:
+        raw_authors = _clean(outside or author_html)
+    authors = [item.strip() for item in raw_authors.split(",") if item.strip()]
+    return title, authors
+
+
 def parse_isca_index(html: str, year: str) -> list[ListedPaper]:
     papers = []
+    seen = set()
     pieces = re.split(r"(<h[1-4][^>]*>.*?</h[1-4]>)", html, flags=re.I | re.S)
     skip = False
     for piece in pieces:
@@ -87,23 +147,26 @@ def parse_isca_index(html: str, year: str) -> list[ListedPaper]:
             continue
         if skip:
             continue
-        for match in _ISCA_PAPER.finditer(piece):
-            title = _clean(match.group("title"))
+        for match in _ISCA_ANCHOR.finditer(piece):
+            href = match.group("href")
+            filename = href.rstrip("/").rsplit("/", 1)[-1]
+            if filename in seen or not _ISCA_FILE.search(filename):
+                continue
+            title, authors = _isca_title_and_authors(match.group("body"), match.group("outside"))
             if not title or _KEYNOTE.search(title):
                 continue
-            href = match.group("href")
+            seen.add(filename)
             if href.startswith("http"):
                 url = href
             else:
                 url = f"https://www.isca-archive.org/interspeech_{year}/{href.lstrip('/')}"
-            authors = [item.strip() for item in _clean(match.group("authors")).split(",") if item.strip()]
             papers.append(ListedPaper(
                 title=title,
                 authors=authors,
                 year=year,
                 venue="Interspeech",
                 url=url,
-                external_id=href,
+                external_id=filename,
             ))
     return papers
 
@@ -122,6 +185,26 @@ def parse_icassp_accepted(html: str, year: str) -> list[ListedPaper]:
             venue="ICASSP",
             url=f"https://cmsworkshops.com/ICASSP{year}/papers/accepted_papers.php",
             external_id=f"icassp-{year}-{number}",
+        ))
+    return papers
+
+
+def parse_slt_program(html: str, year: str) -> list[ListedPaper]:
+    papers = []
+    seen = set()
+    for match in _SLT_ROW.finditer(html):
+        number = match.group("number")
+        title = _clean(match.group("title"))
+        if not title or number in seen or _KEYNOTE.search(title):
+            continue
+        seen.add(number)
+        papers.append(ListedPaper(
+            title=title,
+            authors=[],
+            year=year,
+            venue="SLT",
+            url=f"https://attend.ieee.org/slt-{year}/program/",
+            external_id=f"slt-{year}-{number}",
         ))
     return papers
 
@@ -185,13 +268,8 @@ def select_newest(years: list[int], available: Callable[[int], bool]) -> int | N
 def program_sources(year: int) -> list[tuple[str, str, str]]:
     """Return ``(venue, kind, url)`` for one concrete year."""
     return [
-        ("EMNLP", "anthology", f"https://aclanthology.org/volumes/{year}.emnlp-main/"),
-        ("EMNLP", "anthology", f"https://aclanthology.org/volumes/{year}.findings-emnlp/"),
-        ("ACL", "anthology", f"https://aclanthology.org/volumes/{year}.acl-long/"),
-        ("ACL", "anthology", f"https://aclanthology.org/volumes/{year}.findings-acl/"),
-        ("ICASSP", "icassp", f"https://cmsworkshops.com/ICASSP{year}/papers/accepted_papers.php"),
-        ("Interspeech", "isca", f"https://www.isca-archive.org/interspeech_{year}/index.html"),
-        ("SLT", "dblp", f"https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt{year}.bht:&h=1000&format=json"),
+        (venue, kind, template.format(year=year))
+        for venue, kind, template in _PROGRAM_TEMPLATES
     ]
 
 
@@ -236,6 +314,8 @@ def papers_for_venue_year(venue: str, kind: str, url: str, year: int) -> list[Li
         return parse_isca_index(body, str(year))
     if kind == "icassp":
         return parse_icassp_accepted(body, str(year))
+    if kind == "slt":
+        return parse_slt_program(body, str(year))
     if kind == "dblp":
         try:
             payload = json.loads(body)
@@ -249,16 +329,7 @@ def load_conference_programs(now_year: int, only_venue: str | None = None) -> li
     """Use the newest year in the automatic window that actually lists papers."""
     found: list[ListedPaper] = []
     seen: set[tuple[str, str]] = set()
-    templates = (
-        ("EMNLP", "anthology", "https://aclanthology.org/volumes/{year}.emnlp-main/"),
-        ("EMNLP", "anthology", "https://aclanthology.org/volumes/{year}.findings-emnlp/"),
-        ("ACL", "anthology", "https://aclanthology.org/volumes/{year}.acl-long/"),
-        ("ACL", "anthology", "https://aclanthology.org/volumes/{year}.findings-acl/"),
-        ("ICASSP", "icassp", "https://cmsworkshops.com/ICASSP{year}/papers/accepted_papers.php"),
-        ("Interspeech", "isca", "https://www.isca-archive.org/interspeech_{year}/index.html"),
-        ("SLT", "dblp", "https://dblp.org/search/publ/api?q=toc:db/conf/slt/slt{year}.bht:&h=1000&format=json"),
-    )
-    for venue, kind, template in templates:
+    for venue, kind, template in _PROGRAM_TEMPLATES:
         if only_venue and venue.lower() != only_venue.lower():
             continue
         years = biennial_years(now_year) if venue == "SLT" else candidate_years(now_year)

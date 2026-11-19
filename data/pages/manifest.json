@@ -7,13 +7,6 @@
     "conference_year": null
   },
   {
-    "file": "2026-11-09-ICLR.html",
-    "kind": "digest",
-    "run_date": "2026-11-09",
-    "venue": "ICLR",
-    "conference_year": "2026"
-  },
-  {
     "file": "2026-11-10-daily.html",
     "kind": "daily",
     "run_date": "2026-11-10",
@@ -29,36 +22,106 @@
   },
   {
     "file": "ICASSP-2026-digest.html",
-    "kind": "daily",
+    "kind": "digest",
     "run_date": "",
-    "venue": null,
-    "conference_year": null
+    "venue": "ICASSP",
+    "conference_year": "2026"
   },
   {
     "file": "NeurIPS-2025-digest.html",
-    "kind": "daily",
+    "kind": "digest",
     "run_date": "",
-    "venue": null,
-    "conference_year": null
+    "venue": "NeurIPS",
+    "conference_year": "2025"
   },
   {
     "file": "ICML-2025-digest.html",
-    "kind": "daily",
+    "kind": "digest",
     "run_date": "",
-    "venue": null,
-    "conference_year": null
-  },
-  {
-    "file": "ICML-2025-under_review.html",
-    "kind": "daily",
-    "run_date": "",
-    "venue": null,
-    "conference_year": null
+    "venue": "ICML",
+    "conference_year": "2025"
   },
   {
     "file": "ICML-2026-digest.html",
-    "kind": "daily",
+    "kind": "digest",
     "run_date": "",
+    "venue": "ICML",
+    "conference_year": "2026"
+  },
+  {
+    "file": "ICLR-2027-under_review.html",
+    "kind": "under_review",
+    "run_date": "",
+    "venue": "ICLR",
+    "conference_year": "2027"
+  },
+  {
+    "file": "2026-11-12-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-12",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-17-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-17",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-15-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-15",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-18-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-18",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-16-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-16",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "ICLR-2025-digest.html",
+    "kind": "digest",
+    "run_date": "",
+    "venue": "ICLR",
+    "conference_year": "2025"
+  },
+  {
+    "file": "2026-11-13-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-13",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "2026-11-14-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-14",
+    "venue": null,
+    "conference_year": null
+  },
+  {
+    "file": "ICLR-2026-digest.html",
+    "kind": "digest",
+    "run_date": "",
+    "venue": "ICLR",
+    "conference_year": "2026"
+  },
+  {
+    "file": "2026-11-19-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-19",
     "venue": null,
     "conference_year": null
   }

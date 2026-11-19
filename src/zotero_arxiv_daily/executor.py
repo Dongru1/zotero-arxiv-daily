@@ -238,7 +238,10 @@ class Executor:
             missing = [paper for paper in all_papers if not paper.abstract]
             if missing:
                 enrich_papers(missing)
-            all_papers = [paper for paper in all_papers if paper.abstract or not self._is_conference_paper(paper)]
+            all_papers = [
+                paper for paper in all_papers
+                if not self._is_conference_paper(paper) or paper.abstract or paper.title
+            ]
         logger.info(f"Total {len(all_papers)} papers retrieved from all sources")
         daily_papers, accepted, reviewing = self._split_by_status(all_papers)
         published: list[PageRecord] = []
@@ -273,6 +276,9 @@ class Executor:
             for (venue, year), papers in accepted.items():
                 self._publish_group_safely(published, papers, corpus, venue, year, day, today, "digest", "精选", limit)
             for (venue, year), papers in reviewing.items():
+                if (venue, year) in accepted or self._digest_page_exists(venue, year):
+                    logger.info(f"Skipping {venue} {year} under review because its accepted list is published.")
+                    continue
                 shortlisted = self._shortlist_under_review(papers, corpus, UNDER_REVIEW_KEEP)
                 self._publish_group_safely(published, shortlisted, corpus, venue, year, day, today, "under_review", "Under Review", limit)
         self._save_openreview_progress(all_papers, published)
@@ -280,6 +286,10 @@ class Executor:
     @staticmethod
     def _is_conference_paper(paper: Paper) -> bool:
         return bool(paper.venue and paper.status in {"accepted", "under_review"})
+
+    @staticmethod
+    def _digest_page_exists(venue: str, year: str) -> bool:
+        return (project_root() / "data" / "pages" / f"{venue}-{year}-digest.html").is_file()
 
     def _split_by_status(self, papers: list[Paper]):
         accepted: dict[tuple[str, str], list[Paper]] = {}
@@ -448,7 +458,7 @@ class Executor:
         for paper in papers:
             if paper.source == "openreview" and paper.external_id:
                 state.seen_ids.add(paper.external_id)
-            if self._is_conference_paper(paper) and paper.abstract:
+            if self._is_conference_paper(paper) and paper.title:
                 state.indexed_titles.add(_normalized_title(paper.title))
                 if paper.arxiv_url:
                     state.indexed_urls.add(paper.arxiv_url)

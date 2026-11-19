@@ -119,7 +119,7 @@ def _arxiv_get(title: str):
 
 
 def _detail_abstract(url: str) -> str:
-    if not url or "accepted_papers.php" in url or "dblp.org" in url:
+    if not url or "accepted_papers.php" in url or "dblp.org" in url or "attend.ieee.org/slt-" in url:
         return ""
     response = requests.get(url, headers={"User-Agent": "zotero-arxiv-daily"}, timeout=60)
     if response.status_code >= 400:

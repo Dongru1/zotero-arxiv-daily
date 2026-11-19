@@ -22,11 +22,11 @@ def test_publish_results_keeps_older_pages(tmp_path):
         PageRecord("2026-11-01-daily.html", "<p>first</p>", "daily", "2026-11-01"),
     ], tmp_path)
     publish_results([
-        PageRecord("2026-11-09-ICLR.html", "<p>iclr</p>", "digest", "2026-11-09", "ICLR", "2026"),
+        PageRecord("ICLR-2026-digest.html", "<p>iclr</p>", "digest", "2026-11-09", "ICLR", "2026"),
     ], tmp_path)
     site = tmp_path / "site"
     assert (site / "2026-11-01-daily.html").read_text() == "<p>first</p>"
-    assert (site / "2026-11-09-ICLR.html").read_text() == "<p>iclr</p>"
+    assert (site / "ICLR-2026-digest.html").read_text() == "<p>iclr</p>"
     index = (site / "index.html").read_text()
     assert index.index('href="daily.html"') < index.index('href="digest.html"') < index.index('href="under-review.html"')
     assert ">会议精选</strong>" in index
@@ -38,8 +38,8 @@ def test_publish_results_keeps_older_pages(tmp_path):
 
 def test_publish_groups_digests_by_conference_year(tmp_path):
     publish_results([
-        PageRecord("2026-11-09-ICLR.html", "<p>new</p>", "digest", "2026-11-09", "ICLR", "2026"),
-        PageRecord("2026-01-02-ICLR.html", "<p>old</p>", "digest", "2026-01-02", "ICLR", "2025"),
+        PageRecord("ICLR-2026-digest.html", "<p>new</p>", "digest", "2026-11-09", "ICLR", "2026"),
+        PageRecord("ICLR-2025-digest.html", "<p>old</p>", "digest", "2026-01-02", "ICLR", "2025"),
         PageRecord("2026-11-09-daily.html", "<p>daily</p>", "daily", "2026-11-09"),
     ], tmp_path)
     digest = (tmp_path / "site" / "digest.html").read_text()
@@ -49,15 +49,34 @@ def test_publish_groups_digests_by_conference_year(tmp_path):
     assert ">ICLR</strong>" in digest
 
 
-def test_publish_infers_year_for_old_digest_files(tmp_path):
+def test_publish_drops_retired_dated_digest_files(tmp_path):
     archive = tmp_path / "data" / "pages"
     archive.mkdir(parents=True)
     (archive / "2025-05-01-ACL.html").write_text("<p>old acl</p>")
+    (archive / "2026-11-09-daily.html").write_text("<p>daily</p>")
     publish_results([], tmp_path)
     digest = (tmp_path / "site" / "digest.html").read_text()
-    assert "<details open><summary>2025</summary>" in digest
-    assert ">ACL</strong>" in digest
-    assert "2025-05-01" in digest
+    daily = (tmp_path / "site" / "daily.html").read_text()
+    assert not (archive / "2025-05-01-ACL.html").exists()
+    assert ">ACL</strong>" not in digest
+    assert "2025-05-01" not in digest
+    assert ">2026-11-09</strong>" in daily
+
+
+def test_publish_drops_under_review_after_the_same_year_is_accepted(tmp_path):
+    archive = tmp_path / "data" / "pages"
+    archive.mkdir(parents=True)
+    (archive / "ICML-2025-digest.html").write_text("<p>accepted</p>")
+    (archive / "ICML-2025-under_review.html").write_text("<p>review</p>")
+    (archive / "ICLR-2027-under_review.html").write_text("<p>current</p>")
+    publish_results([], tmp_path)
+    digest = (tmp_path / "site" / "digest.html").read_text()
+    review = (tmp_path / "site" / "under-review.html").read_text()
+    assert ">ICML</strong>" in digest
+    assert "ICML-2025-under_review.html" not in review
+    assert not (archive / "ICML-2025-under_review.html").exists()
+    assert ">ICLR</strong>" in review
+    assert "<details open><summary>2027</summary>" in review
 
 
 def test_publish_puts_accepted_conference_pages_under_digest(tmp_path):

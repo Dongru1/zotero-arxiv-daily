@@ -61,9 +61,7 @@ jobs:
           if [ -f data/paper_cache.json ]; then
             git add data/paper_cache.json
           fi
-          if compgen -G "data/pages/*.html" > /dev/null; then
-            git add data/pages/*.html
-          fi
+          git add -A data/pages
           if [ -d data/daily_archive ]; then
             git add data/daily_archive
           fi

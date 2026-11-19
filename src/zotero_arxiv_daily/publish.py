@@ -162,7 +162,7 @@ def load_month_archive(month: str, root: Path | None = None) -> list[Paper]:
     return papers
 
 
-def _infer_record(filename: str) -> dict:
+def _infer_record(filename: str) -> dict | None:
     monthly = _MONTHLY_PAGE.match(filename)
     if monthly:
         return {
@@ -195,13 +195,7 @@ def _infer_record(filename: str) -> dict:
             "venue": None,
             "conference_year": None,
         }
-    return {
-        "file": filename,
-        "kind": "digest",
-        "run_date": run_date,
-        "venue": kind_name,
-        "conference_year": run_date[:4],
-    }
+    return None
 
 
 def _record_payload(page: PageRecord) -> dict:
@@ -212,6 +206,24 @@ def _record_payload(page: PageRecord) -> dict:
         "venue": page.venue,
         "conference_year": page.conference_year or (page.run_date[:4] if page.kind == "digest" and page.run_date else None),
     }
+
+
+def _drop_decided_under_review(by_file: dict[str, dict], archive: Path) -> None:
+    """A venue-year leaves Under Review once its accepted digest exists."""
+    decided = {
+        (item.get("venue"), item.get("conference_year"))
+        for item in by_file.values()
+        if item.get("kind") == "digest" and item.get("venue") and item.get("conference_year")
+    }
+    for name, item in list(by_file.items()):
+        if item.get("kind") != "under_review":
+            continue
+        if (item.get("venue"), item.get("conference_year")) not in decided:
+            continue
+        by_file.pop(name, None)
+        path = archive / name
+        if path.is_file():
+            path.unlink()
 
 
 def _load_manifest(path: Path) -> dict[str, dict]:
@@ -335,13 +347,21 @@ def publish_results(pages: list[PageRecord], root: Path | None = None) -> Path:
     for page in pages:
         (archive / page.filename).write_text(page.html)
         by_file[page.filename] = _record_payload(page)
-    for archived_page in archive.glob("*.html"):
+    for archived_page in list(archive.glob("*.html")):
         inferred = _infer_record(archived_page.name)
+        if inferred is None:
+            by_file.pop(archived_page.name, None)
+            archived_page.unlink()
+            continue
         current = by_file.get(archived_page.name)
         if current is None or (
             inferred["kind"] in {"digest", "under_review"} and current.get("kind") == "daily"
         ):
             by_file[archived_page.name] = inferred
+    for name in list(by_file):
+        if not (archive / name).is_file():
+            by_file.pop(name, None)
+    _drop_decided_under_review(by_file, archive)
     manifest_path.write_text(json.dumps(list(by_file.values()), indent=2) + "\n")
 
     site = root / SITE_DIR

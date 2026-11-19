@@ -98,9 +98,7 @@ jobs:
           if [ -f "data/paper_cache/${venue}.json" ]; then
             git add "data/paper_cache/${venue}.json"
           fi
-          if compgen -G "data/pages/*.html" > /dev/null; then
-            git add data/pages/*.html
-          fi
+          git add -A data/pages
           git checkout -- data/pages/manifest.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No conference state changes"
