@@ -1,0 +1,695 @@
+[
+  {
+    "title": "Gaspard: Expressive unified speech and gesture synthesis with continuous autoregressive flow-matching and decoupled classifier-free guidance",
+    "authors": [
+      "T\\'eo Guichoux",
+      "Th\\'eodor Lemerle",
+      "Catherine Pelachaud",
+      "Nicolas Obin"
+    ],
+    "abstract": "Human communication involves highly coordinated multimodal signals such as speech and co-speech gestures. Existing approaches for generating both modalities commonly follow a cascaded pipeline, where speech is generated first and subsequently used to drive gesture generation; speech generation is therefore independent of gestures. We introduce Gaspard, a unified speech--gesture generation model based on continuous autoregressive generation with next-step flow-matching predictions, and trained on Seamless Interaction, a large-scale multimodal dataset. The heterogeneous temporal properties of speech and gesture motivate modality-specific prediction heads and decoupled classifier-free guidance over the two generation streams. This guidance rebalances the influence of speech and gesture at inference time, improving expressivity while mitigating dynamics collapse in continuous autoregressive gesture generation. Objective and perceptual evaluations show that Gaspard is a strong gesture generation model against unimodal baselines and that it produces highly synchronous speech and gestures compared to a matched cascaded system.",
+    "url": "https://arxiv.org/abs/2611.24862",
+    "pdf_url": "https://arxiv.org/pdf/2611.24862v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Intelligibility: Fine-Grained Perceptual Assessment of Dysarthric Speech with Auditory Large Language Models",
+    "authors": [
+      "Haotian Wei",
+      "Can Long",
+      "Wen Xian Jim",
+      "Guangzhi Sun",
+      "Zengrui Jin",
+      "Chao Zhang"
+    ],
+    "abstract": "Accurate assessment of dysarthric speech is vital for clinical diagnosis and rehabilitation, yet existing automated methods rely heavily on isolated, single-task models or generic speech quality metrics that fail to disentangle heterogeneous neuromotor deficits. This work presents the first systematic investigation into adapting auditory large language models (ALLMs) for multi-dimensional dysarthric speech assessment under a unified, prompt-conditioned framework. Four representative ALLMs are benchmarked across five clinical perceptual dimensions from the Speech Accessibility Project (SAP): naturalness, monopitch, intelligibility, imprecise consonants, and inappropriate silences. To bridge generic perceptual quality and clinical evaluation, a two-stage training paradigm is explored, leveraging out-of-domain pre-training followed by in-domain clinical adaptation. Experimental results demonstrate that leading ALLMs reliably capture fine-grained pathological variations, exhibiting distinct and complementary strengths across prosodic and articulatory attributes. These findings establish ALLMs as a scalable foundation for clinical speech evaluation and provide practical insights into model selection and multi-task transfer potential.",
+    "url": "https://arxiv.org/abs/2611.23768",
+    "pdf_url": "https://arxiv.org/pdf/2611.23768v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Constructing Dynamic Conversations with Neural Back-channel Generation and Voice-line Scheduling",
+    "authors": [
+      "Yifang Pan",
+      "Chris Landreth",
+      "Karan Singh"
+    ],
+    "abstract": "We present a novel approach to the problem of combining two voice-line channels of dyadic conversational audio into a unified conversation with controllable back-channeling and turn-taking dynamics. In voice performances for the game industry, the two tracks of voice-lines are typically recorded or synthesized in isolation. Our method takes two such unsynchronized tracks and uses a neural scheduler to sequence them into a single dynamic conversation, modifying both tracks by inserting or removing pauses and introducing voice overlap as appropriate. We further propose a back-channel predictor that is able to predict opportunity for back-channels for a given conversational turn's audio and content, which the scheduler can then incorporate. We evaluate our scheduler and predictor independently and in combination by: various quantitative comparison; a qualitative and perceptual comparison to prior art and naive baselines; a compelling set of results showing animator control over the diversity, extent and nature of back-channeling and turn dynamics.",
+    "url": "https://arxiv.org/abs/2611.24086",
+    "pdf_url": "https://arxiv.org/pdf/2611.24086v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "21Codec: Decoder-side Speaker Control for Text-to-Speech",
+    "authors": [
+      "David Lindevelt",
+      "Suzan Verberne",
+      "Joost Broekens"
+    ],
+    "abstract": "We propose 21Codec, a streaming codec model with reduced recoverable speaker information from the token stream and decoder-side speaker control. Existing codec models infer speaker identity from token stream. Making them streamable is not sufficiently robust to speaker drift, because each chunk re-infers the identity from the local chunk context alone. Our adversarial speaker classifier and NANSY-style formant-shift data augmentation pushes the model to rely on the provided speaker embedding while reducing the recoverable speaker information from the token stream. We show that 21Codec can control speaker identity through the conditioning vector, and that the speaker identity is maintained across chunks during streaming. With the ability to control speaker identity even in mid-stream, 21Codec is a promising candidate for streaming TTS systems for better controllability of speaker identity.",
+    "url": "https://arxiv.org/abs/2611.24094",
+    "pdf_url": "https://arxiv.org/pdf/2611.24094v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Location Matters: Layer-wise Prompt Conditioning for Voice--Style Disentanglement in Text-to-Speech",
+    "authors": [
+      "David Lindevelt",
+      "Suzan Verberne",
+      "Joost Broekens"
+    ],
+    "abstract": "Independent control of voice and emotional style characteristics of speech is a long-standing problem in text-to-speech (TTS) systems. We investigate how the conditioning location of voice and style prompts across TTS decoder layers affects the trade-off between preservation and expressiveness for voice identity and emotional style. We introduce a layer-dependent gated fusion mechanism and systematically study which layers should be influenced by which prompt type. Our findings show an asymmetric relationship. Voice benefits from early conditioning for identity preservation, while style benefits from early conditioning for expressiveness. Our findings provide practical guidance that helps neural network architects make an appropriate trade-off for the architecture of TTS systems according to their use cases.",
+    "url": "https://arxiv.org/abs/2611.24125",
+    "pdf_url": "https://arxiv.org/pdf/2611.24125v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Can Omni-modal LLMs Understand Spoken Intentions?",
+    "authors": [
+      "Zijie Xin",
+      "Tianyi Wang",
+      "Daoze Zhang",
+      "Jie Yang",
+      "Changli Tang",
+      "Qijie Wei",
+      "Fengyun Rao",
+      "Xirong Li"
+    ],
+    "abstract": "Omni-modal large language models (omni-modal LLMs) can respond to spoken requests directly through voice and video calls. Such requests rely on the scene shared by the user and the assistant, so the same utterance may call for different help or for no response. Most audio-visual benchmarks provide questions as separate text input, and interactive benchmarks mostly score a response as a whole. It thus remains unclear whether a model recognizes when the user is asking for help, and whether its reply meets the user's need once the request is recognized. We propose O-IN-Bench to evaluate how well omni-modal LLMs understand spoken intentions. A model watches a complete video with native speech and outputs one text response, or [SILENCE] when no response is needed. O-IN-Bench contains 1,000 Chinese and English samples in five categories and 16 subcategories. Contrastive pairs combine the same request with different scene conditions to test whether the response changes with the context. A sample-specific rubric judges language, intent, and content separately, and O-IN-Engine verifies each rubric against the video. Across 30 omni-modal model configurations, the best overall score is 59.6, achieved by Gemini3.7-Flash. Gemini3.7-Flash passes 74.4% of the intent judgments but only 42.6% of the content judgments. When the speech is a conversation between peers rather than a request to the assistant, even strong models often keep responding. When a reply must satisfy several people, the best score is only 25.9. These results indicate that recognizing a request and meeting its requirements are separate abilities, and O-IN-Bench measures each of them.",
+    "url": "https://arxiv.org/abs/2611.24706",
+    "pdf_url": "https://arxiv.org/pdf/2611.24706v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Induction Head Origins of SLAM-ASR Speech Recognition Models",
+    "authors": [
+      "Artem Fedorchenko",
+      "Tanel Alum\\\"ae"
+    ],
+    "abstract": "What makes a small trained map from encoder states to the embedding space of a frozen language model sufficient for competitive speech recognition? The premise of the SLAM-ASR architecture is that a frozen language model possesses linguistic knowledge rich enough to perform the recognition task. This assumption, while reasonable, provides little insight into the mechanisms underlying these models. We therefore seek the concrete internal structures on which they rely. This work shows that SLAM-ASR models rely on induction heads of the frozen language model: the same heads that copy repeated token sequences in text are also important for mapping speech embeddings to transcript tokens. Moreover, we find pairs of heads that behave as a constrained form of differential attention, cancelling attention noise and sharpening attention onto the previously generated word. Finally, we show how induction heads could be used to improve transcription quality under noisy audio.",
+    "url": "https://arxiv.org/abs/2611.24721",
+    "pdf_url": "https://arxiv.org/pdf/2611.24721v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Great Listeners, Poor Decision-Makers: Rethinking Agentic Audio AI",
+    "authors": [
+      "Siddique Latif",
+      "Moid Sandu",
+      "Farrukh Pervez",
+      "Raja Jurdak"
+    ],
+    "abstract": "Audio artificial intelligence (AI) now recognizes speech, sounds, and music remarkably well, yet voice agents still act when they should not: they execute commands addressed to others, act on misheard content, and commit before the user finishes speaking. This position article argues that the bottleneck in agentic audio AI has shifted from recognition to decision-making. We propose a reference architecture with an explicit decision layer, separate from perception and reasoning, that chooses whether to act, wait, ask, or remain silent from evidence on addressedness, speaker identity, content confidence, tool reliability, utterance completeness, and action risk. We motivate the design through six recurring decision failures and a decision-theoretic argument that transcript confidence alone is insufficient to justify an action. We implement the layer with fuzzy inference, evolutionary optimization, and sequential decision-making, and evaluate it through simulations, ablations, and recorded audio, including egocentric recordings. Addressedness and speaker evidence matter most, risk-aware gating suppresses costly errors, and well-tuned policies perform similarly, with fuzzy gates more robust to overconfident addressedness estimates. On recorded audio, explicit gating cuts executed side talk from 41\\% to 7--10\\% while serving 83--85\\% of valid requests under successful clarification, outperforming prompting-based baselines. These results support explicit action gating as an architectural requirement for reliable voice agents.",
+    "url": "https://arxiv.org/abs/2611.23847",
+    "pdf_url": "https://arxiv.org/pdf/2611.23847v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Why Multi-Source Audio Fails to Compose: A Geometric Diagnosis and Its Remedy",
+    "authors": [
+      "Anurag Singh",
+      "Prajwal Singh",
+      "Shanmuganathan Raman"
+    ],
+    "abstract": "Multi-source audio-to-image generation exhibits consistent compositional failures when audio tokens occupy geometrically displaced, semantically unanchored positions in the CLIP text-token space, where the diffusion U-Net lacks the prior to reliably attend to them or ground them in distinct spatial regions. We formalize this as the geometric displacement phenomenon and expose it through a two-level clustering analysis comparing BEATs and CLAP embeddings at the raw encoder and projected CLIP token levels. Three geometric properties emerge as important: intra-class compactness, angular alignment with the CLIP text manifold, and inter-token spatial separation. We show that CLAP, whose contrastive language-audio pretraining aligns embeddings with natural language semantics, substantially outperforms BEATs on all three properties, improving the silhouette score by more than 3x and the Audio-Image Content score as well. Building on this analysis, we introduce a multi-token extension that requires no diffusion-backbone retraining and assigns each audio source to a distinct placeholder token in the CLIP tokenizer, complemented by a mixed inference-time objective that combines Attend-and-Excite with an A* spatial separation loss to resolve residual cross-token interference. For evaluation, we construct multi-audio compositional benchmarks from VGGSound (VGG2, VGG3, and VGGN) and extend six standard audio-image metrics to the multi-source setting. Across five benchmarks and four strong baselines, our method achieves strong results on the metrics most directly tied to compositional faithfulness, with AIC improvements of up to 2.25x over the strongest baseline and FID reduced by nearly 2x on two-source generation. We propose geometric displacement as a diagnostic framework for cross-modal generation systems that project learned embeddings into a pretrained contrastive space.",
+    "url": "https://arxiv.org/abs/2611.24410",
+    "pdf_url": "https://arxiv.org/pdf/2611.24410v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ViLFlow: Parallel Vision-Language Generation with Continuous Latent Flows",
+    "authors": [
+      "Kevin Zhai",
+      "Bian Sun",
+      "Zhenyi Wang",
+      "Song Wang"
+    ],
+    "abstract": "Vision-language generation has predominantly relied on autoregressive and discrete diffusion models. Autoregressive models generate tokens sequentially, while discrete diffusion models typically predict tokens independently within each denoising step. We propose ViLFlow (Vision-Language Flow), a continuous-flow vision-language model that combines joint modeling of output embeddings with parallel token decoding. ViLFlow adapts pretrained continuous language generation to visual question answering and image captioning through learned image guidance and prediction-aware token decoding. A visually adapted teacher provides image-guided predictions as additional denoising supervision. The denoiser learns to reproduce these predictions directly, retaining one image-conditioned prediction per generation step. We train the token decoder on denoiser predictions and paired reference text to improve the conversion of continuous outputs into words. The decoder can be adapted independently, improving answering and captioning without further denoiser training. For captioning, it also supplies text feedback during late denoising, allowing decoded words to inform subsequent refinement. ViLFlow outperforms autoregressive and masked-diffusion baselines by up to 8.46 percentage points on VQAv2 and 4.50 points on GQA without GQA training. On COCO Karpathy test, it improves CIDEr by 16.25 over masked diffusion and 17.81 over sampled autoregression.",
+    "url": "https://arxiv.org/abs/2611.24240",
+    "pdf_url": "https://arxiv.org/pdf/2611.24240v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Clover-35B-A3B-Preview Technical Report",
+    "authors": [
+      "DiffuSpace Technical Team"
+    ],
+    "abstract": "We introduce Clover-35B-A3B-Preview (Clover), a mixture-of-experts diffusion language model with 35 billion total parameters and 3 billion activated parameters, supporting thinking-mode generation. Clover adapts Gated Delta Networks to block diffusion by combining recurrent memory of previously generated context with bidirectional softmax attention inside the current block. Historical memory readout competes with current-block tokens in a shared softmax, with learnable block-size calibration and a separate, zero-initialized right-context convolution branch. Clover leads the seven evaluated agent metrics, including 73.6 on SWE-bench Verified and 51.7 on Terminal-Bench 2.1. On internal agent workloads, it reaches a reported generation speed of 680 tokens/s using one NVIDIA GB300 GPU at BF16 precision and batch size one. We organize the evaluation around model quality, drafting and verification costs, and deployment under constrained memory. We also describe a decision-model variant that generates answers to related questions in one denoising pass. On an internal set of 500 groups, joint prediction raises question accuracy from 90.37% to 93.88% and all-correct group accuracy from 65.4% to 77.0%.",
+    "url": "https://arxiv.org/abs/2611.24636",
+    "pdf_url": "https://arxiv.org/pdf/2611.24636v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Exploring Speaker-Aware Engagement Modeling for Children with Autism Spectrum Disorder",
+    "authors": [
+      "Kaleen Shrestha",
+      "Austin Joel Dympep",
+      "Young Suh Hong",
+      "Maja Matari\\'c"
+    ],
+    "abstract": "Prior work on engagement modeling in children with autism spectrum disorder (ASD) has demonstrated substantial individual variability in behavioral features, particularly in visual modalities. In this work, we extend the literature to acoustic features in naturalistic interactions, where multiple speakers and atypical interaction patterns complicate speaker-specific analysis. We investigated whether speaker diarization improved acoustic engagement modeling during month-long, in-home socially assistive robot (SAR) interventions with seven children with ASD. We trained classical machine learning models using acoustic features extracted from diarized child and parent/caregiver audio and compared their performance with models trained on undiarized audio. Diarized audio consistently yielded higher area under the receiver operating characteristic curve (AUROC) values, although these differences were not statistically significant. More importantly, the relative contributions of child and caregiver acoustic features varied across participants, indicating that the acoustic information associated with engagement was not consistent across children. These findings extend evidence of participant-level variability in ASD engagement modeling to the acoustic domain and demonstrate the feasibility of isolating speaker-specific vocalizations for studying engagement in complex, naturalistic interactions.",
+    "url": "https://arxiv.org/abs/2611.24794",
+    "pdf_url": "https://arxiv.org/pdf/2611.24794v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Label-Free Role-Aware Segmentation of Classroom Recordings: Recovering the Teacher from Transferable Structure",
+    "authors": [
+      "Nitin Jain",
+      "Tim F\\\"utterer",
+      "Babette B\\\"uhler",
+      "\\c{C}a\\u{g}atay Y{\\i}ld{\\i}z"
+    ],
+    "abstract": "How much the teacher talks and when are among the most informative and costly-to-measure signals of teaching. Yet, classroom audio is among the most sensitive data an AI system can process: recordings capture minors and fall under GDPR, preventing raw audio from leaving the recording device. We present a teacher-student segmentation pipeline designed to meet exactly this constraint: label-free at inference, running on a recording device, and requiring no per-session calibration. The pipeline chains a lightweight voice activity detector, compactly pretrained speaker embeddings, agglomerative clustering, and a small logistic regression that assigns the teacher role based on session-relative structure rather than voice identity. We show that our structural cue transfers across classrooms, languages, and acoustic conditions. In leave-one-teacher-out cross-validation on 292 recordings from 63 teachers across English and German corpora, our pipeline achieves teacher F1 of 0.81 and 0.87, respectively, outperforming both enrollment-based baselines and a 30-second supervised enrollment ceiling. On a commodity smartphone, its performance matches pyannote, a strong neural diarization tool, while running 4.8x faster at comparable peak memory at a real-time factor of ~0.18. We also find that transcribing filtered audio only marginally increases teacher's word error rate from $0.26$ to 0.28. Residual failures concentrate where teacher and student voices are not acoustically separable. However, we show how to flag these sessions label-free at inference so that they can be routed to human review, enabling selective, privacy-preserving deployment.",
+    "url": "https://arxiv.org/abs/2611.23609",
+    "pdf_url": "https://arxiv.org/pdf/2611.23609v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SIGNTOK: A Text-Aligned Continuous Pose Tokenizer for Sign Language Generation",
+    "authors": [
+      "Nabeela Khan",
+      "Gaurav Rai",
+      "Bowen Wu",
+      "Sihan Tan",
+      "Benjamin Yen",
+      "Takeshi Ashizawa",
+      "Kazuhiro Nakadai"
+    ],
+    "abstract": "Text-conditioned sign language generation (SLG) depends not only on the generator but also on the space in which signing is generated. Existing approaches generate directly in pose space, in quantized code spaces, or in learned latent spaces trained for reconstruction. We find that these spaces are organized largely by signer identity rather than linguistic content: on CSL-Daily, a test clip's nearest neighbor in raw pose space is the same sentence signed by another person in only 2% of cases. To address this, we propose SIGNTOK, a continuous pose tokenizer whose latent space is shaped by three training-only heads: a kinematics head that predicts motion dynamics, a sentence-level head that aligns signing with the overall text, and a word-level head that aligns short motion windows with content words. Together, these objectives raise the same-sentence cross-signer nearest-neighbor rate to 82%. On three sign language benchmarks, the same generator trained in the SIGNTOK latent instead of pose space raises back-translation BLEU-4 in five of six benchmark-scorer settings at comparable joint accuracy, and word-level alignment gives higher back-translation scores than sentence-level alignment on every benchmark.",
+    "url": "https://arxiv.org/abs/2611.23944",
+    "pdf_url": "https://arxiv.org/pdf/2611.23944v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "The Elephant in the Question: Unified Models Picture the Concepts Behind Their Answers",
+    "authors": [
+      "Tobias Braun",
+      "Marcus Rohrbach",
+      "Lorenzo Cavallaro"
+    ],
+    "abstract": "Visualizing intermediate representations could help us inspect the reasoning steps underlying a model output. Unified multimodal models offer this opportunity by combining understanding and generation in one architecture. Their image generators can access representations formed while processing text. We introduce the V-lens, which uses this connection to visualize a chosen token's hidden state without training a decoder. Across four diffusion-based and two purely autoregressive unified models, the resulting images reveal key intermediate concepts that connect a question to its answer even when the concepts are never named explicitly. Controlled tests show how this content changes with context, token position, and depth. We then introduce lens tuning, which supervises selected hidden states with pictures through the V-lens. Across BAGEL, SenseNova-U1, and HunyuanImage-3.0, the rate of correct visualizations of pronoun referents rises from 2-11% to 86-94%. Surprisingly, such visual supervision also improves text answers without supervising the answer tokens directly. Code is available at https://github.com/multimodal-ai-lab/V-lens.",
+    "url": "https://arxiv.org/abs/2611.24793",
+    "pdf_url": "https://arxiv.org/pdf/2611.24793v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Modeling LLM Reasoning Dynamics with Structural Representations",
+    "authors": [
+      "Ilia Karpov",
+      "Andrey Atamanyuk",
+      "Dmitry Ilvovsky",
+      "Aleksandr Anokhin",
+      "Alex Elizov",
+      "Dmitry Zagorulkin",
+      "Sergei O. Kuznetsov"
+    ],
+    "abstract": "Language-model reasoning alternates between sustained activities and local operations. We study how this temporal structure predicts continuation and the computation needed to analyze it. T/E/S combines text, local events, and spans of activity. Across reasoning and information-seeking tasks, events and spans improve next-outcome prediction in 70 of 76 evaluation groups for a Transformer and 74 of 76 for Qwen with LoRA. Span duration and preceding events are associated with transitions, and retaining event history across span boundaries improves prediction. We formulate budget-allocation counting and action-conditional continuation queries, prove counting hardness under explicit encodings, and derive conditions for affordable decision certification. In finite-process experiments, bounds that cancel shared continuation mass recover the same optimal actions as full dynamic programming while reducing mean inference CPU time by 77.7%. On 71 held-out HotpotQA and MuSiQue questions, a compact structural observer improves prediction of whether a fixed inference procedure finishes within a CPU allowance: Brier loss falls from 0.0836 to 0.0756. An annotation audit identifies substantial errors in that observer, separating this computational result from semantic validation of its features.",
+    "url": "https://arxiv.org/abs/2611.23749",
+    "pdf_url": "https://arxiv.org/pdf/2611.23749v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "AVTR: Adaptive Multimodal Reasoning with Visual Imagination",
+    "authors": [
+      "Xiaoqian Shen",
+      "Yunyang Xiong",
+      "Changsheng Zhao",
+      "Saksham Suri",
+      "Chong Zhou",
+      "Zechun Liu",
+      "Zhipeng Cai",
+      "Zhuang Liu",
+      "Qi Qian",
+      "Wei Wen",
+      "Hongyu Xu",
+      "Hanxian Huang",
+      "Ernie Chang",
+      "Yanbei Chen",
+      "Vikas Chandra",
+      "Raghuraman Krishnamoorthi",
+      "Mohamed Elhoseiny",
+      "Lemeng Wu"
+    ],
+    "abstract": "Vision-Language Models increasingly rely on textual reasoning to solve advanced multimodal tasks. Despite its effectiveness, this paradigm faces two fundamental limitations. First, relying on textual reasoning alone can limit perceptual ability in vision-centric questions, where accurate answers depend on interpreting task-relevant visual evidence. Second, applying textual reasoning uniformly across inputs overlooks question-dependent variation in both reasoning modality and depth, often producing verbose and unnecessary traces when little logical inference is required. To this end, we propose Adaptive Visual-Textual Reasoning (AVTR), which introduces visual imagination as a complementary reasoning modality to textual thinking, enabling the model to revisit its visual observations and distill the salient evidence through generative visual reflection. Furthermore, we formulate reasoning-modality selection as a learned routing problem, allowing a single policy to adaptively harness the complementary strengths of visual reflection and textual reasoning in response to the perceptual and inferential demands of the input. Across 16 benchmarks, AVTR improves the average score by 4.5 points over Qwen3.5 baseline, while reducing inference latency by 33\\%. It also scales effectively into a smaller size backbone, outperforming the evaluated 2B-scale baselines.",
+    "url": "https://arxiv.org/abs/2611.24161",
+    "pdf_url": "https://arxiv.org/pdf/2611.24161v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SpecLook: Speculating Where to Look for Fast and Reliable Agentic MLLMs",
+    "authors": [
+      "Xi Ding",
+      "Jiawei Zhang"
+    ],
+    "abstract": "Agentic multimodal large language models (MLLMs) that think with images interleave reasoning with zoom-in tool calls. However, this sequential loop is slow, and its answers carry no reliability score. Prior speculation of tokens, reasoning steps, or answers keeps the loop, and answer speculation also accepts confident errors. We find that the loop mostly adds one zoom-in step, with which a small model is ahead of the agent on most splits. Our key insight is to speculate the agent's next observation, which, unlike a drafted answer, can be verified, corrected, and used to test the answer. We propose SpecLook, a training-free speculate-and-verify framework with three levels. A small model drafts a glimpse and re-answers from it, and the question ends if the answer is unchanged and confident. Otherwise, the agent's large model verifies and corrects the glimpse without tools, and their answers are fused. Only questions that still lack evidence reach the agent, in one forward pass that SpecLook-Fast skips, so no question runs the loop. The trace scores every answer's reliability without labels. Extensive experiments on V*, HR-Bench, and POPE show that both are more accurate than every baseline on every split. SpecLook reaches 87.2% and 86.2% mean accuracy with 7.7x and 4.7x speedups over the DeepEyes-7B and Thyme-RL agents, and SpecLook-Fast reaches 9.9x and 6.3x.",
+    "url": "https://arxiv.org/abs/2611.23483",
+    "pdf_url": "https://arxiv.org/pdf/2611.23483v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "NullTok: empirical-null token selection for training-free long video understanding",
+    "authors": [
+      "Zhang Ziyue",
+      "Juwei Jian",
+      "Baiyang Song",
+      "Yunshan Zhong",
+      "Jun Peng",
+      "Yiyi Zhou",
+      "Rongrong Ji"
+    ],
+    "abstract": "Long video understanding remains a daunting challenge for existing multimodal large language models (MLLMs), mainly due to the large number of visual tokens accumulated in long videos. Currently, frame selection and token selection are two main paradigms for addressing this issue, both aiming to select relevant visual information to form a compact input for MLLMs. A natural approach combines these two paradigms by selecting frames before pruning tokens, but noisy frame-level relevance estimates can cause irreversible evidence loss. In this paper, we study this problem from the perspective of assessing the spatiotemporal distribution of query-specific evidence and propose a novel and training-free approach termed NULLTOK. For every patch across all frames, we construct an empirical-null distribution from 64 group-matched irrelevant control queries, capturing the scores expected in the absence of target-specific evidence. Target affinities are calibrated against these same-position references into right-tail Monte Carlo p-values, which are discrete super-uniform under a conditional exchangeability assumption. Calibrated screening and a high-recall semantic guard produce candidate tokens for deterministic visual deduplication and joint spatiotemporal budget allocation. To validate NullTok, we apply it to two representative MLLMs and conduct extensive experiments on a set of video benchmarks. The experimental results demonstrate its effectiveness under a bounded visual token budget. For example, it achieves 65.81% and 68.85% on Video-MME using frozen LLaVA-Video-7B and Qwen3-VL-8B backbones, respectively, at a cap of 64 full-frame equivalents (FFE), without subtitles or audio. These results outperform all evaluated baselines on Video-MME under the same budget for both backbones. Code is available at https://github.com/potato-kitty/NullTok.",
+    "url": "https://arxiv.org/abs/2611.23881",
+    "pdf_url": "https://arxiv.org/pdf/2611.23881v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Ultimate3D: Teaching Multimodal LLMs 3D Camera-Object Relations by Large-Scale Visual Instruction Data",
+    "authors": [
+      "Liu He",
+      "Yizhi Song",
+      "Ruiqi Xu",
+      "Baris Sarper Tezcan",
+      "Xiao Zeng",
+      "Albert Y. C. Chen",
+      "Lu Xia",
+      "Shashwat Verma",
+      "Sankalp Dayal",
+      "Min Sun",
+      "Cheng-Hao Kuo",
+      "Daniel Aliaga"
+    ],
+    "abstract": "Multimodal Large Language Models (MLLMs) struggle with accurately capturing camera-object relations, especially for object orientation, camera viewpoint, and camera shots. This stems from the fact that existing MLLMs are trained on images with limited diverse camera-object relations and corresponding textual descriptions. To address this, we propose a synthetic generation pipeline to create large-scale 3D visual instruction datasets. Our framework takes 3D assets as input and uses rendering and diffusion-based image generation models to create photorealistic images preserving precise camera-object relations. Additionally, large language models (LLMs) are used to generate text prompts for guiding visual instruction tuning and controlling image generation. We create Ultimate3D, a large-scale 3D-grounded 2D visual instruction dataset. Ultimate3D consists of 240K VQAs with precise camera-object annotations, and corresponding benchmark. MLLMs fine-tuned on our proposed dataset outperform commercial models by a large margin, achieving an average accuracy improvement of 29.7% on camera-object relation recognition tasks. Our code, dataset, and benchmark will contribute to broad MLLM applications.",
+    "url": "https://arxiv.org/abs/2611.24795",
+    "pdf_url": "https://arxiv.org/pdf/2611.24795v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "CounselTraj: Synthesizing Process-Aware Psychological Counseling Dialogues via Dialogue-Act Trajectory Planning",
+    "authors": [
+      "Zhiyang Qi",
+      "Michimasa Inaba"
+    ],
+    "abstract": "The growing demand for psychological counseling has motivated the development of LLM-based systems that support human counselors, but training such systems requires large-scale, high-quality dialogue data. Authentic counseling transcripts are difficult to collect and share because of privacy concerns, making synthetic dialogues an important alternative. However, existing synthetic datasets, despite covering diverse scenarios and client profiles, often consist of brief exchanges and fail to capture session-level counseling processes. We propose CounselTraj, a dialogue-act trajectory planning framework for expanding brief synthetic dialogues into process-aware, session-level psychological counseling dialogues. CounselTraj learns dialogue-act patterns from role-play counseling dialogues produced by human counselors, plans coordinated trajectories for clients and counselors, and uses them as flexible guidance for long-form dialogue generation. Experiments across three Chinese synthetic counseling datasets show that CounselTraj produces more complete and coherent sessions with higher-quality counselor interventions than both direct expansion and expansion with randomly sampled trajectories. Based on CounselTraj, we construct CounselTrajD, a dataset containing over 10K process-guided Chinese psychological counseling dialogues, and use it to train CounselTrajLM for counseling response generation. Evaluations at both the response and session levels show that CounselTrajLM outperforms publicly available Chinese counseling models in response quality, therapeutic understanding and intervention, and counseling-process coherence and progress. Our code and model are publicly available at https://github.com/UEC-InabaLab/CounselTraj.",
+    "url": "https://arxiv.org/abs/2611.24168",
+    "pdf_url": "https://arxiv.org/pdf/2611.24168v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Who are you? The Personal Imitation Game",
+    "authors": [
+      "Muhammad Rizky Wellyanto",
+      "Hajara-Yasmin Isa",
+      "Kexin Xue",
+      "Vishal Ravichandran",
+      "Wenpeng Lu",
+      "Jerry O. Talton",
+      "Ranjitha Kumar"
+    ],
+    "abstract": "Large Language Models (LLMs) now perform strongly on Alan Turing's 1950 Imitation Game, so we propose a harder challenge, the Personal Imitation Game, which asks whether a machine can replicate a specific individual in conversation rather than a generic human. Testing with 30 participants, we establish a human baseline and report the identity signals interrogators rely on: stylometric features, personality traits, and biographical facts. To demonstrate the framework, we design an LLM-based system that plays the game for one of the paper's authors, drawing on an autoethnographic dataset spanning ten years of personal digital communication. In a 20-person deception study, interrogators choose our system over the author's own friends in 7 of 10 rounds, and the author over our system in 13 of 20; neither rate is distinguishable from chance at this sample size. We consider design improvements, applications of personal AI agents, and implications for identity and privacy.",
+    "url": "https://arxiv.org/abs/2611.24888",
+    "pdf_url": "https://arxiv.org/pdf/2611.24888v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Do Frontier Model Ingredients Add Up? A Replicated Factorial Study of Small Language Models",
+    "authors": [
+      "Biswa Sengupta"
+    ],
+    "abstract": "Building a small language model requires choosing which published improvements to combine. We compare five changes in the same model, using the same data and training budget. We test selected combinations and repeat each one with a second random seed. Mixture-of-experts layers, Muon optimisation and a Gated DeltaNet hybrid give the largest gains. Extra normalisation also helps, while an attention gate with a matched parameter budget adds little on average. The gains mostly combine, but small interactions between changes appear again in the repeated runs. Repetition also reveals benefits that an initial statistical estimate treated as noise. These findings apply to our small-model training setting; the expert models also have greater total capacity. The practical lesson is to test promising components together and repeat the comparisons before deciding which ones to keep.",
+    "url": "https://arxiv.org/abs/2611.24540",
+    "pdf_url": "https://arxiv.org/pdf/2611.24540v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "WM^MLLM: Turning MLLMs into World Models",
+    "authors": [
+      "Baiang Li",
+      "Enze Xie",
+      "Jincheng Yu",
+      "Jin Wang",
+      "Haozhe Liu",
+      "Yitong Li",
+      "Juanxi Tian",
+      "Felix Heide"
+    ],
+    "abstract": "Video world models keep the world in the context of a generator, so a revisit is synthesized again and earlier edits can drift or disappear. We present WM^MLLM, the first interactive world model built on multimodal large language models (MLLMs), for persistent, editable world generation from a single image. WM^MLLM keeps the world state outside every generator, as a panorama with a revision history, and lets the MLLMs write it: they turn each request into operations on this state, select where a local edit is written, and check every candidate before it becomes the next state. Image generators only propose views, and video only presents them. Users can walk to new places and return, edit objects through text or a box, place subjects, and change lighting, weather or season. By construction, a revisit at the same revision reproduces the earlier view exactly, a local edit leaves every panorama pixel outside its region unchanged, and each request starts from the result of the previous one. Against six world model baselines on MBench-A, WM^MLLM has the highest mean on all four environment-recovery metrics (Epipolar 91.5 versus 0.1 to 74.0) and completes the most camera round trips (85.3% versus at most 50.9%). It has the best value in all 15 CompBench columns against 15 baselines. On 112 local edits judged blind, selecting the region to write after generation raises completion from 34.8% to 83.0%. On 258 WBench and MBench-A items, all 46 revisits recover their earlier views, and all 97 local edits that pass the check leave panorama pixels outside their region unchanged.",
+    "url": "https://arxiv.org/abs/2611.24193",
+    "pdf_url": "https://arxiv.org/pdf/2611.24193v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Chorus: Shared N-gram Embeddings with Layer-wise Adaptation",
+    "authors": [
+      "Stephen Chung",
+      "Wenyu Du"
+    ],
+    "abstract": "Language models can gain capacity at little computational cost from n-gram embedding tables: large tables of learned vectors for short sequences of consecutive tokens, which are looked up and added to the model's input or to its intermediate layers. Recent designs commonly use a separate n-gram embedding table for each layer, which makes the tables costly in memory and prevents layers from sharing what they learn. Sharing a single table, however, gives every layer the same embedding and leaves no room for layer-wise preferences, and it performs poorly in practice. We propose Chorus, in which one set of n-gram embedding tables serves the whole network and every layer reads it in its own way. Each layer maps the refined embedding through its own projection layer, after rescaling its components by factors computed from its current hidden state. Chorus matches the quality of existing n-gram methods with 87% smaller tables: with 1.2B table parameters it predicts text better than FactorEngram and DeepSeek's Engram do with 9.6B. It outperforms Engram, TN-gram and FactorEngram in every setting where we compared them, across table sizes from 20M to 9.6B parameters. We also show that the recently proposed memory-efficient optimizer Ember works well with Chorus, saving 99.2% of table-optimizer memory compared with AdamW without degrading training performance. These results enable further scaling of n-gram embedding tables along the table-size axis by reducing memory use and allowing shared knowledge to be reused across layers.",
+    "url": "https://arxiv.org/abs/2611.23386",
+    "pdf_url": "https://arxiv.org/pdf/2611.23386v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving",
+    "authors": [
+      "Emad Aghajanzadeh",
+      "Bethany Anne Wong",
+      "Leonhard Kunze",
+      "Moritz Thoma",
+      "Maximilian Forstenh\\\"ausler",
+      "Nael Fasfous",
+      "Manoj Rohit Vemparala",
+      "Pierpaolo Mori",
+      "Christos Anagnostopoulos",
+      "Daniel Mueller-Gritschneder",
+      "Ulf Schlichtmann"
+    ],
+    "abstract": "The integration of vision-language models (VLMs) into end-to-end (E2E) autonomous driving has demonstrated strong potential by providing scene description and reasoning capabilities. However, VLMs are computationally expensive, and switching language reasoning on and off at runtime without hurting closed-loop performance has not been demonstrated, which hinders practical adoption. To address these issues, we propose DRIFT, an E2E autonomous driving framework that integrates a lightweight language model (LM) for visual question answering and action commentary. By efficiently projecting intermediate driving representations into the language embedding space, we demonstrate that a compact LM (<150M parameters) can achieve strong scene description and action commentary. Furthermore, we introduce a runtime-flexible planning module that is trained on surrogate reasoning features distilled from the LM and can be conditioned on either the LM or the surrogate reasoning features at inference. This design enables bypassing the LM entirely when required by deployment constraints, without sacrificing driving performance. With only 255M parameters, DRIFT reaches up to a Driving Score (DS) of 97.03 and a Success Rate of 89.39% (mean over three runs) on Bench2Drive by interleaving its LM and surrogate reasoning at a chosen reasoning rate. This is on par with the strongest non-language models while being far more compact than existing VLM-based models. DRIFT further achieves competitive results on the real-world NAVSIM and AlpaSim benchmarks at significantly lower computational cost than existing VLM-based approaches. Project page: https://drift-e2e.github.io/",
+    "url": "https://arxiv.org/abs/2611.24719",
+    "pdf_url": "https://arxiv.org/pdf/2611.24719v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "MoE-Context: Show the Model Only What It Needs",
+    "authors": [
+      "Vedant Navale"
+    ],
+    "abstract": "AI agents read their whole history at every step. People do not work like that: we keep what the moment needs and hold the rest as a rough note we can recall. MoE-Context applies this to language models. The context is split into blocks. Before each step a fast yes or no pass decides which blocks the step needs; the rest stay as one-line notes that can be brought back, and nothing is deleted. In the version we build, one model makes this decision and then answers, over a single key-value cache where hidden blocks are masked rather than removed. On a laptop with Qwen3-1.7B and a synthetic lookup task, showing only the needed block raises accuracy from 93 to 119 of 120, and a masked block is as hidden as a deleted one. The model's own picking is the weak part. A supervised linear probe written into spare output rows lifts its accuracy from 80 to 110 of 120, but simple keyword search picks perfectly on this task, and the probe does not transfer to a second task. We report these results openly, along with two cheap usage patterns that block switching enables: undoing a failed attempt and running subagents without a new context.",
+    "url": "https://arxiv.org/abs/2611.24379",
+    "pdf_url": "https://arxiv.org/pdf/2611.24379v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Choosing the Right Representations: Task-Aware Fusion for Multimodal Materials Language Models",
+    "authors": [
+      "Huu Binh Ta",
+      "Alex Morehead",
+      "N. Benjamin Erichson",
+      "Ferdinando Fioretto",
+      "Sandeep Madireddy"
+    ],
+    "abstract": "Multimodal language models for materials science rely on effective mechanisms for incorporating three-dimensional structural representations. MatterChat addresses this challenge using a large bridge module between a pretrained structural encoder and the LLM, together with a separate contrastive alignment stage. We instead ask whether this bridge can adaptively select and combine representations from multiple structural encoders according to the target property. We find that supervised and generative material encoders provide complementary information for property prediction. We found that, for Zatom-1, this information is not concentrated in the final layer. Instead, the most informative representations occur at different depths depending on the target property. This motivates Task-Conditioned Attention Fusion (TCAF), a lightweight attention-based bridge that uses task-conditioned latent queries to combine CHGNet features with intermediate Zatom-1 representations. The bridge is trained directly on downstream prediction tasks, allowing representation selection and material-language alignment to be learned jointly without separate contrastive pretraining. Across classification and regression tasks, TCAF outperforms MatterChat, with up to 47.8% lower RMSE, while using substantially fewer trainable parameters and halving the overall training time. Further experiments incorporating UMA-S demonstrate TCAF's flexibility across encoder combinations, with the three-encoder configuration achieving the highest macro-average classification accuracy of 89.61%.",
+    "url": "https://arxiv.org/abs/2611.24641",
+    "pdf_url": "https://arxiv.org/pdf/2611.24641v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "QDA: Closed-Loop LLM Quantization Design with Agents",
+    "authors": [
+      "Xingyang Li",
+      "Tianlang Zhao",
+      "Song Han",
+      "Ligeng Zhu"
+    ],
+    "abstract": "Post-training quantization is the standard way to serve large language models at low cost. However, the best quantization recipe differs across models and precisions. As a result, experts must redesign it for every new model, which is time-consuming and often sub-optimal. Fortunately, an LLM agent can take over this design by refining the recipe over rounds of building and evaluating candidates, so that more rounds lead to better recipes. However, evaluating one quantized reasoning model takes tens of GPU-hours, and combining methods from different codebases means porting each to the new architecture by hand. We present QDA, a system in which an agent designs the recipe for each model and precision. To make evaluation fast, QDA scores each candidate in minutes by its output KL divergence from the original model on reasoning traces that the agent never sees, and checks promising ones with long generations to catch failures such as repetition loops. To make building fast, QDA provides a library of public PTQ methods that are compatible with one another and with new model architectures. Across four reasoning models, QDA improves accuracy over the strongest public recipe by 0.9, 1.4 and 2.2 percentage points on average at W4A16, W4A8 and W3A16, using 64 GPU-hours per search. On the 320B-parameter MoE model GLM-5.3-Flash at NVFP4 W4A4, it recovers 98.3% of the FP8 model's accuracy, against 96.9% for the best vendor checkpoint. Every QDA checkpoint also runs on existing serving kernels with no inference overhead. We will release the library, the evaluator and the harness.",
+    "url": "https://arxiv.org/abs/2611.23388",
+    "pdf_url": "https://arxiv.org/pdf/2611.23388v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Compression Effects on Low-Resource Multilingual Translation",
+    "authors": [
+      "Abbas Sani"
+    ],
+    "abstract": "We present a pilot study characterising the effect of post-training quantisation on multilingual machine translation quality and inference cost for three African languages - Hausa, Swahili, and Yoruba - across three model families: a small general-purpose LLM (Qwen2.5-1.5B), a larger multilingual instruction-tuned LLM (Aya-23-8B), and a dedicated multilingual MT model (NLLB-200-distilled-1.3B). Evaluating on the FLORES-200 devtest set (1,012 sentences per direction) under FP16, bitsandbytes INT8, and NF4 INT4 precisions on consumer-grade NVIDIA T4 GPUs, we find: (i) the specialised MT model outperforms both LLMs by 32.7-43.3 chrF on the Hausa and Swahili directions, and by 12.9-24.7 chrF on Yoruba, despite being roughly a sixth the size of the 8B instruction-tuned LLM; (ii) post-training quantisation preserves aggregate translation quality within approximately 1 chrF across all model families and language directions, with a single worst case of 2.19 chrF; (iii) on consumer GPUs, INT8 and INT4 quantisation provide substantial memory savings (49-61% at INT4) but do not reduce inference latency relative to FP16 - in fact, latency increases by 1.3x to 5.3x; (iv) a clear performance gradient tracking training-resource availability is visible across languages (Swahili > Hausa > Yoruba). These findings motivate a research agenda focused on hardware-aware compression and error-type analysis beyond aggregate metrics for low-resource deployment.",
+    "url": "https://arxiv.org/abs/2611.24043",
+    "pdf_url": "https://arxiv.org/pdf/2611.24043v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "From Neural Tokens to Language: Dual-View EEG Semantic Bridging for Brain-to-Text Generation",
+    "authors": [
+      "YaoYang Liu",
+      "Jun Dai",
+      "ZhuoShi Tang",
+      "Weijun Sun",
+      "Xiaozhao Fang",
+      "Jie Wen"
+    ],
+    "abstract": "Visually evoked EEG-to-text generation aims to produce natural-language descriptions from neural responses elicited by visual stimuli. Existing approaches typically compress EEG signals into a single global representation and directly project it into the hidden space of a large language model (LLM), which may limit the preservation of complementary visual semantics under noisy and subject-dependent EEG signals. We propose a dual-view semantic token bridging framework that exploits raw images and sketch images as complementary visual supervision to learn raw-oriented and sketch-oriented EEG semantic token streams. To interface these structured neural representations with an LLM, we introduce a branch-specific semantic query bridge that aggregates each token stream into compact semantic slots and converts them into LLM-compatible soft prompts. A progressive adaptation strategy further transitions the learned visual-semantic interface from image-supported training to image-free EEG-conditioned generation. Experiments demonstrate strong subject-wise EEG classification performance and competitive EEG-to-text generation across multiple LLM backbones. Ablation, branch-level representation, and EEG-label disentanglement analyses further show that the two EEG streams learn complementary view-oriented representations and that EEG-derived prompts provide sample-specific information beyond category labels.",
+    "url": "https://arxiv.org/abs/2611.24197",
+    "pdf_url": "https://arxiv.org/pdf/2611.24197v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "When Does Continual Pre-Training Help? A Controlled Study of Dialectal Adaptation for Qu\\'ebec French",
+    "authors": [
+      "Eeham Khan",
+      "Richard Khoury",
+      "Leila Kosseim"
+    ],
+    "abstract": "Continual pre-training (CPT) is widely used to adapt pretrained language models to dialectal and non-standard language varieties, yet it remains unclear when this additional training is necessary, what drives its benefits, and whether aggregate evaluation scores adequately capture its effects. In this paper, we present a controlled study of CPT for Qu\\'ebec French language understanding across nine LLMs spanning different families and scales. Using a budget-matched protocol of 30M tokens per experiment, our results show that the benefit of CPT depends strongly on the starting model's existing competence in the target variety. When CPT is beneficial, the improvements are driven more by corpus composition than by data volume, with literary text accounting for most of the gain. Paired Qu\\'ebec and standard French evaluations further show that CPT primarily improves expression comprehension rather than grammatical competence, and that corpus register determines which regional expressions are acquired. These gains also involve capability-specific trade-offs, including declines in reading comprehension that aggregate scores can conceal. Overall, these findings show that CPT for dialectal adaptation should not be treated as a uniformly beneficial default. Instead, adaptation strategies should begin with a careful assessment of the base model's existing competence, accompanied by source-level data analysis and task-level evaluation.",
+    "url": "https://arxiv.org/abs/2611.24699",
+    "pdf_url": "https://arxiv.org/pdf/2611.24699v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "MoMoVL: Modality-Aware Adaptive Compression for On-Device Sparsely-Activated Vision-Language Models",
+    "authors": [
+      "Dongkeun Lee",
+      "Wonjun Lee"
+    ],
+    "abstract": "The rise of the agentic web has been accompanied by growing demand for on-device Vision-Language Models (VLMs) that perform diverse cross-modal web tasks with enhanced privacy and reduced latency. Mixture-of-Experts (MoE) models are widely adopted in modern VLMs for compute-efficient scalability, yet their multi-expert architecture poses deployment challenges due to substantial memory demands. Mixed-precision quantization is an effective compression technique that reduces bit-widths while adapting to the heterogeneous hardware budgets of edge devices, particularly well-suited for MoE due to its inherent structural sparsity, which causes imbalanced importance among experts. While prior work has applied quantization for efficient MoE inference at the edge, we point out that in MoE-based VLMs, the modality-specific characteristics of visual and text tokens further impact expert quantization. To address this issue, we present MoMoVL, a modality-aware adaptive compression framework for MoE-based VLMs that brings vision-language inference within reach of on-device resource budgets. Motivated by our empirical findings on modality-induced disparities across experts, MoMoVL jointly exploits the per-expert activation profile and per-modality quantization sensitivity to guide bit-width assignment. Experimental results show that MoMoVL improves the accuracy-compression trade-off relative to state-of-the-art mixed-precision baselines and reduces memory footprint by up to 15.44% with a modest drop in accuracy over its uniform-precision baseline. Our code and data are publicly available at https://github.com/sco-edge/MoMoVL.",
+    "url": "https://arxiv.org/abs/2611.23695",
+    "pdf_url": "https://arxiv.org/pdf/2611.23695v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "RoughCut-Bench: A Benchmark for Automatic Video Rough-Cut with Large Vision-Language Models",
+    "authors": [
+      "Ruisi Zhao",
+      "You Li",
+      "Sihan Chen",
+      "Aosong Cheng",
+      "Chixiang Ma",
+      "Sen Pei",
+      "Zhen Yang",
+      "Hehe Fan",
+      "Dongliang He",
+      "Yi Yang"
+    ],
+    "abstract": "Video rough-cut is a core stage in media production workflows, organizing raw media materials into an initial video cut. Despite recent advances in large vision-language models (LVLMs) for video-related tasks, automatic rough-cut remains underexplored, without a comprehensive benchmark for evaluation or mature workflows for producing executable cut plans. To address the evaluation gap, we introduce RoughCut-Bench, which covers two practical settings: (1) a visually driven setting over video cases, covering highlight detection and selection, source-video ordering, and adherence to user requirements when provided; and (2) a speech-driven setting over automatic speech recognition (ASR) transcripts, covering filler removal, expression deduplication, and low-value content trimming. Across these settings, the benchmark contains 101 visually driven cases, including 831 raw videos with 1,476 highlight annotations. It also includes 84 speech-driven cases, each consisting of an ASR transcript with annotated cleanup spans. The evaluation compares cut plans with these annotations in both settings and additionally uses a human-aligned agentic evaluator to assess rendered-cut quality in the visual setting. To apply LVLMs to automatic rough-cut, we further propose agentic workflows that guide them to produce structured cut plans from input materials. Experiments show that current LVLMs remain limited in producing expert-aligned cut plans. Our benchmark, code, and prompts are released at https://whalesong-zrs.github.io/RoughCut-Bench-Project-Page.",
+    "url": "https://arxiv.org/abs/2611.24098",
+    "pdf_url": "https://arxiv.org/pdf/2611.24098v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "LipSpell: A Language-Independent Phonetic Scoring Framework for Spelling Correction Combining Distinctive-Feature Edit Distance, Keyboard Geometry, and Corpus Frequency",
+    "authors": [
+      "Leonardo Araujo"
+    ],
+    "abstract": "Automatic spelling correction must handle both keyboard typographical slips and cognitive or phonetic misspellings where writers approximate a word's pronunciation. Conventional spell checkers rely either on orthographic edit distance and keyboard proximity--which struggle when phonetic errors diverge by multiple characters--or on English-centric phonetic hashes such as Soundex and Metaphone. We present LipSpell, a unified, language-independent phonetic scoring engine paired with swappable language-specific G2P frontends, keyboard maps, and lexicons integrating: (1) a precomputed |P|x|P| phone-distance matrix from universal IPA distinctive features, (2) physical keyboard geometry, and (3) corpus unigram frequency priors, accelerated by a two-stage symmetric-delete and seven-class phonetic-code index. Across six English benchmarks (including 1,000 L2 errors from TOEFL-Spell), LipSpell outperforms Norvig and Hunspell on every dataset and beats Aspell on Norvig1 (78.52% vs. 75.56%), Holbrook (32.00% vs. 26.67%), and TOEFL-Spell (77.30% vs. 72.80%). Evaluated across six languages spanning five branches (Germanic, Romance, Slavic, Semitic, Turkic), three families (Indo-European, Afro-Asiatic, Turkic), and three scripts, LipSpell achieves strong fixed-weight transfer on Brazilian Portuguese (73.00% Top-1 on n=500 Wikipedia without NFD tolerance and 75.80% with NFD vs. 66.40% Norvig, 64.20% Hunspell, 64.00% Aspell) and Russian Cyrillic (85.67% vs. 78.50% Norvig). On 50/50 clean non-word splits with lexicon cleaning and weak-character indels, tuning yields strong gains over Norvig in Portuguese (86.97% vs. 76.75%), Turkish (81.67% vs. 79.05%), Hebrew Abjad (74.59% vs. 62.30%), and French (74.53% vs. 67.92%), while fixed weights remain optimal for English (80.37%) and Russian (85.67%).",
+    "url": "https://arxiv.org/abs/2611.24285",
+    "pdf_url": "https://arxiv.org/pdf/2611.24285v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Continual Tool-Space Extension Learning for Multimodal Agents",
+    "authors": [
+      "Jinbae Seo",
+      "Jungin Park",
+      "Hyunsung Jang",
+      "Namkoo Ha",
+      "Jiyoung Lee",
+      "Kwanghoon Sohn"
+    ],
+    "abstract": "Multimodal agents largely rely on generic tools such as cropping, search, and code execution, leaving specialist vision models outside their tool space. However, bringing such a model into an already trained agent is not straightforward. The challenge is to learn each new tool efficiently while retaining the ability to use existing ones. This work proposes COTEX, continual tool-space extension learning, that adds new tools at efficient adapter-level cost. COTEX locates two sets of parameter directions; one triggers a tool call and thereby opens a multi-turn reasoning trajectory, while the other determines which tool is chosen. The adapter of a new tool is restricted to the calling directions that leave earlier tool choices unaffected by orthogonal constraint. We further introduce a protocol that converts specialist models' existing task-specific annotations into verified tool-use trajectories. Experiments on two representative agents and three specialist tools show gains on ten vision-language benchmarks, with at most a 0.3-point drop on existing tools.",
+    "url": "https://arxiv.org/abs/2611.23810",
+    "pdf_url": "https://arxiv.org/pdf/2611.23810v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Learning to Coordinate: LLM-Guided Workflow Evolution for Token-Efficient Red Teaming",
+    "authors": [
+      "Xiaoyang Xing",
+      "Wenyu Dai",
+      "Xiaoliang Gong",
+      "Asoke K Nandi",
+      "Anthony Cohn"
+    ],
+    "abstract": "Automated red teaming is essential for identifying safety failures in large language models (LLMs), but its practical scalability depends on the resources required to discover those failures. Multi-agent systems can combine complementary capabilities, yet repeated planning, redundant exchanges, and ineffective information routing can make their coordination expensive. Moreover, a target model's response indicates the outcome of a test without identifying which collaboration decision should change. We present Learning to Coordinate (L2C), an LLM-guided framework that evolves an executable multi-agent workflow for each red-teaming case. L2C represents agent responsibilities, execution dependencies, and input bindings in a versioned graph, and associates each graph with records of the information actually delivered and produced. A controller trained through supervised fine-tuning integrates these records with target responses, evaluator verdicts, and remaining budget to retain the workflow, refine instructions, restructure collaboration, or lock further editing. This design connects feedback to explicit changes in subsequent execution while allowing a useful organization to continue without repeated controller intervention. The evaluation protocol covers HarmBench with three execution backbones and two target models, together with component ablations, dataset transfer, and evaluator checks. Across the six executor-target configurations, L2C improves ASR over EvoSynth by 1.4 to 4.5 percentage points while reducing mean online tokens by 35.6% to 37.3%. L2C connects adaptive collaboration to the resource requirements of automated security evaluation.",
+    "url": "https://arxiv.org/abs/2611.24221",
+    "pdf_url": "https://arxiv.org/pdf/2611.24221v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Jeveration: System One Models Now Generate",
+    "authors": [
+      "Yuhe Liu",
+      "Qi Li",
+      "Shihua Zhang",
+      "Xinchao Wang"
+    ],
+    "abstract": "System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consistency. A single prompt admits many valid images, yet parallel predictions must converge on a coherent whole. We therefore condition all positions on a shared random state to coordinate parallel predictions, so that each draw yields a different but coherent image. Since the model tends to ignore this state under direct image supervision, we first learn a distribution over discrete image codes to guide single-pass generation. Beyond text-to-image generation, we further unify image-to-image generation and dense prediction within the same architecture, so that one checkpoint supports all three tasks, each in one forward pass. Experiments show that Jeveration generates a 512x512 image in 78 ms, up to 122x faster than existing unified models, while maintaining competitive image quality and dense prediction performance.",
+    "url": "https://arxiv.org/abs/2611.24738",
+    "pdf_url": "https://arxiv.org/pdf/2611.24738v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "FACET - Facet Aware Contrastive Embeddings for Traits- Big Five Estimation from Life Narratives",
+    "authors": [
+      "Balakrishnan Arumugam",
+      "Priyen Parekh",
+      "Mehak Gupta",
+      "Joshua Oltmanns"
+    ],
+    "abstract": "Personality is only weakly and inconsistently signaled by written language, and existing text-based methods typically combine language-model and psycholinguistic representations at the input or decision level. It remains open whether a more deliberate combination of the two views, and a decomposition of the prediction target, can recover more of the signal. We present a three-phase framework for estimating Big Five personality domain scores from life-narrative interview text. It encodes text and psycholinguistic features separately and combines them by concatenation or by a learned weighting, decomposes each domain into contrastively trained facet embeddings instead of predicting the domain directly, and pools the facet embeddings by attention into a domain-level prediction. We compare end-to-end with staged training and ablate the input modalities, their combination, and the facet-pooling strategy. On 1,332 participants from the St. Louis Personality and Aging Network (SPAN) study, facet embeddings reach AUC up to 0.740, and domain-level R2 reaches 0.328, highest for Openness. End-to-end training gives lower error than staged training in every domain, and attention pooling gives the lowest error in every domain. Combining the two views lowers error relative to text alone for Conscientiousness and Agreeableness, whereas a learned weighting of the views shows no consistent advantage over concatenation. The framework provides facet- level predictions that a domain-only model cannot, and it improves modestly on a regression from the raw features in four of the five domains.",
+    "url": "https://arxiv.org/abs/2611.23560",
+    "pdf_url": "https://arxiv.org/pdf/2611.23560v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "What Survives the Shift from Text to Pixels? Conditional Protection against Prompt Injection in Image-Rendered Documents",
+    "authors": [
+      "Haoyang Liu",
+      "Yinong Xu",
+      "Zhe Lang",
+      "Zhenyu Guan",
+      "Qianyun Zhang"
+    ],
+    "abstract": "Multimodal language models increasingly answer questions over external documents, exposing them to indirect prompt injection: commands planted in untrusted content to hijack the response. Rendering untrusted content as page images lowers attack success on average, leaving open which injected operations survive rendering, at what utility cost, and whether failed image attacks reflect unread commands or commands read but not followed. We pair text and page-image versions of 191 English question-answering sources across six models, measuring marker appending, answer formatting, and answer replacement alongside clean Question-Answering utility. Rendering reduces append and format execution for every model, yet Qwen3-VL-8B still executes image-borne replacement at 77.96\\%. Protection also depends on target type, rendering settings, wording, and repetition, and a search over eight fixed attack candidates largely closes the image deficit in appending and formatting for Qwen and Gemini, though not for GPT-5-nano. Utility ratios on original questions range from 93.31\\% to 101.61\\%, but Qwen falls to 61.99\\% when answers combine two evidence spans. Illegibility cannot explain all failed attacks: models often transcribe and identify image-borne commands they do not execute, and trusted user authorization raises execution on unchanged pages. Inside Qwen, patching early attack-region states induces all three operations, more weakly in images. Attention blocking suggests why: a text command acts through its own positions, whereas visual encoding spreads an image command and its target across the instruction page. Rendering thus offers conditional protection, motivating evaluations that report security by model, operation, and attack budget alongside utility.",
+    "url": "https://arxiv.org/abs/2611.24231",
+    "pdf_url": "https://arxiv.org/pdf/2611.24231v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "NarrowSpec: Draft Hidden Width Need Not Match the Target in Speculative Decoding",
+    "authors": [
+      "Alagappan Valliappan",
+      "Ankit More",
+      "Dheevatsa Mudigere",
+      "Jatin Mitra"
+    ],
+    "abstract": "Speculative decoding is widely used to speed up generation in large language models (LLMs), with a small draft model proposing tokens that one forward pass of the target model verifies. Draft models that read the target's hidden states, such as DFlash and EAGLE-3, typically inherit the target's hidden width. We show that the draft's whole residual stream can run at half or a quarter of that width while largely preserving acceptance. For DFlash, which borrows the target's vocabulary projection, the trained output adapter folds into it, giving one narrower projection with logits unchanged up to floating-point rounding. We test two drafter families, DFlash and EAGLE-3, on two targets, Qwen3-8B (NVFP4) and GPT-OSS-20B (MXFP4), in SGLang on a B200 and a DGX Spark (GB10). At batch size 1 and temperature 0, narrowing the draft to half or a quarter width speeds up end-to-end decoding by 1.06-1.12x on B200 and 1.13-1.44x on GB10. The speedup holds at larger batch sizes. From batch 32 to the largest batch each GPU fits, narrowing reaches up to 1.21x on both GPUs, and no narrow draft is slower than full width.",
+    "url": "https://arxiv.org/abs/2611.23835",
+    "pdf_url": "https://arxiv.org/pdf/2611.23835v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Autoregressive View Model",
+    "authors": [
+      "Jensen (Jinghao)",
+      "Zhou",
+      "Samuel Rota Bulo",
+      "Denis Rozumny",
+      "Duncan Zauss",
+      "Peter Hedman",
+      "Nikhil Keetha",
+      "Philip Torr",
+      "Christian Rupprecht",
+      "Andrea Vedaldi",
+      "Peter Kontschieder"
+    ],
+    "abstract": "We present the Autoregressive View Model (AVM), which generates a scene as a stream of views without constructing an explicit 3D representation. Through a unified in-context interface, AVM conditions on images or videos to generate short clips along a requested camera path. Visual context grounds reconstruction and interpolation, while a learned prior enables extrapolation into unseen regions. AVM retrieves relevant views from inputs and generated history to form a bounded active context. We fine-tune a pretrained bidirectional video diffusion transformer with flow matching in an N-in-1-out formulation. We then tune a causal model on its own rollouts to improve photorealism, reduce denoising steps, and limit long-horizon drift. We scale training to approximately 8M scenes and video clips. We evaluate generation capacity and scene persistence across benchmarks for camera control, text control, visual quality, dynamics, sparse and 4D reconstruction, and long-horizon consistency. The results demonstrate that AVM adapts to diverse input and output settings through one in-context interface.",
+    "url": "https://arxiv.org/abs/2611.23417",
+    "pdf_url": "https://arxiv.org/pdf/2611.23417v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "BOS Summary: The First Token Matters",
+    "authors": [
+      "Hui Zhu",
+      "Saleh Zare Zade",
+      "Rafi Ibn Sultan",
+      "Deng Pan",
+      "Arun Ross",
+      "Dongxiao Zhu"
+    ],
+    "abstract": "Large vision-language models (LVLMs) and language models (LLMs) often exhibit attention sinks, whereby particular positions, such as the beginning-of-sequence (BOS) token, receive a disproportionate share of attention. Under standard causal masking, however, the BOS query attends only to itself, so the representation that later tokens repeatedly access carries no information about the input. We introduce BOS Summary, a training-free inference-time method that repurposes this persistent pathway to carry input context. At a single transformer layer during prefill, BOS Summary relaxes the causal constraint for the BOS query row alone, letting BOS aggregate all visual and textual input tokens into a self-derived context representation while every other token retains standard causal attention. The enriched representation then remains accessible to the model throughout decoding, with no additional parameters, auxiliary modules, or decoding-time overhead. Across multiple VLM and LLM families and eight multimodal and text-only benchmarks, BOS Summary improves over direct and Chain-of-Thought prompting and outperforms recent sink-intervention methods on multi-step reasoning tasks. A mechanistic analysis shows that making BOS input-specific also weakens its sink dominance and redistributes attention toward content-bearing prompt tokens, indicating that changing what a sink carries reshapes how later layers allocate attention.",
+    "url": "https://arxiv.org/abs/2611.23508",
+    "pdf_url": "https://arxiv.org/pdf/2611.23508v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "EgoJev: Finding Evidence in Egocentric Video by Reading VLM Decisions",
+    "authors": [
+      "Chunggi Lee",
+      "Hanspeter Pfister"
+    ],
+    "abstract": "Questions about long egocentric video often depend on one brief moment, such as the second a hand puts an object down. A vision-language model (VLM) that sees a few evenly spaced frames usually misses it. Training-free methods rank frames with a separate image-text model or ask the VLM to write a time. In a controlled test, the VLM itself locates the moment better when it chooses among labeled frames, and we read this choice from its output distribution. With the same candidates, this choice lands on the evidence more often than image-text scores or a written time span, and it compares all candidates in one decision. Based on this finding, we propose EgoJev, a training-free frame selector for wearable assistants. EgoJev reads where the evidence is from labeled thumbnails and looks again at the windows it points to. It places its few answer frames at the quantiles of the resulting distribution. One frozen VLM selects, answers and returns the evidence time, with no second model. A wearable device can encode its coarse thumbnails while it records. With Qwen3.5-4B and 8 answer frames, EgoJev raises QAEgo4D accuracy from 51.2% with uniform sampling to 62.0%, and it outperforms recent training-free frame selectors on QAEgo4D and MyEgo. A single-level version runs on a Mac and an iPhone.",
+    "url": "https://arxiv.org/abs/2611.24616",
+    "pdf_url": "https://arxiv.org/pdf/2611.24616v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "On Demand, Not Uniformity: Adaptive Expert Orchestration for Multimodal Continual Instruction Tuning",
+    "authors": [
+      "Mengxin Qin",
+      "Kun Wei",
+      "Weitao An",
+      "Jiahua Li",
+      "Xu Yang",
+      "Cheng Deng"
+    ],
+    "abstract": "Multimodal Continual Instruction Tuning (MCIT) enables Multimodal Large Language Models (MLLMs) to adapt to sequential instruction data while retaining previously acquired knowledge. While recent Mixture-of-Experts (MoE)-based methods mitigate forgetting by freezing historical experts and introducing new ones, they largely overlook the varying adaptation demands across tasks. Probing incoming tasks reveals pronounced heterogeneity in layer-wise gradient pressure and token-wise prediction difficulty. This observation highlights two unresolved decisions: where additional capacity is needed and how strongly new experts should contribute to individual tokens. To address both questions, we propose the Coverage-Calibrated Expert Injection and Residual Arbitration framework (CIRA-MoE), which derives expert acceptance margins via learnable threshold routing to serve as a unified coverage signal. Specifically, historical acceptance evidence guides the selective injection of new experts into insufficiently covered layers. Meanwhile, relative evidence between historical and current experts modulates token-wise residual contributions, coupled with arbitration-consistent regularization to promote expert specialization. Comprehensive experiments on UCIT and CoIN demonstrate that CIRA-MoE outperforms existing state-of-the-art methods in MCIT.",
+    "url": "https://arxiv.org/abs/2611.23865",
+    "pdf_url": "https://arxiv.org/pdf/2611.23865v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Reliability is a user-specific property of large language models",
+    "authors": [
+      "Xingyu Zhao"
+    ],
+    "abstract": "Public benchmarks support comparisons of large language model (LLM) capabilities, yet users can experience the same highly ranked model differently. Drawing on traditional software reliability, we argue that the reliability of an LLM service should be assessed for specified users and conditions of use. This requires more than a capability score: evaluation evidence must support a claim about failure during future operation. We distinguish testing to discover faults from testing to assess reliability and identify ten modelling considerations behind such claims. We propose a six-workstream research roadmap linking claim specification, dynamic operational profiles, graded outcomes and noisy judgements, local probabilistic robustness, interaction dependence, and statistical inference with reassessment. Local probabilistic robustness addresses the behavioural variation hidden when different concrete inputs are treated as the same task. Published findings and an illustrative customer-support example motivate the roadmap; its integrated validation remains an open research task. Reliability claims complement, but do not replace, separate safety and security arguments. Capability scores should therefore be complemented by versioned operational claims that state whose requirements are covered, under which conditions, and with what uncertainty.",
+    "url": "https://arxiv.org/abs/2611.23732",
+    "pdf_url": "https://arxiv.org/pdf/2611.23732v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Do Thinking VLMs Need to Keep Looking at Long Videos? Write It Down, Then Look Away",
+    "authors": [
+      "Pengyu Li",
+      "Zhitao Gao",
+      "Lingling Zhang",
+      "Heng Wang",
+      "Chengqian Ma",
+      "WenHao Wang",
+      "Wenxuan Huang",
+      "Chen Zheng",
+      "Jun Liu"
+    ],
+    "abstract": "Vision-language models (VLMs) reason about long videos over hundreds to thousands of tokens. Every decoding step re-reads the key-value (KV) cache of the entire video. Must the model keep looking while it reasons? In LookAway, the model first writes timestamped notes on what the question needs and then puts the video away. Once the notes close, the inference engine hides the video's KV cache for the rest of the response. Across both hybrid and pure-attention VLMs, dependence on the video is concentrated early in the response. On Qwen3.6-27B, writing notes preserves accuracy better than free reasoning at the same withdrawal step. Replacing them with another video's notes harms accuracy, whereas keeping the video visible alongside the model's own notes adds no significant benefit. Without additional training, LookAway nearly matches full-video thinking accuracy at 0.12-0.13 times its modeled decode cost. To shorten this initial look, we fine-tune the model on its own correct LookAway responses. Reinforcement learning then rewards correct answers while penalizing KV reads. The trained model puts the video away after a median of 66-68 tokens. Across three held-out benchmarks, it writes more tokens than an identically trained full-video model yet reads only 27-35% as many KV positions at matched accuracy.",
+    "url": "https://arxiv.org/abs/2611.24259",
+    "pdf_url": "https://arxiv.org/pdf/2611.24259v2",
+    "arxiv_url": null
+  },
+  {
+    "title": "Sex Differences in the Detection of Parkinson's Disease from Speech",
+    "authors": [
+      "Hiba Akhaddar",
+      "Peter Plantinga",
+      "Mirco Ravanelli",
+      "Tristan Glatard"
+    ],
+    "abstract": "Parkinson's disease (PD) is the second most common neurodegenerative disease in the world, and 70\\% to 75\\% of PD patients suffer from speech disorders at some stage. Since PD affects men more frequently than women, previous publications tend to rely on unbalanced datasets that potentially introduce sex biases into trained models. This study investigates sex differences in PD detection from speech using deep learning and traditional machine learning approaches. We evaluated speech-based PD detection using embeddings from three pre-trained speech models, combined with handcrafted acoustic features and different classifiers. Sex-specific experiments were conducted on balanced subsets of four sustained phonation datasets, controlling for sex, disease status, and, where possible, age. All recordings were obtained during a sustained phonation task. Results show that female speakers were more accurately classified than male speakers in the larger dataset. Sex-specific results show that when the models are trained on one sex, they fail to generalize to the other one. Our results highlight the importance of including sex as a variable in the development of PD detection systems.",
+    "url": "https://arxiv.org/abs/2611.24741",
+    "pdf_url": "https://arxiv.org/pdf/2611.24741v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Thinking Fast, Anywhere: One System-1 for the Decision Points of Any Agent Workflow",
+    "authors": [
+      "Rui Li",
+      "Liyang He",
+      "Zheng Zhang",
+      "Zhenya Huang",
+      "Qi Liu"
+    ],
+    "abstract": "Autonomous LLM agents incur substantial cost and latency by invoking a large model (System-2) at every step, even when many intermediate actions choose among a small set of known candidates. Existing dual-system agents offload such decisions to a lightweight System-1 model, but rely on workflow-specific hooks authored per environment. We present AnyS1, a framework that turns human-authored procedural skills, whose instructions naturally specify where choices arise and which options apply, into a shared, domain-general source of decision points. Offline, AnyS1 mines grounded enumerable decisions across over 1,000 public skills, gathers execution-grounded trajectory states inside isolated containers to construct Any-DP, and trains a single calibrated 4B pointer System-1 with label smoothing. At run time, compiled workflows resolve routine decisions in one forward pass and fall back to System-2 when confidence falls below a calibrated threshold. Across three unseen benchmarks and distinct System-2 model families, AnyS1 preserves task reliability while cutting episode cost by 75-91% and model-call time by 63-92% relative to an uncompiled System-2 agent, and maintains performance under zero-shot threshold transfer.",
+    "url": "https://arxiv.org/abs/2611.23751",
+    "pdf_url": "https://arxiv.org/pdf/2611.23751v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Jailbreak Detection on Large Language Models via Contrastive Prototype Structures",
+    "authors": [
+      "Yan Qiu",
+      "Yuanyuan Li"
+    ],
+    "abstract": "Jailbreak attempts and harmful prompts remain a challenge for the safe deployment of large language models. We study whether contrastively learned representations can support safety detection without training an additional downstream classifier. We propose Jailbreak Detection with Prototype Inference (JDPI), which uses binary safety labels to construct harmful and benign prototypes and makes predictions from relative prototype distances. JDPI uses only binary safety labels for encoder adaptation, prototype construction, and validation. In our setup, it uses fewer labeled examples than the classifier baseline (Method A) by avoiding the separate split used to train the downstream classifier. Across four benchmarks covering different input formats, contrastive fine-tuning improves JDPI's detection accuracy by 9.1-18.0 percentage points. Using the same encoder, JDPI achieves slightly higher ROC-AUC on one benchmark and stays within 0.017 of the baseline across all four. With dataset-specific adaptation, JDPI exceeds the released Llama Guard 3-8B baseline by 0.173-0.310 in ROC-AUC across the four benchmarks. In multi-turn replay on TomGibbs, JDPI uses accumulated user history as the conversation unfolds, achieving higher conversation-level accuracy than when it uses the current turn alone. Across 12 directed transfers, JDPI outperforms the classifier by an average of 1.59 percentage points in accuracy, demonstrating stronger cross-dataset robustness.",
+    "url": "https://arxiv.org/abs/2611.24936",
+    "pdf_url": "https://arxiv.org/pdf/2611.24936v1",
+    "arxiv_url": null
+  }
+]

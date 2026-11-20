@@ -131,5 +131,12 @@
     "run_date": "2026-11-19",
     "venue": "SLT",
     "conference_year": "2026"
+  },
+  {
+    "file": "2026-11-20-daily.html",
+    "kind": "daily",
+    "run_date": "2026-11-20",
+    "venue": null,
+    "conference_year": null
   }
 ]
