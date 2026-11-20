@@ -61,11 +61,17 @@ jobs:
           if [ -f data/paper_cache.json ]; then
             git add data/paper_cache.json
           fi
-          git add -A data/pages
+          # Only HTML pages; Publish site rebuilds the index from these files.
+          if compgen -G "data/pages/*.html" > /dev/null; then
+            git add data/pages/*.html
+          fi
+          git diff --name-only --diff-filter=D -- data/pages | while read -r path; do
+            case "$path" in *.html) git add -- "$path" ;; esac
+          done
+          git restore --source=HEAD --staged --worktree -- data/pages/manifest.json 2>/dev/null || true
           if [ -d data/daily_archive ]; then
             git add data/daily_archive
           fi
-          git checkout -- data/pages/manifest.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No daily page changes"
           else
