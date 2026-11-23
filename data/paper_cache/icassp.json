@@ -3043,5 +3043,945 @@
     "abstract": "Current direct speech-to-speech translation methods predominantly employ speech tokens as intermediate representations. However, a single speech token is not dense in semantics, so we generally need multiple tokens to express a complete semantic unit. To address this limitation, we introduce multi-token prediction (MTP) loss into speech-to-unit translation (S2UT) models, enabling models to predict multiple subsequent tokens at each position, thereby capturing more complete semantics and enhancing information density per position. Initial MTP implementations apply the loss at the final layer, which improves output representation but initiates information enrichment too late. We hypothesize that advancing the information enrichment process to intermediate layers can achieve earlier and more effective enhancement of hidden representation. Consequently, we propose MTP-S2UT loss, applying MTP loss to hidden representation where CTC loss is computed. Experiments demonstrate that all MTP loss variants consistently improve the quality of S2UT translation, with MTP-S2UT achieving the best performance.",
     "arxiv_url": "https://arxiv.org/abs/2510.10003v1",
     "arxiv_checked": true
+  },
+  "bimodalfusionframeworkfordynamicfacialexpressionrecognitioninthewild": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bimodaltextualpromptlearningforvisionlanguagemodelsinremotesensing": {
+    "abstract": "Prompt learning (PL) has emerged as an effective strategy to adapt vision-language models (VLMs), such as CLIP, for downstream tasks under limited supervision. While PL has demonstrated strong generalization on natural image datasets, its transferability to remote sensing (RS) imagery remains underexplored. RS data present unique challenges, including multi-label scenes, high intra-class variability, and diverse spatial resolutions, that hinder the direct applicability of existing PL methods. In particular, current prompt-based approaches often struggle to identify dominant semantic cues and fail to generalize to novel classes in RS scenarios. To address these challenges, we propose BiMoRS, a lightweight bi-modal prompt learning framework tailored for RS tasks. BiMoRS employs a frozen image captioning model (e.g., BLIP-2) to extract textual semantic summaries from RS images. These captions are tokenized using a BERT tokenizer and fused with high-level visual features from the CLIP encoder. A lightweight cross-attention module then conditions a learnable query prompt on the fused textual-visual representation, yielding contextualized prompts without altering the CLIP backbone. We evaluate BiMoRS on four RS datasets across three domain generalization (DG) tasks and observe consistent performance gains, outperforming strong baselines by up to 2% on average. Codes are available at https://github.com/ipankhi/BiMoRS.",
+    "arxiv_url": "https://arxiv.org/abs/2601.20675v1",
+    "arxiv_checked": true
+  },
+  "binarymodulationonconjugatereciprocalzerosmoczwithlistdecodingforunknownchannellength": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "binrlivevideobroadcastingqualityassessment": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "biomedr2jointdiversityretrievalandevidencereasoningforbiomedicalquestionanswering": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "biosenabioacousticsignalenhancementnetworkforanimalvocalizations": {
+    "abstract": "Most work in audio enhancement targets human speech, while bioacoustics is less studied due to noisy recordings and the distinct traits of animal sounds. To fill this gap, we adapt speech enhancement methods and build BioSEN, a model made for bioacoustic signals. BioSEN has three modules: a multi-scale dual-axis attention unit for time-frequency feature extraction, a bio-harmonic multi-scale enhancement unit for capturing harmonic structures, and an energy-adaptive gating connection unit that uses frequency weights to keep vocalizations from being removed as noise. Tests on three bioacoustic datasets show that BioSEN matches or exceeds state-of-the-art speech enhancement models while using far less computation. These results show BioSEN's strength for bioacoustic audio enhancement and its promise for biodiversity monitoring and conservation.",
+    "arxiv_url": "https://arxiv.org/abs/2605.12534v3",
+    "arxiv_checked": true
+  },
+  "bipolarrelationalnetworkforirregulartimeseriesanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "birecnetbidirectionalreconciliationnetworkforhierarchicaltimeseriesforecasting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "birqbilevelselflabelingrandomquantizationforselfsupervisedspeechrecognition": {
+    "abstract": "Speech is a rich signal, and labeled audio-text pairs are costly, making self-supervised learning essential for scalable representation learning. A core challenge in speech SSL is generating pseudo-labels that are both informative and efficient: strong labels, such as those used in HuBERT, improve downstream performance but rely on external encoders and multi-stage pipelines, while efficient methods like BEST-RQ achieve simplicity at the cost of weaker labels. We propose BiRQ, a bilevel SSL framework that combines the efficiency of BEST-RQ with the refinement benefits of HuBERT-style label enhancement. The key idea is to reuse part of the model itself as a pseudo-label generator: intermediate representations are discretized by a random-projection quantizer to produce enhanced labels, while anchoring labels derived directly from the raw input stabilize training and prevent collapse. Training is formulated as an efficient first-order bilevel optimization problem, solved end-to-end with differentiable Gumbel-softmax selection. This design eliminates the need for external label encoders, reduces memory cost, and enables iterative label refinement in an end-to-end fashion. BiRQ consistently improves over BEST-RQ while maintaining low complexity and computational efficiency. We validate our method on various datasets, including 960-hour LibriSpeech, 150-hour AMI meetings and 5,000-hour YODAS, demonstrating consistent gains over BEST-RQ.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15430v1",
+    "arxiv_checked": true
+  },
+  "bisambidomainsegmentanythingmodelforcamouflagedobjectdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blackboxonlinedatapoisoningagainsttrimmingdefensesanmabbasedapproach": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bladderformerastreamingtransformerforrealtimeurologicalstatemonitoring": {
+    "abstract": "Bladder pressure monitoring systems are increasingly vital in diagnosing and managing urinary tract dysfunction. Existing solutions rely heavily on hand-crafted features and shallow classifiers, limiting their adaptability to complex signal dynamics. We propose a one-layer streaming transformer model for real-time classification of bladder pressure states, operating on wavelet-transformed representations of raw time-series data. Our model incorporates temporal multi-head self-attention and state caching, enabling efficient online inference with high adaptability. Trained on a dataset of 91 patients with 20,000-80,000 samples each, our method demonstrates improved accuracy, higher energy- and latency-efficiency. Implementation considerations for edge deployment on low-power hardware, such as edge graphical processing units (GPU) and micro-controllers, are also discussed.",
+    "arxiv_url": "https://arxiv.org/abs/2509.24178v1",
+    "arxiv_checked": true
+  },
+  "bleednomoregenerativeinterferencereductionformusicalrecordings": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blindimagedeblurringwithdecoupleddiffusionreversion": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blindlunarsoilimageenhancement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blindonlineneuralrecoveryofradarwaveformsfromlinearprojectionsofinterleavedadcmeasurements": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blindqualityassessmentofstereoscopicvideosusingscenebasedattributes": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blinddettowardsrobustphysicalworldbackdoorattackinlowlightscenariosagainstobjectdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blinkbasedbiometricidentificationusingwearableeegunderfatigueandeffortvariations": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "blockwise3dgaussiansplattingforefficientandhighfidelitycrossdevicerendering": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bloodrootwhenwatermarkingturnspoisonousforstealthybackdoor": {
+    "abstract": "Backdoor data poisoning is a crucial technique for ownership protection and defending against malicious attacks. Embedding hidden triggers in training data can manipulate model outputs, enabling provenance verification, and deterring unauthorized use. However, current audio backdoor methods are suboptimal, as poisoned audio often exhibits degraded perceptual quality, which is noticeable to human listeners. This work explores the intrinsic stealthiness and effectiveness of audio watermarking in achieving successful poisoning. We propose a novel Watermark-as-Trigger concept, integrated into the Bloodroot backdoor framework via adversarial LoRA fine-tuning, which enhances perceptual quality while achieving a much higher trigger success rate and clean-sample accuracy. Experiments on speech recognition (SR) and speaker identification (SID) datasets show that watermark-based poisoning remains effective under acoustic filtering and model pruning. The proposed Bloodroot backdoor framework not only secures data-to-model ownership, but also well reveals the risk of adversarial misuse.",
+    "arxiv_url": "https://arxiv.org/abs/2510.07909v2",
+    "arxiv_checked": true
+  },
+  "bmdcahybridbigbirdandmultiscaledilatedconvolutionmodelforseizuredetectionfromscalpeeg": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boattunifiedbayesianonlinetrackingandadaptationfordynamictensorstreams": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boneconductionguidedmultimodalspeechenhancementwithconditionaldiffusionmodels": {
+    "abstract": "Single-channel speech enhancement models face significant performance degradation in extremely noisy environments. While prior work has shown that complementary bone-conducted speech can guide enhancement, effective integration of this noise-immune modality remains a challenge. This paper introduces a novel multimodal speech enhancement framework that integrates bone-conduction sensors with air-conducted microphones using a conditional diffusion model. Our proposed model significantly outperforms previously established multimodal techniques and a powerful diffusion-based single-modal baseline across a wide range of acoustic conditions.",
+    "arxiv_url": "https://arxiv.org/abs/2601.12354v1",
+    "arxiv_checked": true
+  },
+  "boostinganomalydetectioninindustrial3ddataanentropyguideddenoisingautoencoder": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boostingcontextualadaptivepolicylearningwithfoundationmodelguidance": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boostingknowledgedistillationvialocalcategoriessimilarityscaling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boostingknowledgesharingamongagentsviagraphdecoupling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boostingpriorgenerationviamultimodalgradientattentionforfewshotsegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bootandfeedbackframeworkforgeneralistexpertmodelcollaborationinbreastultrasounddiagnosis": {
+    "abstract": "Breast ultrasound (BUS) is widely used for breast cancer diagnosis yet remains operator-dependent. While deep learning shows promise, ensuring diagnostic reliability and interpretability is challenging. Recent Multimodal Large Language Models (MLLMs) often generate spurious descriptions due to limited domain knowledge, which mislead downstream expert models and compromise clinical validity. To address these challenges, we propose the Boot-and-Feedback (BooF) model collaboration framework for synergistic MLLM-expert interaction. Specifically, in the Boot Stage, the MLLM is guided by the BI-RADS lexicon and preliminary benign-malignant vision-expert predictions, enabling it to transfer general reasoning to BUS analysis while avoiding hallucinations. Subsequently, the Feedback Stage integrates these descriptions with visual features via a lightweight Attention-Gated Cross-Modality Fusion Module. This allows the expert to leverage textual feedback while adaptively filtering noise. Extensive experiments on multiple BUS datasets demonstrate that BooF substantially outperforms state-of-the-art methods in terms of diagnostic accuracy and interpretability.",
+    "arxiv_url": "https://arxiv.org/abs/2608.23974v1",
+    "arxiv_checked": true
+  },
+  "borablockwiseorthogonalrank1adaptiveoptimization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boundaryenhancedvisionmambaunetformedicalimagesegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boundingmemorizationwithlosscurvatureandconnectionstocompression": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "boxchainvlaexplicitreasoningtoactioninterfacesforgeneralizableroboticmanipulation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bpmfbidirectionalpredictionbymultiscalefeaturesformultimodalindustrialanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "brainfunctionalevolutioninadhdsubtypesviacontrastivelearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "brainblipbootstrappinglanguageimagepretrainingfrommriandcognitionalignmenttodiagnosemultiplebraindisorders": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "braingraspgraphbasedsaliencypriorsforimprovedfmribasedvisualbraindecoding": {
+    "abstract": "Recent progress in brain-guided image generation has improved the quality of fMRI-based reconstructions; however, fundamental challenges remain in preserving object-level structure and semantic fidelity. Many existing approaches overlook the spatial arrangement of salient objects, leading to conceptually inconsistent outputs. We propose a saliency-driven decoding framework that employs graph-informed saliency priors to translate structural cues from brain signals into spatial masks. These masks, together with semantic information extracted from embeddings, condition a diffusion model to guide image regeneration, helping preserve object conformity while maintaining natural scene composition. In contrast to pipelines that invoke multiple diffusion stages, our approach relies on a single frozen model, offering a more lightweight yet effective design. Experiments show that this strategy improves both conceptual alignment and structural similarity to the original stimuli, while also introducing a new direction for efficient, interpretable, and structurally grounded brain decoding.",
+    "arxiv_url": "https://arxiv.org/abs/2604.10617v1",
+    "arxiv_checked": true
+  },
+  "braininformedspeechseparationforcochlearimplants": {
+    "abstract": "We propose a brain-informed speech separation method for cochlear implants (CIs) that uses electroencephalography (EEG)-derived attention cues to guide enhancement toward the attended speaker. An attention-guided network fuses audio mixtures with EEG features through a lightweight fusion layer, producing attended-source electrodograms for CI stimulation while resolving the label-permutation ambiguity of audio-only separators. Robustness to degraded attention cues is improved with a mixed curriculum that varies cue quality during training, yielding stable gains even when EEG-speech correlation is moderate. In multi-talker conditions, the model achieves higher signal-to-interference ratio improvements than an audio-only electrodogram baseline while remaining slightly smaller (167k vs. 171k parameters). With 2 ms algorithmic latency and comparable cost, the approach highlights the promise of coupling auditory and neural cues for cognitively adaptive CI processing.",
+    "arxiv_url": "https://arxiv.org/abs/2601.22260v1",
+    "arxiv_checked": true
+  },
+  "braininspiredvideoqualityassessmentviavisualeegfeaturealignment": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "brainprintmodulatedtargetspeakerextraction": {
+    "abstract": "Achieving robust and personalized performance in neuro-steered Target Speaker Extraction (TSE) remains a significant challenge for next-generation hearing aids. This is primarily due to two factors: the inherent non-stationarity of EEG signals across sessions, and the high inter-subject variability that limits the efficacy of generalized models. To address these issues, we propose Brainprint-Modulated Target Speaker Extraction (BM-TSE), a novel framework for personalized and high-fidelity extraction. BM-TSE first employs a spatio-temporal EEG encoder with an Adaptive Spectral Gain (ASG) module to extract stable features resilient to non-stationarity. The core of our framework is a personalized modulation mechanism, where a unified brainmap embedding is learned under the joint supervision of subject identification (SID) and auditory attention decoding (AAD) tasks. This learned brainmap, encoding both static user traits and dynamic attentional states, actively refines the audio separation process, dynamically tailoring the output to each user. Evaluations on the public KUL and Cocktail Party datasets demonstrate that BM-TSE achieves state-of-the-art performance, significantly outperforming existing methods. Our code is publicly accessible at: https://github.com/rosshan-orz/BM-TSE.",
+    "arxiv_url": "https://arxiv.org/abs/2509.17883v1",
+    "arxiv_checked": true
+  },
+  "brainscoremeetsrepresentationalsimilarityanalysisamethodologicalconvergenceinmodelbrainalignment": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "breakingcodebookredundancyforfasterautoregressiveimagegenerationwithretrievalaugmentedspeculativedecoding": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "breakingcognitivefixationinmultiturndialoguewithselfdistancingandincubation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "breakingdataefficiencydilemmaafederatedandaugmentedlearningframeworkforalzheimersdiseasedetectionviaspeech": {
+    "abstract": "Early diagnosis of Alzheimer's Disease (AD) is crucial for delaying its progression. While AI-based speech detection is non-invasive and cost-effective, it faces a critical data efficiency dilemma due to medical data scarcity and privacy barriers. Therefore, we propose FAL-AD, a novel framework that synergistically integrates federated learning with data augmentation to systematically optimize data efficiency. Our approach delivers three key breakthroughs: First, absolute efficiency improvement through voice conversion-based augmentation, which generates diverse pathological speech samples via cross-category voice-content recombination. Second, collaborative efficiency breakthrough via an adaptive federated learning paradigm, maximizing cross-institutional benefits under privacy constraints. Finally, representational efficiency optimization by an attentive cross-modal fusion model, which achieves fine-grained word-level alignment and acoustic-textual interaction. Evaluated on ADReSSo, FAL-AD achieves a state-of-the-art multi-modal accuracy of 91.52%, outperforming all centralized baselines and demonstrating a practical solution to the data efficiency dilemma. Our source code is publicly available at https://github.com/smileix/fal-ad.",
+    "arxiv_url": "https://arxiv.org/abs/2602.14655v1",
+    "arxiv_checked": true
+  },
+  "breakingthecurseofdimensionalityingaussianprocesstrainingwithzerothorderadaptiveperturbation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "breakingtheforgettingmemorizationtradeoffamemoryadaptiveoptimizerforeffectivelargelanguagemodelsunlearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "breakthebeatcontrollablemiditodrumaudiosynthesis": {
+    "abstract": "Current methods for creating drum loop audio in digital music production, such as using one-shot samples or resampling, often demand non-trivial efforts of creators. While recent generative models achieve high fidelity and adhere to text, they lack the specific control needed for such a task. Existing symbolic-to-audio research often focuses on single, tonal instruments, leaving the challenge of polyphonic, percussive drum synthesis unaddressed. We address this gap by introducing ``Break-the-Beat!,'' a model capable of rendering a drum MIDI with the timbre of a reference audio. It is built by fine-tuning a pre-trained text-to-audio model with our proposed content encoder and a effective hybrid conditioning mechanism. To enable this, we construct a new dataset of paired target-reference drum audio from existing drum audio datasets. Experiments demonstrate that our model generates high-quality drum audio that follows high-resolution drum MIDI, achieving strong performance across metrics of audio quality, rhythmic alignment, and beat continuity. This offer producers a new, controllable tool for creative production. Demo page: https://ik4sumii.github.io/break-the-beat/",
+    "arxiv_url": "https://arxiv.org/abs/2605.14555v1",
+    "arxiv_checked": true
+  },
+  "bridgecodeadualspeechrepresentationparadigmforautoregressivezeroshottexttospeechsynthesis": {
+    "abstract": "Autoregressive (AR) frameworks have recently achieved remarkable progress in zero-shot text-to-speech (TTS) by leveraging discrete speech tokens and large language model techniques. Despite their success, existing AR-based zero-shot TTS systems face two critical limitations: (i) an inherent speed-quality trade-off, as sequential token generation either reduces frame rates at the cost of expressiveness or enriches tokens at the cost of efficiency, and (ii) a text-oriented supervision mismatch, as cross-entropy loss penalizes token errors uniformly without considering the fine-grained acoustic similarity among adjacent tokens. To address these challenges, we propose BridgeTTS, a novel AR-TTS framework built upon the dual speech representation paradigm BridgeCode. BridgeTTS reduces AR iterations by predicting sparse tokens while reconstructing rich continuous features for high-quality synthesis. Joint optimization of token-level and feature-level objectives further enhances naturalness and intelligibility. Experiments demonstrate that BridgeTTS achieves competitive quality and speaker similarity while significantly accelerating synthesis. Speech demos are available at https://test1562.github.io/demo/.",
+    "arxiv_url": "https://arxiv.org/abs/2510.11646v1",
+    "arxiv_checked": true
+  },
+  "bridgingacademiaandindustrylargescalenirsignalfoundationforrobustmultitaskandrealworldmodeling": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingintensityandstructuregapsincrossmodalitymedicalimagesegmentationviadualalignment": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridginglegalexpertiseandllmsacooperativelogicalreasoningframeworkforsentencingrecommendation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingmultiscalecontextspriorguideddynamicfusionfordegradationrobustimagerestoration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingmultiviewstereoandgaussiansplattingenhancinghighfidelityrenderingwithgeometricpriors": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingphysicalmodelsandgenerativepriorsfordehazingfromcoarseestimationtoresidualrefinement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingsarandopticaldomainssynergizingbrownianbridgediffusionandlocalcontrastivelearningforimagetranslation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingthefrontendandbackendforrobustasrviacrossattentionbasedunet": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingthegaptransformingnaturallanguagequestionsintosqlqueriesviaabstractquerypatternandcontextualschemamarkup": {
+    "abstract": "Large language models have demonstrated excellent performance in many tasks, including Text-to-SQL, due to their powerful in-context learning capabilities. They are becoming the mainstream approach for Text-to-SQL. However, these methods still have a significant gap compared to human performance, especially on complex questions. As the complexity of questions increases, the gap between questions and SQLs increases. We identify two important gaps: the structural mapping gap and the lexical mapping gap. To tackle these two gaps, we propose PAS-SQL, an efficient SQL generation pipeline based on LLMs, which alleviates gaps through Abstract Query Pattern (AQP) and Contextual Schema Markup (CSM). AQP aims to obtain the structural pattern of the question by removing database-related information, which enables us to find structurally similar demonstrations. CSM aims to associate database-related text span in the question with specific tables or columns in the database, which alleviates the lexical mapping gap. Experimental results on the Spider and BIRD datasets demonstrate the effectiveness of our proposed method. Specifically, PAS-SQL + GPT-4o sets a new state-of-the-art on the Spider benchmark with an execution accuracy of 87.9\\%, and achieves leading results on the BIRD dataset with an execution accuracy of 64.67\\%.",
+    "arxiv_url": "https://arxiv.org/abs/2502.14682v1",
+    "arxiv_checked": true
+  },
+  "bridgingtheknowledgegapllmdrivencontrastivememoryofthoughtpromptingfortaskorienteddialogue": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingthemeasurementsimulationgapinroomacousticswithreal2simdiffusion": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingthesemanticgapcrossattentivefusionforjointacousticsemanticspeechqualityassessment": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bridgingvisionandlanguagewithquantumstateforvideotextretrieval": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bringingmultimodalfoundationmodelstohearingaids": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "brtransabalanceawareandrelationguidedframeworkforcrossdomainprediction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "bsmimaglsildinformedbinauralsignalmatchingforreproductionwithheadmountedmicrophonearrays": {
+    "abstract": "Headphone listening in applications such as augmented and virtual reality (AR and VR) relies on high-quality spatial audio to ensure immersion, making accurate binaural reproduction a critical component. As capture devices, wearable arrays with only a few microphones with irregular arrangement face challenges in achieving a reproduction quality comparable to that of arrays with a large number of microphones. Binaural signal matching (BSM) has recently been presented as a signal-independent approach for generating high-quality binaural signal using only a few microphones, which is further improved using magnitude-least squares (MagLS) optimization at high frequencies. This paper extends BSM with MagLS by introducing interaural level difference (ILD) into the MagLS, integrated into BSM (BSM-iMagLS). Using a deep neural network (DNN)-based solver, BSM-iMagLS achieves joint optimization of magnitude, ILD, and magnitude derivatives, improving spatial fidelity. Performance is validated through theoretical analysis, numerical simulations with diverse HRTFs and head-mounted array geometries, and listening experiments, demonstrating a substantial reduction in ILD errors while maintaining comparable magnitude accuracy to state-of-the-art solutions. The results highlight the potential of BSM-iMagLS to enhance binaural reproduction for wearable and portable devices.",
+    "arxiv_url": "https://arxiv.org/abs/2501.18227v2",
+    "arxiv_checked": true
+  },
+  "bsmpsenetbandsplitmagnitudephasenetworkforspeechenhancement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "btcchatadvancingremotesensingbitemporalchangecaptioningwithmultimodallargelanguagemodel": {
+    "abstract": "Bi-temporal satellite imagery supports critical applications such as urbanization monitoring and disaster assessment. Although powerful multimodal large language models~(MLLMs) have been applied in bi-temporal change analysis, previous methods process image pairs through direct concatenation, inadequately modeling temporal correlations and spatial semantic changes. This deficiency hampers visual-semantic alignment in change understanding, thereby constraining the overall effectiveness of current approaches. To address this gap, we propose BTCChat, a multi-temporal MLLM with advanced bi-temporal change understanding capability. BTCChat supports bi-temporal change captioning and retains single-image interpretation capability. To better capture temporal features and spatial semantic changes in image pairs, we design a Change Extraction module. Moreover, to enhance the model's attention to spatial details, we introduce a Prompt Augmentation mechanism, which incorporates contextual clues into the prompt to enhance model performance. Experimental results demonstrate that BTCChat achieves state-of-the-art performance on change captioning and visual question answering tasks. The code is available \\href{https://github.com/IntelliSensing/BTCChat}{here}.",
+    "arxiv_url": "https://arxiv.org/abs/2509.05895v2",
+    "arxiv_checked": true
+  },
+  "btdaarobustframeworkforencryptedtrafficclassificationwithbyteleveltlsdataaugmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "btrfusionmisalignedmedicalimagefusionviabidirectionaltranslationandregistration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "buildwithprecisionbottomupinferenceoflineardags": {
+    "abstract": "Learning the structure of directed acyclic graphs (DAGs) from observational data is a central problem in causal discovery, statistical signal processing, and machine learning. Under a linear Gaussian structural equation model (SEM) with equal noise variances, the problem is identifiable and we show that the ensemble precision matrix of the observations exhibits a distinctive structure that facilitates DAG recovery. Exploiting this property, we propose BUILD (Bottom-Up Inference of Linear DAGs), a deterministic stepwise algorithm that identifies leaf nodes and their parents, then prunes the leaves by removing incident edges to proceed to the next step, exactly reconstructing the DAG from the true precision matrix. In practice, precision matrices must be estimated from finite data, and ill-conditioning may lead to error accumulation across BUILD steps. As a mitigation strategy, we periodically re-estimate the precision matrix (with less variables as leaves are pruned), trading off runtime for enhanced robustness. Reproducible results on challenging synthetic benchmarks demonstrate that BUILD compares favorably to state-of-the-art DAG learning algorithms, while offering an explicit handle on complexity.",
+    "arxiv_url": "https://arxiv.org/abs/2512.16111v2",
+    "arxiv_checked": true
+  },
+  "bundlingawaremaskedgraphautoencoderforbundlerecommendation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "butterflytransformerforlightweightimagerestoration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "c2bnvaedualconditionaldeepgenerationofnetworktrafficdatafornetworkintrusiondetectionsystembalancing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cfwsvadtowardshighperformancecoarseandfinegrainedweaklysupervisedvideoanomalydetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "caddconditionanchordatasetdistillation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cadjudgetowardefficientmorphologicalgradingandverificationfortexttocadgeneration": {
+    "abstract": "Computer-Aided Design (CAD) models are widely used across industrial design, simulation, and manufacturing processes. Text-to-CAD systems aim to generate editable, general-purpose CAD models from textual descriptions, significantly reducing the complexity and entry barrier associated with traditional CAD workflows. However, rendering CAD models can be slow, and deploying VLMs to review CAD models can be expensive and may introduce reward hacking that degrades the systems. To address these challenges, we propose CAD-Judge, a novel, verifiable reward system for efficient and effective CAD preference grading and grammatical validation. We adopt the Compiler-as-a-Judge Module (CJM) as a fast, direct reward signal, optimizing model alignment by maximizing generative utility through prospect theory. To further improve the robustness of Text-to-CAD in the testing phase, we introduce a simple yet effective agentic CAD generation approach and adopt the Compiler-as-a-Review Module (CRM), which efficiently verifies the generated CAD models, enabling the system to refine them accordingly. Extensive experiments on challenging CAD datasets demonstrate that our method achieves state-of-the-art performance while maintaining superior efficiency.",
+    "arxiv_url": "https://arxiv.org/abs/2508.04002v1",
+    "arxiv_checked": true
+  },
+  "cadmclustercustomizedadaptivedistancemetricforcategoricaldataclustering": {
+    "abstract": "An appropriate distance metric is crucial for categorical data clustering, as the distance between categorical data cannot be directly calculated. However, the distances between attribute values usually vary in different clusters induced by their different distributions, which has not been taken into account, thus leading to unreasonable distance measurement. Therefore, we propose a cluster-customized distance metric for categorical data clustering, which can competitively update distances based on different distributions of attributes in each cluster. In addition, we extend the proposed distance metric to the mixed data that contains both numerical and categorical attributes. Experiments demonstrate the efficacy of the proposed method, i.e., achieving an average ranking of around first in fourteen datasets. The source code is available at https://anonymous.4open.science/r/CADM-47D8",
+    "arxiv_url": "https://arxiv.org/abs/2511.05826v2",
+    "arxiv_checked": true
+  },
+  "cadmambaclusteringadaptivemambaformultivariatetimeseriesforecasting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cafmambamambabasedcrossmodaladaptiveattentionfusionformultimodaldepressiondetection": {
+    "abstract": "Depression is a prevalent mental health disorder that severely impairs daily functioning and quality of life. While recent deep learning approaches for depression detection have shown promise, most rely on limited feature types, overlook explicit cross-modal interactions, and employ simple concatenation or static weighting for fusion. To overcome these limitations, we propose CAF-Mamba, a novel Mamba-based cross-modal adaptive attention fusion framework. CAF-Mamba not only captures cross-modal interactions explicitly and implicitly, but also dynamically adjusts modality contributions through a modality-wise attention mechanism, enabling more effective multimodal fusion. Experiments on two in-the-wild benchmark datasets, LMVD and D-Vlog, demonstrate that CAF-Mamba consistently outperforms existing methods and achieves state-of-the-art performance. Our code is available at https://github.com/zbw-zhou/CAF-Mamba.",
+    "arxiv_url": "https://arxiv.org/abs/2601.21648v2",
+    "arxiv_checked": true
+  },
+  "camacharacterawaremaskingandalignmentforselfsupervisedstr": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cameocollectionofmultilingualemotionalspeechcorpora": {
+    "abstract": "This paper presents CAMEO -- a curated collection of multilingual emotional speech datasets designed to facilitate research in emotion recognition and other speech-related tasks. The main objectives were to ensure easy access to the data, to allow reproducibility of the results, and to provide a standardized benchmark for evaluating speech emotion recognition (SER) systems across different emotional states and languages. The paper describes the dataset selection criteria, the curation and normalization process, and provides performance results for several models. The collection, along with metadata, and a leaderboard, is publicly available via the Hugging Face platform.",
+    "arxiv_url": "https://arxiv.org/abs/2505.11051v3",
+    "arxiv_checked": true
+  },
+  "camodcausalawaremodalitydenoisingformultimodaldialogueintentrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "canaudiorevealmusicperformancedifficultyinsightsfromthepianosyllabusdataset": {
+    "abstract": "Automatically estimating the performance difficulty of a music piece represents a key process in music education to create tailored curricula according to the individual needs of the students. Given its relevance, the Music Information Retrieval (MIR) field depicts some proof-of-concept works addressing this task that mainly focuses on high-level music abstractions such as machine-readable scores or music sheet images. In this regard, the potential of directly analyzing audio recordings has been generally neglected, which prevents students from exploring diverse music pieces that may not have a formal symbolic-level transcription. This work pioneers in the automatic estimation of performance difficulty of music pieces on audio recordings with two precise contributions: (i) the first audio-based difficulty estimation dataset -- namely, Piano Syllabus (PSyllabus) dataset -- featuring 7,901 piano pieces across 11 difficulty levels from 1,233 composers; and (ii) a recognition framework capable of managing different input representations -- both unimodal and multimodal manners -- directly derived from audio to perform the difficulty estimation task. The comprehensive experimentation comprising different pre-training schemes, input modalities, and multi-task scenarios prove the validity of the proposal and establishes PSyllabus as a reference dataset for audio-based difficulty estimation in the MIR field. The dataset as well as the developed code and trained models are publicly shared to promote further research in the field.",
+    "arxiv_url": "https://arxiv.org/abs/2403.03947v2",
+    "arxiv_checked": true
+  },
+  "candataaugmentationbecomeaprivacyshieldformodelinversionattacks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "canhierarchicalcrossmodalfusionpredicthumanperceptionofaidubbedcontent": {
+    "abstract": "Evaluating AI generated dubbed content is inherently multi-dimensional, shaped by synchronization, intelligibility, speaker consistency, emotional alignment, and semantic context. Human Mean Opinion Scores (MOS) remain the gold standard but are costly and impractical at scale. We present a hierarchical multimodal architecture for perceptually meaningful dubbing evaluation, integrating complementary cues from audio, video, and text. The model captures fine-grained features such as speaker identity, prosody, and content from audio, facial expressions and scene-level cues from video and semantic context from text, which are progressively fused through intra and inter-modal layers. Lightweight LoRA adapters enable parameter-efficient fine-tuning across modalities. To overcome limited subjective labels, we derive proxy MOS by aggregating objective metrics with weights optimized via active learning. The proposed architecture was trained on 12k Hindi-English bidirectional dubbed clips, followed by fine-tuning with human MOS. Our approach achieves strong perceptual alignment (PCC > 0.75), providing a scalable solution for automatic evaluation of AI-dubbed content.",
+    "arxiv_url": "https://arxiv.org/abs/2603.28717v2",
+    "arxiv_checked": true
+  },
+  "canllmsbeathumansindebatingadynamicmultiagentframeworkforcompetitivedebate": {
+    "abstract": "Competitive debate is a complex task of computational argumentation. Large Language Models (LLMs) suffer from hallucinations and lack competitiveness in this field. To address these challenges, we introduce Agent for Debate (Agent4Debate), a dynamic multi-agent framework based on LLMs designed to enhance their capabilities in competitive debate. Drawing inspiration from human behavior in debate preparation and execution, Agent4Debate employs a collaborative architecture where four specialized agents, involving Searcher, Analyzer, Writer, and Reviewer, dynamically interact and cooperate. These agents work throughout the debate process, covering multiple stages from initial research and argument formulation to rebuttal and summary. To comprehensively evaluate framework performance, we construct the Competitive Debate Arena, comprising 66 carefully selected Chinese debate motions. We recruit ten experienced human debaters and collect records of 200 debates involving Agent4Debate, baseline models, and humans. The evaluation employs the Debatrix automatic scoring system and professional human reviewers based on the established Debatrix-Elo and Human-Elo ranking. Experimental results indicate that the state-of-the-art Agent4Debate exhibits capabilities comparable to those of humans. Furthermore, ablation studies demonstrate the effectiveness of each component in the agent structure.",
+    "arxiv_url": "https://arxiv.org/abs/2408.04472v2",
+    "arxiv_checked": true
+  },
+  "canmetalearningaddressthechallengesofbiosignalpersonalization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cansyntheticimagesserveaseffectiveandefficientclassprototypes": {
+    "abstract": "Vision-Language Models (VLMs) have shown strong performance in zero-shot image classification tasks. However, existing methods, including Contrastive Language-Image Pre-training (CLIP), all rely on annotated text-to-image pairs for aligning visual and textual modalities. This dependency introduces substantial cost and accuracy requirement in preparing high-quality datasets. At the same time, processing data from two modes also requires dual-tower encoders for most models, which also hinders their lightweight. To address these limitations, we introduce a ``Contrastive Language-Image Pre-training via Large-Language-Model-based Generation (LGCLIP)\" framework. LGCLIP leverages a Large Language Model (LLM) to generate class-specific prompts that guide a diffusion model in synthesizing reference images. Afterwards these generated images serve as visual prototypes, and the visual features of real images are extracted and compared with the visual features of these prototypes to achieve comparative prediction. By optimizing prompt generation through the LLM and employing only a visual encoder, LGCLIP remains lightweight and efficient. Crucially, our framework requires only class labels as input during whole experimental procedure, eliminating the need for manually annotated image-text pairs and extra pre-processing. Experimental results validate the feasibility and efficiency of LGCLIP, demonstrating great performance in zero-shot classification tasks and establishing a novel paradigm for classification.",
+    "arxiv_url": "https://arxiv.org/abs/2512.17160v2",
+    "arxiv_checked": true
+  },
+  "canunlearningofmodelsleadtoadversarialrobustness": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "canvisionlanguagemodelsperceivegraphsaccuratelyavisualgraphperceptionevaluationbenchmark": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cancerofunknownprimarypredictionviasemanticpromptingandtumorenvironmentawarepatchselection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "candynetcrossmodalaligneddualstreamnetworkwithhierarchicalspatialfrequencyfeaturesforalzheimersdiseaseclassification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "capacityanalysisofofdmsystemswithaswarmofnetworkcontrolledrepeaters": {
+    "abstract": "This paper investigates the uplink capacity of single-input single-output (SISO) systems assisted by a swarm of network-controlled repeaters (NCRs). We develop a rigorous wideband formulation based on OFDM signaling. Starting from the continuous-time passband model, we derive the capacity expression for the repeater-assisted OFDM channel, accounting for amplified noise contributions from multiple repeaters. Numerical results demonstrate that NCRs can substantially enhance system capacity even with simple activation strategies, and that activating only the closest repeater yields nearly the same performance as activating all repeaters, thereby offering significant energy-saving opportunities. These findings highlight the potential of NCR swarms as a cost-effective and scalable solution for coverage extension and capacity enhancement in wideband wireless networks.",
+    "arxiv_url": "https://arxiv.org/abs/2604.13805v1",
+    "arxiv_checked": true
+  },
+  "captalightweightcontinualadversarialpretrainingframeworkfortrafficanalysismodel": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "captionandaudioguidedvideorepresentationlearningwithgatedattentionforpartiallyrelevantvideoretrieval": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "carbonecsabenchmarkandaphysicsdecoupledmodelfortheeastchinaseacarbonflux": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cardinalityconstrainedcovarianceestimationinarraybeamforming": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cardiocotmultimodalpredictionofmacerecurrenceriskwithhierarchicalchainofthoughtreasoning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cardnetdualcognitivefewshotmedicalimagesegmentationbasedoncontextualanchoredsemanticremapping": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "carecognitivereasoningaugmentedreinforcementforemotionalsupportconversation": {
+    "abstract": "Emotional Support Conversation (ESC) plays a vital role in alleviating psychological stress and providing emotional value through dialogue. While recent studies have largely focused on data augmentation and synthetic corpus construction, they often overlook the deeper cognitive reasoning processes that underpin effective emotional support. To address this gap, we propose \\textbf{CARE}, a novel framework that strengthens reasoning in ESC without relying on large-scale synthetic data. CARE leverages the original ESC training set to guide models in generating logically coherent and supportive responses, thereby explicitly enhancing cognitive reasoning. Building on this foundation, we further employ reinforcement learning to refine and reinforce the reasoning process. Experimental results demonstrate that CARE significantly improves both the logical soundness and supportive quality of responses, advancing the development of empathetic, cognitively robust, and human-like emotional support systems.",
+    "arxiv_url": "https://arxiv.org/abs/2510.05122v2",
+    "arxiv_checked": true
+  },
+  "caremultitaskpretrainingforlatentcontinuousactionrepresentationinrobotcontrol": {
+    "abstract": "Recent advances in Vision-Language-Action (VLA) models have shown promise for robot control, but their dependence on action supervision limits scalability and generalization. To address this challenge, we introduce CARE, a novel framework designed to train VLA models for robotic task execution. Unlike existing methods that depend on action annotations during pretraining, CARE eliminates the need for explicit action labels by leveraging only video-text pairs. These weakly aligned data sources enable the model to learn continuous latent action representations through a newly designed multi-task pretraining objective. During fine-tuning, a small set of labeled data is used to train the action head for control. Experimental results across various simulation tasks demonstrate CARE's superior success rate, semantic interpretability, and ability to avoid shortcut learning. These results underscore CARE's scalability, interpretability, and effectiveness in robotic control with weak supervision.",
+    "arxiv_url": "https://arxiv.org/abs/2601.22467v1",
+    "arxiv_checked": true
+  },
+  "careagentmultiagentcollaborationwithconflictawareroutingmechanismfordiagnosisprediction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "carefulmmcausalanduncertaintyawaresarcasmrobustmultimodaldepressiondetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "case2knowledgestructuredknowledgeinfusedpromptingforfaithfulradiologyreportgeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "casjcrossmodalattentionsynergyforjailbreakinglargevisionlanguagemodels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "casnetcompressandsendnetworkbasedmultidevicespeechenhancementmodelfordistributedmicrophonearrays": {
+    "abstract": "Distributed microphone array (DMA) is a promising next-generation platform for speech interaction, where speech enhancement (SE) is still required to improve the speech quality in noisy cases. Existing SE methods usually first gather raw waveforms at a fusion center (FC) from all devices and then design a multi-microphone model, causing high bandwidth and energy costs. In this work, we propose a \\emph{Compress-and-Send Network (CaSNet)} for resource-constrained DMAs, where one microphone serves as the FC and reference. Each of other devices encodes the measured raw data into a feature matrix, which is then compressed by singular value decomposition (SVD) to produce a more compact representation. The received features at the FC are aligned via cross window query with respect to the reference, followed by neural decoding to yield spatially coherent enhanced speech. Experiments on multiple datasets show that the proposed CaSNet can save the data amount with a negligible impact on the performance compared to the uncompressed case. The reproducible code is available at https://github.com/Jokejiangv/CaSNet.",
+    "arxiv_url": "https://arxiv.org/abs/2601.17711v1",
+    "arxiv_checked": true
+  },
+  "caspconfidenceawarestructuralpreservationforcontinualtesttimeadaptationobjectdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "castacfrobustgenerationandevaluationformultigranularitytimelinesummarization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "castellalongaudiodatasetwithcaptionsandtemporalboundaries": {
+    "abstract": "We introduce CASTELLA, a human-annotated audio benchmark for the task of audio moment retrieval (AMR). Although AMR has various useful potential applications, there is still no established benchmark with real-world data. The initial study of AMR trained the models solely on synthetic datasets. Moreover, the evaluation is based on an annotated dataset of fewer than 100 samples. This resulted in less reliable reported performance. To ensure performance for applications in real-world environments, we present CASTELLA, a large-scale manually annotated AMR dataset. CASTELLA consists of 1009, 213, and 640 audio recordings for training, validation, and test splits, respectively, which is 24 times larger than the previous dataset. We also establish a baseline model for AMR using CASTELLA. Our experiments demonstrate that a model fine-tuned on CASTELLA after pre-training on the synthetic data outperformed a model trained solely on the synthetic data by 10.4 points in Recall1@0.7. CASTELLA is publicly available in https://h-munakata.github.io/CASTELLA-demo/.",
+    "arxiv_url": "https://arxiv.org/abs/2511.15131v2",
+    "arxiv_checked": true
+  },
+  "categoryadaptivefeaturecompressionformultidevicecollaborativecomputing": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cauclipbridgingthesimtorealgapinsurgicalvideounderstandingviacausalityinspiredvisionlanguagemodeling": {
+    "abstract": "Surgical phase recognition is a critical component for context-aware decision support in intelligent operating rooms, yet training robust models is hindered by limited annotated clinical videos and large domain gaps between synthetic and real surgical data. To address this, we propose CauCLIP, a causality-inspired vision-language framework that leverages CLIP to learn domain-invariant representations for surgical phase recognition without access to target domain data. Our approach integrates a frequency-based augmentation strategy to perturb domain-specific attributes while preserving semantic structures, and a causal suppression loss that mitigates non-causal biases and reinforces causal surgical features. These components are combined in a unified training framework that enables the model to focus on stable causal factors underlying surgical workflows. Experiments on the SurgVisDom hard adaptation benchmark demonstrate that our method substantially outperforms all competing approaches, highlighting the effectiveness of causality-guided vision-language models for domain-generalizable surgical video understanding.",
+    "arxiv_url": "https://arxiv.org/abs/2602.06619v1",
+    "arxiv_checked": true
+  },
+  "causaldebiasingandfeaturefusionforopensetdomainadaptation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "causaleffectestimationundernetworkinterferencewithstatespacemodels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "causalfingerprintsofaigenerativemodels": {
+    "abstract": "AI generative models leave implicit traces in their generated images, which are commonly referred to as model fingerprints and are exploited for source attribution. Prior methods rely on model-specific cues or synthesis artifacts, yielding limited fingerprints that may generalize poorly across different generative models. We argue that a complete model fingerprint should reflect the causality between image provenance and model traces, a direction largely unexplored. To this end, we conceptualize the causal fingerprint of generative models, and propose a causality-decoupling framework that disentangles it from image-specific content and style in a semantic-invariant latent space derived from pre-trained diffusion reconstruction residual. We further enhance fingerprint granularity with diverse feature representations. We validate causality by assessing attribution performance across representative GANs and diffusion models and by achieving source anonymization using counterfactual examples generated from causal fingerprints. Experiments show our approach outperforms existing methods in model attribution, indicating strong potential for forgery detection, model copyright tracing, and identity protection.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15406v2",
+    "arxiv_checked": true
+  },
+  "causalinterventeddisentanglementformultisourcecrossdomainrecommendation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "causalbootstrappedmultiagentreinforcementlearningformitigatingthecoldstartproblem": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "causalrapcausalgraphdrivenretrievalaugmentedlonghorizontaskplanningforlargelanguagemodels": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "causalsamllmlargelanguagemodelsascausalreasonersforrobustmedicalsegmentation": {
+    "abstract": "The clinical utility of deep learning models for medical image segmentation is severely constrained by their inability to generalize to unseen domains. This failure is often rooted in the models learning spurious correlations between anatomical content and domain-specific imaging styles. To overcome this fundamental challenge, we introduce Causal-SAM-LLM, a novel framework that elevates Large Language Models (LLMs) to the role of causal reasoners. Our framework, built upon a frozen Segment Anything Model (SAM) encoder, incorporates two synergistic innovations. First, Linguistic Adversarial Disentanglement (LAD) employs a Vision-Language Model to generate rich, textual descriptions of confounding image styles. By training the segmentation model's features to be contrastively dissimilar to these style descriptions, it learns a representation robustly purged of non-causal information. Second, Test-Time Causal Intervention (TCI) provides an interactive mechanism where an LLM interprets a clinician's natural language command to modulate the segmentation decoder's features in real-time, enabling targeted error correction. We conduct an extensive empirical evaluation on a composite benchmark from four public datasets (BTCV, CHAOS, AMOS, BraTS), assessing generalization under cross-scanner, cross-modality, and cross-anatomy settings. Causal-SAM-LLM establishes a new state of the art in out-of-distribution (OOD) robustness, improving the average Dice score by up to 6.2 points and reducing the Hausdorff Distance by 15.8 mm over the strongest baseline, all while using less than 9% of the full model's trainable parameters. Our work charts a new course for building robust, efficient, and interactively controllable medical AI systems.",
+    "arxiv_url": "https://arxiv.org/abs/2507.03585v2",
+    "arxiv_checked": true
+  },
+  "cbracardinalbsplinerepresentationforsparseviewctreconstruction": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cbrdetranenhancedrtdetrwithmultilevelcontextfusionandbilevelrouting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ccg2pnpstreaminggraphemetophonemeandprosodywithconformerctcforunsegmentedlanguages": {
+    "abstract": "We propose CC-G2PnP, a streaming grapheme-to-phoneme and prosody (G2PnP) model to connect large language model and text-to-speech in a streaming manner. CC-G2PnP is based on Conformer-CTC architecture. Specifically, the input grapheme tokens are processed chunk by chunk, which enables streaming inference of phonemic and prosodic (PnP) labels. By guaranteeing minimal look-ahead size to each input token, the proposed model can consider future context in each token, which leads to stable PnP label prediction. Unlike previous streaming methods that depend on explicit word boundaries, the CTC decoder in CC-G2PnP effectively learns the alignment between graphemes and phonemes during training, making it applicable to unsegmented languages. Experiments on a Japanese dataset, which has no explicit word boundaries, show that CC-G2PnP significantly outperforms the baseline streaming G2PnP model in the accuracy of PnP label prediction.",
+    "arxiv_url": "https://arxiv.org/abs/2602.17157v1",
+    "arxiv_checked": true
+  },
+  "ccmaconsistencyawarecrossmodalalignmentfortextbasedpersonretrieval": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cconformerchannelaugmentedconformerforsoundeventlocalizationanddetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ccstcrossmodalandconsistencyawareselftrainingforsourcefreeunsuperviseddomainadaptationinspeechrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cctbyoloaframeworkbasedoncrosschannelandcelldensityattentionfortumorbuddingdetectionincolorectalcancer": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cdcacolddiffusionbaseddomainadaptationforpediatricfastscanpetdenoising": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cdgpaclasscentricdualalignmentgenerativepromptadaptation": {
+    "abstract": "Unsupervised Domain Adaptation transfers knowledge from a labeled source domain to an unlabeled target domain. Directly deploying Vision-Language Models (VLMs) with prompt tuning in downstream UDA tasks faces the signifi cant challenge of mitigating domain discrepancies. Existing prompt-tuning strategies primarily align marginal distribu tion, but neglect conditional distribution discrepancies, lead ing to critical issues such as class prototype misalignment and degraded semantic discriminability. To address these lim itations, the work proposes C-DGPA: Class-Centric Dual Alignment Generative Prompt Adaptation. C-DGPA syner gistically optimizes marginal distribution alignment and con ditional distribution alignment through a novel dual-branch architecture. The marginal distribution alignment branch em ploys a dynamic adversarial training framework to bridge marginal distribution discrepancies. Simultaneously, the con ditional distribution alignment branch introduces a Class Mapping Mechanism (CMM) to align conditional distribu tion discrepancies by standardizing semantic prompt under standing and preventing source domain over-reliance. This dual alignment strategy effectively integrates domain knowl edge into prompt learning via synergistic optimization, ensur ing domain-invariant and semantically discriminative repre sentations. Extensive experiments on OfficeHome, Office31, and VisDA-2017 validate the superiority of C-DGPA. It achieves new state-of-the-art results on all benchmarks.",
+    "arxiv_url": "https://arxiv.org/abs/2512.16164v1",
+    "arxiv_checked": true
+  },
+  "cdiffcontextdisentangledimagesynthesisforanimalindividualidentification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cdmtoajointoptimizationframeworkformultihoptaskoffloadingandenergyawarecomputinginmobileedgenetworks": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cdtrobustdetectionofdohtunnelsviabackgroundassociation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cealcrossexpertattentionwithcuratedpeerselectionforscalableandprivacypreservingexemplarfreecontinuallearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ceddimconditionalefficientdiffusionmethodforconebeamctenhancement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ceflrankingreevaluationofcommunicationefficientflmethods": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cegocdcentralentityguidedgraphoptimizationforcommunitydetectiontoaugmentllmscientificquestionanswering": {
+    "abstract": "Large Language Models (LLMs) are increasingly used for question answering over scientific research papers. Existing retrieval augmentation methods often rely on isolated text chunks or concepts, but overlook deeper semantic connections between papers. This impairs the LLM's comprehension of scientific literature, hindering the comprehensiveness and specificity of its responses. To address this, we propose Central Entity-Guided Graph Optimization for Community Detection (CE-GOCD), a method that augments LLMs' scientific question answering by explicitly modeling and leveraging semantic substructures within academic knowledge graphs. Our approach operates by: (1) leveraging paper titles as central entities for targeted subgraph retrieval, (2) enhancing implicit semantic discovery via subgraph pruning and completion, and (3) applying community detection to distill coherent paper groups with shared themes. We evaluated the proposed method on three NLP literature-based question-answering datasets, and the results demonstrate its superiority over other retrieval-augmented baseline approaches, confirming the effectiveness of our framework.",
+    "arxiv_url": "https://arxiv.org/abs/2601.21733v1",
+    "arxiv_checked": true
+  },
+  "cellexchamultimodalfeaturebasedframeworkforendtoendpredictionoflrimediatedcellcellcommunication": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "centralizedspectralinitializationforsparsephaseretrieval": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cerfcommunicationefficientandretrainingfreecollaborativeperception": {
+    "abstract": "Collaborative perception shares information among multiple agents to obtain a comprehensive scene representation, enhancing the perceptual capability of individual agents. However, most existing methods rely on transmitting and fusing dense feature maps for collaboration, which incurs inevitable communication overhead and heterogeneity challenges, limiting their practicality for real-world deployment. To address these challenges, we propose CERF, a novel Communication-Efficient and Retraining-Free framework for open heterogeneous collaborative perception. In CERF, we introduce a new virtual modality (termed Poture), which is generated from the perception outputs of other agents, to augment the extracted Bird's Eye View (BEV) features of the ego agent. To mitigate transmission delays, we employ a Kalman-filter based tracker and a motion forecasting model to derive the current predictions from historical perception results. Extensive experiments demonstrate that CERF achieves performance comparable to mainstream intermediate-collaboration methods while reducing communication overhead by 95% across various downstream tasks. Furthermore, CERF enables seamless integration of unknown heterogeneous agents into the existing collaborative framework without additional retraining costs. Code is available at https://github.com/uestchjw/CERF.",
+    "arxiv_url": "https://arxiv.org/abs/2609.00951v1",
+    "arxiv_checked": true
+  },
+  "cfalightweightdefenseagainstmembershipinferenceattacksthroughclasswisefeatureaggregation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cfainetcrossstagefrequencyawareinteractionnetworkforfinegrainedmedicalimagesegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cfgancomplexfrequencydomaingraphattentionnetworkfortimeseriesforecasting": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cfirecrossviewfeatureinteractionforfinegrainedregressionbaseduavlocalization": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cfrnetacceleratinglanelinedetectionwithasymmetricweightedattentiondistillationandcascadedfeaturerefinement": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cgdmerhybridcontrastivegenerativeframeworkfordisentangledmultimodalecgrepresentationlearning": {
+    "abstract": "Accurate interpretation of electrocardiogram (ECG) signals is crucial for diagnosing cardiovascular diseases. Recent multimodal approaches that integrate ECGs with accompanying clinical reports show strong potential, but they still face two main concerns from a modality perspective: (1) intra-modality: existing models process ECGs in a lead-agnostic manner, overlooking spatial-temporal dependencies across leads, which restricts their effectiveness in modeling fine-grained diagnostic patterns; (2) inter-modality: existing methods directly align ECG signals with clinical reports, introducing modality-specific biases due to the free-text nature of the reports. In light of these two issues, we propose CG-DMER, a contrastive-generative framework for disentangled multimodal ECG representation learning, powered by two key designs: (1) Spatial-temporal masked modeling is designed to better capture fine-grained temporal dynamics and inter-lead spatial dependencies by applying masking across both spatial and temporal dimensions and reconstructing the missing information. (2) A representation disentanglement and alignment strategy is designed to mitigate unnecessary noise and modality-specific biases by introducing modality-specific and modality-shared encoders, ensuring a clearer separation between modality-invariant and modality-specific representations. Experiments on three public datasets demonstrate that CG-DMER achieves state-of-the-art performance across diverse downstream tasks.",
+    "arxiv_url": "https://arxiv.org/abs/2602.21154v1",
+    "arxiv_checked": true
+  },
+  "cgnnagraphneuralinstrumentalvariableframeworkforrobustcausalinferenceinnetworkeddata": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "chainofcorrectionforfulltextspeechrecognitionwithlargelanguagemodels": {
+    "abstract": "Full-text error correction with Large Language Models (LLMs) for Automatic Speech Recognition (ASR) is attracting increased attention for its ability to address a wide range of error types, such as punctuation restoration and inverse text normalization, across long context. However, challenges remain regarding stability, controllability, completeness, and fluency. To mitigate these issues, this paper proposes the Chain of Correction (CoC), which uses a multi-turn chat format to correct errors segment by segment, guided by pre-recognized text and full-text context for better semantic understanding. Utilizing the open-sourced ChFT dataset, we fine-tune a pre-trained LLM to evaluate CoC's performance. Experiments show that CoC significantly outperforms baseline and benchmark systems in correcting full-text ASR outputs. We also analyze correction thresholds to balance under-correction and over-rephrasing, extrapolate CoC on extra-long ASR outputs, and explore using other types of information to guide error correction.",
+    "arxiv_url": "https://arxiv.org/abs/2504.01519v3",
+    "arxiv_checked": true
+  },
+  "chainofcaptiontrainingfreeimprovementofmultimodallargelanguagemodelonreferringexpressioncomprehension": {
+    "abstract": "Given a textual description, the task of referring expression comprehension (REC) involves the localisation of the referred object in an image. Multimodal large language models (MLLMs) have achieved high accuracy on REC benchmarks through scaling up the model size and training data. Moreover, the performance of MLLMs can be further improved using techniques such as Chain-of-Thought and tool use, which provides additional visual or textual context to the model. In this paper, we analyse the effect of various techniques for providing additional visual and textual context via tool use to the MLLM and its effect on the REC task. Furthermore, we propose a training-free framework named Chain-of-Caption to improve the REC performance of MLLMs. We perform experiments on RefCOCO/RefCOCOg/RefCOCO+ and Ref-L4 datasets and show that individual textual or visual context can improve the REC performance without any fine-tuning. By combining multiple contexts, our training-free framework shows between 5% to 30% performance gain over the baseline model on accuracy at various Intersection over Union (IoU) thresholds.",
+    "arxiv_url": "https://arxiv.org/abs/2602.08211v1",
+    "arxiv_checked": true
+  },
+  "changedetectionmethodsfornonstationarystochasticlinearbandits": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "changeawaretemporalalignmentonheterogeneousgraphsnapshotsforinsiderthreatdetection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "channelestimationanddatadetectionindsspreadchannelsaunifiedframeworknovelalgorithmsandwaveformcomparison": {
+    "abstract": "We present a unified receiver processing framework for communication over delay-scale (DS)-spread channels that arise in underwater acoustic (UWA) communications that addresses both channel estimation (CE) and data detection for different modulation waveforms, namely OFDM, OTFS, OCDM, and ODSS, through a common input--output relation. Using this framework, we conduct a fair and comprehensive comparative study of these waveforms under DS-spread UWA channels and similar receiver complexities. We also develop a novel iterative variational Bayesian (VB) off-grid CE algorithm to estimate the delay and scale parameters of the channel paths, via two approaches: a first-order approximation scheme (FVB) and a second-order approximation scheme (SVB). We propose a low-complexity variational soft symbol detection (VSSD) algorithm that outputs soft symbols and log-likelihood ratios for the data bits, and a data-aided iterative CE and data detection (ICED) scheme that utilizes detected data symbols as \\emph{virtual} pilots to further improve the CE and data detection accuracy. Our numerical results reveal the efficacy of the proposed algorithms for CE and data detection. In terms of relative performance of different waveforms, in uncoded communications, (a) with a low-complexity subcarrier-by-subcarrier equalizer, ODSS offers the best performance, followed by OCDM and OTFS, while OFDM performs the worst, and (b) with the VSSD algorithm, OTFS, OCDM, and ODSS perform similarly, and they outperform OFDM. With coded communications, interestingly, all waveforms offer nearly the same BER when the VSSD receiver is employed. Hence, we conclude that when the receiver complexity is constrained, waveform choice matters, especially under harsh channel conditions, whereas with more sophisticated receiver algorithms, these differences disappear.",
+    "arxiv_url": "https://arxiv.org/abs/2508.21373v1",
+    "arxiv_checked": true
+  },
+  "channelmodelinginthedelaydopplerdomainforcommunicationswithamobilereceiver": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "channelpredictionundernetworkdistributionshiftusingcontinuallearningbasedlossregularization": {
+    "abstract": "Modern wireless networks face critical challenges when mobile users traverse heterogeneous network configurations with varying antenna layouts, carrier frequencies, and scattering statistics. Traditional predictors degrade under distribution shift, with NMSE rising by 37.5\\% during cross-configuration handovers. This work addresses catastrophic forgetting in channel prediction by proposing a continual learning framework based on loss regularization. The approach augments standard training objectives with penalty terms that selectively preserve network parameters essential for previous configurations while enabling adaptation to new environments. Two prominent regularization strategies are investigated: Elastic Weight Consolidation (EWC) and Synaptic Intelligence (SI). Across 3GPP scenarios and multiple architectures, SI lowers the high-SNR NMSE floor by up to 1.8 dB ($\\approx$32--34\\%), while EWC achieves up to 1.4 dB ($\\approx$17--28\\%). Notably, standard EWC incurs $\\mathcal{O}(MK)$ complexity (storing $M$ Fisher diagonal entries and corresponding parameter snapshots across $K$ tasks) unless consolidated, whereas SI maintains $\\mathcal{O}(M)$ memory complexity (storing $M$ model parameters), independent of task sequence length, making it suitable for resource-constrained wireless infrastructure",
+    "arxiv_url": "https://arxiv.org/abs/2509.15192v1",
+    "arxiv_checked": true
+  },
+  "channeltrendandperiodicwiserepresentationlearningformultivariatelongtermtimeseriesforecasting": {
+    "abstract": "Downsampling-based methods for time series forecasting have attracted increasing attention due to their superiority in capturing sequence trends. However, this approaches mainly capture dependencies within subsequences but neglect inter-subsequence and inter-channel interactions, which limits forecasting accuracy. To address these limitations, we propose CTPNet, a novel framework that explicitly learns representations from three perspectives: i) inter-channel dependencies, captured by a temporal query-based multi-head attention mechanism; ii) intra-subsequence dependencies, modeled via a Transformer to characterize trend variations; and iii) inter-subsequence dependencies, extracted by reusing the encoder with residual connections to capture global periodic patterns. By jointly integrating these levels, proposed method provides a more holistic representation of temporal dynamics. Extensive experiments demonstrate the superiority of the proposed method.",
+    "arxiv_url": "https://arxiv.org/abs/2509.23583v2",
+    "arxiv_checked": true
+  },
+  "channeladaptiverobustaggregationforovertheairfederatedlearninginheterogeneousnetworks": {
+    "abstract": "The growing demand for privacy-preserving, data-intensive applications such as IoT, augmented reality, and autonomous systems positions Federated Learning (FL) as a key enabler in 6G networks. Over-the-Air FL (OTA-FL) leverages the superposition property of the wireless multiple access channel for efficient aggregation via simultaneous transmissions. Existing methods rely on fixed aggregation schedules and do not jointly address noise, fading, and client heterogeneity. We propose CHARGE-FL (CHannel-Adaptive Robust agGrEgation), a framework that adaptively schedules aggregation based on channel dynamics and application readiness. By combining a tailored optimization strategy with a dual-purpose precoding mechanism, CHARGE-FL mitigates channel distortion and bias from partial updates, achieving superior accuracy, stability, and convergence under realistic wireless conditions. Empirical results under realistic wireless conditions show that CHARGE-FL significantly improves accuracy, stability, and convergence over state-of-the-art OTA-FL methods, particularly in straggler-prone and noisy scenarios.",
+    "arxiv_url": "https://arxiv.org/abs/2607.04218v1",
+    "arxiv_checked": true
+  },
+  "channelwiseretrievalformultivariatetimeseriesforecasting": {
+    "abstract": "Multivariate time series forecasting often struggles to capture long-range dependencies due to fixed lookback windows. Retrieval-augmented forecasting addresses this by retrieving historical segments from memory, but existing approaches rely on a channel-agnostic strategy that applies the same references to all variables. This neglects inter-variable heterogeneity, where different channels exhibit distinct periodicities and spectral profiles. We propose CRAFT (Channel-wise retrieval-augmented forecasting), a novel framework that performs retrieval independently for each channel. To ensure efficiency, CRAFT adopts a two-stage pipeline: a sparse relation graph constructed in the time domain prunes irrelevant candidates, and spectral similarity in the frequency domain ranks references, emphasizing dominant periodic components while suppressing noise. Experiments on seven public benchmarks demonstrate that CRAFT outperforms state-of-the-art forecasting baselines, achieving superior accuracy with practical inference efficiency.",
+    "arxiv_url": "https://arxiv.org/abs/2604.05543v2",
+    "arxiv_checked": true
+  },
+  "chaoschartanalysiswithoutliersamples": {
+    "abstract": "Charts play a critical role in data analysis and visualization, yet real-world applications often present charts with challenging or noisy features. However, \"outlier charts\" pose a substantial challenge even for Multimodal Large Language Models (MLLMs), which can struggle to interpret perturbed charts. In this work, we introduce CHAOS (CHart Analysis with Outlier Samples), a robustness benchmark to systematically evaluate MLLMs against chart perturbations. CHAOS encompasses five types of textual and ten types of visual perturbations, each presented at three levels of severity (easy, mid, hard) inspired by the study result of human evaluation. The benchmark includes 13 state-of-the-art MLLMs divided into three groups (i.e., general-, document-, and chart-specific models) according to the training scope and data. Comprehensive analysis involves two downstream tasks (ChartQA and Chart-to-Text). Extensive experiments and case studies highlight critical insights into robustness of models across chart perturbations, aiming to guide future research in chart understanding domain. Data and code are publicly available at: http://huggingface.co/datasets/omoured/CHAOS.",
+    "arxiv_url": "https://arxiv.org/abs/2505.17235v1",
+    "arxiv_checked": true
+  },
+  "chemicalsightnetincorporatingcrystallographicpriorsforaccuratespacegroupdeterminationfrompxrd": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "chnervconditionenhancedhybridneuralrepresentationforvideos": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "chromouvqabenchmarkingvisionlanguagemodelsunderchromaticcamouflagedimages": {
+    "abstract": "Vision-Language Models (VLMs) have advanced multimodal understanding, yet still struggle when targets are embedded in cluttered backgrounds requiring figure-ground segregation. To address this, we introduce ChromouVQA, a large-scale, multi-task benchmark based on Ishihara-style chromatic camouflaged images. We extend classic dot plates with multiple fill geometries and vary chromatic separation, density, size, occlusion, and rotation, recording full metadata for reproducibility. The benchmark covers nine vision-question-answering tasks, including recognition, counting, comparison, and spatial reasoning. Evaluations of humans and VLMs reveal large gaps, especially under subtle chromatic contrast or disruptive geometric fills. We also propose a model-agnostic contrastive recipe aligning silhouettes with their camouflaged renderings, improving recovery of global shapes. ChromouVQA provides a compact, controlled benchmark for reproducible evaluation and extension. Code and dataset are available at https://github.com/Chromou-VQA-Benchmark/Chromou-VQA.",
+    "arxiv_url": "https://arxiv.org/abs/2512.05137v1",
+    "arxiv_checked": true
+  },
+  "chunkwisealignersforstreamingspeechrecognition": {
+    "abstract": "We propose the Chunkwise Aligner, a novel architecture for streaming automatic speech recognition (ASR). While the Transducer is the standard model for streaming ASR, its training is costly due to the need to compute all possible audio-label alignments. The recently introduced Aligner reduces this cost by discarding explicit alignments, but this modification makes it unsuitable for streaming. Our approach overcomes this limitation by dividing the audio into chunks and aligning each label to the leftmost frames of its chunk, whereas transitions between chunks are managed by a learned end-of-chunk probability. Experiments show that the Chunkwise Aligner not only matches the Transducer's accuracy in both offline and streaming scenarios, but also offers superior training and decoding efficiencies.",
+    "arxiv_url": "https://arxiv.org/abs/2605.11422v1",
+    "arxiv_checked": true
+  },
+  "chunkwiseattentiontransducersforfastandaccuratestreamingspeechtotext": {
+    "abstract": "We propose Chunk-wise Attention Transducer (CHAT), a novel extension to RNN-T models that processes audio in fixed-size chunks while employing cross-attention within each chunk. This hybrid approach maintains RNN-T's streaming capability while introducing controlled flexibility for local alignment modeling. CHAT significantly reduces the temporal dimension that RNN-T must handle, yielding substantial efficiency improvements: up to 46.2% reduction in peak training memory, up to 1.36X faster training, and up to 1.69X faster inference. Alongside these efficiency gains, CHAT achieves consistent accuracy improvements over RNN-T across multiple languages and tasks -- up to 6.3% relative WER reduction for speech recognition and up to 18.0% BLEU improvement for speech translation. The method proves particularly effective for speech translation, where RNN-T's strict monotonic alignment hurts performance. Our results demonstrate that the CHAT model offers a practical solution for deploying more capable streaming speech models without sacrificing real-time constraints.",
+    "arxiv_url": "https://arxiv.org/abs/2602.24245v1",
+    "arxiv_checked": true
+  },
+  "cideracausalcureforbrandobsessedtexttoimagemodels": {
+    "abstract": "Text-to-image (T2I) models exhibit a significant yet under-explored \"brand bias\", a tendency to generate contents featuring dominant commercial brands from generic prompts, posing ethical and legal risks. We propose CIDER, a novel, model-agnostic framework to mitigate bias at inference-time through prompt refinement to avoid costly retraining. CIDER uses a lightweight detector to identify branded content and a Vision-Language Model (VLM) to generate stylistically divergent alternatives. We introduce the Brand Neutrality Score (BNS) to quantify this issue and perform extensive experiments on leading T2I models. Results show CIDER significantly reduces both explicit and implicit biases while maintaining image quality and aesthetic appeal. Our work offers a practical solution for more original and equitable content, contributing to the development of trustworthy generative AI.",
+    "arxiv_url": "https://arxiv.org/abs/2509.15803v1",
+    "arxiv_checked": true
+  },
+  "cifatwostagecognitivelyinspiredframeworkforchinesespellingcorrection": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cifcmfdendtoendmultifaceforgerydetectionusingcrossimagefacecontrast": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cimragcimawaredomainadaptiveandnoiseresilientretrievalaugmentedgenerationforedgebasedllms": {
+    "abstract": "Personalized virtual assistants powered by large language models (LLMs) on edge devices are attracting growing attention, with Retrieval-Augmented Generation (RAG) emerging as a key method for personalization by retrieving relevant profile data and generating tailored responses. However, deploying RAG on edge devices faces efficiency hurdles due to the rapid growth of profile data, such as user-LLM interactions and recent updates. While Computing-in-Memory (CiM) architectures mitigate this bottleneck by eliminating data movement between memory and processing units via in-situ operations, they are susceptible to environmental noise that can degrade retrieval precision. This poses a critical issue in dynamic, multi-domain edge-based scenarios (e.g., travel, medicine, and law) where both accuracy and adaptability are paramount. To address these challenges, we propose Task-Oriented Noise-resilient Embedding Learning (TONEL), a framework that improves noise robustness and domain adaptability for RAG in noisy edge environments. TONEL employs a noise-aware projection model to learn task-specific embeddings compatible with CiM hardware constraints, enabling accurate retrieval under noisy conditions. Extensive experiments conducted on personalization benchmarks demonstrate the effectiveness and practicality of our methods relative to strong baselines, especially in task-specific noisy scenarios.",
+    "arxiv_url": "https://arxiv.org/abs/2601.20041v3",
+    "arxiv_checked": true
+  },
+  "cineshotdirectornativecinemagrademultishotvideogenerationframework": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cipdoacrossinstanceprompteddoaestimationviasemanticspatialmatching": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "citragcontradictionidentificationandtracingforretrievalaugmentedgeneration": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "ckanstckanbasedarbitrarystyletransferforhomogeneousimages": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "clprototypeconstrainedconsistentlearningtowardcontrollableandconsistenttransfer": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "classdifficultyawarerealtimeinstancesegmentation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "classawarepermutationinvariantsignaltodistortionratioforsemanticsegmentationofsoundscenewithsameclasssources": {
+    "abstract": "To advance immersive communication, the Detection and Classification of Acoustic Scenes and Events (DCASE) 2025 Challenge recently introduced Task 4 on Spatial Semantic Segmentation of Sound Scenes (S5). An S5 system takes a multi-channel audio mixture as input and outputs single-channel dry sources along with their corresponding class labels. Although the DCASE 2025 Challenge simplifies the task by constraining class labels in each mixture to be mutually exclusive, real-world mixtures frequently contain multiple sources from the same class. The presence of duplicated labels can significantly degrade the performance of the label-queried source separation (LQSS) model, which is the key component of many existing S5 systems, and can also limit the validity of the official evaluation metric of DCASE 2025 Task 4. To address these issues, we propose a class-aware permutation-invariant loss function that enables the LQSS model to handle queries involving duplicated labels. In addition, we redesign the S5 evaluation metric to eliminate ambiguities caused by these same-class sources. To evaluate the proposed method within the S5 system, we extend the label prediction model to support same-class labels. Experimental results demonstrate the effectiveness of the proposed methods and the robustness of the new metric on mixtures both with and without same-class sources.",
+    "arxiv_url": "https://arxiv.org/abs/2601.22504v1",
+    "arxiv_checked": true
+  },
+  "classifiercentricadaptiveframeworkforopenvocabularycamouflagedobjectsegmentation": {
+    "abstract": "Open-vocabulary camouflaged object segmentation requires models to segment camouflaged objects of arbitrary categories unseen during training, placing extremely high demands on generalization capabilities. Through analysis of existing methods, it is observed that the classification component significantly affects overall segmentation performance. Accordingly, a classifier-centric adaptive framework is proposed to enhance segmentation performance by improving the classification component via a lightweight text adapter with a novel layered asymmetric initialization. Through the classification enhancement, the proposed method achieves substantial improvements in segmentation metrics compared to the OVCoser baseline on the OVCamo benchmark: cIoU increases from 0.443 to 0.493, cSm from 0.579 to 0.658, and cMAE reduces from 0.336 to 0.239. These results demonstrate that targeted classification enhancement provides an effective approach for advancing camouflaged object segmentation performance.",
+    "arxiv_url": "https://arxiv.org/abs/2509.24681v1",
+    "arxiv_checked": true
+  },
+  "classimbalancedmultiviewclusteringviasyntheticminorityoversamplingtechnique": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "classinvarianttesttimeaugmentationfordomaingeneralization": {
+    "abstract": "Deep models often suffer significant performance degradation under distribution shifts. Domain generalization (DG) seeks to mitigate this challenge by enabling models to generalize to unseen domains. Most prior approaches rely on multi-domain training or computationally intensive test-time adaptation. In contrast, we propose a complementary strategy: lightweight test-time augmentation. Specifically, we develop a novel Class-Invariant Test-Time Augmentation (CI-TTA) technique. The idea is to generate multiple variants of each input image through elastic and grid deformations that nevertheless belong to the same class as the original input. Their predictions are aggregated through a confidence-guided filtering scheme that remove unreliable outputs, ensuring the final decision relies on consistent and trustworthy cues. Extensive Experiments on PACS and Office-Home datasets demonstrate consistent gains across different DG algorithms and backbones, highlighting the effectiveness and generality of our approach.",
+    "arxiv_url": "https://arxiv.org/abs/2509.14420v2",
+    "arxiv_checked": true
+  },
+  "cleancompliantloopswithenhancedadjustmentfortrainingfreeunlearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "cleargcdmitigatingshortcutlearningforrobustgeneralizedcategorydiscovery": {
+    "abstract": "In open-world scenarios, Generalized Category Discovery (GCD) requires identifying both known and novel categories within unlabeled data. However, existing methods often suffer from prototype confusion caused by shortcut learning, which undermines generalization and leads to forgetting of known classes. We propose ClearGCD, a framework designed to mitigate reliance on non-semantic cues through two complementary mechanisms. First, Semantic View Alignment (SVA) generates strong augmentations via cross-class patch replacement and enforces semantic consistency using weak augmentations. Second, Shortcut Suppression Regularization (SSR) maintains an adaptive prototype bank that aligns known classes while encouraging separation of potential novel ones. ClearGCD can be seamlessly integrated into parametric GCD approaches and consistently outperforms state-of-the-art methods across multiple benchmarks.",
+    "arxiv_url": "https://arxiv.org/abs/2511.22892v1",
+    "arxiv_checked": true
+  },
+  "clgmstscontrastivelearningguidedmultiscaletemporalspatialnetworkforcrosssubjectemotionrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "clipdrivenzeroshotlearningwithambiguouslabels": {
+    "abstract": "Zero-shot learning (ZSL) aims to recognize unseen classes by leveraging semantic information from seen classes, but most existing methods assume accurate class labels for training instances. However, in real-world scenarios, noise and ambiguous labels can significantly reduce the performance of ZSL. To address this, we propose a new CLIP-driven partial label zero-shot learning (CLIP-PZSL) framework to handle label ambiguity. First, we use CLIP to extract instance and label features. Then, a semantic mining block fuses these features to extract discriminative label embeddings. We also introduce a partial zero-shot loss, which assigns weights to candidate labels based on their relevance to the instance and aligns instance and label embeddings to minimize semantic mismatch. As the training goes on, the ground-truth labels are progressively identified, and the refined labels and label embeddings in turn help improve the semantic alignment of instance and label features. Comprehensive experiments on several datasets demonstrate the advantage of CLIP-PZSL.",
+    "arxiv_url": "https://arxiv.org/abs/2603.05053v1",
+    "arxiv_checked": true
+  },
+  "clipguidedunsupervisedsemanticawareexposurecorrection": {
+    "abstract": "Improper exposure often leads to severe loss of details, color distortion, and reduced contrast. Exposure correction still faces two critical challenges: (1) the ignorance of object-wise regional semantic information causes the color shift artifacts; (2) real-world exposure images generally have no ground-truth labels, and its labeling entails massive manual editing. To tackle the challenges, we propose a new unsupervised semantic-aware exposure correction network. It contains an adaptive semantic-aware fusion module, which effectively fuses the semantic information extracted from a pre-trained Fast Segment Anything Model into a shared image feature space. Then the fused features are used by our multi-scale residual spatial mamba group to restore the details and adjust the exposure. To avoid manual editing, we propose a pseudo-ground truth generator guided by CLIP, which is fine-tuned to automatically identify exposure situations and instruct the tailored corrections. Also, we leverage the rich priors from the FastSAM and CLIP to develop a semantic-prompt consistency loss to enforce semantic consistency and image-prompt alignment for unsupervised training. Comprehensive experimental results illustrate the effectiveness of our method in correcting real-world exposure images and outperforms state-of-the-art unsupervised methods both numerically and visually.",
+    "arxiv_url": "https://arxiv.org/abs/2601.19129v2",
+    "arxiv_checked": true
+  },
+  "closedform3dtdoaaoasourcelocalizationwithquaternions": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "closedformzivzakaiboundforcompressivetimedelayestimation": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "closedloopcoadaptiveretinalcodingwithjointtopologicalspectralfeaturelearning": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "clue2emoabraininspiredframeworkforopenvocabularymultimodalemotionrecognition": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "clueupresolvingintentambiguityinpersonalizedwebagentswithprofiledrivenclarification": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "clusteringofmultisourceremotesensingdatavialowranktensorlearningwithspatialconstraints": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
+  },
+  "instructaudiounifiedspeechandmusicgenerationwithnaturallanguageinstruction": {
+    "abstract": "Text-to-speech (TTS) and text-to-music (TTM) models face significant limitations in instruction-based control. TTS systems usually depend on reference audio for timbre, offer only limited text-level attribute control, and rarely support dialogue generation. TTM systems are constrained by input conditioning requirements that depend on expert knowledge annotations. The high heterogeneity of these input control conditions makes them difficult to joint modeling with speech synthesis. Despite sharing common acoustic modeling characteristics, these two tasks have long been developed independently, leaving open the challenge of achieving unified modeling through natural language instructions. We introduce InstructAudio, a unified framework that enables instruction-based (natural language descriptions) control of acoustic attributes including timbre (gender, age), paralinguistic (emotion, style, accent), and musical (genre, instrument, rhythm, atmosphere). It supports expressive speech, music, and dialogue generation in English and Chinese. The model employs joint and single diffusion transformer layers with a standardized instruction-phoneme input format, trained on 50K hours of speech and 20K hours of music data, enabling multi-task learning and cross-modal alignment. Fig. 1 visualizes performance comparisons with mainstream TTS and TTM models, demonstrating that InstructAudio achieves optimal results on most metrics. To our best knowledge, InstructAudio represents the first instruction-controlled framework unifying speech and music generation. Audio samples are available at: https://qiangchunyu.github.io/InstructAudio/",
+    "arxiv_url": "https://arxiv.org/abs/2511.18487v1",
+    "arxiv_checked": true
+  },
+  "robustttstrainingviaselfpurifyingflowmatchingforthewildspoof2026ttstrack": {
+    "abstract": "This paper presents a lightweight text-to-speech (TTS) system developed for the WildSpoof Challenge TTS Track. Our approach fine-tunes the recently released open-weight TTS model, \\textit{Supertonic}\\footnote{\\url{https://github.com/supertone-inc/supertonic}}, with Self-Purifying Flow Matching (SPFM) to enable robust adaptation to in-the-wild speech. SPFM mitigates label noise by comparing conditional and unconditional flow matching losses on each sample, routing suspicious text--speech pairs to unconditional training while still leveraging their acoustic information. The resulting model achieves the lowest Word Error Rate (WER) among all participating teams, while ranking second in perceptual metrics such as UTMOS and DNSMOS. These findings demonstrate that efficient, open-weight architectures like Supertonic can be effectively adapted to diverse real-world speech conditions when combined with explicit noise-handling mechanisms such as SPFM.",
+    "arxiv_url": "https://arxiv.org/abs/2512.17293v1",
+    "arxiv_checked": true
+  },
+  "ncfttsenhancingflowmatchingbasedtexttospeechwithneighborhoodconsistencyflow": {
+    "abstract": "",
+    "arxiv_url": "",
+    "arxiv_checked": true
   }
 }
