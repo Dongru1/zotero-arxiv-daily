@@ -1,0 +1,695 @@
+[
+  {
+    "title": "Reproducing the Speech Labels of Qwen3-Omni's Talker: Mimi in bf16, and a Last-Frame Pitfall",
+    "authors": [
+      "Yuxuan Chen"
+    ],
+    "abstract": "Qwen3-Omni speaks through a Talker predicting 16 codebooks of a 12.5 Hz audio codec, but the encoder that made its training labels was not released, so new voices cannot be trained on matching labels. We identify this encoder from the released model's behavior. White-box regression shows that the codebook embeddings of the Talker, its multi-token predictor and the Code2Wav decoder match the first 16 codebooks of kyutai's Mimi layer by layer. A decoder-based test looks convincing but fails calibration: decoders trained on known labels cannot tell them apart. Teacher-forced Talker likelihoods, calibrated with 13 code language models trained on known labels, do tell implementations apart: the Talker prefers labels from kyutai's moshi package with bf16 weights over every other variant we tried. Loudness normalization and band-limiting of 20% or more of the data are ruled out. Separately, transformers' MimiModel encodes the last frame differently from kyutai's encoder unless the input length is a multiple of 1920 samples. After LoRA fine-tuning on its labels, 44--55% of generated sentences end in a noise burst, and the same frame costs the Mimi-based CSM-1B 119 nats; padding the input removes both. We release the encoding recipe, a label checker and a Talker fine-tuning toolkit.",
+    "url": "https://arxiv.org/abs/2611.32286",
+    "pdf_url": "https://arxiv.org/pdf/2611.32286v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Read My Lips: Context-aware Lip Reading Using Language and Audio-Visual Models",
+    "authors": [
+      "Amir Razlighi",
+      "Zhuo Ning",
+      "Naomi Ken Korem",
+      "Nisarg Patel",
+      "Yiorgos Chrysanthou",
+      "Daniel Cohen-Or",
+      "Ali Mahdavi Amiri"
+    ],
+    "abstract": "Real-world speech is often partially observable: audio may be missing or corrupted by noise and competing speakers, while the speaker's lips remain visible. Recovering speech requires combining what can be heard, seen, and inferred from context. We introduce RML (Read My Lips), a collaborative method combining a lip reader, a language model, and an audio-visual generative model. The lip reader provides articulation hypotheses, the language model uses context to resolve ambiguous or missing words, and the audio-visual generator reconstructs synchronized speech while preserving speaker identity. Since source reliability varies, RML generates multiple reconstructions and uses the available evidence to favor the most reliable ones. This allows RML to handle missing audio, strong interference, and poor visual evidence without manually defined thresholds. Quantitative and qualitative experiments across these conditions show the benefit of combining visual, acoustic, and linguistic signals.",
+    "url": "https://arxiv.org/abs/2611.33117",
+    "pdf_url": "https://arxiv.org/pdf/2611.33117v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Generating Schema-Aligned Synthetic Dialogues and Measuring Their Diversity",
+    "authors": [
+      "Konrad Stolte",
+      "Toni Fetzer"
+    ],
+    "abstract": "Training or evaluating a model that turns a conversation into a structured record requires paired data, meaning a transcript together with the exact record it should be converted into. Such pairs are expensive to annotate, and in sensitive domains they are also difficult to obtain at all. We therefore build them in the opposite order by sampling a schema-valid record first, then writing a dialogue from it, and optionally synthesizing speech from the dialogue, so the label exists before the text and we need no annotation step. Naively prompting a language model for such dialogues yields small variations of a single conversation, so we add a sampled variation configuration, personas, and a topic plan that orders the fields of the record as explicit mechanisms for variation. We measure the variation that reaches the output through embedding space, where the embedding variance spreads over about two and a half times as many independent directions with our full configuration compared to without (participation ratio 23.3 against 9.2). Two corpora of medical dialogue give values of the same order, with sample size, text length and language being additional factors there. We also show the positive effect of our method in a downstream test, where an 8B extraction model reaches 64.8% field accuracy when fine-tuned on dialogues from our method, against 57.5% from naive generation. We release the generation library and the generated corpus of German clinical dialogues with aligned records.",
+    "url": "https://arxiv.org/abs/2611.32631",
+    "pdf_url": "https://arxiv.org/pdf/2611.32631v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Cif-query bridging for audio-native asr transfer to visual speech recognition",
+    "authors": [
+      "Chang Sun",
+      "Dongliang Xie",
+      "Wanpeng Xie",
+      "Bo Qin",
+      "Hong Yang"
+    ],
+    "abstract": "Audio-native automatic speech recognition (ASR) models provide strong speech-language priors, but their compact acoustic interfaces are mismatched with long, frame-level visual features. We propose CIF-Query Bridge, a lightweight connection from a Paraformer visual speech recognition (VSR) encoder to Qwen3-ASR. The existing visual continuous integrate-and-fire (CIF) predictor produces an input-dependent number of token-rate queries; a two-layer cross-attention bridge refines them against the complete frame sequence, and a linear adapter feeds the pretrained ASR projector and decoder. This design preserves access to uncompressed visual context while avoiding direct autoregressive processing of hundreds of video frames. On CMLR, the complete visual-only transfer system achieves 7.97% character error rate, compared with 11.78% for native Paraformer under the same test split and scoring protocol---a 3.81-point absolute and 32.3% relative reduction. Controlled ablations characterize bridge depth, projector initialization, adapter capacity, and CTC supervision. The results show that CIF-derived adaptive queries provide a compact interface for transferring audio-native ASR capability to VSR.",
+    "url": "https://arxiv.org/abs/2611.32697",
+    "pdf_url": "https://arxiv.org/pdf/2611.32697v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ToneMamaba: Learning Contextualized Tonal Contours with Boundary-Reset State Space Models",
+    "authors": [
+      "Po-Yu Chiu",
+      "Yi-Fen Liu"
+    ],
+    "abstract": "Mandarin tone recognition in connected speech is challenging because contextual and durational variation reshapes F0 contours. We propose ToneMamba, a boundary-aware state space model that replaces static boundary embeddings with bidirectional state resets at syllable, word, and IPU levels. Fixed weights fuse multi-level representations, while shared-weight bidirectional scans use channel-wise directional fusion to reduce parameters. Dynamic syllable pooling forms tonal contours, and rhythm-conditioned gating incorporates durational information. ToneMamba achieves 97.9% and 74.8% accuracy on FCU-VOICE-360 read and MCDC-8 conversational speech, outperforming the baseline (ToneNet) by 0.9 and 15.9 percentage points, respectively. Ablations show that word-level resets are particularly effective, while rhythm conditioning provides greater gains in conversational speech, underscoring the role of durational variation in spontaneous speech.",
+    "url": "https://arxiv.org/abs/2611.31267",
+    "pdf_url": "https://arxiv.org/pdf/2611.31267v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "One Take, Many Cameras: Audio-Grounded Shot Synthesis for Dialogue Re-Cinematography",
+    "authors": [
+      "Anthony Chen",
+      "Naomi Ken Korem",
+      "Matan Ben-Yosef",
+      "Tavi Halperin",
+      "Urska Jelercic",
+      "Ofir Bibi",
+      "Daniel Cohen-Or",
+      "Or Patashnik",
+      "Maneesh Agrawala"
+    ],
+    "abstract": "Creating a dialogue scene typically requires cutting between multiple views (e.g., close-ups, medium shots, and over-the-shoulder shots) of the actors. Yet capturing such coverage is costly and in many settings unavailable. We study dialogue re-cinematography: synthesizing additional shots from a single wide-angle dialogue video. Existing video generators can synthesize new shots, but rely on visual cues alone, so when the source video barely shows the lips, the generated lip motion fails to match the speech. Our key observation is that the speech audio is view-invariant: it constrains lip motion in any target view. Building on this insight, we adapt a pretrained audio-visual diffusion model to generate the new shot from a target frame that specifies the view, a source video that contains the performance, and the speech audio that drives lip motion. In multi-person scenes, however, pretrained audio-visual models drive every visible face with the same speech, causing speech leakage, where silent listeners mouth the speaker's words. We therefore introduce speaker-aware audio gating, a training-free module that lets the audio drive only the faces that speak in the target shot. On a cinematic paired-view benchmark spanning diverse viewpoints and framings, our method lowers perceptual error by 59%, landmark error by 56%, and speech leakage by 97% relative to the strongest baseline, Wan 3.0. Our method also remains robust on in-the-wild scenes, highlighting its potential for film post-production.",
+    "url": "https://arxiv.org/abs/2611.33147",
+    "pdf_url": "https://arxiv.org/pdf/2611.33147v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "DiaCap: Jointly Learning Who Speaks When for Audiovisual Dialogue Captioning",
+    "authors": [
+      "Binfei Ji",
+      "Zhiwen Cao",
+      "Anqi Yang",
+      "Prem Seetharaman",
+      "Shuo Yang",
+      "Ratheesh Kalarot",
+      "Yingyan Celine Lin",
+      "Mingze Xu"
+    ],
+    "abstract": "We present DiaCap, an audiovisual LLM for comprehensive dialogue captioning, which produces the transcript, timestamps, and a visual description of the speaker for every utterance in a video. Considering that utterance timing and audiovisual diarization are tightly coupled, DiaCap unifies the tasks in a single model, trained in two complementary stages. First, we train DiaCap on 225K curated clips, using synthetic captions that densely label every utterance in detail. Second, we further refine the model via reinforcement learning on 2.9K human-corrected clips, using fine-grained feedback that directly evaluates utterance timing, speaker grouping, and speaker binding. On DiaDemBench, which we extend with utterance-level timestamps and subtitle redaction, both DiaCap with off-the-shelf transcripts and its end-to-end variant DiaCap-E2E achieve strong results. Specifically, DiaCap performs on par with Gemini 4 Argon in audiovisual diarization while clearly outperforming it in timestamp accuracy (76.59 vs. 42.76 TIME). It also maintains strong diarization on multilingual and minute-long videos, and transfers to audiovisual question answering.",
+    "url": "https://arxiv.org/abs/2611.33153",
+    "pdf_url": "https://arxiv.org/pdf/2611.33153v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "PazaBench: Large-Scale ASR Benchmark for Low-Resource Languages in Africa",
+    "authors": [
+      "Mercy Muchai",
+      "Nick Mumero Mwangi",
+      "Kevin Chege",
+      "Samuel Chege Maina"
+    ],
+    "abstract": "Low-resource languages remain underrepresented in ASR benchmarks, limiting the ability to reliably assess and compare model performance. We present a large-scale benchmark for automatic speech recognition (ASR) on low-resource languages in Africa. The benchmark harmonizes six public corpora into a unified, reproducible evaluation framework and evaluates 52 state-of-the-art ASR models spanning three model architectural paradigms across 39 African languages on diverse datasets. Models are evaluated using standard accuracy and efficiency metrics, word error rate (WER), character error rate (CER), and inverse real-time factor (RTFx). This benchmark introduces architecture-aware comparison that systematically analyzes both individual models and broader model families. In addition, we quantify linguistic variance across language families, revealing how these factors shape ASR performance across diverse African languages. We also provide a comprehensive accuracy and efficiency trade-off analysis directly relevant to deployment in low-resource settings. Together, the benchmark, evaluation pipeline, and results support transparent, reproducible, and deployment-aware evaluation of ASR models for low-resource languages.",
+    "url": "https://arxiv.org/abs/2611.31578",
+    "pdf_url": "https://arxiv.org/pdf/2611.31578v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Is Prosody Encoded in the Neural Audio Codec Mimi?",
+    "authors": [
+      "Nicolas Ballier",
+      "Artem Saloev",
+      "Erin Pacquetet",
+      "Taylor Arnold"
+    ],
+    "abstract": "Neural audio codecs (NACs) have become a fundamental infrastructure for modern speech-language models, discretizing continuous speech signals into token sequences that enable large language models to process and generate audio. Most research evaluates codec quality at the decoding phase, assessing the naturalness of reconstructed speech. However, little research investigates what phonetic information is captured during encoding. In this paper, we investigated the potential correlates of prosody in the NAC Mimi, a codec used by conversational speech agents such as Moshi and Sesame and used in downstream tasks such as speech-to-speech translation (Hibiki).",
+    "url": "https://arxiv.org/abs/2611.32795",
+    "pdf_url": "https://arxiv.org/pdf/2611.32795v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ClusterVAD: Threshold-Free Unsupervised Voice Activity Detection with Pre-Trained Neural Representations",
+    "authors": [
+      "Karl El Hajal",
+      "Mathew Magimai. -Doss"
+    ],
+    "abstract": "Voice activity detection (VAD) is one of the first steps in speech processing pipelines, from transcription and diarization to speech language models. Supervised detectors need labelled data and inherit the domain and annotation conventions of their training corpora. Existing unsupervised detectors rely on hand-crafted acoustic features which cannot benefit from data and degrade in far-field, noisy or atypical speech. We propose ClusterVAD, an unsupervised VAD built on frozen speech foundation model representations. Fitted once on a small set of untranscribed speech, it clusters the representations and labels each cluster as speech or non-speech with sonority, an acoustic measure. At inference, a frame-level speech probability is computed from the cluster assignments, and a two-state hidden Markov model fitted to each recording enables threshold-free detection. Across benchmarks covering meetings, far-field and noisy recordings, Mandarin and dysarthric speech, ClusterVAD obtains the lowest detection error on pause-level references and is competitive on speaker turn-level references. These results indicate that speech foundation models inherently capture the distinction between speech and non-speech, which can be leveraged without training a detector.",
+    "url": "https://arxiv.org/abs/2611.33059",
+    "pdf_url": "https://arxiv.org/pdf/2611.33059v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Phoneme-identity depth profiles do not reliably predict LoRA placement for dysarthric ASR",
+    "authors": [
+      "Bernard Muller",
+      "LaVonne Roberts"
+    ],
+    "abstract": "Parameter-efficient adaptation of a speech foundation model to dysarthric speech requires a rarely justified choice: which encoder layers to adapt. A recently proposed strategy is to probe the encoder, find where phonetic information becomes most decodable, and put the adapters there. We test that inference across two ASR models (Qwen3-ASR, Whisper-small) and two dysarthric corpora (Mandarin CDSD, English UASpeech), holding recipe and seed discipline constant. The inference fails. Measured under one pipeline rather than inherited from published figures, all four phoneme-error curves minimise between 83% and 92% of relative depth, each model's minimising layer moving no further between corpora than between probe seeds. The best adaptation band is not similarly constant: none of three natural mappings from the curve to a band -- steepest improvement, lowest band-mean error, or knee location -- recovers the best tested configuration. We do not claim no statistic of the curve could work, only that these three do not. Placement still matters, but is model- and corpus-specific. On CDSD the models disagree -- Qwen3-ASR prefers its upper third (29.88% CER, three-seed mean), Whisper-small all-block LoRA (53.56%) -- while on UASpeech neither favours the upper band. At three seeds, upper-versus-all is resolved (-1.31 pp, CI [-2.16, -0.25]) but upper-versus-middle is not (-0.83 pp, CI [-2.06, +1.86]). The two models' preferences differ as a directly tested interaction (-4.71 pp, CI [-6.17, -2.89]); we designate this the primary claim, and record that the designation was made post hoc. On Qwen3-ASR x UASpeech, adapting near the input is reliably worse than not adapting at all (+9.90 pp CER). We recommend choosing the band by a short adaptation sweep on the model and corpus in hand, not by reading it off a probe.",
+    "url": "https://arxiv.org/abs/2611.32455",
+    "pdf_url": "https://arxiv.org/pdf/2611.32455v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "MOZAIC: An Audio-Video Deepfake Benchmark for Telling What Is Fake",
+    "authors": [
+      "Shaina Raza",
+      "Mohamed Hafez",
+      "Ahmed Y. Radwan",
+      "Khalid Elgazzar",
+      "Kathryn Hume"
+    ],
+    "abstract": "Audio-video (AV) deepfakes can fake the face, the voice, or both. Most benchmarks only ask whether a clip is real or fake, so they cannot show whether a detector relies on the picture, the voice, or encoding traces. We present MOZAIC, a paired benchmark with a 4-way label in which every source clip is released in all four combinations of real or fake video and real or fake audio so each modality contribution can be measured directly. Fakes cover inner-face swapping, whole-frame video diffusion and voice conversion. MOZAIC has 137,745 clips from 15,014 source pairs and four tasks: T1 AV authenticity, T2 manipulation type, T3 identity verification and T4 explanation. We evaluate 12 AV multimodal LLMs (MLLMs), train four detectors and fine-tune MLLMs with LoRA. Overall, the best MLLM reaches only 35.6% on the four-way T1 and catches far more video-only fakes than voice-only fakes (43.6% vs 7.5%). Trained detectors reach 98.4% on T1, and LoRA fine-tuning raises explanation scores (OmniVinci 4.17 to 7.40, Qwen2.5-Omni 4.42 to 6.98), but the best T1 detector falls to 78.3% when the face-swap generator is held out of training, so generalization and explanation remain open. We release the dataset, the compact MOZAIC-SMALL split, the code and the prompts. https://vectorinstitute.github.io/mozaic/",
+    "url": "https://arxiv.org/abs/2611.31301",
+    "pdf_url": "https://arxiv.org/pdf/2611.31301v2",
+    "arxiv_url": null
+  },
+  {
+    "title": "MADlibs: Analyzing the Distribution of Generative Music",
+    "authors": [
+      "Matthew Keating",
+      "Noah Schaffer",
+      "Michael Casey",
+      "Nikhil Singh"
+    ],
+    "abstract": "What music can a text-to-music model actually make? The answer to this question has consequences for individual creators, communities, and musical culture more broadly. We introduce MADlibs, a framework to measure the expressive support of state-of-the-art music generators: the subset of musical behaviors they will actually produce across the space of prompts. We first develop strategies for generating musical prompts using natural language processing methods and existing caption corpora. Then, we use a set of MIR techniques to study the corresponding output spaces in terms of interpretable and qualitatively meaningful elements like key, beat, tempo, instrumentation, and dynamics. We find that text-to-music models are not interchangeable instruments for the same prompt space. Rather, each model has learned idiosyncratic properties that constrain the regime of music reachable via prompting it, for example, defaulting to certain tempi, failing to produce silences, or oversampling canonical band arrangements. Because users interact with these systems one prompt at a time, these biases are often invisible in practice yet cumulatively shape what AI-assisted music sounds like, risking the production of a new auditory monoculture hidden behind the promise of universal describability. We thus urge the MIR community to further study and responsibly steer population-level properties of music generation models.",
+    "url": "https://arxiv.org/abs/2611.31462",
+    "pdf_url": "https://arxiv.org/pdf/2611.31462v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "BCP: A Lightweight Boundary-Controlled Framework for Online Sign Language Recognition and Translation",
+    "authors": [
+      "Xiao Ma",
+      "Lin Li",
+      "Shiqing Wu",
+      "Wang Gao",
+      "Chuanbo Liu",
+      "Jianquan Liu"
+    ],
+    "abstract": "Online sign language recognition (SLR) and translation (SLT) incrementally produce gloss sequences or natural language text from sign video as it arrives, a capability essential for real-time communication and live captioning. However, powerful pretrained offline models cannot be directly deployed in this setting, while existing online methods typically retrain the entire model on simulated streaming prefixes constructed from offline videos, incurring high costs. To address this challenge, we propose Boundary-Controlled Prefix Commit (BCP), a unified lightweight framework that converts pretrained offline methods into online counterparts for sign-to-gloss (S2G), sign-to-text (S2T), and sign-to-gloss-to-text (S2G2T). Specifically, BCP freezes the pretrained model and introduces a lightweight boundary adapter that decides when to commit, supervised by Connectionist Temporal Classification (CTC) alignments from a pretrained SLR model, without any human annotation. At inference, a Boundary-Controlled Wait-K Output Policy then decides what to commit via prefix voting, yielding adaptive burst commits while preserving the output progress of the base Wait-K schedule. Experiments on PHOENIX-2014T and CSL-Daily across four offline methods show that BCP, with less than 0.1% additional trainable parameters per offline method, achieves a strong quality-latency trade-off on S2T and remains competitive on S2G and S2G2T.",
+    "url": "https://arxiv.org/abs/2611.32471",
+    "pdf_url": "https://arxiv.org/pdf/2611.32471v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "LEGOSpec: A Composable and Efficient Framework for Speculative Draft Design and Training",
+    "authors": [
+      "Hanzhen Wang",
+      "Jiaming Xu",
+      "Guohao Dai"
+    ],
+    "abstract": "Speculative decoding accelerates large language model (LLM) generation using a lightweight draft. Existing methods evaluate complete recipes under different training configurations, leaving component effects, interactions, and composition benefits unclear. Therefore, we present LEGOSpec, a composable framework for speculative draft design and training. LEGOSpec decomposes draft models into Context, Backbone, Proposal, and Objective components that share a unified training infrastructure. Using LEGOSpec, we systematically vary components and evaluate selected combinations under matched training conditions to isolate their effects and interactions. These experiments reveal three findings: (1) Different workloads favor different backbones, depending on context length and memory budget, with within-block dependency modeling particularly important for long contexts. (2) Proposal design must balance acceptance and latency. (3) The training objective should match token distributions locally and optimize acceptance length across the block. These findings guide workload-aware configurations and DFlux, a balanced general-purpose draft combining a convolution-equipped SWA--GQA hybrid backbone, Residual Corrector, and hierarchical supervision. Across Qwen and Gemma models, DFlux improves acceptance length over the strongest baseline by up to 13.7% on regular benchmarks and 34.7% on long-context workloads. To support efficient training, LEGOSpec integrates metadata-aware scheduling and asynchronous execution, increasing training throughput by up to 79% and accelerating offline supervision preparation by up to $3.11\\times$ over SpecForge.",
+    "url": "https://arxiv.org/abs/2611.33004",
+    "pdf_url": "https://arxiv.org/pdf/2611.33004v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "BEARING: Who Is Talking to Whom? Grounding Acoustic Direction in Vision for Online Multi-Party Conversation",
+    "authors": [
+      "Nader Lobandi",
+      "Lombe Chileshe",
+      "Mohammad Mehdi Hosseini",
+      "Mohammad H. Mahoor"
+    ],
+    "abstract": "Understanding a group conversation means deciding, from video and audio, who is speaking and to whom. Leading systems treat these tasks offline on single-channel clips and align models with a self-evaluation reward. We propose BEARING, a geometry-first alternative built on one measured signal: the direction from which a microphone array beside the camera hears a sound. A label-free calibration learned from the stream registers this direction into the camera image, and an online registry of faces, voices and directions needs no enrollment. The registered direction serves as (i) a visual prompt for a vision-language model, a marker on the speaker or an arrow toward an off-screen source; (ii) one input of a reliability-weighted fusion with visual active-speaker detection, for speakers in the same direction from the array; and (iii) a verifiable reward for alignment: the named speaker must sit where the sound comes from, the confidence must match that check, and always answering \"group\" earns nothing. Every decision is online, with the lookahead as an explicit parameter. On 9,498 addressee-labelled utterances from three AMI sites and egocentric EasyCom, the direction prompt raises speaker accuracy from 54% to 74%; addressee accuracy moves by about two points, because telling one addressee from the group depends on the words more than on where people are. For co-located speakers on AVDIAR, visual active-speaker detection holds 95% where direction alone falls to 59%. The verifiable reward beats self-evaluation under GRPO, reward-ranked fine-tuning and DPO; shrinking the lookahead from 5 s to 0.5 s costs 4.5 DER points on AMI, and learning the registration online costs a dip in the first two minutes before the system overtakes vision alone. Code and evaluation protocols will be released.",
+    "url": "https://arxiv.org/abs/2611.31735",
+    "pdf_url": "https://arxiv.org/pdf/2611.31735v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "VividAudio: Multi-Event Reference-Conditioned Video-to-Audio Generation",
+    "authors": [
+      "You Li",
+      "Dewei Zhou",
+      "Fan Ma",
+      "Dongliang He",
+      "Yi Yang"
+    ],
+    "abstract": "Existing video-to-audio (V2A) methods have achieved promising results in synthesizing high-quality audios. However, as V2A advances toward more flexible user-directed creation, existing methods remain notably limited in controlling the distinct acoustic identities of multiple events within a video. We therefore formulate multi-event reference-conditioned V2A (Mr-V2A), where each event is assigned a specific audio reference and target time span. Mr-V2A presents three key challenges. First, event-level reference-target training pairs are scarce. We introduce Intra-Video Event Variation (IntraEvtVar), which constructs non-oracle pairs through four variation modes of events mined within each video. Second, we organize the references into a Time-Aligned COmposite Reference (TACO-Ref) and inject it through local and global pathways: the local pathway retains time-resolved event cues, while an Audio Q-Former provides a clip-level acoustic-context condition. Third, jointly conditioning on multiple references can cause acoustic-attribute leakage across events. Localized reference attention and the TACO-Ref Router (TRR) explicitly constrain event-to-reference correspondence to reduce such interference. Experiments on VGGSound-Ref and VividBench demonstrate stronger reference controllability than existing V2A and exemplar-based methods while maintaining competitive Foley generation quality.",
+    "url": "https://arxiv.org/abs/2611.32458",
+    "pdf_url": "https://arxiv.org/pdf/2611.32458v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "LatentLens: Rethinking Latent Interface in Multi-Agent Systems",
+    "authors": [
+      "Ziqing Yang",
+      "Kewei Cheng",
+      "Mingjie Li",
+      "Yang Zhang"
+    ],
+    "abstract": "Latent interfaces let agents in a multi-agent system communicate through continuous representations rather than decoded text. Prior work reports performance and efficiency gains, but neither separates latent communication from the agent harness nor examines its internal components, leaving its actual contribution unclear. We propose LatentLens, a framework that decouples the latent interface at two levels: externally from the agent harness, to measure its contribution to overall performance (RQ1), and internally into realignment compatibility, information accessibility, and propagation dynamics, to identify the benefits and limitations of each (RQ2). Across seven benchmarks with Qwen3 models, adding the latent interface to the same harness does not improve and can even substantially degrade accuracy. Internally, latent representations retain some domain information, but incompatible realignment can substantially degrade performance, and repeated latent steps can amplify representation-level failures. Thus, while latent representations may preserve information, they do not necessarily ensure effective communication, which also requires compatible realignment, information accessibility, and stable propagation.",
+    "url": "https://arxiv.org/abs/2611.31582",
+    "pdf_url": "https://arxiv.org/pdf/2611.31582v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Sample-Efficient In-Context Adaptation via Sleep",
+    "authors": [
+      "Sangyun Lee",
+      "Zhang Enyan",
+      "Michael Xu",
+      "Hao Tang",
+      "Zinan Lin",
+      "Weijia Xu",
+      "Chris Quirk",
+      "Jianfeng Gao",
+      "Giulia Fanti",
+      "Xiaodong Liu"
+    ],
+    "abstract": "The ability to learn and generalize from limited experience, or sample efficiency, is a cornerstone of intelligence. How can we build language models that turn a few user interactions, a few snippets of unfamiliar code, or a handful of experimental results provided in context into knowledge that generalizes? Prior work has found that sleep, a process where the model performs $N$ recurrent forward passes to refine its representations of a chunk of context, can improve long-context reasoning (specifically, within SSM-attention hybrid models). We study whether this method also improves in-context adaptation on general, non-synthetic tasks for transformer language models. To this end, we pre-train language models up to 1.2B-parameters on up to 100B tokens with sleep mechanisms. Notably, longer sleep (i.e., using a larger number of recurrent forward passes $N$) enables the model to learn faster in-context on multiple few-shot algorithmic, question-answering tasks, while also achieving lower next-token prediction loss on out-of-distribution evaluations. On held-out code, models with $N=2$ and $N=4$ match the no-sleep baseline's loss using $2.10\\times$ and $2.39\\times$ fewer tokens in-context, respectively. More broadly, we view our work as a step toward building models that have better tradeoffs between in-context adaptation and decoding latency.",
+    "url": "https://arxiv.org/abs/2611.32802",
+    "pdf_url": "https://arxiv.org/pdf/2611.32802v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Efficient Video Retrieval Augmented Generation via Token Allocation",
+    "authors": [
+      "Ayush Barik",
+      "Fan Lai",
+      "Francis Y. Yan"
+    ],
+    "abstract": "Efficient long-video understanding requires identifying relevant evidence while minimizing the tokens processed by vision-language models (VLMs). Existing video retrieval-augmented generation (RAG) methods rely on frame selection and token compression, but overlook how much each additional token is worth. We introduce Lembas, a plug-and-play framework that formulates video RAG as a token allocation problem over frames and subtitles under a shared budget. Our key insight is that the value of a token diminishes within each item and decreases further as similar evidence receives more tokens. Lembas captures both effects in a single objective and solves it with an efficient iterative water-filling algorithm that has a provable convergence guarantee. For multi-turn conversations, Lembas reuses the tokens processed in earlier turns and refines relevance with the VLM's attention at no extra cost. Our evaluations show that Lembas improves accuracy by up to 7.2 percentage points over state-of-the-art baselines at comparable compute. On multi-turn video understanding, Lembas achieves up to 1.5 percentage points higher accuracy with 1.7-17.3x fewer TFLOPs.",
+    "url": "https://arxiv.org/abs/2611.32938",
+    "pdf_url": "https://arxiv.org/pdf/2611.32938v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Do Layer Rankings Survive Silence Trimming? The Silence Shortcut in Frozen WavLM Representations for Audio Deepfake Detection",
+    "authors": [
+      "Nur Elabid",
+      "Mahmud Esad Arar"
+    ],
+    "abstract": "Layer-wise analyses of frozen self-supervised encoders are used to locate spoofing information in audio deepfake detection. On the ASVspoof 2019 logical access (LA) benchmark, bonafide recordings carry longer leading and trailing silence than spoofed ones, and detectors exploit this cue, the silence shortcut. This paper examines whether layer rankings for a frozen WavLM Base encoder survive the trimming of this silence. A small classifier is trained on each of the 12 layers with and without trimming and evaluated on ASVspoof 2019 LA and, zero-shot, on In-the-Wild, in all four train/test combinations, with speaker-level bootstrap intervals. Trimming at 40 dB raises the in-domain error at every layer and preserves the layer ranking only partly (Kendall's tau of 0.58 in domain, 0.73-0.76 on In-the-Wild). The best layer is unchanged at 40 dB, but on the evaluation set it moves from layer 5 to layer 6 at 15 dB and, with mean pooling, at 20 dB, thresholds at which trimming may also remove low-energy speech. At 40 dB, the equal error rate of a model trained with silence rises by 6.3-19.9 percentage points at every layer when only its test audio is trimmed. On In-the-Wild, the effect depends on the layer: at layers 3-5, trimming the test audio lowers the error only for models trained on trimmed audio, whereas at layers 6, 8, and 9 training on trimmed audio lowers it also on clean test audio. We quantify how zero padding alters WavLM features through group normalization, an effect that an attention mask does not fully undo.",
+    "url": "https://arxiv.org/abs/2611.32457",
+    "pdf_url": "https://arxiv.org/pdf/2611.32457v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SAVERA: Bridging Frozen Vision and Language Models via Sparse Alignment and Visual Evidence Reuse",
+    "authors": [
+      "Jiajun Shen",
+      "Chuancheng Shi",
+      "Jiayi Lyu",
+      "Yanpeng Sun",
+      "Fei Shen",
+      "Tat-Seng Chua"
+    ],
+    "abstract": "Independently pretrained vision and language models may learn shared structures of the same underlying world, providing a foundation for combining them to build multimodal capabilities. However, a key challenge remains in aligning cross-modal feature representations while preserving access to visual information before and after language adaptation. To this end, we propose sparse alignment with visual evidence-guided residual adaptation (SAVERA), a framework that combines frozen vision and language models through bidirectional alignment in a shared sparse space and prompt-guided residual fusion. Specifically, we first present shared-space projection, activation reconstruction and encoding (SPARE), which represents original visual, adapted visual, and textual features through shared soft-gated sparse encoding, with branch-specific reconstruction to preserve their respective information. Second, we devise bridge--text embedding and activation matching (BEAM), a bidirectional cross-modal alignment module that aligns adapted visual and textual features at both the sample and neuron levels, establishing fine-grained cross-modal correspondence. Finally, we introduce prompt-conditioned residual integration of vision and adapted features (PRIVA), a prompt-guided residual fusion module that models vision--language interactions through gating and attention and integrates complementary information from original and adapted representations through residual fusion. Extensive experiments show that SAVERA achieves competitive performance on image captioning and visual question answering while reducing object hallucination.",
+    "url": "https://arxiv.org/abs/2611.32828",
+    "pdf_url": "https://arxiv.org/pdf/2611.32828v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "InCue: Making Better Use of What Multimodal LLMs Already See at Test Time",
+    "authors": [
+      "Shuwei Wu",
+      "Siyue Yu",
+      "Longin Jan Latecki"
+    ],
+    "abstract": "Even when multimodal large language models (MLLMs) answer incorrectly, their internal cues often point to the relevant region. A widely used remedy re-presents the cue-selected region as an enlarged crop to supply finer detail. However, we find that much of its gain requires no new detail: it largely survives when the crop comes from the already-seen low-resolution input, and partly even when the region's cached tokens are merely copied. Part of re-presentation's gain thus comes from drawing attention to evidence the model already holds. We propose InCue, a test-time framework that makes better use of this evidence without additional visual input. InCue treats visual attention and predictive-entropy gradients as Internal Cues, couples them into a spatial target, and optimizes only an offset on the existing visual tokens to steer attention toward it. Under matched visual-token budgets, InCue achieves state-of-the-art performance, consistently outperforming recent test-time methods and improving four MLLMs by up to 8.9% on V$^*$ and 23.4% on its hard samples. Its gains carry over to eight general benchmarks. Code will be available at https://github.com/paul-swu/InCue.",
+    "url": "https://arxiv.org/abs/2611.31987",
+    "pdf_url": "https://arxiv.org/pdf/2611.31987v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Mask-Based Speech Enhancement for Spatial Audio: Effects of Signal Representation and Channel-Specific Masking",
+    "authors": [
+      "Sheli Hendel",
+      "Boaz Rafaely",
+      "Dorothea Kolossa"
+    ],
+    "abstract": "Speech enhancement for spatial audio needs to improve speech quality and intelligibility while preserving the spatial characteristics of the acoustic scene. Time-frequency masking provides an effective approach for speech enhancement, but its performance and spatial fidelity may depend strongly on the signal representation in which the mask is applied. This work systematically compares time-frequency masking in the microphone, beamformer, and first-order Ambisonics domains in simulated reverberant acoustic scenes. Both an ideal ratio mask (IRM) and a lightweight deep-learning-based mask estimator are considered, with performance evaluated in terms of speech reconstruction, perceptual quality, intelligibility, reverberation preservation, and binaural spatial-cue preservation. The results show that channel-specific masking in the beamformer domain provides the highest speech quality and intelligibility, while channel-specific masking in the Ambisonics domain better preserves the spatial characteristics of the residual interference. Reducing the spatial representation from third- to first-order Ambisonics substantially reduces the performance gap between the beamformer and Ambisonics domains due to the lower spatial resolution of the resulting beamformers. Furthermore, a shared mask across first-order Ambisonics channels achieves speech enhancement performance close to that of channel-specific masking while requiring only a single mask-estimation network. These results demonstrate that the choice of signal representation and masking strategy should be considered jointly, and indicate that first-order Ambisonics with shared masking provides a practical compromise between speech enhancement performance, spatial fidelity, and computational complexity.",
+    "url": "https://arxiv.org/abs/2611.32910",
+    "pdf_url": "https://arxiv.org/pdf/2611.32910v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Perfect Scores, Misplaced Explanations: A Controlled Study of Explainability in Audio Deepfake Detection",
+    "authors": [
+      "David Combei",
+      "Dan Oneata",
+      "Francesco Paissan",
+      "Cem Subakan",
+      "Horia Cucu",
+      "Adriana Stan"
+    ],
+    "abstract": "What if an explanation achieves perfect scores but it is uninterpretable? We show that this happens when explaining audio deepfake detectors. Using an optimization-based method, we explain a state-of-the-art wav2vec2-based detector. The explanations achieve optimal scores on standard explainability metrics, i.e. fidelity and faithfulness. Visual inspection, however, reveals unintuitive and uninterpretable patterns. To understand this discrepancy, we run a controlled perturbation study in which we modify known frequency regions of the speech signal. Although we propose a model that is able to obtain close-to-optimal results with respect to the metrics, the explanations locate the manipulated region only when it is fixed across samples, and mostly fall to chance level when it varies. We further show that the signal used to fill the removed regions largely determines the explanation and its localization, without being reflected in the metrics.",
+    "url": "https://arxiv.org/abs/2611.32593",
+    "pdf_url": "https://arxiv.org/pdf/2611.32593v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SAG-Mem-1.0 Technical Report",
+    "authors": [
+      "Yuchao Wu",
+      "XingCheng Liang",
+      "Xuanze Wang",
+      "Yini Huang",
+      "Yue Wu"
+    ],
+    "abstract": "Long-term conversational memory requires retrieving complementary facts scattered across dialogue sessions, including intermediate evidence with limited similarity to the original question. Existing approaches often rely on derived memory representations or persistent relational structures, introducing construction costs and potentially losing source details. We present SAG-Mem, a conversational memory framework that preserves complete dialogue messages in non-overlapping chunks and discovers complementary evidence through query-time lexical expansion. Memory construction requires no model inference, using a lexical index without LLM-based extraction, summarization, or semantic relation construction. At query time, BM25 retrieves initial candidates, an evidence evaluator identifies useful chunks, and lexical cues from selected evidence guide an additional retrieval round. Retrieved dialogue is further annotated with calendar interpretations of supported relative-time expressions, preserving the original wording and temporal granularity. We also introduce SAG-Mem-Lite, an alternative configuration that replaces evidence scoring with embedding-based candidate scoring, achieving lower operational cost than Full Context and all memory-based baselines across both benchmarks with low query latency. On LoCoMo and LongMemEval, SAG-Mem achieves overall scores of 83.08 and 80.20, respectively, the highest among the evaluated methods on both benchmarks. On LongMemEval, it exceeds the strongest compared baseline by 7.20 points. SAG-Mem-Lite achieves scores of 77.09 and 77.20, respectively. These results support dialogue preservation and evidence-guided retrieval expansion as an effective design for long-term conversational memory.",
+    "url": "https://arxiv.org/abs/2611.33124",
+    "pdf_url": "https://arxiv.org/pdf/2611.33124v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Look Before You Commit: Visual-Evidence-Guided Decoding for Multimodal Diffusion Language Models",
+    "authors": [
+      "Tongxiao Hu",
+      "Yikai Zhao",
+      "Qiyan Zhao",
+      "Xiaosong Yuan",
+      "Xuhang Chen",
+      "Pengzhou Cheng",
+      "Xiaofeng Zhang"
+    ],
+    "abstract": "Diffusion multimodal large language models rely on confidence to decide when to commit candidate tokens during generation. In multimodal tasks, however, confidence cannot distinguish whether a candidate originates from image evidence or the language prior. We perform paired forward ablation and find that nearly nine out of ten high-confidence commits are insensitive to the image, while degenerate and hallucination samples exhibit significant increases in the entropy of deep-layer attention organization. Based on this diagnosis, we propose CD-APC, a training-free decoding method. CD-APC performs evidence-adjusted scoring within a base-supported pool and uses dual gating based on model acceptability and contrastive concentration to decide whether to commit, together with an inverse-window mechanism that adapts to inter-step difficulty. Across two backbones and five benchmarks, CD-APC consistently improves performance, indicating that stable visual evidence improves model outputs.",
+    "url": "https://arxiv.org/abs/2611.31677",
+    "pdf_url": "https://arxiv.org/pdf/2611.31677v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Calibrated Reading of Latent Reasoning and Communication",
+    "authors": [
+      "Zixi Wang",
+      "Gaohao Zhou",
+      "Yubo Huang",
+      "Xin Lai",
+      "Yushe Cao",
+      "Jingzehua Xu",
+      "Shuai Zhang"
+    ],
+    "abstract": "Latent reasoning and key-value communication store intermediate information in continuous representations, limiting direct inspection of model behavior. Existing activation readers trade the low cost of task-specific probes against the flexibility of language-model decoders. We propose the Calibrated Latent Reader, CLR, a compact transformer that predicts reasoning outcomes and message content through task-conditioned interactions between states and candidate answers. Source adapters support transfer across models, while conformal calibration provides coverage and false-alarm guarantees under exchangeability. On two CODI models, CLR improves accuracy over MLP and attention probes by 4-18 percentage points for final-answer prediction and reference-value membership. On CODI-GPT-2, it achieves accuracy comparable to a 1.7B LatentQA-based verbalizer using 437-648 times fewer inference FLOPs. On synthetic Qwen3-4B communications, comparing decoded facts with public commitments detects 93.1% of message substitutions at a nominal 5% false-positive rate.",
+    "url": "https://arxiv.org/abs/2611.32143",
+    "pdf_url": "https://arxiv.org/pdf/2611.32143v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "MargEmbed-Akan: Bridging Twi Questions and English Knowledge through Cross-Lingual Score Distillation",
+    "authors": [
+      "Prince N. Y. Annan",
+      "Ali A. A. Aziz",
+      "Stephen E. Moore"
+    ],
+    "abstract": "Most information sought online by Twi (Akan) speakers is written in English, making cross-lingual retrieval essential. We evaluate eight systems: BM25, five open embedding models, and two proprietary models (gemini-embedding-001 and OpenAI text-embedding-3-large) on two Twi-English tasks. AfriQA contains 1,221 natively written Asante Twi questions that must retrieve their answering English Wikipedia passages. Bible translation retrieval requires a Twi passage to retrieve its English translation from 6,195 candidates. We introduce MargEmbed-Akan, a 560M-parameter open query encoder trained from AfriE5-Large-instruct using cross-lingual score distillation. The frozen base model scores each English training question against its answer passage and seven hard negatives. The student learns to reproduce these scores from both an NLLB-200 Twi translation that passes a round-trip translation check and the original English question, preserving English behaviour. During training, passages are encoded by the frozen base model; at evaluation, MargEmbed-Akan encodes questions and passages. On AfriQA, base AfriE5 and gemini-embedding-001 both achieve 66.6 nDCG@10; EmbeddingGemma 2, Qwen3-VL-Embedding-2B, and OpenAI text-embedding-3-large achieve 56.6, 51.3, and 53.4, respectively. MargEmbed-Akan achieves 71.5, outperforming gemini-embedding-001 by 4.9 points, its base model by 5.0, and OpenAI text-embedding-3-large by 18.1. Its largest gain is on Twi typed without E and O (+7.5 over gemini-embedding-001). English retrieval does not differ significantly from the base model, although both proprietary models score 1.5-2.2 points higher. On Bible translation retrieval, MargEmbed-Akan and gemini-embedding-001 are statistically tied on standard Twi (97.2 vs. 96.5 nDCG@10); MargEmbed-Akan performs better on diacritic-free Twi (92.7 vs. 84.9). No AfriQA data was used for training or model selection.",
+    "url": "https://arxiv.org/abs/2611.32630",
+    "pdf_url": "https://arxiv.org/pdf/2611.32630v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Back to Raw Motion: Latent-Free Diffusion Transformers for Text-to-Motion and Exact Conditional Generation",
+    "authors": [
+      "Yun Chen",
+      "Jeonghyeok Do",
+      "Munchurl Kim"
+    ],
+    "abstract": "As generative models tackle larger and more complex datasets, learned codecs enable efficient generation through compact latent representations, but may lose details and cannot guarantee exact preservation of given conditions. Generating directly in the original data space avoids errors introduced by the codec. Recent advances in image generation demonstrate that pixel diffusion can produce high-quality samples at practical computational costs. Inspired by these advances, we conduct a preliminary study of pixel diffusion, demonstrating its potential for adaptation to motion generation. Building on these findings, we present RawMo, a framework that brings text-to-motion generation to raw motion space. Our Motion Diffusion Transformer (MiT) models local skeletal structures and whole-body dynamics, while refining motion across frames to improve temporal consistency. Working directly in raw motion space further allows our high-noise text-motion alignment loss (HiNCE) to improve text consistency without intermediate motion decoding. RawMo supports multiple motion-conditioning tasks with a single conditional model while preserving given motion conditions exactly. Experiments on HumanML3D and KIT-ML show the best text alignment among compared methods and competitive motion quality, with ablations confirming the benefits of MiT and HiNCE.",
+    "url": "https://arxiv.org/abs/2611.32793",
+    "pdf_url": "https://arxiv.org/pdf/2611.32793v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Provenance Loss and Repair in Multilingual Compaction",
+    "authors": [
+      "Ian Miao",
+      "Fangrui Zhu",
+      "Bowen Jiang"
+    ],
+    "abstract": "Conversational assistants compact older messages into short notes and evict the originals. When the note's language requires a distinction that English leaves open, such as Spanish adjective gender (agotado vs. agotada), messages that omit or explicitly state that attribute can yield the same note. After eviction, later turns cannot tell them apart: taking the inflected form literally asserts an attribute the user never gave, whereas discounting it as routine grammar discards one the user did give. We propose a training-free repair across writing, pre-eviction verification and reading. The writer marks unstated attributes with paired forms (e.g., agotado/a), a likelihood check before eviction rewrites unsupported single forms into paired ones, and the reader trusts remaining single forms as stated facts. On five Qwen3.5 and Gemma-4 models, eviction cuts recall of stated attributes from 90% to 34% in question answering (QA); our repair raises F1 (which penalizes both errors) on every model, by 9-53 points in QA and 12-40 points in agent handovers.",
+    "url": "https://arxiv.org/abs/2611.31668",
+    "pdf_url": "https://arxiv.org/pdf/2611.31668v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Fixed-Context Likelihood: Zero-Shot AI-Generated Text Detection via Context Perturbation Discrepancy",
+    "authors": [
+      "Yifan Tang",
+      "Jingran Li",
+      "Yihao Wang",
+      "Zhen Yang",
+      "Jianyi Liu",
+      "Gongshen Liu",
+      "Ru Zhang"
+    ],
+    "abstract": "The same increase in token log probability from earlier context can be typical at one position and unusually large at another. We introduce Context Perturbation Discrepancy (CPD), a zero-shot detector that measures this gain relative to what a single pretrained language model expects. Keeping the passage fixed, CPD scores each observed token under its full prefix and under a short window of recent tokens. Under the full-prefix distribution, the expected gain equals the KL divergence from that distribution to the restricted-prefix distribution. CPD subtracts this expectation from each observed gain and scales the sum of the signed deviations by its analytical reference standard deviation. On unedited human and AI texts from GEN, DetectRL-X, and HART, subtracting the expected gain raises AUROC by 32.78-35.81 percentage points at the same variance scale. CPD outperforms seven zero-shot baselines, averaging 94.80% AUROC and 79.60% recall at a 5% false-positive rate. On original and edited HART passages, the same scores separate texts more clearly by draft origin than by the benchmark's final-expression labels (89.15% versus 65.50% AUROC). Code is available at https://github.com/BUPT-tyf/CPD.",
+    "url": "https://arxiv.org/abs/2611.32778",
+    "pdf_url": "https://arxiv.org/pdf/2611.32778v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "What People Choose Not to Say: A Multimodal Benchmark for Fine-Grained Information Manipulation in Conversations",
+    "authors": [
+      "Yuhan Bian",
+      "Zhaokai Liang",
+      "Jia Wang",
+      "Haoyu Liu",
+      "Yu Chen",
+      "Jianfeng Qu",
+      "Zhixu Li"
+    ],
+    "abstract": "Recent advances in MLLMs have improved social understanding, enabling models to recognize emotions and distinguish truthful from deceptive behaviors. However, existing benchmarks largely focus on coarse-grained emotion recognition or binary truth-deception detection, overlooking the diverse ways people manipulate information in conversations, such as withholding, leakage, fabrication, evasion, and defensive counterclaim. Understanding these behaviors requires reasoning about underlying facts, participant knowledge, and conversational context, making them difficult to evaluate reliably. To address this gap, we introduce InfoCon, a multimodal benchmark for fine-grained information manipulation in conversations. InfoCon identifies six fine-grained strategies and derives a coarse consistency label from their factual and interactional relations. We develop an evidence-grounded multi-agent annotation framework to construct and verify reliable labels from rich contextual evidence. We benchmark representative multimodal models and systematically analyze their fine-grained information manipulation understanding, providing a testbed beyond binary truth-deception judgments.",
+    "url": "https://arxiv.org/abs/2611.31346",
+    "pdf_url": "https://arxiv.org/pdf/2611.31346v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "How Persona Conditioning Changes Open-Ended Task Execution: A Paired Evaluation of Behavioral Gains and Reliability Costs",
+    "authors": [
+      "Yugyeong Ji",
+      "Changho Lee",
+      "Yerin Hwang",
+      "Taegwan Kang",
+      "Jinsik Lee"
+    ],
+    "abstract": "Large language models (LLMs) are often prompted with role- or persona-based instructions, yet persona conditioning has mainly been evaluated through character fidelity or aggregate benchmark accuracy. We study persona conditioning as a task-execution steering signal that changes how models interpret, structure, and sustain responses. Using paired instances derived from real user role-play logs and expanded into simulated multi-turn continuations, we compare with-persona and no-persona conditions while fixing task content, constraints, user simulation, and evaluation criteria. Across eight models, persona conditioning improves expert content depth and procedural fidelity, and these gains survive length control. At the same time, it lowers strict instruction-following accuracy by 17 to 30 points in every model evaluated, and increases unsupported real-world specificity through persona-induced elaboration. These results suggest that persona prompting is not a general-purpose performance improvement technique, but a selective task-execution policy shift with both behavioral gains and reliability risks.",
+    "url": "https://arxiv.org/abs/2611.31264",
+    "pdf_url": "https://arxiv.org/pdf/2611.31264v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SALSA: Sampling Adversarial Suffixes from Learned Distributions for LLM Safety Assessment",
+    "authors": [
+      "Shivank Rajput",
+      "Himanshu Singh",
+      "A. V. Subramanyam"
+    ],
+    "abstract": "Large language models (LLMs) remain vulnerable to jailbreak attacks, where adversaries append optimized suffixes to otherwise benign looking prompts to bypass safety alignment. Existing optimization-based GCG-style attacks can be effective, but they are expensive at inference time, and suffer from poor transfer. We present, SALSA, a generative framework that learns a distribution over jailbreak suffixes from optimization-derived attack corpora. Once trained, the model supports efficient sampling-based attacks. On open-source targets, it achieves attack success rates comparable to state-of-the-art optimization baselines, while reducing generation time from 3.46s to 0.04s per prompt. In black-box transfer, it remains highly effective against proprietary systems, including 99% ASR on GPT-3.5-Turbo, and reaches 45% ASR on the substantially harder GPT-4o, more than doubling the strongest baseline at an equal sampling budget. We further offer an intuition for why generative sampling can preserve high attack success, when the learned suffix distribution is close to the distribution of optimization outputs. Overall, our results show that learning adversarial suffix distributions yields a scalable, and practically efficient foundation for continuous LLM vulnerability discovery.",
+    "url": "https://arxiv.org/abs/2611.33030",
+    "pdf_url": "https://arxiv.org/pdf/2611.33030v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "HEAR, SEE, SPIKE ONCE: Highly Efficient NeuroAI Temporal Neural Networks for Low-Precision Multimodal Audio-Visual Classification and Online Learning",
+    "authors": [
+      "Shanmuga Venkatachalam",
+      "Quinn Jacobson",
+      "John Paul Shen"
+    ],
+    "abstract": "Spiking neural networks for multimodal audio-visual classification reach high accuracy by adopting deep-learning machinery: multi-stage convolutional or transformer encoders trained end-to-end with surrogate-gradient backpropagation through time. These prior works typically rely on full-precision (32-bit) parameters and do not treat hardware efficiency as a primary design objective. In this paper, we propose NeuTNN-AV, a much simpler hardware-amenable multimodal substrate built on the recently proposed NeuroAI Temporal Neural Network (NeuTNN) and demonstrate that it can match or outperform state-of-the-art SNN baselines with a fraction of their synapse counts. NeuTNN neurons carry multiple active dendritic segments. Each input line spikes at most once (temporal coding) and every weight is learned via a local reward-modulated spike-timing dependent plasticity (STDP) rule. All weights are 4-bit integers and inference uses only comparisons and additions. On CREMA-D, it reaches 78.6% with 2.34M synapses establishing a new state-of-the-art SNN accuracy, against 77.14% for MISNet-XL (31M parameters). On UrbanSound8K-AV, NeuTNN reaches 98.82% with 1.38M synapses, against 96.85% for SMMT (9.99M parameters) and 98.96% for MISNet-XL (31M parameters). Weight memory is 23-106x smaller than the spiking baselines, and the measured synaptic energy per inference is two to three orders of magnitude lower. Furthermore, the proposed NeuTNN learns CREMA-D in a single pass with 73.8% accuracy and demonstrates rapid online continual learning by adapting to unseen actors from a few dozen clips.",
+    "url": "https://arxiv.org/abs/2611.31884",
+    "pdf_url": "https://arxiv.org/pdf/2611.31884v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "VenusOCR2.0: Towards Efficient and Effective Document Parsing",
+    "authors": [
+      "Lei Li",
+      "Zheng Wei",
+      "Yi Yuan",
+      "Qingbin Liu",
+      "Jiang Bian",
+      "Zang Li"
+    ],
+    "abstract": "We present VenusOCR2.0, a compact 1B-parameter vision-language recognizer designed for both high-accuracy and high-throughput document parsing across text, tables, and formulas. To continuously improve recognition quality without self-training collapse, we build a bounded recursive self-improvement (RSI) data engine where the model acts strictly as a weakness probe, while external multi-expert medoid consensus, VLM visual verification, and factorized synthesis supply reliable supervision across pretraining, curated SFT, and RLVR. VenusOCR2.0 couples a dynamic-resolution SigLIP2 encoder and 2x2 spatial token merging with a Qwen3-0.6B decoder, adopting compact atomic OTSL tokens to shorten table sequences and reduce structural errors. To further eliminate the autoregressive decoding bottleneck, we introduce PTPv2, a lightweight ($\\sim$67M) decoupled parallel draft module that combines frozen multi-layer verifier conditioning, a standalone learned mask, and block-causal all-position next-token prediction. On OmniDocBenchv1.6, VenusOCR2.0 achieves an overall score of 96.45 and a state-of-the-art 98.57 formula CDM, substantially outperforming massive general-purpose VLMs such as Gemini-3-Pro (92.91) and Qwen3-VL-235B (89.78). Deployed in vLLM on a single H20 GPU, PTPv2 delivers a 2.96x single-request speedup and up to 2.36x higher batched throughput while guaranteeing lossless, token-for-token equivalence with standard autoregressive decoding.",
+    "url": "https://arxiv.org/abs/2611.32617",
+    "pdf_url": "https://arxiv.org/pdf/2611.32617v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "SynAVID: A Synthetic Audio-Visual Immersive Dataset of Dynamic Scenes",
+    "authors": [
+      "Jun Xu",
+      "Sujing Li",
+      "Chunhao Bi",
+      "Zhengxue Cheng",
+      "Ronghua Wu",
+      "Qunshan Gu",
+      "Li Song"
+    ],
+    "abstract": "Immersive scene modeling requires synchronized visual and auditory observations under changing viewpoints and scene conditions. Obtaining such observations and references for controlled scene changes remains challenging. We introduce SynAVID, a synthetic audio-visual immersive dataset comprising eight indoor and outdoor scenes. Each minute-scale episode combines fixed camera arrays and moving trajectories with synchronized, viewpoint-dependent binaural audio. Shared scene dynamics, sound-source events, and observer poses drive visual rendering and geometry-aware acoustic synthesis. We evaluate existing methods for visual reconstruction, binaural audio reconstruction, and audiovisual editing. Mixed-observation configurations generally improve visual reconstruction on fixed and moving test views, while transiently occupied and sparsely observed regions remain challenging. Methods rank differently on spectral, interaural, and perceptual audio metrics. Geometric and instance annotations expose uneven observation support and local Gaussian representations beyond aggregate scores. Paired references assess target edits and surrounding content, while controlled geometry changes produce listener-dependent acoustic responses. The project page is available at https://avery-xu.github.io/synavid-project/.",
+    "url": "https://arxiv.org/abs/2611.32311",
+    "pdf_url": "https://arxiv.org/pdf/2611.32311v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "LIBRA: Runtime Co-Tuning of Batch Size and Parallelism for Time-Efficient LLM Training",
+    "authors": [
+      "Shengkai Lyu",
+      "Hairui Zhao",
+      "Daran Sun",
+      "Yida Gu",
+      "Xingchen Liu",
+      "YueYuan Zhou",
+      "Zheng Wei",
+      "Guangming Tan",
+      "Dingwen Tao"
+    ],
+    "abstract": "Training large language models (LLMs) requires choosing both a batch size and a parallel configuration. Existing systems make these decisions in isolation, tuning parallelism for throughput and batch size for convergence, but neither objective alone determines training efficiency. We present LIBRA, a lightweight runtime framework that co-tunes batch size and parallel configuration to minimize end-to-end time. LIBRA treats throughput and convergence as two noisy objectives and searches their joint space using parallel noisy expected hypervolume improvement (qNEHVI). To make this runtime search efficient, we propose hierarchical pruning, which removes infeasible and low-throughput parallel configurations through system-level performance estimation and then narrows batch-size candidates through critical-batch-size-aware convergence monitoring. We further design acquisition-guided parallel evaluation (AGPE), which evaluates surviving candidates concurrently across GPU groups in order of their acquisition values. On clusters of up to 256 GPUs, LIBRA reduces time-to-convergence by 31.1% on average over state-of-the-art methods, while runtime tuning accounts for only 0.3-3.5% of overall time.",
+    "url": "https://arxiv.org/abs/2611.32008",
+    "pdf_url": "https://arxiv.org/pdf/2611.32008v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Measurement Artifacts in Trustworthiness Evaluations of Quantized Small Language Models",
+    "authors": [
+      "Tanzeel Abbas",
+      "Tehseen Zia",
+      "David Windridge"
+    ],
+    "abstract": "Evaluations of quantized language models attribute the change in a benchmark score to quantization. We write the measured change as the true change plus a term contributed by the instrument. Instrument error that is the same at every precision can shrink a paired comparison but cannot create or reverse an effect. Error that interacts with quantization can do both, and it is reported as an effect of quantization. We estimate this interaction for four measurement choices in 8 instruction-tuned models below two billion parameters, at float16, LLM.int8() and NF4, on identical items. Measured against labels from two human annotators, the 4-bit rise in harmful compliance is about half to two-thirds of the rise in non-refusal that a corrected key word detector records. Cloze and lettered multiple-choice scoring disagree about the effect of quantization far more than their noise allows: their estimates correlate at \\r{ho} = 0.10, against a ceiling of about 0.77. LLM.int8() answers and generations depend on which items share a batch, and padding alone changes its answers. Rounding activations to 8 bits is enough to produce this dependence. NF4 is batch-invariant. The two largest reported calibration losses are response-bias shifts. We release item-level predictions, option scores and human annotations, and give recommendations for evaluating compressed small models.",
+    "url": "https://arxiv.org/abs/2611.32848",
+    "pdf_url": "https://arxiv.org/pdf/2611.32848v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Joint Detection of Constructive Speech, Hate Speech and Agreement in Online Conversations",
+    "authors": [
+      "Ida Dencker",
+      "Simon Karg",
+      "Kenneth Enevoldsen"
+    ],
+    "abstract": "Online hate speech is an ever-growing issue with negative impacts on both groups and individuals, potentially causing users to withdraw from online conversations and debate. With some prominent social media platforms reducing their moderation efforts, constructive speech has emerged as an alternative strategy for countering hate. Automated detection of constructive and hateful speech can aid monitoring and improve understanding of their prevalence and online dynamics. In this work, we collect and annotate a large dataset of English and Danish social media comments for hateful tone, constructive tone, and agreement with parent comments. We fine-tune several multilingual LLMs to classify along these three dimensions and compare context-enriched and non-context-enriched model architectures. The E5-large LLM performs best on both the context-enriched (82% average F1) and non-context-enriched (81.6% average F1) classification tasks, demonstrating the potential of multilingual LLMs for scalable detection of hateful and constructive speech across languages.",
+    "url": "https://arxiv.org/abs/2611.32889",
+    "pdf_url": "https://arxiv.org/pdf/2611.32889v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Beyond Static Charts: Benchmarking Interactive Chart-to-Code Generation for MLLMs",
+    "authors": [
+      "Yuhan Bian",
+      "Haoyu Liu",
+      "Siyu Li",
+      "Hanpei Guo",
+      "Jingrong Gao",
+      "Zhixu Li"
+    ],
+    "abstract": "In recent years, multimodal large language models (MLLMs) have achieved significant progress in chart-to-code generation. However, existing benchmarks mainly focus on static charts, overlooking interactive charts that enable richer and more expressive data exploration. Unlike static chart-to-code generation, which emphasizes visual consistency, interactive chart-to-code evaluation targets behavioral consistency, requiring chart states to evolve correctly under sequences of user interactions, thereby rendering traditional one-step evaluation paradigms ineffective. To address this gap, we introduce ChartInt, the first benchmark specifically designed for interactive chart-to-code generation. ChartInt consists of 2,779 carefully annotated examples covering common interaction patterns such as hover, highlight, and tooltips. Additionally, ChartInt incorporates editing tasks such as data updates, style adjustments, and cross-chart style transfer to expand real-world application scenarios. To enable reliable evaluation of interaction behavior, we propose a preset state snapshot protocol that predefines target interaction states and deterministically triggers interaction events, transforming dynamic behaviors into reproducible evaluation targets. Based on this protocol, we design a multi-dimensional evaluation framework measuring semantic and stylistic consistency. Experiments show that while current MLLMs perform well on static charts, their performance drops significantly on interactive tasks, highlighting the need for interaction-aware benchmarks.",
+    "url": "https://arxiv.org/abs/2611.31345",
+    "pdf_url": "https://arxiv.org/pdf/2611.31345v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Chain-of-Thought Is Not Explainability",
+    "authors": [
+      "Fazl Barez",
+      "Tung-Yu Wu",
+      "Iv\\'an Arcuschin",
+      "Michael Lan",
+      "Vincent Wang",
+      "Noah Siegel",
+      "Nicolas Collignon",
+      "Clement Neo",
+      "Isabelle Lee",
+      "Alasdair Paren",
+      "John Yan",
+      "Adel Bibi",
+      "Damiano Fornasiere",
+      "Robert Trager",
+      "Yanai Elazar",
+      "Yoshua Bengio"
+    ],
+    "abstract": "Chain-of-thought (CoT) allows language models to verbalise multi-step rationales before producing their final answer. While this technique often boosts task performance and offers an impression of transparency into the model's reasoning, this position paper argues that rationales generated by current CoT techniques can be misleading and are neither necessary nor sufficient for trustworthy interpretability. We analyse faithfulness as whether CoTs are not only human-interpretable but also reflect the model's underlying reasoning well enough to support responsible use. By synthesising evidence from prior work, we systematically show that verbalised chains are frequently unfaithful, diverging from the critical hidden computations that drive a model's predictions. As CoT is increasingly relied upon in application domains, including high-stakes ones such as medicine, law, and autonomous systems, we further argue that this unfaithfulness is not taken seriously enough in these settings: our analysis of 1,000 recent CoT-centric papers finds that approximately 21.7% explicitly treat CoT as a load-bearing interpretability technique, building pipelines or safety arguments that would not hold if CoT is unfaithful to the model's actual reasoning. They include papers in high-stakes domains that heavily hinge on such interpretability claims. Building on prior work, we make three proposals: (i) avoid treating CoT as being sufficient for interpretability without additional verification, (ii) adopt rigorous methods that assess faithfulness for downstream decision-making, and (iii) report such assessments alongside any interpretability claims based on CoT, while continuing to use CoT for its communicative and monitoring benefits.",
+    "url": "https://arxiv.org/abs/2611.31271",
+    "pdf_url": "https://arxiv.org/pdf/2611.31271v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Reading Between the Layers: Where Representation Quality Lives, and What Geometry Reveals",
+    "authors": [
+      "Arnesh Batra",
+      "Aniket Khandelwal",
+      "Arush Gumber",
+      "Krish Thukral",
+      "Kushagra Agrawal",
+      "Dev Sharma"
+    ],
+    "abstract": "Representation quality in pretrained text foundation models is not concentrated at the final layer, yet practitioners routinely probe it there because layer selection without labels has remained an open problem. We present a large-scale empirical study of where layer quality lives across 25 models spanning four architectural families and four pretraining strategies, evaluated on 13 datasets across classification, pair classification, semantic textual similarity, and multiple-choice question answering. Peak probing layers depend systematically on pretraining strategy and architecture: masked encoders peak in late-middle layers, sequence-to-sequence models shift their peak with task type, contrastive sentence encoders concentrate signal at the final layer under CLS and last-token readouts but peak early under mean pooling, and decoder-only models exhibit distinct phase structure tied to depth. We distill these findings into the Stable Geometry Index (SGI), a closed-form, fully label-free selector with no fitted coefficients combining power-law fit quality, effective-rank capacity, spectral stability, and a weak depth prior. Across 383 evaluation groups SGI improves over the last-layer baseline and lifts Hit@3 from 0.39 to 0.52, recovering 40% of the gap to the oracle without using any labels, and exceeds a supervised ELMo-style layer mix on the matched subset despite using strictly less information. Our ablations also reverse a common assumption in the spectral-decay literature: power-law fit quality is a stronger predictor of layer quality than the exponent's proximity to one.",
+    "url": "https://arxiv.org/abs/2611.31496",
+    "pdf_url": "https://arxiv.org/pdf/2611.31496v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Interactive Neural Computers",
+    "authors": [
+      "Ross Murphy",
+      "Marcel Hedman",
+      "Gabriel Brostow"
+    ],
+    "abstract": "Computers and their interfaces are usually treated as fixed, so a person, or increasingly an AI agent, must adapt to whatever the operating system presents. This is limiting when someone needs a different workflow, or an interface suited to hands-free use or a disability. We explore an overlooked alternative. Rather than training an agent to operate an existing computer, we train a generative model to be the computer, predicting each next screen from past screens and the user's mouse and keyboard actions. Treating a desktop as an interactive world model raises problems that natural-video world models largely avoid. Without a camera pose to index memory, the model must remember content that has left the screen without any geometric cues. Arithmetic in a terminal has to be exactly right, not merely plausible. Small interface text must also stay legible at interactive frame rates. Our Interactive Neural Computer is structured like a Neural Turing Machine and starts to address these problems with three modules trained end to end from pixels and actions. A surprise-gated slot memory, supervised by latent next-frame prediction (MEMORY-JEPA), stores what is off screen. An exploratory query bridge brings in the reasoning of a pretrained VLM, and a residual renderer predicts only the latent changes between frames. In long closed-loop rollouts, our model recalls occluded files in 64.2% of trials (chance is 33.3%), compared with at most 56.0% for recurrent and sliding-window baselines. It also raises terminal-text OCR accuracy from 1.3% to 50.1%. Finally, because the memory is explicit, it can be transplanted at test time to causally change what the model renders.",
+    "url": "https://arxiv.org/abs/2611.32811",
+    "pdf_url": "https://arxiv.org/pdf/2611.32811v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Text Is Just Another Shot in Vision-Language Models: Simple Probes on Frozen Encoders Do It",
+    "authors": [
+      "Reda Bensaid",
+      "Ismail Ben Ayed",
+      "Fran\\c{c}ois Leduc-Primeau",
+      "Vincent Gripon"
+    ],
+    "abstract": "Few-shot adaptation of vision-language models has produced increasingly elaborate methods built on CLIP and on one shared principle: the zero-shot text classifier is the anchor, and labeled images only correct it. We argue that this principle reflects CLIP's visual features rather than a property of the task. We provide a simple Bayesian interpretation, in which a class name is worth exactly kappa = sigma^2 / tau^2 labeled images, the ratio between the visual spread of a class and the misalignment of its name. The Bayes classifier of this model counts text as kappa more samples. With modern frozen encoders, few-shot adaptation then reduces to a well-regularised convex probe. Specifically, we introduce TASP, a simple convex logistic regression on frozen features that incorporates class-name embeddings as weighted training examples and as a regularization prior. On the standard 11-dataset benchmark, TASP with frozen PE-Core-L features achieves 87.1% accuracy at 1 shot and 91.4% at 16 shots, outperforming state-of-the-art few-shot vision-language adaptation methods by 4.6 to 11.0 percentage points. While stronger representations explain much of this improvement, controlled comparisons on matched features show that existing frozen-encoder adaptation methods do not materially improve on this probe. We further find that the weight assigned to text matters more than how it is incorporated, and that combining self-supervised visual features with vision-language representations is most beneficial for weaker visual encoders. Together, these findings suggest that progress in few-shot vision-language adaptation depends more on representation quality and the appropriate use of text supervision than on increasingly complex adaptation mechanisms.",
+    "url": "https://arxiv.org/abs/2611.32672",
+    "pdf_url": "https://arxiv.org/pdf/2611.32672v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "ViDM: Efficient and Order-Robust Parallel Visual Decision Making",
+    "authors": [
+      "Xudong Tan",
+      "Peng Ye",
+      "Chenyu Huang",
+      "Yaoxin Yang",
+      "Huafeng Qin",
+      "Tao Chen"
+    ],
+    "abstract": "Visual decision-making demands accurate judgments and timely responses. Yet for multiple questions sharing the same visual input, autoregressive multimodal large language models generate answers token by token, accumulating sequential decoding costs as question count grows and delaying completion of the decision set. Their predictions can also vary with question order. We introduce ViDM, which transforms multi-question visual inference into parallel decisions in a single forward pass, improving both accuracy and inference efficiency. ViDM organizes shared visual context, multiple questions, and question-specific decision slots into one sequence, reusing the native language-model head to produce all answer distributions simultaneously. A Decision-Query Mask aligns each decision query's direct attention with shared context and its corresponding question, while case-balanced multi-order training strengthens robustness to question reordering. Across nine benchmarks spanning image, multi-image, and video tasks, ViDM improves Qwen3.5-4B's average accuracy from 73.49% to 77.55% while achieving 8.4x the baseline's average end-to-end throughput. On GQA, where each evaluated image has 11.4 questions on average, the end-to-end speedup reaches 20.3x. ViDM also improves mean and worst-order accuracy while reducing order-induced variation across multiple benchmarks, with further validation on LLaVA-OneVision-7B and InternVL3.5-4B.",
+    "url": "https://arxiv.org/abs/2611.32461",
+    "pdf_url": "https://arxiv.org/pdf/2611.32461v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "What If Chinese Were Latinized? A Counterfactual Study of Input Representation, Tokenization, and Language Modeling",
+    "authors": [
+      "Zijie Zheng",
+      "Ej Zhou"
+    ],
+    "abstract": "If Chinese had been Latinized, as the Latinxua Sin Wenz movement proposed, what would it have meant for Chinese NLP? Homophones and tone marking complicate the answer. We convert Chinese corpora to syllable-separated Pinyin and train superBPE tokenizers from scratch. The resulting Pinyin vocabularies not only exhibit expected homophone collisions, but also show approximately 10% higher fertility than characters. An alternative BPE configuration changes the relative fertility of the two representations. We further pretrain Llama-style models on Chinese characters and Pinyin. The Pinyin models perform worse on per-character perplexity, homophone disambiguation, and overall ZhoBLiMP minimal-pair accuracy. An exploratory phonological probe yields near-chance performance for both representations. The broader implication is that written input representations are not merely neutral encodings. Choices for representations affect language modeling and their downstream performances. Latinization never actually happened for Chinese, but other languages did, such as Hangul and Latin script replaced character in Korean and Vietnamese; the cost we measure is a guide to where modeling effort for those languages should concentrate.",
+    "url": "https://arxiv.org/abs/2611.32525",
+    "pdf_url": "https://arxiv.org/pdf/2611.32525v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "How Much Dependency Can a Marginal Rule See? Total Correlation in Diffusion LM Parallel Decoding",
+    "authors": [
+      "Dovud Asadov",
+      "Rustambek Urokov",
+      "Qobiljon Toshnazarov",
+      "Abduaziz Kayumov",
+      "Mardon Hazratov",
+      "Husanboy Mansuraliyev"
+    ],
+    "abstract": "A masked diffusion language model is fast because it commits several tokens per step. Each token is sampled from its own marginal, so the dependency between the tokens is lost, and the size of that loss is the conditional total correlation C of the committed set. Most decoders choose the set from per-position marginals, which can bound C but cannot determine it. We ask how well they predict it. We estimate C for fixed candidate sets on four masked diffusion LMs from two families. On three of the four, the best marginal-only predictor is off by about one bit (0.74 to 1.17), 1.8 to 3.7 times less than a baseline that knows only the bound, and most of this accuracy comes from the bound itself. On a subset, our estimate ranks sets like the exact KL cost of a parallel commit, but sits a median 0.4 to 1.1 bits below it on prose and when the rest of the text is still masked. Dream-instruct is the exception, mainly on prose, where its conditionals are least self-consistent. Among six common marginal rules, pooling over the set beats gating on its weakest position in all 24 paired comparisons. The measurement needs a validated readout: Dream and LLaDA place a position's prediction at different logit indices, and the wrong index inflates an inconsistency diagnostic 14 to 41 times. We give three checks that measure the convention. Our results concern predicting C for a fixed set, not what a dependency-aware decoder gains.",
+    "url": "https://arxiv.org/abs/2611.31990",
+    "pdf_url": "https://arxiv.org/pdf/2611.31990v1",
+    "arxiv_url": null
+  },
+  {
+    "title": "Worth the Wait? How Response Time and Streaming Shape Judgments of Generative AI Answers and Chatbot Engagement",
+    "authors": [
+      "Zihan Chen",
+      "Di Zhu",
+      "Lei Nico Zheng"
+    ],
+    "abstract": "Answers from generative AI chatbots built on large language models (LLMs) now arrive at very different speeds: reasoning models deliberate before replying, while response caches can return a stored answer at once. Blind preference votes, which rank these models, are read as judgments of their text, and if delivery matters, faster answers are expected to gain. Research on the labor illusion and on how text appears on screen suggests instead that an answer which unfolds as it is written is credited over the same answer shown at once. We test these accounts with three sources of variation in natural use. First, compar:IA, a French government chatbot arena, answered repeated prompts, by a random draw, either with a fresh answer streamed as it was written or with a stored earlier answer from the same model, shown at once. Within the same prompt, a replay lowered an answer's chance of winning a decisive blind vote by 25.8 percentage points. The same stored text won 57% of its decisive votes when streamed and 29% when replayed, and voters called it less complete, more superficial and more often incorrect when replayed. Second, provider congestion slowed streamed answers. In 324,029 conversations, slower answers earned no detectable net credit in the vote, but a slower first exchange made visitors less likely to ask a follow-up question. Third, in 4,378,514 WildChat replies from everyday ChatGPT use, replies slowed by congestion made users less likely to continue. Delivery moved blind votes, in the direction opposite to the one the arena's designers expected, while waiting cost follow-up questions that a comparison between two answers cannot register when both are slow. The results bear on how AI services cache and stream answers, how they budget latency, and how preference leaderboards evaluate models.",
+    "url": "https://arxiv.org/abs/2611.33050",
+    "pdf_url": "https://arxiv.org/pdf/2611.33050v1",
+    "arxiv_url": null
+  }
+]
